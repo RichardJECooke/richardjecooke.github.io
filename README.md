@@ -24,7 +24,7 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 
 # Deploy
 https://hexo.io/docs/deployment.html
-Set your main branch in bitbucket or github to 'public' and set this branch in your config to deploy to.
+Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy to.
 Keep committing locally to master.
 .node_modules/.bin/hexo deploy
 
