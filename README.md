@@ -4,8 +4,7 @@ theme
 make page
 get asciidoctor to work
 migrate existing site
-setup proper deployment
-https://www.aerobatic.com/blog/how-to-host-your-static-web-site-with-hexo-js/
+
 https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
 
 # Notes
