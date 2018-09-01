@@ -71,15 +71,34 @@ time_format: HH:mm:ss
 per_page: 100
 pagination_dir: page
 
-# Extensions
-## Plugins: https://hexo.io/plugins/
-## Themes: https://hexo.io/themes/
-theme: landscape
-theme_config:
-
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   repo: https://bitbucket.org/RichardJECooke/richardjecooke.bitbucket.io
   branch: deployed
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+## Themes: https://hexo.io/themes/
+
+#theme: landscape
+
+# CACTUS THEME STUFF
+theme: cactus
+theme_config:
+  colorscheme: dark
+  nav:
+    home: /
+    about: /about/
+    articles: /archives/
+    apps: /apps/
+  posts_overview:
+    show_all_posts: false
+    post_count: 100
+  social_links:
+    github: http://github.com/probberechts/cactus-dark
+    twitter: /
+    facebook: /
+    linkedin: /
+    mail: mailto:Richard.J.ECooke@gmail.com

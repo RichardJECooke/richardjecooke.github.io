@@ -1,11 +1,9 @@
 # Todo
 configuration - https://hexo.io/docs/configuration
-theme
+fork theme and update
 make page
-get asciidoctor to work
-migrate existing site
-
-https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
+write article on hexo
+migrate existing site - https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
 
 # Notes
 Forum: https://gitter.im/hexojs/hexo
@@ -29,4 +27,5 @@ Keep committing locally to master.
 
 # Themes
 Must support asciidoctor.
+git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
 Does this? https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/
