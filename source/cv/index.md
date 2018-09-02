@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: CV
 url: 10.html
 id: 10
 comments: false
@@ -45,21 +45,23 @@ Partnering NGOs with corporate and individual support
 **Résumé**
 ==========
 
-March 2017
+*Updated September 2018*
 
 Education
 ---------
 
 #### University of Cape Town
 
-*   **M.Sc** in computer science (2006)
+*   **B.Mus** in classical composition (2020)
+
+*   **M.Sc** in computer science by [dissertation](http://pubs.cs.uct.ac.za/archive/00000370/) (2006)
     *   distinction
 
-*   **B. Sc (hons)** in computer science (2004)
+*   **B.Sc (hons)** in computer science (2004)
     *   class medal
     *   1st in professional communications
 
-*   **B. Bus. Sci** (hons) in finance (2003)
+*   **B.Bus.Sci (hons)** in finance (2003)
 
 #### Diocesan College (high school)
 
@@ -88,15 +90,13 @@ Work experience
 Sundry achievements
 -------------------
 
-*   Microsoft qualification: MCTS & MCP in .NET 3.5 Windows Forms, 2010
-
+*   Microsoft qualification: MCTS & MCP in .NET 3.5 Windows Forms (2010)
 *   KW Johnstone scholarship (2005)
 *   Twamley scholarship (2005)
 *   UCT Spilhaus council scholarship (2005)
 *   Dean's merit list (2000, 2001, 2017)
 *   Department of Commerce entrance merit scholarship (2000)
 *   James Owen Brunt scholarship (2000)
-
 *   Grade 8 piano (ABRSM, 2005)
 *   Grade 7 guitar (ABRSM, 1998)
 

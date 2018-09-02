@@ -16,11 +16,10 @@ direction: ltr
 # languages/*.yml
 nav:
   home: /
-  about: /about/
   articles: /archives/
-  #projects: projects_url
-  apps: /apps
   music: /music
+  apps: /apps
+  cv: /cv/
 
 
 # Links to your social media accounts.

@@ -8,8 +8,14 @@
 - add search
 - add rss
 - get custom pages (apps) to work
+    - npm install --save --only=prod hexo-include
+    - https://github.com/pirtleshell/hexo-include
+    - 
 -Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
 - disable wordpress site
+- https://github.com/poacher2k/hexo-featured-image
+- audio - https://github.com/EYHN/hexo-tag-cplayer
+- search for richardcooke
 
 # Notes
 - Forum: https://gitter.im/hexojs/hexo

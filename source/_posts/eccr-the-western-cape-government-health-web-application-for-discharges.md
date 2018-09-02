@@ -63,7 +63,7 @@ Our clients were doctors and medical specialists. As expected, they were happy w
 
 #### Testing
 
-The clients preferred not to test or even play with the app after each two weekly demo. Instead we had a couple of internal testers do as much rigorous testing as possible. While I initially thought this would end in tears once the doctors got their hands on the final system it actually turned out fine. The internal testers were thorough, and our demos and discussions were very comprehensive, so their were few surprises at the end of the project.
+The clients preferred not to test or even play with the app after each two weekly demo. Instead we had a couple of internal testers do as much rigorous testing as possible. While I initially thought this would end in tears once the doctors got their hands on the final system it actually turned out fine. The internal testers were thorough, and our demos and discussions were very comprehensive, so there were few surprises at the end of the project.
 
 #### UX, UI, and styling
 
