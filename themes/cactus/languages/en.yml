@@ -1,9 +1,8 @@
 nav:
-  home: Home
-  about: About
-  articles: Writing
-  projects: Projects
-  search: Search
+  home: home
+  articles: articles
+  about: cv
+  search: search
 
 footer:
   copyright: Copyright
@@ -12,7 +11,7 @@ index:
   find_me_on: Find me on
   enum_comma: ','
   enum_and: and
-  articles: Writing
+  articles: Articles
   projects: Projects
   topics: Topics
   most_recent: Most recent

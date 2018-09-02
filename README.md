@@ -1,11 +1,13 @@
 # Todo
 - migrate existing site - - https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
 - make page
+- list of best software
 - write article on hexo
 - https://github.com/probberechts/hexo-theme-cactus
 - add comments: facebook / disqus
--add search
--add rss
+- add search
+- add rss
+- get custom pages (apps) to work
 -Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
 - disable wordpress site
 
@@ -118,6 +120,10 @@ part of the blockquote, even without the > character in front.
 > To end the blockquote, just put a blank line before the following
 >
 > paragraph.
+
+linebreak = <br/>
+  
+
 
 # Preformatted Text \ Code
 

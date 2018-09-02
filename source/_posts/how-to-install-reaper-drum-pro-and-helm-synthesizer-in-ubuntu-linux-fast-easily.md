@@ -17,16 +17,14 @@ date: 2018-01-09 03:58:43
 
 It used to be hard, now it's quick, and it works. This quick set of steps shows to install Reaper as fast as possible, as well as two free VST plugins - a clear synthesizer with useful presets, and a decent drum machine.
 
-Go!
----
-
-*   In a console run `sudo apt install jack`
-*   Install PlayOnLinux through the software manager
-*   Download 32 bit [Reaper](https://www.reaper.fm/download.php), [Helm](http://tytel.org/helm/direct_downloads/), [Drum Pro](https://www.studiolinked.com/drum-pro/)
-*   Run PlayOnLinux and install all three apps in the same virtual drive (you can use the default drive)
-*   Run Reaper, select the default WaveOut audio (it won't play yet), restart PlayOnLinux and Reaper (audio now works)
-*   Set the VST plugins folder to include Helm and Drum Pro (/home/PlayOnLinux's virtual drives/drive_c/Program Files/VstPlugins and the Steinberg folder too)
-*   Add two new tracks in a Reaper project, add your free synth and drums and write music. Easy.
+## The commands
+* In a console run `sudo apt install jack`
+* Install PlayOnLinux through the software manager
+* Download 32 bit [Reaper](https://www.reaper.fm/download.php), [Helm](http://tytel.org/helm/direct_downloads/), [Drum Pro](https://www.studiolinked.com/drum-pro/)
+* Run PlayOnLinux and install all three apps in the same virtual drive (you can use the default drive)
+* Run Reaper, select the default WaveOut audio (it won't play yet), restart PlayOnLinux and Reaper (audio now works)
+* Set the VST plugins folder to include Helm and Drum Pro (/home/PlayOnLinux's virtual drives/drive_c/Program Files/VstPlugins and the Steinberg folder too)
+* Add two new tracks in a Reaper project, add your free synth and drums and write music. Easy.
 
 ### Stuff that doesn't work
 
