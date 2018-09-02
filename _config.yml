@@ -86,19 +86,4 @@ deploy:
 
 # CACTUS THEME STUFF
 theme: cactus
-theme_config:
-  colorscheme: dark
-  nav:
-    home: /
-    about: /about/
-    articles: /archives/
-    apps: /apps/
-  posts_overview:
-    show_all_posts: false
-    post_count: 100
-  social_links:
-    github: http://github.com/probberechts/cactus-dark
-    twitter: /
-    facebook: /
-    linkedin: /
-    mail: mailto:Richard.J.ECooke@gmail.com
+#theme_config:
