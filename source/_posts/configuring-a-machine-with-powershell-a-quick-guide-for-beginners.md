@@ -15,33 +15,33 @@ date: 2014-02-04 19:05:17
 
 This article will show you everything you need to know to use PowerShell to setup Windows services and IIS applications.  It's aimed at complete beginners and is as concise as possible.
 
-# Why do this in PowerShell?
+## Why do this in PowerShell?
 
 I wrote the script discussed in this article to completely automate the configuration of our virtual machines. Whenever a new environment is created for testing or deployment all that needs to be done is to run a script, rather than install and configure everything manually. Why PowerShell? Because it's the Microsoft standard tool for system administration.
 
-# Install PowerShell
+## Install PowerShell
 
 Google the latest version of the Windows Management Framework, download and install it.  [Version 4 of PowerShell](http://www.microsoft.com/en-za/download/details.aspx?id=40855) is the latest at the time of writing.
 
 **WARNING** Some of the modules available in PowerShell depend on the version of Windows you have, not the version of PowerShell.  If you find a function you are trying to use just isn't working check in the MSDN documentation to see if its module is in your version of Windows.
 
-# Windows PowerShell ISE (integrated scripting environment)
+## Windows PowerShell ISE (integrated scripting environment)
 
 The ISE is a useful text editor for your scripts and can run them too.
 
-## Hotkeys
+### Hotkeys
 - Ctrl 1 to Ctrl 3 change the arrangement of the script and console windows
 - Ctrl R switches between the script and console windows
 
 **WARNING** The ISE does not clear the PowerShell session whenever you click run. If you make a change to a script used by another script the change won't be used. This is because all the functions have already been defined in the session. Instead you have to use only one file, or restart the ISE.
 
-# Allow PowerShell to run scripts
+## Allow PowerShell to run scripts
 
 Start a PowerShell command window and run the following command `Set-Executionpolicy RemoteSigned`
 
 This will allow you to run scripts in the current folder by typing `./MyScript.ps1`
 
-# Make some configuration settings
+## Make some configuration settings
 
 Let's look at a basic script
 
@@ -80,7 +80,7 @@ foreach ($item in $folders)
 - Line 18 shows that DOS commands are included in PowerShell, and clears the screen.  
 - Line 19 allows you to write to the screen and the next few lines show you a foreach loop.
 
-# Put the configuration in a separate file
+## Put the configuration in a separate file
 
 Let's put the configuration arrays in a separate file so we can edit them separately later. Make a new script called Configuration.ps1 and add these lines:
 
@@ -105,9 +105,9 @@ Write-Host "Importing configuration settings"
 Write-Host $version
 ```
 
-  [![warning](http://richardcooke.info/wp-content/uploads/2014/02/warning.png)](http://richardcooke.info/wp-content/uploads/2014/02/warning.png)Note that line 1 won't work because the variable hasn't been defined yet. PowerShell doesn't look forward through a file - functions and variables must be declared before being used. Line 3 is called dot sourcing. It's as if the other script file had been copied and pasted into that line. It's more neat to make your script libraries into standalone reusable modules, but we'll get to that later.
+**WARNING** Note that line 1 won't work because the variable hasn't been defined yet. PowerShell doesn't look forward through a file - functions and variables must be declared before being used. Line 3 is called dot sourcing. It's as if the other script file had been copied and pasted into that line. It's more neat to make your script libraries into standalone reusable modules, but we'll get to that later.
 
-# Functions and parameters
+## Functions and parameters
 
 Let's look at a basic function and its use:
 
@@ -131,7 +131,7 @@ Functions work as you'd expect except for a couple of surprises:
 * Line 10: Functions are not called with parameters in brackets, nor separated by commas.  Parameters are separated only by whitespace. Brackets are used to wrap something that contains spaces into one parameter.
 * Parameters are passed by value unless you preceed the formal and actual parameters by \[ref\]. If the function can't find a variable in the parameter list it will create a global variable (like Javascript if you create a variable without using 'var').
 
-# Modules & logging
+## Modules & logging
 
 PowerShell groups code for reuse by making modules (similar to packages or assemblies in other languages). Here's how to import and use a logging module. Download and unzip this logging [module](http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927) into a subfolder called PSLog beneath your script. Notice that the folder contains a module manifest file and a code file.  To make your own module just copy this folder and rename the files and manifest information. To import and use the module use this code:
 
@@ -146,7 +146,7 @@ Line 1 will just write to the screen.
 The module is then imported in line 2 ($PSScriptRoot is the folder the script is in).  
 Line 3 activates it to create a log file and writes further Write-Host output to the file as well as the screen.
 
-# Calling DOS commands
+## Calling DOS commands
 
 If you're not using Windows 8 or the server version you'll find many missing PowerShell commands and you'll have to rely on the standard DOS management applications.  Calling them with the correct parameters can be tricky. PowerShell is usually pretty clever and correctly surrounds a variable's content with " " when passing it as parameter.  But if it doesn't work put the whole command in a string and run it like this:
 
@@ -156,7 +156,7 @@ $output = Invoke-Expression $command
 Write-Host $output
 ```
 
-# A full script with useful functions
+## A full script with useful functions
 
 That's about it. We've covered the basics of PowerShell and all the suprises for a novice user. The code below gives you a lot of useful functions to create folders, share folders on the network, create IIS applications, create scheduled tasks, and create Windows services. It's quite simple but if you have questions please ask them in a comment at the bottom of this page.
 

@@ -1,9 +1,7 @@
 # Todo
 - migrate existing site - - https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
 - make page
-- list of best software
 - write article on hexo
-- https://github.com/probberechts/hexo-theme-cactus
 - add comments: facebook / disqus
 - add search
 - add rss
@@ -16,9 +14,11 @@
 - https://github.com/poacher2k/hexo-featured-image
 - audio - https://github.com/EYHN/hexo-tag-cplayer
 - search for richardcooke
+- list of best software
 
 # Notes
 - Forum: https://gitter.im/hexojs/hexo
+- https://github.com/probberechts/hexo-theme-cactus
 
 # Initial creation
 ```
