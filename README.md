@@ -1,10 +1,12 @@
 # Todo
-- migrate existing site - - https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
-- make page
+- migrate blog articles
+- migrate pages
+- https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
 - write article on hexo
 - add comments: facebook / disqus
 - add search
 - add rss
+- envato
 - get custom pages (apps) to work
     - npm install --save --only=prod hexo-include
     - https://github.com/pirtleshell/hexo-include
