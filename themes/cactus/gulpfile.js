@@ -28,7 +28,7 @@ gulp.task('lib:mesloFont', function () {
       filter: file => path.extname(file.path) == '.ttf',
       strip: 1
     }))
-    .pipe(gulp.dest('./source/lib/meslo-LG'));
+    .pipe(gulp.dest('./source/lib/fonts/meslo-LG'));
 });
 
 
@@ -36,7 +36,7 @@ gulp.task('lib:vazirFont',function(){
   return gulp.src([
     'node_modules/vazir-font/dist/*',
   ], {base: 'node_modules/vazir-font/dist'})
-    .pipe(gulp.dest('./source/lib/vazir-font'))
+    .pipe(gulp.dest('./source/lib/fonts/vazir-font'))
 })
 
 gulp.task('lib:justifiedGallery',function(){

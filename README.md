@@ -7,11 +7,8 @@
 - add search
 - add rss
 - envato
-- get custom pages (apps) to work
-    - npm install --save --only=prod hexo-include
-    - https://github.com/pirtleshell/hexo-include
-    - 
--Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
+- fix graphic score maker
+- Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
 - disable wordpress site
 - https://github.com/poacher2k/hexo-featured-image
 - audio - https://github.com/EYHN/hexo-tag-cplayer

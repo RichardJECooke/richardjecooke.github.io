@@ -58,8 +58,8 @@ Purpose:
 #region Settings
 
 $folders = @(
-    \[pscustomobject\] @{name="Books"; file = "C:\\temp\\Books"; user = "EVERYONE"; };
-    \[pscustomobject\] @{name="Sound"; file = "C:\\temp\\Sound"; user = "EVERYONE"; };
+    [pscustomobject] @{name="Books"; file = "C:\temp\Books"; user = "EVERYONE"; };
+    [pscustomobject] @{name="Sound"; file = "C:\temp\Sound"; user = "EVERYONE"; };
 )
 
 #endregion
@@ -76,7 +76,7 @@ foreach ($item in $folders)
 - Line 6 shows single line comments. 
 - Line 7 shows an interpreter directive - the script won't run unless PowerShell is the right version.  
 - Lines 9 and 16 define a region that you can minimise in the ISE to keep your script uncluttered.  
-- Line 11 defines a variable. Variables start with $. The @ symbol means the following lines are all one command (otherwise PowerShell thinks one line is one command; there are no semicolon endings). This line also defines an array.  It casts two anonymous dictionaries of three strings to a \[pscustomerobject\].  
+- Line 11 defines a variable. Variables start with $. The @ symbol means the following lines are all one command (otherwise PowerShell thinks one line is one command; there are no semicolon endings). This line also defines an array.  It casts two anonymous dictionaries of three strings to a pscustomerobject.  
 - Line 18 shows that DOS commands are included in PowerShell, and clears the screen.  
 - Line 19 allows you to write to the screen and the next few lines show you a foreach loop.
 
@@ -88,12 +88,12 @@ Let's put the configuration arrays in a separate file so we can edit them separa
 $version = 1
 
 $folders = @(
-    \[pscustomobject\] @{name="Books"; file = "C:\\temp\\Books"; user = "EVERYONE"; };
-    \[pscustomobject\] @{name="Sound"; file = "C:\\temp\\Sound"; user = "EVERYONE"; };
+    pscustomobject @{name="Books"; file = "C:\temp\Books"; user = "EVERYONE"; };
+    pscustomobject @{name="Sound"; file = "C:\temp\Sound"; user = "EVERYONE"; };
 )
 
 $windowsServices = @(
-    \[pscustomobject\] @{name="Monitoring Service";     file = "C:\\temp\\Movie\\SystemsMonitor.exe";                  user = "NetworkService";         password = "1gn0red" };
+    pscustomobject @{name="Monitoring Service";     file = "C:\temp\Movie\SystemsMonitor.exe";                  user = "NetworkService";         password = "1gn0red" };
 )
 ```
 We can then make a script that uses these settings like so:
@@ -101,7 +101,7 @@ We can then make a script that uses these settings like so:
 ```powershell
 Write-Host $version
 Write-Host "Importing configuration settings"
-. $PSScriptRoot\\Configuration.ps1
+. $PSScriptRoot\Configuration.ps1
 Write-Host $version
 ```
 
@@ -129,7 +129,7 @@ Functions work as you'd expect except for a couple of surprises:
 * Line 1: PowerShell expects functions to start with a verb from the list found by running Get-Verb.  It won't error but will warn you.
 * Line 4: Comparison operators are -eq for =, -ne for <>, -gt for >, and so on. Null, true, and false are represented by $null, $true, and $false.
 * Line 10: Functions are not called with parameters in brackets, nor separated by commas.  Parameters are separated only by whitespace. Brackets are used to wrap something that contains spaces into one parameter.
-* Parameters are passed by value unless you preceed the formal and actual parameters by \[ref\]. If the function can't find a variable in the parameter list it will create a global variable (like Javascript if you create a variable without using 'var').
+* Parameters are passed by value unless you preceed the formal and actual parameters by ref. If the function can't find a variable in the parameter list it will create a global variable (like Javascript if you create a variable without using 'var').
 
 ## Modules & logging
 
@@ -137,7 +137,7 @@ PowerShell groups code for reuse by making modules (similar to packages or assem
 
 ```powershell
 Write-Host "Creating log file"
-Import-Module $PSScriptRoot\\PSLog
+Import-Module $PSScriptRoot\PSLog
 Start-Log -LogName PrepareMachineForDTS -LogPath $PSScriptRoot -Level All
 Write-Host "I'm in a file and on the screen"
 ```
@@ -162,25 +162,25 @@ That's about it. We've covered the basics of PowerShell and all the suprises for
 
 ```powershell
 $folders  = @(
-    \[pscustomobject\] @{file = "C:\\temp\\movie";   };
-    \[pscustomobject\] @{file = "C:\\temp\\sound";   };    
+    pscustomobject @{file = "C:\temp\movie";   };
+    pscustomobject @{file = "C:\temp\sound";   };    
 )
 
 $sharedFolders = @(
-    \[pscustomobject\] @{name="movie"; file = "C:\\movie"; user = "EVERYONE";     };
-    \[pscustomobject\] @{name="sound"; file = "C:\\temp\\sound"; user = "EVERYONE";     };    
+    pscustomobject @{name="movie"; file = "C:\movie"; user = "EVERYONE";     };
+    pscustomobject @{name="sound"; file = "C:\temp\sound"; user = "EVERYONE";     };    
 )
 
 $scheduledTasks = @(
-    \[pscustomobject\] @{name="Run movies"; file = "C:\\temp\\movie\\Go.bat";  enabled = $true; schedule=" /ST 19:00 /SC DAILY "  };
+    pscustomobject @{name="Run movies"; file = "C:\temp\movie\Go.bat";  enabled = $true; schedule=" /ST 19:00 /SC DAILY "  };
 )
 
 $windowsServices = @(
-    \[pscustomobject\] @{name="Monitor movie";     file = "C:\\temp\\movie"; user = "NetworkService"; password = "1gn0red" };    
+    pscustomobject @{name="Monitor movie";     file = "C:\temp\movie"; user = "NetworkService"; password = "1gn0red" };    
 )
 
 $virtualDirectories = @(
-    \[pscustomobject\] @{name="MovieSite"; file="C:\\temp\\movie\\webapp"; user="NetworkService"; password = "1gn0red";   authentication="Windows"          };  
+    pscustomobject @{name="MovieSite"; file="C:\temp\movie\webapp"; user="NetworkService"; password = "1gn0red";   authentication="Windows"          };  
 )
 
 # The line below ensures we have correct version, it is not just a comment
@@ -189,7 +189,7 @@ $virtualDirectories = @(
 #region Functions
 function Get-ParentFolder($folder)
 {
-    retun (Split-Path -parent $folder)
+    return (Split-Path -parent $folder)
 }
 
 function Confirm-WindowsServiceExists($name)
@@ -231,7 +231,7 @@ function Remove-ScheduledTaskIfItExists($name)
 function Initialize-Logging
 {
     $parentFolder = Get-Parent-Folder $PSScriptRoot
-    Import-Module $parentFolder\\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
+    Import-Module $parentFolder\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
     Start-Log -LogName PrepareMachineForDTS -LogPath $parentFolder -Level All
 }
 
@@ -303,21 +303,21 @@ function Get-ValueOrUseDefault($message, $default)
 function Add-AppPool($virtualDirectory)
 {
     Write-Host "Creating IIS app pool - " $virtualDirectory.name    
-    $poolName = "IIS:\\AppPools\\" + $virtualDirectory.name
+    $poolName = "IIS:\AppPools\" + $virtualDirectory.name
     $pool = New-Item $poolName
     $pool.processModel.userName = $virtualDirectory.user
     $pool.processModel.password = $virtualDirectory.password
     $pool.processModel.identityType = "SpecificUser"
-    $pool.processModel.idleTimeout = \[TimeSpan\] "0.00:00:00"
+    $pool.processModel.idleTimeout = TimeSpan "0.00:00:00"
     $pool.managedRuntimeVersion = "4.0"
-    $pool.recycling.periodicRestart.time = \[TimeSpan\] "00:00:00"
+    $pool.recycling.periodicRestart.time = TimeSpan "00:00:00"
     $pool | Set-Item
 }
 
 function Add-VirtualDirectory($virtualDirectory)
 {
     Write-Host "Creating IIS virtual directory - " $virtualDirectory.name
-    $name = "IIS:\\Sites\\Default Web Site\\" + $virtualDirectory.name
+    $name = "IIS:\Sites\Default Web Site\" + $virtualDirectory.name
     New-Item $name -Type Application -physicalPath $virtualDirectory.file
     Set-ItemProperty $name -Name applicationPool -Value $virtualDirectory.name
 }
@@ -329,19 +329,19 @@ function Add-WindowsAuthenticationToAppIfNecessary($virtualDirectory)
         return
     }
     Write-Host "Setting Windows authentication for IIS app - " $virtualDirectory.name
-    $command = $env:SystemRoot + "\\system32\\inetsrv\\AppCmd.exe set config `"Default Web Site/"+$virtualDirectory.name+"`" -section:system.webServer/security/authentication/anonymousAuthentication /enabled:`"False`" /commit:apphost"
+    $command = $env:SystemRoot + "\system32\inetsrv\AppCmd.exe set config `"Default Web Site/"+$virtualDirectory.name+"`" -section:system.webServer/security/authentication/anonymousAuthentication /enabled:`"False`" /commit:apphost"
     Write-Host $command
     Invoke-Expression $command
 
-    $command = $env:SystemRoot + "\\system32\\inetsrv\\AppCmd.exe set config `"Default Web Site/"+$virtualDirectory.name+"`" -section:system.webServer/security/authentication/windowsAuthentication /enabled:`"True`" /commit:apphost"
+    $command = $env:SystemRoot + "\system32\inetsrv\AppCmd.exe set config `"Default Web Site/"+$virtualDirectory.name+"`" -section:system.webServer/security/authentication/windowsAuthentication /enabled:`"True`" /commit:apphost"
     Write-Host $command
     Invoke-Expression $command
 }
 
 function Add-VirtualDirectories($virtualDirectories)
 {
-    C:\\Windows\\system32\\inetsrv\\AppCmd.exe unlock config  /section:security/authentication/anonymousAuthentication # allow us to make changed to authentication types of apps
-    C:\\Windows\\system32\\inetsrv\\AppCmd.exe unlock config  /section:security/authentication/windowsAuthentication   # allow us to make changed to authentication types of apps
+    C:\Windows\system32\inetsrv\AppCmd.exe unlock config  /section:security/authentication/anonymousAuthentication # allow us to make changed to authentication types of apps
+    C:\Windows\system32\inetsrv\AppCmd.exe unlock config  /section:security/authentication/windowsAuthentication   # allow us to make changed to authentication types of apps
 
     foreach ($virtualDirectory in $virtualDirectories)
     {
@@ -354,7 +354,7 @@ function Remove-VirtualDirectories($virtualDirectories)
 {            
     foreach ($item in $virtualDirectories)
     {        
-        $pool = "IIS:\\AppPools\\" + $item.name
+        $pool = "IIS:\AppPools\" + $item.name
         if (Test-Path $pool)
         {
             Write-Host "Removing IIS app pool - " $item.name            
@@ -367,14 +367,14 @@ function Remove-VirtualDirectories($virtualDirectories)
             continue
         }
         Write-Host "Removing IIS virtual directory - " $item.name
-        $parameter = "IIS:\\Sites\\Default Web Site\\" + $item.name
+        $parameter = "IIS:\Sites\Default Web Site\" + $item.name
         Remove-Item $parameter -Recurse
     }  
 }
 
 function Confirm-VirtualDirectoryExists($name)
 {   
-    $parameter = "IIS:\\Sites\\Default Web Site\\" + $item.name
+    $parameter = "IIS:\Sites\Default Web Site\" + $item.name
     Get-Item $parameter -ErrorAction SilentlyContinue    
     return ($?) #if last command was successful return true
 }
@@ -430,7 +430,7 @@ function Add-SharedFolders($sharedFolders)
 {
     Write-Host "Adding folders shared on network"
 
-    $share = \[WMICLASS\] "WIN32_Share"
+    $share = WMICLASS "WIN32_Share"
 
     foreach ($item in $sharedFolders)
     {
@@ -474,7 +474,7 @@ cls
 Write-Host "Starting program"
 
 Write-Host "Creating log file"
-Import-Module $PSScriptRoot\\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
+Import-Module $PSScriptRoot\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
 Start-Log -LogName PrepareMachineForDTS -LogPath $PSScriptRoot -Level All
 Write-Host "___________________________________________________"
 
@@ -515,9 +515,9 @@ Write-Host "Log closed. Program finished"
  
 #region Settings
  
-$apiSourceFolder = ".\\src\\WebAPI\\*"
-$apiDeploymentFolder = "\\\10.10.10.30\\Web.Api.V1.Dev"
-$configFilename = $apiDeploymentFolder + "\\Web.config"
+$apiSourceFolder = ".\src\WebAPI\*"
+$apiDeploymentFolder = "\\10.10.10.30\Web.Api.V1.Dev"
+$configFilename = $apiDeploymentFolder + "\Web.config"
  
 #endregion
  

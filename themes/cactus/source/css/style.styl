@@ -24,7 +24,7 @@ body
   font-display: swap // @stylint ignore
   font-weight: 400
   font-size: $font-size
-  font-family: $font-family-body
+  font-family: $font-family-body //$font-family-body
   line-height: $line-height
   text-rendering: geometricPrecision
 
@@ -55,6 +55,9 @@ body
 
     &:hover
       color: $color-link
+
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
+    font-family: $font-family-heading
 
   h1 a, .h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
     background: none
@@ -122,7 +125,7 @@ pre
   padding-bottom: 0
   border: 1px dotted $color-border
   border-radius: 4px
-  font-size: 13px
+  font-size: 1em
   font-family: $font-family-mono
   line-height: 22px
   -webkit-border-radius: 4px
