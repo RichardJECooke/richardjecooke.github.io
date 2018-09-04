@@ -13,6 +13,7 @@
 - https://github.com/poacher2k/hexo-featured-image
 - audio - https://github.com/EYHN/hexo-tag-cplayer
 - search for richardcooke
+- todo
 - list of best software
 
 # Notes
