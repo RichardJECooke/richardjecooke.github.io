@@ -3,7 +3,7 @@
 - migrate pages
 - https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
 - write article on hexo
-- add comments: facebook / disqus
+- add comments: facebook
 - add search
 - add rss
 - envato

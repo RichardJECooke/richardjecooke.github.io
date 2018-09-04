@@ -19,7 +19,7 @@ gulp.task('lib:fontAwesome',function(){
     'node_modules/@fortawesome/fontawesome-free/webfonts/*',
     'node_modules/@fortawesome/fontawesome-free/css/all.min.css'
   ], {base: 'node_modules/@fortawesome/fontawesome-free'})
-    .pipe(gulp.dest('./source/lib/font-awesome'))
+    .pipe(gulp.dest('./source/lib/fonts/font-awesome'))
 })
 
 gulp.task('lib:mesloFont', function () {
