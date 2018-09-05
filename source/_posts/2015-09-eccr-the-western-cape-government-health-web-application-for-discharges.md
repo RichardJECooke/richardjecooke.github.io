@@ -162,7 +162,7 @@ We tried another Angular date picker but that had the same problem. So eventuall
 
 We then used **'track by id' in all our ng-repeat** elements (for the ICD trees, and other trees). This improved load speed to twenty seconds. 
 
-Finally, we **changed all our message text bindings to once off**, `{{::messages.HelloWorld}}` and changed our largest watches to [use a publish-subscribe system](http://richardcooke.info/using-the-observer-pattern-to-replace-slow-watches-in-angularjs/). This improved load speed to under ten seconds on the slowest machines, which our client is happy with.
+Finally, we **changed all our message text bindings to once off**, `{% raw %}{{::messages.HelloWorld}}{% endraw %}` and changed our largest watches to [use a publish-subscribe system](http://richardcooke.info/using-the-observer-pattern-to-replace-slow-watches-in-angularjs/). This improved load speed to under ten seconds on the slowest machines, which our client is happy with.
 
 ### Use Angular Material
 
@@ -184,8 +184,8 @@ Refactoring a large Javascript app with lots of calls passing different objects 
 
 One of the system requirements was that **all changes to any patient or medical information has to be logged**. Doctors also wanted notifications for certain important events (like ICD codes that affected medical insurance changing). We used a two part system for this:
 
-*   **Events** \- one table that holds: the table that changed, the row number, the old value, the new value, and the user that made the change
-*   **Notifications** \- another table that holds: a user to be notified, the event that caused the notification and the patient record it pertains to, message text
+*   **Events** - one table that holds: the table that changed, the row number, the old value, the new value, and the user that made the change
+*   **Notifications** - another table that holds: a user to be notified, the event that caused the notification and the patient record it pertains to, message text
 
 One technical challenge we had was: **how do we know what changed when a user clicks save?** Especially since different users on the system have permissions to save only parts of a record. Ideas included:
 
