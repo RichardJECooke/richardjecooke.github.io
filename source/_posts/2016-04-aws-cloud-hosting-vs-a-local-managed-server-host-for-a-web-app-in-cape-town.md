@@ -5,8 +5,6 @@ tags:
   - AWS
   - cloud
   - hosting
-url: 7916.html
-id: 7916
 categories:
   - infrastructure
 date: 2016-04-19 16:14:44

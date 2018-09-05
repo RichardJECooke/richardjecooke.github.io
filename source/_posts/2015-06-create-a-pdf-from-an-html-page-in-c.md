@@ -6,8 +6,6 @@ tags:
   - HTML
   - PDF
   - TuesPechkin
-url: 7739.html
-id: 7739
 categories:
   - 'C#'
   - programming
@@ -26,6 +24,7 @@ Make some PDF templates
 
 Add some .html files to your App_Data folder. Use some special string of letters like %% as markers for fields you will replace in code:
 
+```html
 <!doctype html>
 <html lang='en'>
 <head>
@@ -45,9 +44,11 @@ Add some .html files to your App_Data folder. Use some special string of letters
     %%Future%%
 </body>
 </html>
+```
 
 In your stylesheet you can use most modern CSS, such as web fonts. I used tables instead of flexbox and Bootstrap though, the latter didn't seem to convert properly:
 
+```css
     <style>
         @font-face
         {
@@ -78,12 +79,14 @@ In your stylesheet you can use most modern CSS, such as web fonts. I used tables
         {
             padding: 2px;
         }
+```
 
 Load the root template and replace all placeholders
 ---------------------------------------------------
 
 Open the main html file, e.g. _report.html_, and then simple do string replacement of all special fields you added.  Where a field refers to another html template then load that file and replace its fields, and so on. Don't forget to HtmlEncode() your data so it doesn't break the html tags.
 
+```csharp
 private string GetFuture(PatientVisitConsultation data, string imageFolder, string pdfTemplatesFolder)
 {
     var html = File.ReadAllText(pdfTemplatesFolder + "Future.html");
@@ -94,10 +97,13 @@ private string GetFuture(PatientVisitConsultation data, string imageFolder, stri
     html = html.Replace("%%FutureText%%", _futureBuilder.GetText(data));
     return html;
 }
+```
 
 Save the html to a single file (or two if you want more pages):
 
+```csharp
 File.WriteAllText(pdfFolder + filenameWithoutExtension + "Page2.html", html.ToString());
+```
 
 ### Warning - don't use opacity
 
@@ -108,14 +114,17 @@ Convert the html pages to a PDF
 
 Create a singleton instance of TuesPechkin in your IoC container like this:
 
+```csharp
 private static readonly IConverter _pdfConverter = 
 	new ThreadSafeConverter(
 		new RemotingToolset<PdfToolset>(
 			new Win64EmbeddedDeployment(
 			    new TempFolderDeployment())));
+```
 
 Then convert the html to PDF like this:
 
+```csharp
 private void CreatePdfFromHtmlPage(PatientVisitConsultation data, string pdfFolder, string filenameWithoutExtension)
 {            
     var document = new HtmlToPdfDocument
@@ -142,12 +151,14 @@ private void CreatePdfFromHtmlPage(PatientVisitConsultation data, string pdfFold
     byte\[\] result = _pdfConverter.Convert(document);
     File.WriteAllBytes(pdfFolder + filenameWithoutExtension + ".pdf", result);
 }
+```
 
 Return the PDF in a web service
 -------------------------------
 
 If you want to send the PDF to a browser then use this method:
 
+```csharp
 \[Route("GetPdfForConsultation")\]
 \[HttpPost\]
 public IHttpActionResult GetPdfForConsultation(HttpRequestMessage request, long consultationId)
@@ -172,3 +183,4 @@ public IHttpActionResult GetPdfForConsultation(HttpRequestMessage request, long 
     response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
     return ResponseMessage(response);        
 }
+```

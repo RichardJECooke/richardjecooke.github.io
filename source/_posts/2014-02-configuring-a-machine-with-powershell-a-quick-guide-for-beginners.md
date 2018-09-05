@@ -5,8 +5,6 @@ tags:
   - iis
   - powershell
   - windows service
-url: 7419.html
-id: 7419
 categories:
   - PowerShell
   - programming
