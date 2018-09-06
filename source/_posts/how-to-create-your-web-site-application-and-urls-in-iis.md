@@ -3,8 +3,6 @@ layout: post
 title: 'How to create your web site, application, and URLs in IIS'
 tags:
   - iis
-url: 7814.html
-id: 7814
 categories:
   - IIS
 date: 2015-09-22 20:54:36

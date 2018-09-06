@@ -1,69 +1,9 @@
-# Todo
-- migrate blog articles
-    - rename articles and create folder
-    - compare to wordpress, download assets, correct markup
-- migrate pages
-- https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
-- write article on hexo
-- add comments: facebook
-- add google analytics
-- add search
-- add rss
-- envato
-- fix graphic score maker
-- Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
-- move to richardcooke.info/site and put other code in apps
-- disable wordpress site
-- https://github.com/poacher2k/hexo-featured-image
-- audio - https://github.com/EYHN/hexo-tag-cplayer
-- search for richardcooke
-- todo
-- list of best software
+# Sundry 
 
-# Notes
-- Forum: https://gitter.im/hexojs/hexo
-- https://github.com/probberechts/hexo-theme-cactus
+[comment]: # (blank above and below. this line not rendered)
 
-# Initial creation
-```
-npm install hexo-cli
-.node_modules/.bin/hexo init mysite
-//copy it up a folder
-npm install hexo-renderer-asciidoc
-npm install hexo-deployer-git
-npm install hexo-deployer-jsftp
-git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbucket.io
-```
-
-# Run locally
-`.node_modules/.bin/hexo server`
-
-# Deploy
-- https://hexo.io/docs/deployment.html
-- This site deploys to https://richardjecooke.bitbucket.io/ and https://richardcooke.info
-- Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.
-- Keep committing locally to master.
-- `.node_modules/.bin/hexo deploy`
-
-# Themes
-- Using my own fork of cactus (must be copied manually to update): https://bitbucket.org/rjeapps/hexo_cactus_theme_fork/src/master/
-forked from https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/
-
----
----
----
----
----
-
-# Markdown syntax
-
-Markdown Syntax Guide
-
-SourceForge uses markdown syntax everywhere to allow you to create rich
-text markup, and extends markdown in several ways to allow for quick linking
-to other artifacts in your project.
-
-Markdown was created to be easy to read, easy to write, and still readable in plain text format.
+How to escape raw tags:
+`{% raw %}{%{% endraw %} raw {% raw %}%}{% endraw %}
 
 # Lists
 
