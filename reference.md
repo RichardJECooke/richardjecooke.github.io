@@ -5,6 +5,28 @@
 How to escape raw tags:
 `{% raw %}{%{% endraw %} raw {% raw %}%}{% endraw %}
 
+# Images
+
+Hexo image in relative path:
+{% asset_img "wv1.png" "alttext" %}
+{% asset_img "wv1.png" "" %}
+
+To include an image, just put a "!" in front of a text link:
+
+![alternate text](https://sourceforge.net/images/icon_linux.gif)
+
+alternate text
+
+The "alternate text" will show up if the browser can't load the image.
+
+You can also use a title if you want, like this:
+
+![tiny arrow](https://sourceforge.net/images/icon_linux.gif "tiny arrow")
+
+To reference an attached image, just use the img macro. You can add more attributes:
+
+[[img src=attached-image.jpg alt=foobar]]
+
 # Lists
 
 1. asdf
@@ -111,28 +133,6 @@ You can also create tables using HTML code.
  A | B 
 ---|---
 123|456
-
-# Images
-
-Hexo image in relative path:
-{% asset_img "wv1.png" "alttext" %}
-{% asset_img "wv1.png" "" %}
-
-To include an image, just put a "!" in front of a text link:
-
-![alternate text](https://sourceforge.net/images/icon_linux.gif)
-
-alternate text
-
-The "alternate text" will show up if the browser can't load the image.
-
-You can also use a title if you want, like this:
-
-![tiny arrow](https://sourceforge.net/images/icon_linux.gif "tiny arrow")
-
-To reference an attached image, just use the img macro. You can add more attributes:
-
-[[img src=attached-image.jpg alt=foobar]]
 
 # Videos
 
