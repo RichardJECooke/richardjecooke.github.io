@@ -4,8 +4,6 @@ title: How to download data from Yahoo finance
 tags:
   - finance
   - Yahoo
-url: 7879.html
-id: 7879
 categories:
   - finance
 date: 2016-02-18 14:17:27
@@ -18,7 +16,8 @@ http://ichart.finance.yahoo.com/table.csv?s=URTH&g=m&c=2015&a=9&b=1&f=2016&d=2&e
 In detail:
 
 http://ichart.finance.yahoo.com/table.csv?
-s=URTH              //this is the stock symbol to get data for
-&g=m                //d=daily m=monthly
-&c=2015 &a=9 &b=1   //from year month day
-&f=2016 &d=2 &e=1   //to   year month day
+
+    s=URTH              //this is the stock symbol to get data for
+    &g=m                //d=daily m=monthly
+    &c=2015 &a=9 &b=1   //from year month day
+    &f=2016 &d=2 &e=1   //to   year month day
