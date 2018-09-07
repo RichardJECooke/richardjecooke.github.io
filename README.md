@@ -1,9 +1,10 @@
+maitree gilda asar halant
+
 # Todo
-- add comments: facebook
+- add comments: facebook - https://github.com/lsmoura/hexo-fbcomments
 - add cv
-- add music
+- add music - https://github.com/EYHN/hexo-tag-cplayer
 - add homepage
-  - audio - https://github.com/EYHN/hexo-tag-cplayer
 - search for post and all links search for richardcooke
 - add search
 - add rss
