@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Create a PDF from an HTML page in C#'
+title: Create a PDF from an HTML page in C#
 tags:
   - 'C#'
   - HTML

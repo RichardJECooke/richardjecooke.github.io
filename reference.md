@@ -2,8 +2,11 @@
 
 [comment]: # (blank above and below. this line not rendered)
 
-How to escape raw tags:
-`{% raw %}{%{% endraw %} raw {% raw %}%}{% endraw %}
+# Hexo 
+
+How to escape raw tags: `{% raw %}{%{% endraw %} raw {% raw %}%}{% endraw %}`
+
+Link to another post `{% post_link show-a-pdf-from-the-server-in-a-new-tab-on-button-click post %}.`
 
 # Images
 

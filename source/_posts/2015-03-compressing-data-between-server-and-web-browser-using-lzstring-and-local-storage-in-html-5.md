@@ -1,8 +1,6 @@
 ---
 layout: post
-title: >-
-  Compressing data between server and web browser using LZstring and local
-  storage in HTML 5
+title: Compressing data between server and web browser using LZstring and local storage in HTML 5
 tags:
   - C#
   - compression

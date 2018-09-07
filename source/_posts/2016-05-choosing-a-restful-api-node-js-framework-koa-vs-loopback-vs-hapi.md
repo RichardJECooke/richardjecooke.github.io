@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Choosing a RESTful API node.js framework: koa vs loopback vs hapi'
+title: Choosing a RESTful API node.js framework: koa vs loopback vs hapi
 tags:
   - api
   - hapi

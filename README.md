@@ -8,6 +8,7 @@
 - add comments: facebook
 - add google analytics
 - add search
+- search for post and all links
 - add rss
 - envato
 - fix graphic score maker
