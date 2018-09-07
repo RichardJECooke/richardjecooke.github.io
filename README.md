@@ -1,24 +1,18 @@
 # Todo
-- migrate blog articles
-    - rename articles and create folder
-    - compare to wordpress, download assets, correct markup
-- migrate pages
-- https://tryshchenko.com/archives/moving-from-wordpress-to-static-html-using-hexo/
-- write article on hexo
 - add comments: facebook
-- add google analytics
+- add cv
+- add music
+- add homepage
+  - audio - https://github.com/EYHN/hexo-tag-cplayer
+- search for post and all links search for richardcooke
 - add search
-- search for post and all links
 - add rss
+- add google analytics
 - envato
 - fix graphic score maker
 - Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
 - move to richardcooke.info/site and put other code in apps
 - disable wordpress site
-- https://github.com/poacher2k/hexo-featured-image
-- audio - https://github.com/EYHN/hexo-tag-cplayer
-- search for richardcooke
-- todo
 - list of best software
 
 # Notes
