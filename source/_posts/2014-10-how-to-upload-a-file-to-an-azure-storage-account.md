@@ -2,7 +2,7 @@
 layout: post
 title: How to upload a file to an Azure storage account
 tags:
-   - azure
+  - azure
   - 'c#'
   - coding
 categories:
