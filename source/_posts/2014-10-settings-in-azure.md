@@ -3,7 +3,7 @@ layout: post
 title: Settings in Azure
 tags:
   - azure
-  - c#'
+  - 'c#'
 categories:
 date: 2014-10-19 11:13:27
 ---
