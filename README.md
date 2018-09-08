@@ -1,9 +1,4 @@
 # Todo
-- add comments: facebook - https://github.com/lsmoura/hexo-fbcomments
-- update hexo docs to use my facebook plugin 
--   - https://github.com/hexojs/hexo/issues/3256
--   and also to put clean generate before deploy because that doesn't work
-- work out data-href problem and update post and plugin readme to use guid?
 - add cv
 - add music - https://github.com/EYHN/hexo-tag-cplayer
 - add homepage
@@ -12,12 +7,13 @@
 - add rss
 - add google analytics
 - envato
+- look at all config and theme config
 - fix graphic score maker
+- work out data-href problem and update post and plugin readme to use guid?
 - Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
 - move to richardcooke.info/site and put other code in apps
 - disable wordpress site
 - list of best software
-- look at all config and theme config
 
 # Notes
 - Forum: https://gitter.im/hexojs/hexo
