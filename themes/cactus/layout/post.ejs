@@ -15,6 +15,9 @@
     <%- page.content %>
   </div>
 </article>
-<%- partial('_partial/comments') %>
 <br />
+<hr />
+<h2>Comments</h2>
 <%- fbcomments(page.permalink) %>
+<%- partial('_partial/comments') %>
+

@@ -2,6 +2,8 @@
 - add comments: facebook - https://github.com/lsmoura/hexo-fbcomments
 - update hexo docs to use my facebook plugin 
 -   - https://github.com/hexojs/hexo/issues/3256
+-   and also to put clean generate before deploy because that doesn't work
+- work out data-href problem and update post and plugin readme to use guid?
 - add cv
 - add music - https://github.com/EYHN/hexo-tag-cplayer
 - add homepage
@@ -40,6 +42,7 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 - This site deploys to https://richardjecooke.bitbucket.io/ and https://richardcooke.info
 - Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.
 - Keep committing locally to master.
+- `.node_modules/.bin/hexo clean && .node_modules/.bin/hexo generate`
 - `.node_modules/.bin/hexo deploy`
 
 # Themes
