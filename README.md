@@ -1,7 +1,7 @@
-maitree gilda asar halant
-
 # Todo
 - add comments: facebook - https://github.com/lsmoura/hexo-fbcomments
+- update hexo docs to use my facebook plugin 
+-   - https://github.com/hexojs/hexo/issues/3256
 - add cv
 - add music - https://github.com/EYHN/hexo-tag-cplayer
 - add homepage
@@ -15,6 +15,7 @@ maitree gilda asar halant
 - move to richardcooke.info/site and put other code in apps
 - disable wordpress site
 - list of best software
+- look at all config and theme config
 
 # Notes
 - Forum: https://gitter.im/hexojs/hexo

@@ -16,6 +16,7 @@ class Person < ActiveRecord::Base
 # don't use attr_accessible here as it interferes/duplicates the methods below
 
 # setter
+```php
 def shirt=(value)
   write\_attribute(:shirt_fee_in_cents, value)
 end
