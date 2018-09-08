@@ -4,7 +4,7 @@ title: Trigger a button click when pressing enter in a textbox in AngularJS
 tags:
   - angular.js
 categories:
-  - angularJS
+  - angularjs
   - javascript
   - programming
 date: 2015-02-14 19:43:43
