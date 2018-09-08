@@ -3,8 +3,8 @@ layout: post
 title: '''Your'' versus ''my'' on website interfaces'
 tags:
   - design
-  - English
-  - UI
+  - english
+  - ui
 categories:
   - design
   - software

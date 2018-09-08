@@ -2,18 +2,18 @@
 layout: post
 title: ECCR - The Western Cape Government Health web application for discharges
 tags:
-  - Angular.js
-  - ASP.NET
-  - 'C#'
-  - ECCR
-  - HST
-  - Saratoga
+  - angular.js
+  - asp.net
+  - 'c#'
+  - eccr
+  - hst
+  - saratoga
 categories:
-  - AngularJS
-  - 'C#'
+  - angularjs
+  - 'c#'
   - design
-  - Intersystems Caché
-  - Javascript
+  - intersystems caché
+  - javascript
   - portfolio
   - programming
   - software

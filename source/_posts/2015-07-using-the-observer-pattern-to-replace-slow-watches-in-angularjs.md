@@ -2,9 +2,9 @@
 layout: post
 title: Using the observer pattern to replace slow watches in AngularJS
 tags:
-  - Angular.js
+  - angular.js
 categories:
-  - AngularJS
+  - angularjs
 date: 2015-07-01 15:22:44
 ---
 

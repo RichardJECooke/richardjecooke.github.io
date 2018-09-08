@@ -2,13 +2,13 @@
 layout: post
 title: Why is my error not being caught by Application_Error() on Azure?
 tags:
-  - ASP.NET
-  - Azure
+  - asp.net
+  - azure
 categories:
-  - ASP.NET
-  - Azure
-  - 'C#'
-  - programming
+  - asp.net
+  - azure
+  - 'c#'
+  - coding
 date: 2014-11-14 15:51:16
 ---
 

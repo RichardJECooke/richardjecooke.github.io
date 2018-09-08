@@ -2,12 +2,11 @@
 layout: post
 title: 'Setup a callback in C# with Moq using params parameters'
 tags:
-  - 'C#'
-  - Moq
+  - 'c#'
+  - moq
   - testing
 categories:
-  - 'C#'
-  - uncategorized
+  - 'c#'
 date: 2014-05-06 20:00:46
 ---
 

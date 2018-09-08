@@ -3,7 +3,7 @@ layout: post
 title: How to set up Flyway command line to deploy multiple databases
 tags:
   - database
-  - Flyway
+  - flyway
 categories:
   - infrastructure
 date: 2016-05-02 18:33:51

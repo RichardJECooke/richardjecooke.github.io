@@ -2,10 +2,10 @@
 layout: post
 title: How to run your tests against an in-memory database (with a Rails Rspec MySql example)
 tags:
-  - MySql
-  - Rails
-  - RAM
-  - Rspec
+  - mysql
+  - rails
+  - rAM
+  - rspec
   - testing
 categories:
   - coding

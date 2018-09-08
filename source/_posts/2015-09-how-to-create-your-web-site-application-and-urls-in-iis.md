@@ -4,7 +4,7 @@ title: How to create your web site, application, and URLs in IIS
 tags:
   - iis
 categories:
-  - IIS
+  - iis
 date: 2015-09-22 20:54:36
 ---
 

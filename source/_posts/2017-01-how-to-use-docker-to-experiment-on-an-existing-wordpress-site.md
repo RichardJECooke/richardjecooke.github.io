@@ -4,10 +4,10 @@ title: How to use Docker to experiment on an existing Wordpress site
 tags:
   - docker
   - docker-compose
-  - WordPress
+  - wordpress
 categories:
   - coding
-  - Wordpress
+  - wordpress
 date: 2017-01-02 16:09:00
 ---
 

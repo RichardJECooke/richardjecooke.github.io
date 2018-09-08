@@ -2,10 +2,10 @@
 layout: post
 title: How to install Reaper, Drum Pro, and Helm synthesizer in Ubuntu Linux fast & easily
 tags:
-  - Helm
-  - Linux
-  - Reaper
-  - Ubuntu
+  - helm
+  - linux
+  - reaper
+  - ubuntu
 categories:
   - music
 date: 2018-01-09 03:58:43

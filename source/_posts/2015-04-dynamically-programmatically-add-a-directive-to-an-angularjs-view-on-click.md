@@ -2,11 +2,9 @@
 layout: post
 title: Dynamically (programmatically) add a directive to an AngularJS view on click
 tags:
-  - Angular.js
+  - angular.js
 categories:
-  - AngularJS
-  - Javascript
-  - programming
+  - coding
 date: 2015-04-14 15:38:43
 ---
 

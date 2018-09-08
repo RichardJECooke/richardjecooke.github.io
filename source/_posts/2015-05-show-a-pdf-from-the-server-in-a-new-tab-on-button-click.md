@@ -2,10 +2,10 @@
 layout: post
 title: Show a PDF from the server in a new tab on button click
 tags:
-  - 'C#'
-  - PDF
+  - 'c#'
+  - pdf
 categories:
-  - Javascript
+  - javascript
 date: 2015-05-26 11:56:58
 ---
 

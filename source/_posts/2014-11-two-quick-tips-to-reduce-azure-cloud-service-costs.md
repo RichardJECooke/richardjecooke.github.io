@@ -2,10 +2,10 @@
 layout: post
 title: Two quick tips to reduce Azure cloud service costs
 tags:
-  - Azure
+  - azure
 categories:
-  - Azure
-  - programming
+  - azure
+  - coding
 date: 2014-11-12 22:05:04
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: How to download data from Yahoo finance
 tags:
   - finance
-  - Yahoo
+  - yahoo
 categories:
   - finance
 date: 2016-02-18 14:17:27

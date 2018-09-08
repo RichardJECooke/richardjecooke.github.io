@@ -3,7 +3,7 @@ layout: post
 title: Export SVN to Git
 tags:
   - git
-  - SVN
+  - svn
 categories:
   - coding
 date: 2014-07-18 21:51:47

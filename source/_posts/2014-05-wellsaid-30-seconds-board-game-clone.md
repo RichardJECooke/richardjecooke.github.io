@@ -2,11 +2,11 @@
 layout: post
 title: 'WellSaid: ''30 Seconds'' board game clone'
 tags:
-  - JQuery
-  - JQuery mobile
+  - jquery
+  - jquery mobile
 categories:
-  - Javascript
-  - programming
+  - javascript
+  - coding
 date: 2014-05-24 13:03:19
 ---
 

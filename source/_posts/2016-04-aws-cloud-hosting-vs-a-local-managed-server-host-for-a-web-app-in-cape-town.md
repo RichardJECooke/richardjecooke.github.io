@@ -2,7 +2,7 @@
 layout: post
 title: AWS cloud hosting vs. a local managed server host for a web app in Cape Town
 tags:
-  - AWS
+  - aws
   - cloud
   - hosting
 categories:

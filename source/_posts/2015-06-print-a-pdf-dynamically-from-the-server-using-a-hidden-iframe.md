@@ -3,10 +3,10 @@ layout: post
 title: Print a PDF dynamically from the server using a hidden iframe
 tags:
   - iframe
-  - PDF
+  - pdf
   - print
 categories:
-  - Javascript
+  - coding
 date: 2015-06-03 10:57:44
 ---
 

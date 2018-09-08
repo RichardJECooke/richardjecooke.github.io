@@ -9,7 +9,7 @@ tags:
   - security
   - sso
 categories:
-  - programming
+  - coding
 date: 2016-03-18 11:30:12
 ---
 

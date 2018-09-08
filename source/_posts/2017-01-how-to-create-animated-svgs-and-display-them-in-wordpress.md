@@ -3,7 +3,7 @@ layout: post
 title: How to create animated SVGs (and display them in WordPress)
 tags:
   - animation
-  - SVG
+  - svg
 categories:
   - coding
   - design

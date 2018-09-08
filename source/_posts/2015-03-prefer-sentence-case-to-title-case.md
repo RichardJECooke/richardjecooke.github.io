@@ -2,9 +2,9 @@
 layout: post
 title: Prefer sentence case to title case
 tags:
-  - English
-  - UI
-  - UX
+  - english
+  - ui
+  - ux
 categories:
   - design
 date: 2015-03-28 08:05:36

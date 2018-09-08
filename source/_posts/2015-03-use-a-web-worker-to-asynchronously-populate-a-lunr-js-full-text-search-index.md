@@ -7,8 +7,7 @@ tags:
   - underscorejs
   - web worker
 categories:
-  - Javascript
-  - programming
+  - coding
 date: 2015-03-16 15:18:28
 ---
 

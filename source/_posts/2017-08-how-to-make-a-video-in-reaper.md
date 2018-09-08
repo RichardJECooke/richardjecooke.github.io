@@ -2,7 +2,7 @@
 layout: post
 title: How to make a video in Reaper
 tags:
-  - Reaper
+  - reaper
   - video
 categories:
   - software

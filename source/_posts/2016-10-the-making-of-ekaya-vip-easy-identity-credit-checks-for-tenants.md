@@ -2,14 +2,14 @@
 layout: post
 title: The making of Ekaya.vip - easy identity & credit checks for tenants
 tags:
-  - Ekaya
+  - ekaya
   - hapi.js
-  - Postgresql
-  - React
-  - Redux
+  - postgresql
+  - react
+  - redux
   - typescript
 categories:
-  - Javascript
+  - javascript
   - node.js
   - coding
 date: 2016-10-11 19:44:34

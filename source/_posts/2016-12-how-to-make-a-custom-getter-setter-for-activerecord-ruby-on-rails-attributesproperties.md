@@ -2,11 +2,11 @@
 layout: post
 title: How to make a custom getter & setter for an ActiveRecord (Ruby on Rails) model's attributes/properties
 tags:
-  - ActiveRecord
-  - Rails
-  - Ruby
+  - activeRecord
+  - rails
+  - ruby
 categories:
-  - Ruby on Rails
+  - ruby on rails
 date: 2016-12-07 13:12:00
 ---
 

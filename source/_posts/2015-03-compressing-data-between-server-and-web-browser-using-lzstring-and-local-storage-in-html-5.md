@@ -2,15 +2,13 @@
 layout: post
 title: Compressing data between server and web browser using LZstring and local storage in HTML 5
 tags:
-  - C#
+  - 'c#'
   - compression
-  - JSON
-  - LZstring
+  - json
+  - lzstring
   - zip
 categories:
-  - C#
-  - Javascript
-  - programming
+  - coding
 date: 2015-03-11 21:36:58
 ---
 

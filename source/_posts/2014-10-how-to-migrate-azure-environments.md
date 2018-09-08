@@ -2,10 +2,10 @@
 layout: post
 title: How to migrate Azure environments (copy databases & storage accounts)
 tags:
-  - Azure
+  - azure
 categories:
-  - Azure
-  - programming
+  - azure
+  - coding
 date: 2014-10-27 09:58:55
 ---
 

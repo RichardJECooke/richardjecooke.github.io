@@ -4,7 +4,7 @@ title: How to make an animated .GIF screenshot
 tags:
   - animated
   - gif
-  - LICEcap
+  - licecap
   - screen capture
 categories:
   - marketing

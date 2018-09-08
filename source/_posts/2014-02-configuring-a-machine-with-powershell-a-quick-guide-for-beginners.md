@@ -6,7 +6,7 @@ tags:
   - powershell
   - windows service
 categories:
-  - PowerShell
+  - powershell
   - programming
 date: 2014-02-04 19:05:17
 ---

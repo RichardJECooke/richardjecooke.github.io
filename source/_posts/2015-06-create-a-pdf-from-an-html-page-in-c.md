@@ -2,13 +2,12 @@
 layout: post
 title: Create a PDF from an HTML page in C#
 tags:
-  - 'C#'
-  - HTML
-  - PDF
-  - TuesPechkin
+  - 'c#'
+  - html
+  - pdf
+  - tuespechkin
 categories:
-  - 'C#'
-  - programming
+  - coding
 date: 2015-06-03 12:15:59
 ---
 

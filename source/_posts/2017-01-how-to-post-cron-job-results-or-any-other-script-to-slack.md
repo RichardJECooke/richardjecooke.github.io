@@ -4,7 +4,7 @@ title: How to post cron job results or any other script to Slack
 tags:
   - cron
   - devops
-  - Slack
+  - slack
 categories:
   - programming
 date: 2017-01-05 10:16:42

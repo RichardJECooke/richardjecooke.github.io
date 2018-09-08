@@ -2,11 +2,11 @@
 layout: post
 title: Deploying Azure web apps (faster) & remote debugging
 categories:
-  - Azure
-  - 'C#'
-  - programming
+  - coding
 date: 2014-09-12 14:30:18
 tags:
+  - azure
+  - 'c#'
 ---
 
 This article briefly describes publishing Azure web applications (web sites in a cloud service), a potential way of doing it faster, and how to debug your site remotely.

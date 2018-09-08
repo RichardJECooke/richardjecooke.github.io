@@ -2,12 +2,12 @@
 layout: post
 title: Keep users signed in after ASP.NET deploy
 tags:
-  - ASP.NET
-  - Azure
+  - asp.net
+  - azure
 categories:
-  - ASP.NET
-  - Azure
-  - 'C#'
+  - asp.net
+  - azure
+  - 'c#'
   - programming
 date: 2014-11-18 14:11:10
 ---

@@ -2,10 +2,10 @@
 layout: post
 title: Joomla user list component
 tags:
-  - Joomla
+  - joomla
 categories:
-  - Joomla
-  - PHP
+  - joomla
+  - php
   - coding
 date: 2014-06-21 21:14:02
 ---

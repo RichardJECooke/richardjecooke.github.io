@@ -3,9 +3,9 @@ layout: post
 title: How to prevent WordPress breaking your layout when pasting HTML into the text
   editor
 tags:
-  - WordPress
+  - wordpress
 categories:
-  - WordPress
+  - wordpress
 date: 2016-02-17 16:24:30
 ---
 

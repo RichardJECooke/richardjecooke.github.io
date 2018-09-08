@@ -2,13 +2,11 @@
 layout: post
 title: How to connect Visual Studio 2013 to Intersystems Caché through ODBC
 tags:
-  - Intersystems Cacheé
-  - ODBC
-  - Visual Studio
+  - intersystems caché
+  - odbc
+  - visual studio
 categories:
-  - Intersystems Caché
   - coding
-  - Visual Studio
 date: 2014-12-05 07:40:42
 ---
 

@@ -2,9 +2,9 @@
 layout: post
 title: jQuery Mobile notification popup
 tags:
-  - JQuery mobile
+  - jquery mobile
 categories:
-  - Javascript
+  - javascript
   - coding
 date: 2014-02-05 20:06:12
 ---

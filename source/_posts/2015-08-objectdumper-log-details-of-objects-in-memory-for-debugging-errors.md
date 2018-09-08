@@ -2,10 +2,10 @@
 layout: post
 title: ObjectDumper - log details of objects in memory for debugging errors
 tags:
-  - .NET
-  - ObjectDumper
+  - .net
+  - objectdumper
 categories:
-  - 'C#'
+  - coding
 date: 2015-08-14 14:13:48
 ---
 
