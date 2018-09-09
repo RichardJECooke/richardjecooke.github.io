@@ -1,10 +1,8 @@
 ---
 layout: page
-title: CV
-url: 10.html
-id: 10
+title: About
 comments: false
-date: 2014-01-17 21:51:19
+date: 2018-09-09 21:51:19
 tags:
 ---
 

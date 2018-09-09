@@ -1,10 +1,9 @@
 # Todo
 - add cv
-- add music - https://github.com/EYHN/hexo-tag-cplayer
+- add music - https://github.com/EYHN/hexo-tag-cplayer, check out helpers first
 - add homepage
 - search for post and all links search for richardcooke
 - add search
-- add rss
 - add google analytics
 - envato
 - look at all config and theme config

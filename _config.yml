@@ -92,3 +92,14 @@ fbcomments:
   lang: en_US # (optional)
   order_by: social  # (optional) time/reverse_time/social
   numPosts: 10 # (optional) defaults to 5
+
+# Atom feed
+feed:
+  type: atom
+  path: atom.xml
+  limit: 200
+  hub:
+  content: true
+  content_limit: 200
+  content_limit_delim: '.'
+  order_by: -date

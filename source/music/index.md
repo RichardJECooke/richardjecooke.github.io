@@ -1,8 +1,6 @@
 ---
 layout: page
-title: Music
-url: 8273.html
-id: 8273
+title: music
 comments: false
 date: 2017-02-26 11:01:43
 tags:

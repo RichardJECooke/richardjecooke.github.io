@@ -1,8 +1,7 @@
 nav:
   home: home
   articles: articles
-  about: cv
-  search: search
+  about: about
 
 footer:
   copyright: Copyright

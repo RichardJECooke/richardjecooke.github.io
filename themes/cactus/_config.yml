@@ -19,7 +19,8 @@ nav:
   articles: /archives/
   music: /music
   apps: /apps
-  cv: /cv/
+  about: /about
+  rss feed: /atom.xml
 
 
 # Links to your social media accounts.
@@ -33,7 +34,7 @@ social_links:
   facebook: https://www.facebook.com/richard.j.e.cooke
   soundcloud: /
   envato: /
-  rss: /
+  rss: atom.xml
   #facebook: /
   #linkedin: /
 
