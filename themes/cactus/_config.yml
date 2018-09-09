@@ -20,7 +20,7 @@ nav:
   music: /music
   apps: /apps
   about: /about
-  rss feed: /atom.xml
+  'rss feed': /atom.xml
 
 
 # Links to your social media accounts.
