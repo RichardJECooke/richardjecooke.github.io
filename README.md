@@ -13,6 +13,7 @@
 - move to richardcooke.info/site and put other code in apps
 - disable wordpress site
 - list of best software
+- check out next theme / or make a theme with bootstrap
 
 # Notes
 - Forum: https://gitter.im/hexojs/hexo
@@ -30,15 +31,15 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 ```
 
 # Run locally
-`.node_modules/.bin/hexo server`
+`./node_modules/.bin/hexo server`
 
 # Deploy
 - https://hexo.io/docs/deployment.html
 - This site deploys to https://richardjecooke.bitbucket.io/ and https://richardcooke.info
 - Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.
 - Keep committing locally to master.
-- `.node_modules/.bin/hexo clean && .node_modules/.bin/hexo generate`
-- `.node_modules/.bin/hexo deploy`
+- `./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate`
+- `./node_modules/.bin/hexo deploy`
 
 # Themes
 - Using my own fork of cactus (must be copied manually to update): https://bitbucket.org/rjeapps/hexo_cactus_theme_fork/src/master/

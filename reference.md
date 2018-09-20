@@ -1,5 +1,7 @@
 # Sundry 
 
+<!--- '![profile](profilepic_300x300.png)' --> 
+
 [comment]: # (blank above and below. this line not rendered)
 
 # Hexo 
