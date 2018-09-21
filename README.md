@@ -1,5 +1,5 @@
 # Todo
-- add cv
+- fix image links in cv to ekaya and eccr
 - add music - https://github.com/EYHN/hexo-tag-cplayer, check out helpers first
 - add homepage
 - search for post and all links search for richardcooke

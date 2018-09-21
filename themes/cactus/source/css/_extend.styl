@@ -97,7 +97,9 @@ $base-style
     width: 100%
     border-collapse: collapse
     text-align: left
-    font-size: $font-size - 2px
+    font-size: $font-size // - 2px
+
+  .bandedrow + table tr:nth-child(even) {background: $color-background-table-alternate }
 
   th
     padding: 8px
@@ -109,3 +111,8 @@ $base-style
   td
     padding: 9px 8px 0
     border-bottom: none
+    vertical-align top
+    align: left
+
+  td img
+    width: 100%
