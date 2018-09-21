@@ -9,18 +9,14 @@ tags:
 
 <br />
 
-[]() | 
------|-
-<img style='max-height:12em; max-width:12em; min-height:12em; min-width:12em; height:12em; width:12em; border-radius:50%;' src='profilepic_300x300.png'></img> | <br /><br />I'm Richard - professional software developer and amateur composer. <br /><br />Visit the [music](../music) or [apps](../apps) sections to see my current work.
-
-<br /><br />
 ## Web apps I've made
 
-[]() | |
------|-|-
-ECCR | | Ekaya.vip | | Weaverlution.com
+<br />
+
+{% post_link eccr-the-western-cape-government-health-web-application-for-discharges ECCR %} | | {% post_link the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants Ekaya.vip %} | | Weaverlution.com
+-----|-|-|-|-
 Electronic medical records for public hospitals | | Tenant identification & credit check public website in the rental industry | | Partnering NGOs with corporate and individual support
-[![ECCR](6_diagnosis-300x226.png)]({% post_link eccr-the-western-cape-government-health-web-application-for-discharges %}) | | [![Ekaya](vip-300x148.png)]({% post_link en/2016/the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants/ %}) | | [![Weaverlution](weaverlution-300x170.jpg)](weaverlution.jpg)
+[![ECCR](6_diagnosis-300x226.png)]({% post_path eccr-the-western-cape-government-health-web-application-for-discharges %}) | | [![Ekaya](vip-300x148.png)]({% post_path en/2016/the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants/ %}) | | [![Weaverlution](weaverlution-300x170.jpg)](weaverlution.jpg)
 
 <br /><br />
 ## **Résumé**

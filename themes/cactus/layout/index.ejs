@@ -1,41 +1,53 @@
-<section id="about">
-  <% if (config.description) { %>
-    <%- markdown(config.description) %>
-  <% } %>
-  <% if (theme.social_links) { %>
-    <p>
-      <%= __('index.find_me_on') %>
-      <% var nb_links = Object.keys(theme.social_links).length %>
-      <% var i = 0 %>
-      <% for(var link in theme.social_links) { %>
-        <% if (link == 'mail') { %>
-          <a class="icon" target="_blank" href="<%- url_for(theme.social_links[link]) %>">
-            <i class="fas fa-envelope"></i><!--
-      ---></a><!--
-      ---><% } else { %>
-          <a class="icon" target="_blank" href="<%- url_for(theme.social_links[link]) %>">
-            <i class="fab fa-<%= link %>"></i><!--
-      ---></a><!--
-    ---><% } %><!--
-    ---><%= ( nb_links > 0 && i < nb_links-1 ?
-            ( i == nb_links-2 ? ', '+__('index.enum_and')+' '
-            : __('index.enum_comma')+' ' )
-            : '.' ) %>
-        <% i+=1 %>
-      <% } %>
-    </p>
-  <% } %>
-</section>
+<table>
+  <tr>
+    <td>
+      <img style='max-height:12em; max-width:12em; min-height:12em; min-width:12em; height:12em; width:12em; border-radius:50%;' src='/images/profilepic_300x300.png'></img>
+    </td>
+    <td>
+      <br /><br />Hi, I'm Richard - professional software developer and amateur composer. <br /><br />Visit the music or apps sections above to see my work.
+      <br />
+      <section id="about">
+        <% if (config.description) { %>
+          <%- markdown(config.description) %>
+        <% } %>
+        <% if (theme.social_links) { %>
+          <p>
+            <%= __('index.find_me_on') %>
+            <% var nb_links = Object.keys(theme.social_links).length %>
+            <% var i = 0 %>
+            <% for(var link in theme.social_links) { %>
+              <% if (link == 'mail') { %>
+                <a class="icon" target="_blank" href="<%- url_for(theme.social_links[link]) %>">
+                  <i class="fas fa-envelope"></i><!--
+            ---></a><!--
+            ---><% } else { %>
+                <a class="icon" target="_blank" href="<%- url_for(theme.social_links[link]) %>">
+                  <i class="fab fa-<%= link %>"></i><!--
+            ---></a><!--
+          ---><% } %><!--
+          ---><%= ( nb_links > 0 && i < nb_links-1 ?
+                  ( i == nb_links-2 ? ', '+__('index.enum_and')+' '
+                  : __('index.enum_comma')+' ' )
+                  : '.' ) %>
+              <% i+=1 %>
+            <% } %>
+          </p>
+        <% } %>
+      </section>
+    </td>
+  <tr>
+</table>
 
+<br />
 <section id="writing">
   <span class="h1"><a href="<%- url_for("archives") %>"><%= __('index.articles') %></a></span>
-  <% if (theme.tags_overview && site.tags.length) { %>
+  <!-- <% if (theme.tags_overview && site.tags.length) { %>
   <span class="h2"><%= __('index.topics') %></span>
   <span class="widget tagcloud">
     <%- tagcloud(theme.tags_overview) %>
   </span>
   <span class="h2"><%= __('index.most_recent') %></span>
-  <% } %>
+  <% } %> -->
   <ul class="post-list">
     <% if (theme.posts_overview.show_all_posts) { %>
       <% var show_posts = page.posts.sort('date', 'desc') %>

@@ -31,14 +31,6 @@ social_links:
   mail: mailto:Richard.J.ECooke@gmail.com
   youtube: https://www.youtube.com/user/richardjecooke/videos
   twitter: https://twitter.com/RichardJECooke
-  facebook: https://www.facebook.com/richard.j.e.cooke
-  soundcloud: /
-  envato: /
-  rss: atom.xml
-  #facebook: /
-  #linkedin: /
-
-
 
 # Customize the overview with displaying a tagcloud on the index page.
 # Options: https://hexo.io/docs/helpers.html#tagcloud
@@ -50,7 +42,7 @@ tags_overview: true
 #   - post_count: whether to show only the x most recent posts.
 posts_overview:
   show_all_posts: false
-  post_count: 10
+  post_count: 100
 
 
 ##############################################################################
