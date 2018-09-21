@@ -6,4 +6,4 @@ date: 2018-09-02
 tags:
 ---
 
-TODO aright
+Coming soon...

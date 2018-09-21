@@ -27,7 +27,8 @@ Secondly, [it's better to have each app in it's own site](http://serverfault.com
 (To redirect a URL to a specific server, alter your [hosts file](https://en.wikipedia.org/wiki/Hosts_%28file%29), like this: ![hosts](hosts.png)
 
 ## Put each app in its own site
-So rather delete the default web site and create a site for **a** and a site for **b**, both on port 80, with apps for each inside each site, like this: ![separate iis sites](separate-iis-sites.png)](http://richardcooke.info/wp-content/uploads/2015/09/separate-iis-sites.png)
+So rather delete the default web site and create a site for **a** and a site for **b**, both on port 80, with apps for each inside each site, like this: 
+![separate iis sites](separate-iis-sites.png)]
 
 In this example, if you browse to **http://localhost/a** you'll hit web app **a**, and if you browse to **http://www.b.com** you'll hit web app **b**. ![browsing sites](browsing-sites.png)
 

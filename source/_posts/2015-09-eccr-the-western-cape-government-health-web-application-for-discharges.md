@@ -162,7 +162,7 @@ We tried another Angular date picker but that had the same problem. So eventuall
 
 We then used **'track by id' in all our ng-repeat** elements (for the ICD trees, and other trees). This improved load speed to twenty seconds. 
 
-Finally, we **changed all our message text bindings to once off**, `{% raw %}{{::messages.HelloWorld}}{% endraw %}` and changed our largest watches to [use a publish-subscribe system](http://richardcooke.info/using-the-observer-pattern-to-replace-slow-watches-in-angularjs/). This improved load speed to under ten seconds on the slowest machines, which our client is happy with.
+Finally, we **changed all our message text bindings to once off**, `{% raw %}{{::messages.HelloWorld}}{% endraw %}` and changed our largest watches to {% post_link using-the-observer-pattern-to-replace-slow-watches-in-angularjs use a publish-subscribe system %}. This improved load speed to under ten seconds on the slowest machines, which our client is happy with.
 
 ### Use Angular Material
 
@@ -172,9 +172,9 @@ But if I were to do the project again I'd try React.js and Flux, which look like
 
 ### Lunr.js and web workers
 
-Our ICD trees (and facilities and medications) have a LOT of items (60 000 diagnosis codes).  We decided to send them all to the browser and use lunr.js full text indexing to make searching them instant as the user is typing.  The indexing takes a while so you need to [perform it on a Javascript background thread](http://richardcooke.info/use-a-web-worker-to-asynchronously-populate-a-lunr-js-full-text-search-index/). 
+Our ICD trees (and facilities and medications) have a LOT of items (60 000 diagnosis codes).  We decided to send them all to the browser and use lunr.js full text indexing to make searching them instant as the user is typing.  The indexing takes a while so you need to {% post_link use-a-web-worker-to-asynchronously-populate-a-lunr-js-full-text-search-index use a web worker %}. 
 
-We also wanted to avoid sending all this data to the browser on every page load. So we zip the [JSON on the server](http://richardcooke.info/compressing-data-between-server-and-web-browser-using-lzstring-and-local-storage-in-html-5/), send it to the browser, and store it in HTML5 local storage. When the application loads it retrieves the data, unzips it, and calculates the search index.
+We also wanted to avoid sending all this data to the browser on every page load. So we zip the  {% post_link compressing-data-between-server-and-web-browser-using-lzstring-and-local-storage-in-html-5 JSON on the server %}, send it to the browser, and store it in HTML5 local storage. When the application loads it retrieves the data, unzips it, and calculates the search index.
 
 ### Refactoring Javascript
 

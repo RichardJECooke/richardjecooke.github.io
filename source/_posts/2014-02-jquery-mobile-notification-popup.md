@@ -32,6 +32,8 @@ notify("Stop!");
 ```
 
 - Line 3 deletes the popup div if it has been used before.
-- Line 10 adds the popup inside the content element of the jQuery Mobile page. This is essential or it won't display. This is the page without the notification:![nopopup](nopopup.png)](http://richardcooke.info/wp-content/uploads/2014/02/nopopup.png)
+- Line 10 adds the popup inside the content element of the jQuery Mobile page. This is essential or it won't display. This is the page without the notification:
+![nopopup](nopopup.png)
 
-And this is the page with the notification:![popup](popup.png)
+And this is the page with the notification:
+![popup](popup.png)
