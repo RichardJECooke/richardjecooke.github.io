@@ -1,6 +1,4 @@
 # Todo
-- add music - https://github.com/EYHN/hexo-tag-cplayer, check out helpers first
-
 - Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
 - move to richardcooke.info/site and put other code in apps
 - disable wordpress site
@@ -13,13 +11,19 @@
   - work out data-href problem and update post and plugin readme to use guid?
 - add search
 - envato
-- metapop
 - check out next theme / or make a theme with bootstrap
 - delete wordpress site
+- add new options to hexo cplayer https://github.com/EYHN/hexo-tag-cplayer/issues/4
+  - or switch to aplayer - https://github.com/MoePlayer/APlayer
+  - https://github.com/MoePlayer/hexo-tag-aplayer
+  - then add to docs
+- add apps page
 
 # Notes
 - Forum: https://gitter.im/hexojs/hexo
 - https://github.com/probberechts/hexo-theme-cactus
+- https://github.com/EYHN/hexo-tag-cplayer
+  - https://www.npmjs.com/package/cplayer
 
 # Initial creation
 ```

@@ -6,86 +6,111 @@ date: 2017-02-26 11:01:43
 tags:
 ---
 
-# Listen & download. For free.
+## Listen & download. For free.
 
 All the tracks below are my original compositions.
 
-Download the MP3s by alt-clicking on the titles and choosing 'Save link as'.
-
-# Licence
-
 You may freely listen to and share this music, but may not use it for commercial purposes. You may not use it in derivative works without obtaining my permission.
 
-## [Klondyke (electro jazzy)](https://richardcooke.info/wp-content/uploads/2014/01/2015-02-25-Richard-JE-Cooke-Klondyke-V4.mp3 "Klondyke (electro jazzy)")
+Follow me on [YouTube](https://www.youtube.com/user/richardjecooke/videos) or [Metapop](https://metapop.com/richardjecooke) to hear new tracks.
 
-### 2014-11-16
+<br/><br/>
+## Tracks
+Here are all my tracks that aren't on YouTube. Click next to cycle through them.
+  <!-- volume: 0.5
+  showPlaylistButton: false
+  dropDownMenuMode: none
+  playmode: singlecycle -->
+{% cplayer json %}
+[
+  {
+    "name": "Amen breakdown · 2018 · For marimba & cajon",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2018-08 - Richard JE Cooke - Amen breakdown - v4.mp3"
+  },
+  {
+    "name": "Klondyke · 2015 · electro jazzy",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2015-02-25 - Richard JE Cooke - Klondyke - V4.mp3"
+  },
+{
+    "name": "Drummenbach · 2010 · piano & drums",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2010-02-08 - Richard JE Cooke & Stewart Reid - Drummenbach.mp3"
+  },
+  {
+    "name": "Rise · 2017 · string quartet",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2017-08 - Richard JE Cooke - Rise - v5.mp3"
+  },
+  {
+    "name": "Prelude of Persia · 2018 · solo cello",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2018-04 - Richard JE Cooke - Prelude of Persia (cello).mp3"
+  },
+  {
+    "name": "Sountrack portfolio - scary forest · 2016 · ambient",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2016-02-14 - Richard JE Cooke - Sountrack portfolio - scary forest - v6.mp3"
+  },
+  {
+    "name": "K134 · 2013 · string quartet",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2013-12-28 - Richard JE Cooke - K134 (string quartet in G) - V3.mp3"
+  },
+  {
+    "name": "Mi Redotido · 2012 · solo piano",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src":"/assets/music/2012-05-05 - Richard JE Cooke - Mi Redotido - V8.mp3"
+  },
+  {
+    "name": "Saturmay · 2010 · solo electric piano",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src": "/assets/music/2010-06-19 - Richard JE Cooke - Saturmay (version 5, epiano).mp3"
+  },
+  {
+    "name": "Guitarento · 2010 · guitar and percussion",
+    "artist": "Richard JE Cooke",
+    "poster":"/assets/images/logo.png",
+    "src": "/assets/music/2010-02-05 - Richard JE Cooke - Guitarento.mp3"
+  }
+]
+{% endcplayer %}
+- Amen Breakdown: [MP3](/assets/music/2018-08 - Richard JE Cooke - Amen breakdown - v4.mp3), [PDF](/assets/scores/2018-08 - Richard JE Cooke - Amen breakdown v4.pdf), [Sibelius](/assets/scores/2018-08 - Richard JE Cooke - Amen breakdown - v4.sib), [MusicXML](/assets/scores/2018-08 - Richard JE Cooke - Amen breakdown - v4.mxl)
 
-\[audio src="https://richardcooke.info/wp-content/uploads/2014/01/2015-02-25-Richard-JE-Cooke-Klondyke-V4.mp3"\]
+- Klondyke: [MP3](/assets/music/2015-02-25 - Richard JE Cooke - Klondyke - V4.mp3)
 
-## [Dark forest (ambient soundtrack)](https://richardcooke.info/wp-content/uploads/2017/02/2016-02-14-Richard-JE-Cooke-Sountrack-portfolio-scary-forest-v6.mp3 "Dark forest (ambient soundtrack)")
+- Drummenbach: [MP3](/assets/music/2010-02-08 - Richard JE Cooke & Stewart Reid - Drummenbach.mp3)
 
-### 2016-02-14
+- Rise: [MP3](/assets/music/2017-08 - Richard JE Cooke - Rise - v5.mp3), [PDF](/assets/scores/2017-08 - Richard JE Cooke - Rise - v5.pdf)
 
-\[audio src="https://richardcooke.info/wp-content/uploads/2017/02/2016-02-14-Richard-JE-Cooke-Sountrack-portfolio-scary-forest-v6.mp3"\]
+- Prelude of Persia: [MP3](/assets/music/2018-04 - Richard JE Cooke - Prelude of Persia (cello%29.mp3), [PDF](/assets/scores/2018-04 - Richard JE Cooke - Prelude of Persia (cello%29.pdf)
 
-## [K134 (string quartet)](https://richardcooke.info/wp-content/uploads/2016/02/2013-12-28-Richard-JE-Cooke-K134-string-quartet-in-G-V3.mp3 "K134 (string quartet)")
+- Scary forest: [MP3](/assets/music/2016-02-14 - Richard JE Cooke - Sountrack portfolio - scary forest - v6.mp3)
 
-### 2013-12-28
+- K134: [MP3](/assets/music/2013-12-28 - Richard JE Cooke - K134 (string quartet in G%29 - V3.mp3), [PDF](/assets/scores/2013-12-28 - Richard JE Cooke - K134 (string quartet in G%29.pdf)
 
-\[audio src="https://richardcooke.info/wp-content/uploads/2016/02/2013-12-28-Richard-JE-Cooke-K134-string-quartet-in-G-V3.mp3"\]
+- Mi Redotido: [MP3](/assets/music/2012-05-05 - Richard JE Cooke - Mi Redotido - V8.mp3)
 
-### [Download score](https://richardcooke.info/wp-content/uploads/2014/01/2013-12-28-Richard-JE-Cooke-K134-string-quartet-in-G.pdf "Download score")
+- Saturmay: [MP3](/assets/music/2010-06-19 - Richard JE Cooke - Saturmay (version 5, epiano%29.mp3)
 
-## [Drummenbach (piano & drums)](https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Stewart-Reid-Drummenbach.mp3 "Drummenbach (piano & drums)")
+- Guitarento: [MP3](/assets/music/2010-02-05 - Richard JE Cooke - Guitarento.mp3)
 
-### 2010-02-08
+<br/><br/>
+## 2018 · Endimthandayo (flamenco blues piano & voice)
+{% youtube VKUnFTdQrKc %}
+Download: [PDF](/assets/scores/2018-07 - Richard JE Cooke - Endimthandayo - v8.pdf), [Sibelius](/assets/scores/2018-07 - Richard JE Cooke - Endimthandayo - v8.sib), [MusicXML](/assets/scores/2018-07 - Richard JE Cooke - Endimthandayo - v8.mxl)
 
-\[audio src="https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Stewart-Reid-Drummenbach.mp3"\]
-
-### Drums by Stewart Reid
-
-## [Miredotido (solo piano)](https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Mi-Redotido-V8.mp3 "Miredotido (solo piano)")
-
-### 2012-05-05
-
-\[audio src="https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Mi-Redotido-V8.mp3"\]
-
-## [Your house was so pretty (piano & vocals)](https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Your-house-was-so-pretty-version-1.mp3 "Your house was so pretty (piano & vocals)")
-
-### 2013-04-14
-
-\[audio src="https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Your-house-was-so-pretty-version-1.mp3"\]
-
-### Vocals by Sara Muller
-
-### [Beyond you (90's electro & vocals)](https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Beyond-you-version-94.mp3 "Beyond you (90's electro & vocals)")
-
-### 2010-08-23
-
-\[audio src="https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Beyond-you-version-94.mp3"\]
-
-### Lyrics by Simon Halliday
-
-### Vocals by Natasha Norman
-
-## [Guitarento (acoustic guitar)](https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Guitarento.mp3 "Guitarento (acoustic guitar)")
-
-### 2010-02-05
-
-\[audio src="https://richardcooke.info/wp-content/uploads/2014/01/Richard-JE-Cooke-Guitarento.mp3"\]
-
-## [Sidequest (flute & string quartet)](https://richardcooke.info/wp-content/uploads/2017/06/Richard-JE-Cooke-Sidequest-v10.mp3 "Sidequest (flute & string quartet)")
-
-### 2017-06
-
-\[audio src="https://richardcooke.info/wp-content/uploads/2017/06/Richard-JE-Cooke-Sidequest-v10.mp3"\]
-
-## Competition entry for UCT 2017 "Cone of Composition"
-
-### [Download score](https://richardcooke.info/wp-content/uploads/2017/06/Richard-JE-Cooke-Sidequest-v10.pdf "Download score")
-
-
-# Hear new tracks
-
-Follow me on YouTube TODO and
- [Soundcloud](https://soundcloud.com/richardjecooke/tracks)
+<br/><br/>
+## 2018 · Kreepy Krauly (ambient electronic)
+{% youtube X-prfGOo_wA %}
+Download: [MP3](/assets/music/2018-04 - Richard JE Cooke - Kreepy Krauly (v2%29.mp3)
