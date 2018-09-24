@@ -19,9 +19,13 @@ Electronic medical records for Western Cape government hospitals | | Tenant iden
 [![ECCR](6_diagnosis-300x226.png)]({% post_path eccr-the-western-cape-government-health-web-application-for-discharges %}) | | [![Ekaya](vip-300x148.png)]({% post_path en/2016/the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants/ %}) | | [![Weaverlution](weaverlution-300x170.jpg)](weaverlution.jpg)
 
 <br /><br />
-## **Résumé**
+## **Résumé** &nbsp; &nbsp; · &nbsp; &nbsp; *Updated September 2018*
 
-*Updated September 2018*
+I specialise in front end web development as I love Javascript, but have written all kinds of software: 
+- full stack ASP/node.js web sites
+- Windows Mobile
+- SSIS data transformations & reporting
+- .NET Windows desktop apps
 
 <br />
 
@@ -49,16 +53,15 @@ Electronic medical records for Western Cape government hospitals | | Tenant iden
 ### Skills & technologies
 
 #### Management & design
-
 User interface & usability design · Leading presentations & workshops · Leading small teams & being Scrum master · Research & report writing · English
 
 #### Favoured technologies
-
-Docker · Linux (Ubuntu) · Typescript · Javascript · Node.js · Postgresql · git · webpack · npm · Redux.js · HTML · CSS (Bootstrap) · WordPress
+Linux (Ubuntu) on Windows · Docker 
+Node.js with Javascript/Typescript 
+Postgresql · git · HTML · CSS (Bootstrap) · parcel.js · Vue.js · Hexo.js · Adonis.js
 
 #### Experienced in
-
-Windows · C# · Moq · Autofac · SVN · Windows Forms · ASP .NET (MVC & WebAPI) · WCF · Microsoft Azure · AngularJS 1 · Underscore Lodash · bower · SQL Server · Entity Framework · Reporting Services & Integration Services (SSRS & SSIS) · MySql · React.js
+Windows · C# · Moq · Autofac · SVN · Windows Forms · ASP .NET (MVC & WebAPI) · WCF · Microsoft Azure · AngularJS 1 · Underscore/Lodash · bower · SQL Server · Entity Framework · Reporting Services & Integration Services (SSRS & SSIS) · MySql · React.js · Wordpress · webpack.js · Mercurial · hapi.js
 
 <br /><br />
 

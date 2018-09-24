@@ -14,7 +14,6 @@ timezone: UTC
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://richardcooke.info
-#url: https://richardjecooke.bitbucket.io/
 root: /
 permalink: :lang/:year/:title/
 permalink_defaults:
@@ -76,9 +75,17 @@ pagination_dir: page
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repo: https://bitbucket.org/RichardJECooke/richardjecooke.bitbucket.io
   branch: deployed
+- type: ftp
+  connection:
+    host: richardcooke.info
+    port: 21
+    user: harmonar
+    # password: <ftp password> - never put this in
+    keepalive: 5000
+  root: public_html
 
 # Other
 theme: cactus

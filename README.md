@@ -1,10 +1,9 @@
 # Todo
-- fix image links in cv to ekaya and eccr
 - fix graphic score maker
+- fix image links in cv to ekaya and eccr
 - add apps page
 - list of best software
 - use rsync instead of ftp (or ftps?)
-- update cv about front end and technologies
 - add search
 - envato
 - check out next theme / or make a theme with bootstrap
@@ -38,7 +37,10 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 - This site deploys to https://richardjecooke.bitbucket.io/ and https://richardcooke.info
 
 ## richardcooke.info deploy
-`./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate` 
+```
+./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
+./node_modules/.bin/hexo deploy password=enter_password
+```
 Log in with WinSCP and copy the public folder contents into the public_html folder manually.
 
 ## Bitbucket deploy
@@ -48,7 +50,7 @@ Log in with WinSCP and copy the public folder contents into the public_html fold
 ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
 ./node_modules/.bin/hexo deploy
 ```
-- Username is email address (when asked for credentials by git)
+- Username is richard.j.e.cooke@gmail.com (when asked for credentials by git)
 
 # Themes
 - Using my own fork of cactus (must be copied manually to update): https://bitbucket.org/rjeapps/hexo_cactus_theme_fork/src/master/
