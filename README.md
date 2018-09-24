@@ -1,23 +1,17 @@
 # Todo
-- Deploy to richardcooke.info too: https://github.com/frikeldon/hexo-deployer-jsftp
-- move to richardcooke.info/site and put other code in apps
-- disable wordpress site
-
-- check that analytics works
 - fix image links in cv to ekaya and eccr
 - fix graphic score maker
+- add apps page
 - list of best software
-- check that test comment on ekaya page showson bitbucket and info domains
-  - work out data-href problem and update post and plugin readme to use guid?
+- use rsync instead of ftp (or ftps?)
+- update cv about front end and technologies
 - add search
 - envato
 - check out next theme / or make a theme with bootstrap
-- delete wordpress site
 - add new options to hexo cplayer https://github.com/EYHN/hexo-tag-cplayer/issues/4
   - or switch to aplayer - https://github.com/MoePlayer/APlayer
   - https://github.com/MoePlayer/hexo-tag-aplayer
   - then add to docs
-- add apps page
 
 # Notes
 - Forum: https://gitter.im/hexojs/hexo
@@ -42,6 +36,12 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 # Deploy
 - https://hexo.io/docs/deployment.html
 - This site deploys to https://richardjecooke.bitbucket.io/ and https://richardcooke.info
+
+## richardcooke.info deploy
+`./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate` 
+Log in with WinSCP and copy the public folder contents into the public_html folder manually.
+
+## Bitbucket deploy
 - Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.
 - Keep committing locally to master.
 ```bash

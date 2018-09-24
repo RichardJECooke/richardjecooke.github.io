@@ -1,6 +1,6 @@
 ---
 layout: page
-title: cv
+title: CV · Richard JE Cooke
 comments: false
 date: 2018-09-09 21:51:19
 tags:
@@ -15,7 +15,7 @@ tags:
 
 {% post_link eccr-the-western-cape-government-health-web-application-for-discharges ECCR %} | | {% post_link the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants Ekaya.vip %} | | Weaverlution.com
 -----|-|-|-|-
-Electronic medical records for public hospitals | | Tenant identification & credit check public website in the rental industry | | Partnering NGOs with corporate and individual support
+Electronic medical records for Western Cape government hospitals | | Tenant identification & credit check website in the rental industry | | Partnering NGOs with corporate and individual support
 [![ECCR](6_diagnosis-300x226.png)]({% post_path eccr-the-western-cape-government-health-web-application-for-discharges %}) | | [![Ekaya](vip-300x148.png)]({% post_path en/2016/the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants/ %}) | | [![Weaverlution](weaverlution-300x170.jpg)](weaverlution.jpg)
 
 <br /><br />

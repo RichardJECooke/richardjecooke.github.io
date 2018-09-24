@@ -1,6 +1,6 @@
 ---
 layout: page
-title: music
+title: Music · Richard JE Cooke
 comments: false
 date: 2017-02-26 11:01:43
 tags:
