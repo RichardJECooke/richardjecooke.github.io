@@ -22,7 +22,7 @@ Electronic medical records for Western Cape government hospitals | | Tenant iden
 ## **Résumé** &nbsp; &nbsp; · &nbsp; &nbsp; *Updated September 2018*
 
 I specialise in front end web development as I love Javascript, but have written all kinds of software: 
-- full stack ASP/node.js web sites
+- full stack ASP.NET & node.js web sites
 - Windows Mobile
 - SSIS data transformations & reporting
 - .NET Windows desktop apps

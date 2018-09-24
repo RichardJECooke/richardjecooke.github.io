@@ -39,9 +39,10 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 ## richardcooke.info deploy
 ```
 ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
-./node_modules/.bin/hexo deploy password=enter_password
+# ./node_modules/.bin/hexo deploy password=enter_password
 ```
 Log in with WinSCP and copy the public folder contents into the public_html folder manually.
+The ftp deployer doesn't seem to work.
 
 ## Bitbucket deploy
 - Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.

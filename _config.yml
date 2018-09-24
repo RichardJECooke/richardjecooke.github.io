@@ -78,14 +78,14 @@ deploy:
 - type: git
   repo: https://bitbucket.org/RichardJECooke/richardjecooke.bitbucket.io
   branch: deployed
-- type: ftp
-  connection:
-    host: richardcooke.info
-    port: 21
-    user: harmonar
-    # password: <ftp password> - never put this in
-    keepalive: 5000
-  root: public_html
+# - type: ftp
+#   connection:
+#     host: richardcooke.info
+#     port: 21
+#     user: harmonar
+#     # password: <ftp password> - never put this in
+#     keepalive: 5000
+#   root: public_html
 
 # Other
 theme: cactus
