@@ -19,7 +19,7 @@ v1
 :toc: macro
 :toclevels: 5
 :toc-title: Contents
-//:sectnums:
+:sectnums:
 
 // https://asciidoctor.org/docs/user-manual
 
@@ -146,6 +146,8 @@ Blender with Grease Pencil would be the best tool for making something like _Dot
 The problem is that Blender takes at least a week of learning and practising to become proficient at the basics, and I don't currently have the time or skill for that.
 
 === Programmatic 3D animation
+
+==== three.js
 
 The best framework I could find for 3D programmatic animation was https://threejs.org[three.js] <<ref_threejs>>.
 It was used for the _Dennis_ video above and supports almost anything you could imagine.
