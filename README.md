@@ -1,6 +1,5 @@
 # Todo
 - fix graphic score maker
-- fix image links in cv to ekaya and eccr
 - add apps page
 - list of best software
 - use rsync instead of ftp (or ftps?)
