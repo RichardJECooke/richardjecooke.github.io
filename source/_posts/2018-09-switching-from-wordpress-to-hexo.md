@@ -24,4 +24,4 @@ I've just deleted my old Wordpress site and switched to [Hexo.js](https://hexo.i
 - If the site needs lots of plugins like ecommerce
 - If you're building the site for a customer and someone else will maintain it.
 
-Basically it's great for a personal or project page, not for  multi-user web apps. 
+Basically it's great for a personal or project page, not for  multi-user web apps.

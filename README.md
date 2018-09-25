@@ -56,3 +56,7 @@ The ftp deployer doesn't seem to work.
 # Themes
 - Using my own fork of cactus (must be copied manually to update): https://bitbucket.org/rjeapps/hexo_cactus_theme_fork/src/master/
 forked from https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/
+
+# New post
+hexo new [layout] <title>
+

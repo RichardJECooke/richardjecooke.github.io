@@ -1,0 +1,124 @@
+---
+title: An abstract animation music video in three.js
+date: 2018-09-25 13:16:42
+tags:
+  - animation
+  - music
+  - javascript
+categories:
+  - software
+  - music
+  - art
+---
+
+//asciidoc metadata ------------------------------------------
+# An abstract animation music video in three.js
+Richard JE Cooke <Richard.JE.Cooke@gmail.com>
+v1
+:imagesdir: ./2018-09-An-abstract-animation-music-video-in-three-js
+:toc: macro
+:toclevels: 5
+:toc-title: Contents
+//:sectnums:
+
+// https://asciidoctor.org/docs/user-manual
+
+
+// table of contents --------------------------------------------
+toc::[]
+
+== Introduction
+image:schirmer.png[]
+
+== Inspiration
+
+=== 2D animation
+My first inspiration was early abstract animation music videos. The best example of this is Norman McLaren's _Dots_ <<101>>, shown below:
+
+video::E3-vsKwQ0Cg[youtube, width=700, height=400, theme=dark]
+
+This video has important features:
+
+* it is 2D (making it much simpler to create than a 3D animation where physics and camera positioning matter)
+* shapes move, scale, and rotate (this is simple to do on computer)
+* shapes morph from one shape to another (this may the same amount of work by hand as scale and rotating, but on a computer it requires much more work to draw two different shapes and tween all the points in between them)
+* the animation is synchronised to the beat of the music (this is more work than having a freely moving animation because you have to coordinate visuals and music precisely to the millisecond).
+
+=== 3D animation
+
+I then looked for 3D abstract animation and found SLICED by dxmiq <<102>>:
+
+video::69668299[vimeo, width=700, height=400, theme=dark]
+
+This looks pretty and impressive but I imagine is quite simple to make. I would simply draw a long line of shapes and then automate the camera to move down the line, with a clipping plane "slicing" the shapes as the camera passes along them.
+
+=== Programmatic animation
+I had made an application for TEDx Cape Town a few years ago that pulled tweets from Twitter that were tagged with the conference hashtag and displayed them on a giant projector on the wall.
+I thought about something similar for a music video and searched to see if anything like this had been done before. It has, by Brightly for their song _Preflight nerves_ <<103>>:
+
+video::hMaeY0aP1xQ[youtube, width=700, height=400, theme=dark]
+
+The video above is static, but the one on their http://tweetflight.wearebrightly.com[website] pulls fresh tweets to match the song lyrics in realtime each time you play it.
+
+I then discovered the most impressive video yet. _Dennis_ is a procedurally generated 3D animated, gesture interactive, beat synchronised music video <<104>>:
+
++++
+<iframe src='http://www.dennis.video' width='700px' height='400px'></iframe>
++++
+
+The animation was programmed in https://threejs.org/[three.js].
+It is very smooth and quick to render as it uses modern web browsers' support for the graphics processing unit (GPU) by using WebGL.
+Finally, the animation was synchronised to the beat of the song by using WebAudio's native analysis capability.
+
+
+This video shows the power you have when you don't have to animate every shape manually, but can write code to create and manipulate the shapes and camera for you.
+
+
+
+== Software tools
+
+== 3D animation
+2D - grease pencil
+
+Blender <<100>>.
+
+//todo put start in without autoplaying , start=20 - https://github.com/asciidoctor/asciidoctor.js/issues/550
+video::155635261[vimeo, width=700, height=400, theme=dark]
+
+
+
+
+
+
+
+// page break
+<<<
+
+// bibliography --------------------------------------------
+[bibliography]
+== References
+_All Internet resources were accessed on 25 September 2018._
+
+* [[100]] Blender 2.79 manual. User Interface » Grease Pencil » Introduction [Internet]. 2018. Available from: https://docs.blender.org/manual/ko/dev/interface/grease_pencil/introduction.html.
+
+* [[101]] YouTube - thecipo. Normal McLaren - Dots (1940) [Internet]. 2007. Available from: https://www.youtube.com/watch?v=E3-vsKwQ0Cg.
+
+* [[102]] Vimeo - dxmiq. SLICED [Internet]. 2013. Available from: https://vimeo.com/69668299.
+
+* [[103]] Medium.com - Charlie Gleason. Making An Interactive Music Video With WebGL [Internet]. 2015. Available from: https://medium.com/superhighfives/making-a-music-video-f60757ceb4cf.
+
+* [[104]] Brower BM and popcorn_10. Dennis [Internet music video]. n.d. Available from: http://www.dennis.video/#about.
+
+
+
+---
+
+- synfig studio
+- pixi js paper three js svg js two js
+
+
+
+
+https://codepen.io/killroy/pen/WwEQze
+
+https://doc.babylonjs.com/examples/
