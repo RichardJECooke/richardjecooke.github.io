@@ -15,7 +15,7 @@ categories:
 # An abstract animation music video in three.js
 Richard JE Cooke <Richard.JE.Cooke@gmail.com>
 v1
-:imagesdir: ./2018-09-An-abstract-animation-music-video-in-three-js
+:imagesdir:
 :toc: macro
 :toclevels: 5
 :toc-title: Contents
@@ -32,9 +32,21 @@ This article describes the inspiration, design, and construction of an abstract 
 This was done as an assignment for the course Music Technology 2A at UCT.
 
 == The final product
-Here's the animated music video I made. Read further to see how it happened.
+Here's the animated music video I made. Read further to see how it was done.
 
-TODO
+_To restart the video refresh this page (push F5)._
+
++++
+<iframe src='/assets/apps/2018_09_prime_directive_animation/index.html' width='700px' height='400px'></iframe>
++++
+
+You can download the FL Studio project file to see how the audio was made. FL Studio 20 runs on Apple & Windows and the project can be viewed and played for free (but not saved with the free FL Studio version).
+
+Download:
+&nbsp;&nbsp;&nbsp;
+link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3++[MP3]
+&nbsp;&nbsp;&nbsp;
+link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp++[FL Studio 20 project file]
 
 == Inspiration
 I began my search for ideas by looking for purely abstractly animated music videos.
@@ -152,6 +164,8 @@ The problem is that Blender takes at least a week of learning and practising to 
 The best framework I could find for 3D programmatic animation was https://threejs.org[three.js] <<ref_threejs>>.
 It was used for the _Dennis_ video above and supports almost anything you could imagine.
 
+Move your mouse through the birds below to scatter them.
+
 +++
 <iframe src='https://threejs.org/examples/#webgl_gpgpu_birds' width='700px' height='600px'></iframe>
 +++
@@ -159,6 +173,47 @@ It was used for the _Dennis_ video above and supports almost anything you could 
 There is a competitor made by Microsoft, called https://doc.babylonjs.com[Babylon.js], which is more suited to game development as it simplifies commonly used functions like lighting, but three.js is well established.
 
 == Construction
+I decided to write a little story about an acoustic bass meeting a modern synthesiser and having a conversation/song.
+The _Annihilation_ movie inspired me to finish the story by having the bass being transfigured into a more evolved creature by meeting the synthesiser.
+
+=== Audio
+I wrote the audio in https://www.image-line.com/flstudio/[FL Studio] (FLS) as it is an excellent choice for making electronic music fast.
+
+I particularly enjoy the ability to put snippets of MIDI and automation into a library of clips which can then be cloned, reused, and rearranged easily.
+As far as I know no other DAW other than https://www.tracktion.com/products/waveform[Tracktion's Waveform] and possibly https://www.presonus.com/products/Studio-One[Studio One] can do this.
+
+It also has a fully scalable vector graphic interface, and the hotkeys enable me to switch between the playlist and each MIDI clip incredibly quickly.
+
+Below is an image of the track. You can zoom in to see the labels of each section.
+
+image::song.png[]
+
+The disadvantage of FLS compared to the other DAW I use, _Reaper_, is that it has poor routing. To overcome this, and route one MIDI clip to multiple instruments to create the complex sounds for each character in the animation, I used _Patcher_ for almost every instrument track.
+
+image::patcher.png[]
+
+Finally, _Effector_ is plugin that provides useful special effects, like bitcrushng, vocal formants, and flanging.
+
+image::effector.png[]
+
+I wrote the music at 120 bpm so it was easy to synchronise with the video (where each second is simply two beats).
+
+For the sounds themselves I used the _Sytrus_ and _Harmor_ synths with preset sounds to save as much time as possible.
+
+
+=== Video
+
+I wrote the video in _three.js_. There isn't much to say about this.
+I mostly copied and pasted snippets of code from their site's examples until I had what I wanted.
+
+The full code listing is given below.
+If you'd like to play with it yourself just save it to an HTML file and drag it into your browser.
+You'll need to change the three.js source from local disk to this: `https://cdnjs.cloudflare.com/ajax/libs/three.js/96/three.js` for it to work unless you run a local web server.
+
+[source,ruby]
+----
+TODO
+----
 
 == Critique & conclusion
 
