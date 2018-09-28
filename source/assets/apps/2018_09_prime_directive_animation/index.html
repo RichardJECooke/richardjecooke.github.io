@@ -19,45 +19,9 @@
 	</style>
 </head>
 <body>
-	<span>play</span>&nbsp;&nbsp;&nbsp;&nbsp;
-	<span>pause</span>
+	<span onclick="userClickedPlay()" style="cursor: pointer;">play</span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span onclick="userClickedPause()" style="cursor: pointer;">pause</span>
 	<script src='./three.js'></script>
-	<script>
-		const _canvasWidth = window.innerWidth - 0;  //const canvasWidth = 1920;
-		const _canvasHeight = window.innerHeight - 30;  //const canvasHeight = 1080;
-		const _scene = new THREE.Scene();
-		const _camera = new THREE.PerspectiveCamera(75, _canvasWidth /_canvasHeight, 0.1, 1000 ); //FoV, aspect, near clip, far clip
-		const _renderer = new THREE.WebGLRenderer({antialias:true});
-		let _cube = null;
-
-		window.onload = start;
-
-		function start()
-		{
-			createScene();
-			let geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			let material = new THREE.MeshBasicMaterial( { 'color': '#841' } );
-			_cube = new THREE.Mesh( geometry, material);
-			_scene.add(_cube);
-			_camera.position.z = 10;
-			animate();
-		}
-
-		function createScene()
-		{
-			_renderer.setSize(_canvasWidth, _canvasHeight);
-			document.body.appendChild(_renderer.domElement);
-		}
-
-		function animate()
-		{
-			requestAnimationFrame(animate);
-			_cube.rotation.x += 0.01;
-			_cube.rotation.y += 0.02;
-			_cube.rotation.z += 0.03;
-			_renderer.render(_scene, _camera);
-		}
-
-	</script>
+	<script src='./main.js'></script>
 </body>
 </html>

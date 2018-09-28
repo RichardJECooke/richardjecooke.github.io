@@ -32,7 +32,7 @@ This article describes the inspiration, design, and construction of an abstract 
 This was done as an assignment for the course Music Technology 2A at UCT.
 
 == The final product
-Here's the animated music video I made. Read further to see how it was done.
+Here's the animated music video I made. Push _play_ to start it.
 
 _To restart the video refresh this page (push F5)._
 
@@ -42,11 +42,12 @@ _To restart the video refresh this page (push F5)._
 
 You can download the FL Studio project file to see how the audio was made. FL Studio 20 runs on Apple & Windows and the project can be viewed and played for free (but not saved with the free FL Studio version).
 
-Download:
-&nbsp;&nbsp;&nbsp;
+View link:/assets/apps/2018_09_prime_directive_animation/[fullscreen].
+
+Download
 link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3++[MP3]
-&nbsp;&nbsp;&nbsp;
-link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp++[FL Studio 20 project file]
+or
+link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp++[FL Studio 20 project file].
 
 == Inspiration
 I began my search for ideas by looking for purely abstractly animated music videos.
@@ -199,6 +200,7 @@ image::effector.png[]
 I wrote the music at 120 bpm so it was easy to synchronise with the video (where each second is simply two beats).
 
 For the sounds themselves I used the _Sytrus_ and _Harmor_ synths with preset sounds to save as much time as possible.
+I used only synthesizers, no samples, as I find it easier to work with MIDI.
 
 
 === Video
