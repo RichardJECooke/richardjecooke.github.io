@@ -1,3 +1,13 @@
+//TODO
+/*
+add names to objects
+add restart button
+create time sequenced code
+
+
+
+*/
+
 //refs
 //sketchfab: https://sketchfab.com/search?features=downloadable&q=tree&sort_by=-pertinence&type=models
 //https://sketchfab.com/models/76d4b22511aa41829da542b01ade8698#download
@@ -12,8 +22,8 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, canvasWidth /canvasHeight, 0.1, 1000 ); //FoV, aspect, near clip, far clip
 const renderer = new THREE.WebGLRenderer({antialias:true});
 //audio
-const listener = new THREE.AudioListener();
-const song = new THREE.Audio(listener);
+const audioListener = new THREE.AudioListener();
+const audio = new THREE.Audio(audioListener);
 const audioLoader = new THREE.AudioLoader();
 //shapes
 let ground = null;
@@ -22,13 +32,13 @@ let bass2 = null;
 let sphere = null;
 //logic
 let isPlaying = true; //TODO set to false
+let shouldLog = false; //enable to print out console messages for debugging
 
 window.onload = start;
 
 function start()
 {
 	createScene();
-	camera.position.z = 10;
 	animate();
 }
 
@@ -36,25 +46,41 @@ function createScene()
 {
 	renderer.setSize(canvasWidth, canvasHeight);
 	document.body.appendChild(renderer.domElement);
+	camera.position.y = 20; //put camera above the ground
+	camera.lookAt(new THREE.Vector3(0, 0, 0)); //point camera at center of scene
 	loadAudio();
 	addGround();
+	addBass1()
+	startTimeMs = Date.now();
+	window.scene = scene; // used for debugging Three.js inspector in Chrome
 }
 
 function addGround()
 {
 	let geometry = new THREE.BoxGeometry(100, 1, 100);
-	let material = new THREE.MeshBasicMaterial( { 'color': '#292' } );
+	let material = new THREE.MeshBasicMaterial({'color': '#131'});
 	ground = new THREE.Mesh(geometry, material);
 	scene.add(ground);
 }
 
+function addBass1()
+{
+	let geometry = new THREE.BoxGeometry(1, 1, 1);
+	let material = new THREE.MeshBasicMaterial({'color': '#228'});
+	bass1 = new THREE.Mesh(geometry, material);
+	scene.add(bass1);
+	bass1.position.x  = -22;
+	bass1.position.y  = 10;
+	bass1.position.z  = 0;
+}
+
 function loadAudio()
 {
-	camera.add(listener);
-	audioLoader.load(songFilename, function( buffer ) {
-		song.setBuffer(buffer);
-		song.setLoop(false);
-		song.setVolume(volume);
+	camera.add(audioListener);
+	audioLoader.load(songFilename, function(buffer) {
+		audio.setBuffer(buffer);
+		audio.setLoop(false);
+		audio.setVolume(volume);
 	});
 }
 
@@ -62,21 +88,34 @@ function animate()
 {
 	if (!isPlaying) return;
 	requestAnimationFrame(animate);
-	// bass1.rotation.x += 0.01;
-	// bass1.rotation.y += 0.02;
-	// bass1.rotation.z += 0.03;
+	bass1.position.x += 0.1;
+	camera.position.z -= 0.1;
+	camera.lookAt(new THREE.Vector3(0, 0, 0)); //point camera at center of scene
 	renderer.render(scene, camera);
 }
 
-function userClickedPlay()
+function onPlayClicked()
 {
 	isPlaying = true;
-	song.play();
+	audio.play();
 	animate();
 }
 
-function userClickedPause()
+function onPauseClicked()
 {
 	isPlaying = false;
-	song.pause();
+	audio.pause();
 }
+
+function getTime() //in ms
+{
+	return audio.context.currentTime;
+}
+
+function log(message)
+{
+	if (!shouldLog) return;
+	console.log(message);
+}
+
+

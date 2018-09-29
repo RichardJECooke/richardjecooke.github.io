@@ -220,6 +220,7 @@ TODO
 == Critique & conclusion
 
 TODO include pros and cons
+positional audio
 
 
 // page break
