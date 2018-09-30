@@ -1,7 +1,6 @@
 //TODO
 /*
 add names to objects
-add restart button
 create time sequenced code
 
 
@@ -19,39 +18,45 @@ const volume = 0.5;
 const canvasWidth = window.innerWidth - 0;  //const canvasWidth = 1920;
 const canvasHeight = window.innerHeight - 30;  //const canvasHeight = 1080;
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, canvasWidth /canvasHeight, 0.1, 1000 ); //FoV, aspect, near clip, far clip
+const camera = new THREE.PerspectiveCamera(75, canvasWidth / canvasHeight, 0.1, 1000 ); //FoV, aspect, near clip, far clip
 const renderer = new THREE.WebGLRenderer({antialias:true});
 //audio
-const audioListener = new THREE.AudioListener();
-const audio = new THREE.Audio(audioListener);
-const audioLoader = new THREE.AudioLoader();
+let audioListener = null;
+let audio = null;
+let audioLoader = null;
 //shapes
 let ground = null;
 let bass1 = null;
 let bass2 = null;
 let sphere = null;
 //logic
-let isPlaying = true; //TODO set to false
-let shouldLog = false; //enable to print out console messages for debugging
+let isPlaying = false;
+let shouldLog = true; //enable to print out console messages for debugging
 
 window.onload = start;
 
 function start()
 {
+	createCanvas();
 	createScene();
 	animate();
 }
 
-function createScene()
+function createCanvas()
 {
 	renderer.setSize(canvasWidth, canvasHeight);
 	document.body.appendChild(renderer.domElement);
-	camera.position.y = 20; //put camera above the ground
+}
+
+function createScene()
+{
+	camera.position.x = 0;
+	camera.position.y = 50; //put camera above the ground
+	camera.position.z = 0;
 	camera.lookAt(new THREE.Vector3(0, 0, 0)); //point camera at center of scene
-	loadAudio();
 	addGround();
 	addBass1()
-	startTimeMs = Date.now();
+	loadAudio();
 	window.scene = scene; // used for debugging Three.js inspector in Chrome
 }
 
@@ -69,13 +74,16 @@ function addBass1()
 	let material = new THREE.MeshBasicMaterial({'color': '#228'});
 	bass1 = new THREE.Mesh(geometry, material);
 	scene.add(bass1);
-	bass1.position.x  = -22;
-	bass1.position.y  = 10;
+	bass1.position.x  = 22;
+	bass1.position.y  = 1;
 	bass1.position.z  = 0;
 }
 
 function loadAudio()
 {
+	audioListener = new THREE.AudioListener();
+	audio = new THREE.Audio(audioListener);
+	audioLoader = new THREE.AudioLoader();
 	camera.add(audioListener);
 	audioLoader.load(songFilename, function(buffer) {
 		audio.setBuffer(buffer);
@@ -88,14 +96,15 @@ function animate()
 {
 	if (!isPlaying) return;
 	requestAnimationFrame(animate);
-	bass1.position.x += 0.1;
-	camera.position.z -= 0.1;
-	camera.lookAt(new THREE.Vector3(0, 0, 0)); //point camera at center of scene
+	bass1.position.x -= 0.1;
+	//camera.position.z -= 0.1;
+	//camera.lookAt(new THREE.Vector3(0, 0, 0)); //point camera at center of scene
 	renderer.render(scene, camera);
 }
 
 function onPlayClicked()
 {
+	if (isPlaying) return;
 	isPlaying = true;
 	audio.play();
 	animate();
@@ -103,8 +112,30 @@ function onPlayClicked()
 
 function onPauseClicked()
 {
+	if (!isPlaying) return;
 	isPlaying = false;
 	audio.pause();
+}
+
+async function onRestartClicked()
+{
+	onPauseClicked();
+	resetAnimation();
+	onPlayClicked();
+}
+
+function resetAnimation()
+{
+	scene.remove(ground);
+	scene.remove(bass1);
+	scene.remove(bass2);
+	scene.remove(sphere);
+	camera.remove(audioListener);
+	audio.context.close();
+	audioListener = null;
+	audio = null;
+	audioLoader = null;
+	createScene();
 }
 
 function getTime() //in ms
@@ -118,4 +149,8 @@ function log(message)
 	console.log(message);
 }
 
-
+//await sleep(500);
+// function sleep(ms)
+// {
+// 	return new Promise(resolve => setTimeout(resolve, ms));
+// }
