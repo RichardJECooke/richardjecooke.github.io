@@ -58,11 +58,12 @@ function createScene()
 	addBass1()
 	loadAudio();
 	window.scene = scene; // used for debugging Three.js inspector in Chrome
+	onPlayClicked(); //todo remove
 }
 
 function addGround()
 {
-	let geometry = new THREE.BoxGeometry(100, 1, 100);
+	let geometry = new THREE.BoxGeometry(1000, 1, 1000);
 	let material = new THREE.MeshBasicMaterial({'color': '#131'});
 	ground = new THREE.Mesh(geometry, material);
 	scene.add(ground);

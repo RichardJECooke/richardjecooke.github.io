@@ -105,6 +105,13 @@ Here are all my tracks that aren't on YouTube. Click next to cycle through them.
 
 - Guitarento: [MP3](/assets/music/2010-02-05 - Richard JE Cooke - Guitarento.mp3)
 
+
+
+<br/><br/>
+## 2018 · Wait for it (cello & piano duo)
+{% youtube SeIrCaXOBQE %}
+Download: [PDF](/assets/scores/2018-04 - Richard JE Cooke - Wait for it - v12 - Full Score.pdf), [Sibelius](/assets/scores/2018-04 - Richard JE Cooke - Wait for it - v12.sib), [MusicXML](/assets/scores/2018-04 - Richard JE Cooke - Wait for it - v12.mxl)
+
 <br/><br/>
 ## 2018 · Endimthandayo (flamenco blues piano & voice)
 {% youtube VKUnFTdQrKc %}
