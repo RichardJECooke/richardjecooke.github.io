@@ -30,6 +30,7 @@ i18n_dir: :lang
 skip_render:
   - graphic_score_maker/**/*
   - assets/**/*
+  - google1515058ef76c5056.html
 
 # Writing
 new_post_name: :year-:month-:title.md # File name of new posts
