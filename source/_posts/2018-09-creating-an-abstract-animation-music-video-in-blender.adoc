@@ -51,6 +51,12 @@ Download:
 <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp'>FLS 20 project file</a>
 ++++
 
+== Using this site
+If you are using Chrome please click the red warning in the address bar that says 'Enable unsafe content' and enable.
+This will allow all videos to play (some run on http sites, not https).
+
+If you are using another browser or are scared to do this, just click on the link above th video to open it in a new tab.
+
 == Inspiration
 I began my search for ideas by looking for purely abstractly animated music videos.
 
@@ -61,7 +67,7 @@ Instead this work would be done manually on computer or programmatically in code
 
 ==== Dots
 
-My first inspiration was early abstract animation music videos. The best example of this is Norman McLaren's _Dots_ <<ref_dots>>, shown below:
+My first inspiration was early abstract animation music videos. The best example of this is Norman McLaren's https://www.youtube.com/watch?v=E3-vsKwQ0Cg[_Dots_] <<ref_dots>>, shown below:
 
 video::E3-vsKwQ0Cg[youtube, width=700, height=400, theme=dark]
 
@@ -75,7 +81,7 @@ This video has some noteworthy features:
 === 3D animation
 
 ==== Sliced
-I then looked for 3D abstract animation and found SLICED by dxmiq <<ref_sliced>>:
+I then looked for 3D abstract animation and found SLICED by https://vimeo.com/69668299[dxmiq] <<ref_sliced>>:
 
 video::69668299[vimeo, width=700, height=400, theme=dark]
 
@@ -83,7 +89,7 @@ This looks pretty and impressive but I imagine is quite simple to make.
 I would simply draw a long line of shapes and then automate the camera to move down the line, with a clipping plane "slicing" the shapes as the camera passes along them.
 
 ==== Annihilation
-An example of Hollywood level commercial production is the fantastic work by _Milk_ _VFX_ on the film _Annihilation_, created in _Houdini_ <<ref_mandelbulb>>.
+An example of Hollywood level commercial production is the fantastic work by _Milk_ _VFX_ on the film https://www.youtube.com/watch?v=L6gwu8cOfVk[_Annihilation_], created in _Houdini_ <<ref_mandelbulb>>.
 
 video::L6gwu8cOfVk[youtube, width=700, height=400, theme=dark]
 This is obviously the ultimate goal for a musical animation, but is possible only with a paid experienced VFX team, and weeks of paid rendering on a server farm.
@@ -95,14 +101,14 @@ It is synthesized, complex, and vague, but has clear melodic elements and rhythm
 
 ==== Preflight nerves
 I had made an application for _TEDx Cape Town_ a few years ago that pulled tweets from _Twitter_ that were tagged with the conference hashtag and displayed them on a giant projector on the wall.
-I thought about something similar for a music video and searched to see if anything like this had been done before. It has, by Brightly for their song _Preflight nerves_ <<ref_tweetvid>>:
+I thought about something similar for a music video and searched to see if anything like this had been done before. It has, by Brightly for their song https://www.youtube.com/watch?v=hMaeY0aP1xQ[_Preflight nerves_] <<ref_tweetvid>>:
 
 video::hMaeY0aP1xQ[youtube, width=700, height=400, theme=dark]
 The video above is static, but the one on their http://tweetflight.wearebrightly.com[website] pulls fresh tweets to match the song lyrics in realtime each time you play it.
 
 ==== Dennis
 
-I then discovered the most impressive video yet. _Dennis_ is a procedurally generated 3D animated, gesture interactive, beat synchronised music video <<ref_dennis>>:
+I then discovered the most impressive video yet. http://www.dennis.video[_Dennis_] is a procedurally generated 3D animated, gesture interactive, beat synchronised music video <<ref_dennis>>:
 
 +++
 <iframe src='http://www.dennis.video' width='700px' height='400px'></iframe>
@@ -150,7 +156,7 @@ two.js would be best for creating a video like _Dots_ but with much more complex
 https://www.blender.org[Blender] is the undisputed champion of free 3D modelling and animation software.
 It has been around for years and its features rival industry standards like _Maya_.
 
-Recently Blender has also added powerful capabilities for beautiful 2D illustrated animations through its _grease pencil_ tool (which used to be a simple way for animators to annotate their work quickly for later use)  <<ref_greasepencil>>.
+Recently Blender has also added powerful capabilities for beautiful 2D illustrated animations through its https://vimeo.com/155635261[_grease pencil_] tool (which used to be a simple way for animators to annotate their work quickly for later use) <<ref_greasepencil>>.
 
 video::155635261[vimeo, width=700, height=400, theme=dark, start=20]
 
