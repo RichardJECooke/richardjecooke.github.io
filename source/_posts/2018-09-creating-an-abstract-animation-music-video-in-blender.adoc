@@ -51,11 +51,11 @@ Download:
 <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp'>FLS 20 project file</a>
 ++++
 
-== Using this site
+== Using this page
 If you are using Chrome please click the red warning in the address bar that says 'Enable unsafe content' and enable.
 This will allow all videos to play (some run on http sites, not https).
 
-If you are using another browser or are scared to do this, just click on the link above th video to open it in a new tab.
+If you are using another browser or are scared to do this, just click on the link above the video to open it in a new tab.
 
 == Inspiration
 I began my search for ideas by looking for purely abstractly animated music videos.
