@@ -231,7 +231,7 @@ To convert the .pngs and my mp3 file to a video I used the command:
 
 [source,dos]
 ----
-ffmpeg -framerate 60 -i temp%4d.png -i a.mp3 -start_number 0000 -r 60 -pix_fmt yuv420p output.webm
+ffmpeg -framerate 60 -i temp%4d.png -i a.mp3 -start_number 0000  -vcodec libx264  -crf 16 -r 60  output.mp4
 ----
 
 
