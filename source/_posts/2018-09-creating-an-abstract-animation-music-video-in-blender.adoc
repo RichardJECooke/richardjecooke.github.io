@@ -1,5 +1,5 @@
 ---
-title: Creating an abstract animation music video in three.js
+title: Creating an abstract animation music video in Blender
 date: 2018-09-25 13:16:42
 tags:
   - animation
@@ -12,7 +12,7 @@ categories:
 ---
 
 //asciidoc metadata ------------------------------------------
-# An abstract animation music video in three.js
+# An abstract animation music video in Blender
 Richard JE Cooke <Richard.JE.Cooke@gmail.com>
 v1
 :imagesdir:
@@ -28,26 +28,26 @@ v1
 toc::[]
 
 == Introduction
-This article describes the inspiration, design, and construction of an abstract animation music video using https://threejs.org/[three.js].
+This article describes the inspiration, design, and construction of an abstract animation music video using _Blender_.
+
 This was done as an assignment for the course Music Technology 2A at UCT.
 
 == The final product
-Here's the animated music video I made. Push _play_ to start it.
+Below is the animated music video I made:
 
-_To restart the video refresh this page (push F5)._
+video::E3-vsKwQ0Cg[youtube, width=700, height=400, theme=dark]
 
-+++
-<iframe src='/assets/apps/2018_09_prime_directive_animation/index.html' width='700px' height='400px'></iframe>
-+++
+You can download the FL Studio (FLS) project file to see how the audio was made. https://www.image-line.com/downloads/flstudiodownload.html[FL Studio 20] runs on Apple & Windows and the project can be viewed and played for free (but not saved with the free FL Studio version).
 
-You can download the FL Studio project file to see how the audio was made. FL Studio 20 runs on Apple & Windows and the project can be viewed and played for free (but not saved with the free FL Studio version).
+The https://www.blender.org/download/[Blender] animation file is also available below for download. It needs Blender version 2.79 (the latest at the time of writing). Later versions of Blender use a new rendering engine that won't work with this file.
 
-View link:/assets/apps/2018_09_prime_directive_animation/[fullscreen].
-
-Download
-link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3++[MP3]
-or
-link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp++[FL Studio 20 project file].
+Download:
+&nbsp;&nbsp;&nbsp;&nbsp;
+link:++2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3++[MP3]
+&nbsp;&nbsp;&nbsp;&nbsp;
+link:++2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp++[FL Studio 20 project file]
+&nbsp;&nbsp;&nbsp;&nbsp;
+link:++antiation.blend++[Blender 2.79 project file]
 
 == Inspiration
 I began my search for ideas by looking for purely abstractly animated music videos.
@@ -128,7 +128,7 @@ Each object's properties (e.g. size, rotation, outline, color, etc.) can be inde
 Synfig will then automically fill in (tween) the animation between each keyframe.
 It also supports advanced functions like masking layers, blend modes, duplication and time manipuation, and skeleton animation.
 
-Synfig would be the perfect tool to make something simple like _Dots_.
+Synfig would be the perfect tool to make something simple like _Dots_ and I was able to work through all the tutorials in a day.
 
 ==== two.js
 
@@ -156,7 +156,7 @@ Plain Blender would be the best tool for making a video like _SLICED_.
 
 Blender with Grease Pencil would be the best tool for making something like _Dots_, but with 3D effects.
 
-The problem is that Blender takes at least a week of learning and practising to become proficient at the basics, and I don't currently have the time or skill for that.
+The problem is that Blender takes at least a week of learning and practising to become proficient at the basics, and I didn't have the time or skill for that.
 
 === Programmatic 3D animation
 
@@ -178,7 +178,7 @@ I decided to write a little story about an acoustic bass meeting a modern synthe
 The _Annihilation_ movie inspired me to finish the story by having the bass being transfigured into a more evolved creature by meeting the synthesiser.
 
 === Audio
-I wrote the audio in https://www.image-line.com/flstudio/[FL Studio] (FLS) as it is an excellent choice for making electronic music fast.
+I wrote the audio in FLS as it is an excellent choice for making electronic music fast.
 
 I particularly enjoy the ability to put snippets of MIDI and automation into a library of clips which can then be cloned, reused, and rearranged easily.
 As far as I know no other DAW other than https://www.tracktion.com/products/waveform[Tracktion's Waveform] and possibly https://www.presonus.com/products/Studio-One[Studio One] can do this.
@@ -202,26 +202,35 @@ I wrote the music at 120 bpm so it was easy to synchronise with the video (where
 For the sounds themselves I used the _Sytrus_ and _Harmor_ synths with preset sounds to save as much time as possible.
 I used only synthesizers, no samples, as I find it easier to work with MIDI.
 
-
 === Video
 
-I wrote the video in _three.js_. There isn't much to say about this.
-I mostly copied and pasted snippets of code from their site's examples until I had what I wanted.
+I spend a few days writing the video in _three.js_ but quickly encountered difficulties.
+It's hard to programmatically specify what you want to happen on screen if you can't see it and are completely new to 3D graphics.
+Finding errors and fixing them is difficult. And documentation is lacking.
 
-The full code listing is given below.
-If you'd like to play with it yourself just save it to an HTML file and drag it into your browser.
-You'll need to change the three.js source from local disk to this: `https://cdnjs.cloudflare.com/ajax/libs/three.js/96/three.js` for it to work unless you run a local web server.
+So I decided to switch to Blender. This took a week to learn from reading a couple of tutorials.
+But the good thing was all my questions could be answered within an hour by asking on the forum, so I never got stuck on a problem.
 
-[source,ruby]
-----
-TODO
-----
+Putting two shapes on the screen and using keyframes to animate them was easy.
+The time consuming task was synchronising the video and audio.
+I also had to learn some intermediate techniques:
+
+- using an orthographic camera for the 2D section of the video, then switching to perspective for the 3D section
+- animating the camera to move in a circle while tracking the center of the scene
+- understanding the differences in the Internal and Cycles renderers and how to choose the right one and perform my renders in less than a day.
+
+Finally, I didn't have time to do interesting textures or particle effects, which would have greatly improved the impressiveness of the evolved bass in the second half of the video. I tried these, but couldn't get them to work with my limited skills.
 
 == Critique & conclusion
 
-TODO include pros and cons
-positional audio
+Overall this was a useful experience and I learnt a great deal about animation and the available options.
 
+The audio part took only a few hours and suits the idea I was trying to convey quite well.
+The video is suited to the audio too, but is clearly the work of an absolute beginner in modelling and animation.
+I think using simple abstract shapes allows the audience member's mind to freely interpret the experience.
+
+However, I don't think this is much of a contribution to art overall.
+While the idea is fun, it is not original, and the graphical execution would need a lot more work to make it of a professional standard.
 
 // page break
 <<<
