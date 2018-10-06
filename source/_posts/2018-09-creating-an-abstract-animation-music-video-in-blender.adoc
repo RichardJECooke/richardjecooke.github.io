@@ -35,19 +35,21 @@ This was done as an assignment for the course Music Technology 2A at UCT.
 == The final product
 Below is the animated music video I made:
 
-video::E3-vsKwQ0Cg[youtube, width=700, height=400, theme=dark]
+video::F_PfTrxxxzo[youtube, width=700, height=400, theme=dark]
 
-You can download the FL Studio (FLS) project file to see how the audio was made. https://www.image-line.com/downloads/flstudiodownload.html[FL Studio 20] runs on Apple & Windows and the project can be viewed and played for free (but not saved with the free FL Studio version).
+You can download the FL Studio (FLS) project file to see how the audio was made. https://www.image-line.com/downloads/flstudiodownload.html[FL Studio 20] runs on Apple & Windows and the project can be viewed and played for free (but not saved with the free FLS version).
 
 The https://www.blender.org/download/[Blender] animation file is also available below for download. It needs Blender version 2.79 (the latest at the time of writing). Later versions of Blender use a new rendering engine that won't work with this file.
 
+++++
 Download:
 &nbsp;&nbsp;&nbsp;&nbsp;
-link:++2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3++[MP3]
+<a href='animation.blend'>Blender 2.79 project file</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-link:++2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp++[FL Studio 20 project file]
+<a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>MP3</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-link:++antiation.blend++[Blender 2.79 project file]
+<a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp'>FLS 20 project file</a>
+++++
 
 == Inspiration
 I began my search for ideas by looking for purely abstractly animated music videos.
@@ -220,6 +222,18 @@ I also had to learn some intermediate techniques:
 - understanding the differences in the Internal and Cycles renderers and how to choose the right one and perform my renders in less than a day.
 
 Finally, I didn't have time to do interesting textures or particle effects, which would have greatly improved the impressiveness of the evolved bass in the second half of the video. I tried these, but couldn't get them to work with my limited skills.
+
+==== Converting .png to video
+
+Blender outputs each frame as a png rather than exporting video, so if your computer restarts you don't lose hours of rendering.
+
+To convert the .pngs and my mp3 file to a video I used the command:
+
+[source,dos]
+----
+ffmpeg -framerate 60 -i temp%4d.png -i a.mp3 -start_number 0000 -r 60 -pix_fmt yuv420p output.webm
+----
+
 
 == Critique & conclusion
 

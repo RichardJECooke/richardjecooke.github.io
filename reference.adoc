@@ -1,3 +1,5 @@
+= https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/
+
 = Links
 Use %20 for spaces in filenames
 
@@ -6,3 +8,18 @@ link:++/assets/apps/2018_09_prime_directive_animation/2018-09%20-%20Richard%20JE
 = Images
 :imagesdir:
 image::song.png[]
+
+= Code
+[source,ruby]
+----
+function whatever
+{
+}
+----
+
+
+= Raw html
+
+++++
+<stuffs></stuffs>
+++++
