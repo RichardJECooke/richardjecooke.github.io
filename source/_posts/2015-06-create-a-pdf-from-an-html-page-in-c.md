@@ -125,7 +125,7 @@ Then convert the html to PDF like this:
 
 ```csharp
 private void CreatePdfFromHtmlPage(PatientVisitConsultation data, string pdfFolder, string filenameWithoutExtension)
-{            
+{
     var document = new HtmlToPdfDocument
     {
         GlobalSettings =
@@ -147,7 +147,7 @@ private void CreatePdfFromHtmlPage(PatientVisitConsultation data, string pdfFold
         document.Objects.Add(new ObjectSettings { PageUrl = pdfFolder + filenameWithoutExtension + "Page2.html"});
     }
     else document.Objects.Add(new ObjectSettings { PageUrl = pdfFolder + filenameWithoutExtension + ".html" });
-    byte\[\] result = _pdfConverter.Convert(document);
+    byte[] result = _pdfConverter.Convert(document);
     File.WriteAllBytes(pdfFolder + filenameWithoutExtension + ".pdf", result);
 }
 ```
@@ -158,28 +158,28 @@ Return the PDF in a web service
 If you want to send the PDF to a browser then use this method:
 
 ```csharp
-\[Route("GetPdfForConsultation")\]
-\[HttpPost\]
+[Route("GetPdfForConsultation")]
+[HttpPost]
 public IHttpActionResult GetPdfForConsultation(HttpRequestMessage request, long consultationId)
 {
     var token = request.Content.ReadAsStringAsync().Result.Substring(6); //"token=243lblahblahblah"
     var hisSignInModel = _tokenManager.ValidateToken(token);
     _userManager.ThrowExceptionIfUserDoesNotHavePermission(token, PermissionName.ViewDischargeSummaries, null);
-            
+
     var pdfFolder = HostingEnvironment.MapPath(@"~/" + Core.Configuration.DischargePdfFolder);
     var imageFolder = HostingEnvironment.MapPath(@"~/" + Core.Configuration.ImageFolder);
     var pdfTemplatesFolder = HostingEnvironment.MapPath(@"~/" + Core.Configuration.PdfTemplatesFolder);
     _pdfManager.DeleteOldPdfs(pdfFolder);
     var filename = _pdfManager.CreateDischargePdfAndReturnFilename(consultationId, pdfFolder, hisSignInModel, imageFolder, pdfTemplatesFolder);
-            
+
     //return pdf
     var path = pdfFolder + filename;
-    byte\[\] fileBytes = System.IO.File.ReadAllBytes(path);
+    byte[] fileBytes = System.IO.File.ReadAllBytes(path);
     var response = new HttpResponseMessage(HttpStatusCode.OK);
     response.Content = new ByteArrayContent(fileBytes);
     response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("inline"); //'attachment' will download instead
     response.Content.Headers.ContentDisposition.FileName = filename;
     response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
-    return ResponseMessage(response);        
+    return ResponseMessage(response);
 }
 ```

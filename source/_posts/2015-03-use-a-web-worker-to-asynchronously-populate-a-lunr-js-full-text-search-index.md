@@ -30,7 +30,7 @@ I then tried using [async.js](https://github.com/caolan/async "async.js"), think
 ```js
 async.eachSeries(Object.keys(dictionary), function (key, callback)
 {
-  index.add(dictionary\[key\]);  
+  index.add(dictionary[key]);
   callback(); //and also tried 'nextTick' to do this asynchronously
 });
 ```

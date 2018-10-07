@@ -54,7 +54,7 @@ private void SetANewRequestVerificationTokenManuallyInCookieAndOnTheForm()
 private void SetCookie(string name, string value)
 {
    if (Response.Cookies.AllKeys.Contains(name))
-       Response.Cookies\[name\].Value = value;
+       Response.Cookies[name].Value = value;
    else
        Response.Cookies.Add(new HttpCookie(name, value));
 }

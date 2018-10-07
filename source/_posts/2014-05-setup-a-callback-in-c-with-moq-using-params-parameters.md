@@ -15,7 +15,7 @@ This post explains how to use Moq to get an object from a mocked class where the
 ```csharp
 public class IPersonLogic
 {
-    GetNumberOfPeople(params Person\[\] args);
+    GetNumberOfPeople(params Person[] args);
 }
 
 public class MainProgram

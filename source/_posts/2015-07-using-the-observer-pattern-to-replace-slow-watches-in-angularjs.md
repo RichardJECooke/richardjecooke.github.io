@@ -18,28 +18,28 @@ This is the service:
 app.factory("AccountService", ....
 {
   var _serviceToReturn = {};
-  var _signedInWatchers = \[\];
+  var _signedInWatchers = [];
 
   //returns a function you can call to stop watching (e.g. on controller destroy)
-  _serviceToReturn.WatchSignIn = function (callback) 
+  _serviceToReturn.WatchSignIn = function (callback)
   {
     //add the observers to our list
-    _signedInWatchers.push(callback); 
+    _signedInWatchers.push(callback);
     //remove the observers from our list when called
-    return function() { _signedInWatchers = _.without(_signedInWatchers, callback); }; 
+    return function() { _signedInWatchers = _.without(_signedInWatchers, callback); };
   };
-  
+
   _serviceToReturn.SignIn = function (username, password)
-  {            
+  {
     //tell controllers data has changed now that someone signed in
-    AlertSignedInWatchers(); 
+    AlertSignedInWatchers();
     ...
   }
-  
+
   function AlertSignedInWatchers()
   {
     //alert every observer
-    _.each(_signedInWatchers, function (callback) { callback();}); 
+    _.each(_signedInWatchers, function (callback) { callback();});
   }
 ```
 And here's the controller that uses it:
@@ -48,14 +48,14 @@ And here's the controller that uses it:
 app.controller('NavbarController',...
 {
    _stopWatchingSignIn = AccountService.WatchSignIn(updateNavbar);
-  
+
   function updateNavbar()
   {
     $scope.data.message = 'welcome';
   }
-  
+
   $scope.$on('$destroy', function ()
   {
-    _stopWatchingSignIn();        
+    _stopWatchingSignIn();
   });
 ```

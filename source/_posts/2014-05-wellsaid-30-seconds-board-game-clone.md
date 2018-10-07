@@ -45,12 +45,12 @@ me.loadContent = function(view)
 {
 	view.preRender();
 	$('.divContent').hide();
-	$('.divContent')\[0\].innerHTML = view.content();
+	$('.divContent')[0].innerHTML = view.content();
 	$('.divContent').trigger('create');
 	$('.divContent').show();
 	view.postRender();
 	$('.divContent').trigger('create');
-	ko.applyBindings(WellSaid.Model, $('#subContent')\[0\]);        
+	ko.applyBindings(WellSaid.Model, $('#subContent')[0]);
 }
 ```
 
@@ -123,7 +123,7 @@ WellSaid.Model = (function ()
 The HTML is setup to use the variables like this:
 
 ```html
-Round 
+Round
 <span class="round" data-bind="text: round"></span>
 of
 <span data-bind="text: numberOfRounds"></span>
@@ -132,7 +132,7 @@ of
 And finally the variables are initialised like this:
 
 ```js
-ko.applyBindings(WellSaid.Model, $('#subContent')\[0\]);
+ko.applyBindings(WellSaid.Model, $('#subContent')[0]);
 ```
 
 ## Offline mobile web apps

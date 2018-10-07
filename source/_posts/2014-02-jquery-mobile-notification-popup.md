@@ -23,7 +23,7 @@ function notify(message)
     popup.setAttribute("data-overlay-theme", "c");
     popup.setAttribute("id", id);
     popup.innerHTML = "<p style='margin:1em 2em 1em 2em'>" + message + "</p>";
-    $('div\[data-role="content"\]').append(popup);
+    $('div[data-role="content"]').append(popup);
     $("#"+id).popup();
     $("#"+id).popup("open");
 };

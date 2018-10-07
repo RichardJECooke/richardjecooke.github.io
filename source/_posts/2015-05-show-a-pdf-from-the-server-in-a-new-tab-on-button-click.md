@@ -45,7 +45,7 @@ public IHttpActionResult GetPdfForConsultation(HttpRequestMessage request, long 
     var content = request.Content.ReadAsStringAsync().Result;
     var token = content.Substring(6); //"token=243lblahblahblah"
     var path = HostingEnvironment.MapPath(@"~/" + Core.Configuration.PdfFolder + "2015-05-25-13h41m54-TBH20949482.pdf");
-    byte\[\] fileBytes = System.IO.File.ReadAllBytes(path);
+    byte[] fileBytes = System.IO.File.ReadAllBytes(path);
 
     var response = new HttpResponseMessage(HttpStatusCode.OK);
     response.Content = new ByteArrayContent(fileBytes);

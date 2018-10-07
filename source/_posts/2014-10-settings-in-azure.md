@@ -17,7 +17,7 @@ In the image below I've made a brand new Azure cloud service with one web applic
 
 You can use the setting in your application like this:
 ```csharp
-var setting = ConfigurationManager.AppSettings\["CdnUrl"\];
+var setting = ConfigurationManager.AppSettings["CdnUrl"];
 ```
 
 ## The problems with this approach
