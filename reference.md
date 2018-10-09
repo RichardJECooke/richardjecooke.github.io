@@ -1,3 +1,7 @@
+
+# Font awesome
+<i class="fa fa-tint" aria-hidden="true"></i>
+
 # Sundry 
 
 <!--- '![profile](profilepic_300x300.png)' --> 
