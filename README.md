@@ -1,10 +1,7 @@
 # Todo
-- fix graphic score maker
-- add apps page
-- list of best software
 - use rsync instead of ftp (or ftps?)
 - add search
-- envato
+- pond5 / metapop / audiojungle
 - check out next theme / or make a theme with bootstrap
 - add new options to hexo cplayer https://github.com/EYHN/hexo-tag-cplayer/issues/4
   - or switch to aplayer - https://github.com/MoePlayer/APlayer
@@ -29,7 +26,11 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 ```
 
 # Run locally
-`./node_modules/.bin/hexo server`
+Run Ubuntu console
+```
+cd /mnt/c/data/site
+./node_modules/.bin/hexo server
+```
 
 # Deploy
 - https://hexo.io/docs/deployment.html

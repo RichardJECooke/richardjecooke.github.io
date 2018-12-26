@@ -28,7 +28,6 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-  - graphic_score_maker/**/*
   - assets/**/*
   - google1515058ef76c5056.html
 
