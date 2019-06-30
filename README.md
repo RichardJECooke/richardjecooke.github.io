@@ -12,9 +12,21 @@
 - Forum: https://gitter.im/hexojs/hexo
 - https://github.com/probberechts/hexo-theme-cactus
 - https://github.com/EYHN/hexo-tag-cplayer
-  - https://www.npmjs.com/package/cplayer
+- https://www.npmjs.com/package/cplayer
+
+# What to install  
+Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
+```
+sudo apt-get update -y && 
+sudo apt-get install curl -y && 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &&
+nvm install node
+#restart
+sudo apt install npm
+```
 
 # Initial creation
+Run Ubuntu console
 ```
 npm install hexo-cli
 .node_modules/.bin/hexo init mysite
@@ -29,6 +41,7 @@ git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbuc
 Run Ubuntu console
 ```
 cd /mnt/c/data/site
+npm update
 ./node_modules/.bin/hexo server
 ```
 
@@ -46,7 +59,7 @@ The ftp deployer doesn't seem to work.
 
 ## Bitbucket deploy
 - Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.
-- Keep committing locally to master. Don't commit to deployed in git, Hexo will do it below for you.
+- Keep committing locally to master.
 ```bash
 ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
 ./node_modules/.bin/hexo deploy
@@ -59,3 +72,4 @@ forked from https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/
 
 # New post
 hexo new [layout] <title>
+
