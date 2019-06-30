@@ -72,4 +72,3 @@ forked from https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/
 
 # New post
 hexo new [layout] <title>
-
