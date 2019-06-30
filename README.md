@@ -46,7 +46,7 @@ The ftp deployer doesn't seem to work.
 
 ## Bitbucket deploy
 - Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.
-- Keep committing locally to master.
+- Keep committing locally to master. Don't commit to deployed in git, Hexo will do it below for you.
 ```bash
 ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
 ./node_modules/.bin/hexo deploy
@@ -59,4 +59,3 @@ forked from https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/
 
 # New post
 hexo new [layout] <title>
-
