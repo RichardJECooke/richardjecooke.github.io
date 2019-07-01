@@ -56,7 +56,7 @@ function handleSourceKeyPress(e)
 	if (newLetter == '')
 		return;
 	_app._data.sourceText = insertString(_app._data.sourceText, newLetter, cursorPosition);
-	_app.$nextTick( () => {e.currentTarget.setSelectionRange(cursorPosition + 1, cursorPosition + 1)} );
+	_app.$nextTick( () => {e.currentTarget.setSelectionRange(cursorPosition + 2, cursorPosition + 2)} );
 }
 
 function getTextWithCircumflex(text)
