@@ -25,43 +25,127 @@ v1
 
 
 // table of contents --------------------------------------------
-toc::[]
+// toc::[] - this is in the sidebar so there's not point to having it in the main doc too
 
 == Introduction
-This article describes the inspiration, design, and construction of an abstract animation music video using _Blender_.
+This article is a conceptual planning document for a binaural song - a piece
+of music where the instruments sound as if they are positioned in 3D space and
+move through it, around the head of the listener.
 
-This was done as an assignment for the course Music Technology 2A at UCT.
+This was done as an assignment for the course Music Technology 3A at UCT.
 
 == The final product
-Below is the animated music video I made:
+Below is the song I made:
 
 video::F_PfTrxxxzo[youtube, width=700, height=400, theme=dark]
 
-You can download the FL Studio (FLS) project file to see how the audio was made. https://www.image-line.com/downloads/flstudiodownload.html[FL Studio 20] runs on Apple & Windows and the project can be viewed and played for free (but not saved with the free FLS version).
-
-The https://www.blender.org/download/[Blender] animation file is also available below for download. It needs Blender version 2.79 (the latest at the time of writing). Later versions of Blender use a new rendering engine that won't work with this file.
+The melody and lyrics were written by Michelle Pretorius and the singer was Clare Dublin.
 
 ++++
-Download:
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='animation.blend'>Blender 2.79 project file</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>MP3</a>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp'>FLS 20 project file</a>
+Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>MP3</a>
 ++++
-
-== Using this page
-If you are using Chrome please click the red warning in the address bar that says 'Enable unsafe content' and enable.
-This will allow all videos to play (some run on http sites, not https).
-
-If you are using another browser or are scared to do this, just click on the link above the video to open it in a new tab.
 
 == Inspiration
-I began my search for ideas by looking for purely abstractly animated music videos.
 
-I knew I didn't want to use illustrations or photographs as I had done that last year for another music video project.
-Instead this work would be done manually on computer or programmatically in code.
+=== Course assignment
+
+For our Music Technology 3A project we were asked to create an original piece of music
+that was mixed primarily using spatial audio. I preferred to choose a stereo mix over surround-sound
+because multi-speaker pieces would not be heard by anyone except the few people that came to our
+class concert. A stereo mix however can by published to the Internet and easily heard
+by anyone with a pair of speakers or headphones.
+
+Specifically I wanted to create a binaural mix - one where the sounds seem to come from specific
+points in space around the head.
+
+=== Binaural (3D) sounds
+
+Twelve years ago in 2007 I heard one of the most popular binaural microphone demonstrations -
+https://www.youtube.com/watch?v=IUDTlvagjJA[_The virtual barbershop_] <<ref_barbershop>> :
+
+video::IUDTlvagjJA[youtube, width=700, height=400, theme=dark]
+
+This video was recorded with a binaural microphone but there are now free VST plugins
+that reproduce the HRTFs (head-related transfer functions) that change the frequencies and panning
+of sounds depending on where in space they are intended to come from.<<ref_hrtf>> In other words
+we can now take any mono sound and make it sound in headphones like it is positioned anywhere in space
+that we choose. If you listen to the barbershop video above without headphones you'll hear that this
+technique degrades elegantly onto stereo speakers - you lose the binaural effect but the mix still
+sounds good.
+
+I found two free VSTs that look suitable:
+
+- http://anaglyph.dalembert.upmc.fr[_Anaglyph_]
+- https://en-us.sennheiser.com/ambeo-orbit[_AMBEO Orbit_]
+
+AMBEO Orbit is made by Sennheiser and looks better designed but doesn't support distance from the head,
+only direction. Anaglyph supports both parameters and additionally allows from micro-oscillations -
+continuous small changes in position that improve the realistic effect of a sound being positioned in space.
+
+=== Binaural music and resources
+
+Mixing a song in 3D as opposed to in stereo seems to be almost non-existent, at least in chart-toppers.
+This is suprising as one can imagine how much more immersive and exciting music would be if it sounded like it was all around you.
+I can think of a few reasons for binaural mixing not being done:
+
+- Most people listen to music on mono radios or car stereo systems. Thus it is more economical to mix for these systems to appeal to the most listeners and make the most profit.
+- Producers aren't aware of binaural possibilities.
+- Producers don't think the effect enhances the music enough to do it.
+- Maintaining the realism reduces creative possibilities. I.e. for a sound to maintain the illusion of 3D you can do far less with EQ, reverb, and other effects.
+
+I don't think the first point is relevant binaural music doesn't sound worse on speakers than normal stereo mixes.
+The last point is however a possiblity I had to consider carefully when writing the song. Certain necessities arise:
+
+- All sounds have to be reduced to mono before positioned in space.
+- EQing must be done before positioning - as the positioning itself relies heavily on EQ.
+- Reverb and delay must be used sparingly, carefully, and with enough initial delay time not to interfere with the 3D effect.
+
+Finally, as Catherine Robinson from the BBC binaural department notes, you should use as few sounds as possible so the mix
+does not become cluttered and the ear becomes too overwhelmed to maintain the 3D illusion.<<ref_bbcvid>>
+
+Searching Google and YouTube in 2019 for binaural music finds nothing - only references to binaural beats and immersive audio (not music).
+In fact the whole BBC binaural sound department has no reference to music at all.<<ref_bbc>>
+Nor does the Immersive Audio podcast.<<ref_iapod>>
+
+The only music I managed to find
+
+
+my old water song
+
+1) Concept plan: which includes creative ideas and reference mixes /
+audio files as inspiration. The majority of material should be your own, i.e.
+recorded, synthesized, sampled and processed or created by you. You
+may use up to 10% of found creative commons audio material, but you
+must reference their copyright in the essay component.
+
+== Composition plan
+
+Michy & Clare
+2) Mixing Aesthetics: Write a mixing strategy for your project and what
+your intentions are aesthetically.
+
+
+4) Practical Mix Plan: Draw up a plan considering how best to tackle your
+mix and which processes you would follow while carefully considering and
+discussing your chosen material. This section may include diagrams /
+timelines / audio files etc.
+
+== Dangers
+
+3) Technical Skills Analysis: Discuss the technical skills you will need to
+complete this assignment. Consider your current technical skill level in
+terms
+of critical listening, plug-in skills and mix technique and identify any
+shortcomings that you need to work on in order to realize this assignment.
+5) Potential Problems: Identify possible problems, potential solutions and
+trouble-shooting strategies, so you do not fall into easily avoidable
+potholes along the way.
+
+== Retrospective
+6) Critical Reflection: Once your mix is complete, rest your ears for a few
+days, and then listen critically. Review your mix as objectively as possible.
+State what worked well and not so well, and how you could improve in a
+future mixing project.
 
 === 2D animation
 
@@ -71,40 +155,11 @@ My first inspiration was early abstract animation music videos. The best example
 
 video::E3-vsKwQ0Cg[youtube, width=700, height=400, theme=dark]
 
-This video has some noteworthy features:
-
 * it is 2D (making it much simpler to create than a 3D animation where physics and camera positioning matter)
 * shapes move, scale, and rotate (this is simple to do on computer)
-* shapes morph from one shape to another (this may be the same amount of work by hand as scale and rotation, but on a computer it requires much more work to draw two different shapes and tween all the points in between them)
-* the animation is synchronised to the beat of the music (this is more work than having a freely moving animation because you have to coordinate visuals and music precisely to the millisecond).
-
-=== 3D animation
-
-==== Sliced
-I then looked for 3D abstract animation and found SLICED by https://vimeo.com/69668299[dxmiq] <<ref_sliced>>:
-
-video::69668299[vimeo, width=700, height=400, theme=dark]
-
-This looks pretty and impressive but I imagine is quite simple to make.
-I would simply draw a long line of shapes and then automate the camera to move down the line, with a clipping plane "slicing" the shapes as the camera passes along them.
-
-==== Annihilation
-An example of Hollywood level commercial production is the fantastic work by _Milk_ _VFX_ on the film https://www.youtube.com/watch?v=L6gwu8cOfVk[_Annihilation_], created in _Houdini_ <<ref_mandelbulb>>.
-
-video::L6gwu8cOfVk[youtube, width=700, height=400, theme=dark]
-This is obviously the ultimate goal for a musical animation, but is possible only with a paid experienced VFX team, and weeks of paid rendering on a server farm.
-
-This video also is the basis for my musical inspiration.
-It is synthesized, complex, and vague, but has clear melodic elements and rhythm.
-
-=== Programmatic animation
 
 ==== Preflight nerves
-I had made an application for _TEDx Cape Town_ a few years ago that pulled tweets from _Twitter_ that were tagged with the conference hashtag and displayed them on a giant projector on the wall.
-I thought about something similar for a music video and searched to see if anything like this had been done before. It has, by Brightly for their song https://www.youtube.com/watch?v=hMaeY0aP1xQ[_Preflight nerves_] <<ref_tweetvid>>:
-
 video::hMaeY0aP1xQ[youtube, width=700, height=400, theme=dark]
-The video above is static, but the one on their http://tweetflight.wearebrightly.com[website] pulls fresh tweets to match the song lyrics in realtime each time you play it.
 
 ==== Dennis
 
@@ -115,15 +170,6 @@ I then discovered the most impressive video yet. http://www.dennis.video[_Dennis
 +++
 
 The animation was programmed in https://threejs.org/[three.js].
-It is very smooth and quick to render as it uses modern web browsers' support for the graphics processing unit (GPU) by using WebGL.
-Finally, the animation was synchronised to the beat of the song by using WebAudio's native analysis capability.
-
-This video shows the power you have when you don't have to animate every shape manually, but can write code to create and manipulate the shapes and camera for you.
-
-== Software tools
-After getting some idea of what could be created I began to look for free software tools to work in.
-
-=== 2D animation
 
 ==== Synfig Studio
 
@@ -160,80 +206,41 @@ Recently Blender has also added powerful capabilities for beautiful 2D illustrat
 
 video::155635261[vimeo, width=700, height=400, theme=dark, start=20]
 
-Plain Blender would be the best tool for making a video like _SLICED_.
-
-Blender with Grease Pencil would be the best tool for making something like _Dots_, but with 3D effects.
-
-The problem is that Blender takes at least a week of learning and practising to become proficient at the basics, and I didn't have the time or skill for that.
 
 === Programmatic 3D animation
 
 ==== three.js
 
 The best framework I could find for 3D programmatic animation was https://threejs.org[three.js] <<ref_threejs>>.
-It was used for the _Dennis_ video above and supports almost anything you could imagine.
-
-Move your mouse through the birds below to scatter them.
 
 +++
 <iframe src='https://threejs.org/examples/#webgl_gpgpu_birds' width='700px' height='600px'></iframe>
 +++
 
-There is a competitor made by Microsoft, called https://doc.babylonjs.com[Babylon.js], which is more suited to game development as it simplifies commonly used functions like lighting, but three.js is well established.
+There is a called https://doc.babylonjs.com[Babylon.js]
 
 == Construction
 I decided to write a little story about an acoustic bass meeting a modern synthesiser and having a conversation/song.
-The _Annihilation_ movie inspired me to finish the story by having the bass being transfigured into a more evolved creature by meeting the synthesiser.
 
 === Audio
-I wrote the audio in FLS as it is an excellent choice for making electronic music fast.
-
-I particularly enjoy the ability to put snippets of MIDI and automation into a library of clips which can then be cloned, reused, and rearranged easily.
-As far as I know no other DAW other than https://www.tracktion.com/products/waveform[Tracktion's Waveform] and possibly https://www.presonus.com/products/Studio-One[Studio One] can do this.
-
-It also has a fully scalable vector graphic interface, and the hotkeys enable me to switch between the playlist and each MIDI clip incredibly quickly.
-
-Below is an image of the track. You can zoom in to see the labels of each section.
+I wrote the audio
 
 image::song.png[]
 
-The disadvantage of FLS compared to the other DAW I use, _Reaper_, is that it has poor routing. To overcome this, and route one MIDI clip to multiple instruments to create the complex sounds for each character in the animation, I used _Patcher_ for almost every instrument track.
-
-image::patcher.png[]
-
-Finally, _Effector_ is plugin that provides useful special effects, like bitcrushng, vocal formants, and flanging.
-
-image::effector.png[]
-
-I wrote the music at 120 bpm so it was easy to synchronise with the video (where each second is simply two beats).
-
-For the sounds themselves I used the _Sytrus_ and _Harmor_ synths with preset sounds to save as much time as possible.
-I used only synthesizers, no samples, as I find it easier to work with MIDI.
+DAW I use, _Reaper_
 
 === Video
 
-I spend a few days writing the video in _three.js_ but quickly encountered difficulties.
-It's hard to programmatically specify what you want to happen on screen if you can't see it and are completely new to 3D graphics.
-Finding errors and fixing them is difficult. And documentation is lacking.
+I spend a
 
-So I decided to switch to Blender. This took a week to learn from reading a couple of tutorials.
-But the good thing was all my questions could be answered within an hour by asking on the forum, so I never got stuck on a problem.
-
-Putting two shapes on the screen and using keyframes to animate them was easy.
-The time consuming task was synchronising the video and audio.
-I also had to learn some intermediate techniques:
-
-- using an orthographic camera for the 2D section of the video, then switching to perspective for the 3D section
-- animating the camera to move in a circle while tracking the center of the scene
-- understanding the differences in the Internal and Cycles renderers and how to choose the right one and perform my renders in less than a day.
-
-Finally, I didn't have time to do interesting textures or particle effects, which would have greatly improved the impressiveness of the evolved bass in the second half of the video. I tried these, but couldn't get them to work with my limited skills.
+- using an
+- animating
+- understand
 
 ==== Converting .png to video
 
-Blender outputs each frame as a png rather than exporting video, so if your computer restarts you don't lose hours of rendering.
+Blender
 
-To convert the .pngs and my mp3 file to a video I used the command:
 
 [source,dos]
 ----
@@ -243,14 +250,7 @@ ffmpeg -framerate 60 -i temp%4d.png -i a.mp3 -start_number 0000  -vcodec libx264
 
 == Critique & conclusion
 
-Overall this was a useful experience and I learnt a great deal about animation and the available options.
-
-The audio part took only a few hours and suits the idea I was trying to convey quite well.
-The video is suited to the audio too, but is clearly the work of an absolute beginner in modelling and animation.
-I think using simple abstract shapes allows the audience member's mind to freely interpret the experience.
-
-However, I don't think this is much of a contribution to art overall.
-While the idea is fun, it is not original, and the graphical execution would need a lot more work to make it of a professional standard.
+Overall
 
 // page break
 <<<
@@ -258,11 +258,20 @@ While the idea is fun, it is not original, and the graphical execution would nee
 // bibliography --------------------------------------------
 [bibliography]
 == References
-_All Internet resources were accessed on 25 September 2018._
+_All Internet resources were accessed on 19 September 2019._
 
-* [[[ref_dots, 1]]] YouTube - thecipo. Normal McLaren - Dots (1940) [Internet]. 2007. Available from: https://www.youtube.com/watch?v=E3-vsKwQ0Cg.
+* [[[ref_barbershop, 1]]] YouTube - LovelyVirus. Virtual Barber Shop [Internet]. 2007. Available from: https://www.youtube.com/watch?v=IUDTlvagjJA.
 
-* [[[ref_sliced, 2]]] Vimeo - dxmiq. SLICED [Internet]. 2013. Available from: https://vimeo.com/69668299.
+* [[[ref_hrtf, 2]]] Head-related transfer function [Internet]. Wikipedia. n.d. Available from: https://en.wikipedia.org/wiki/Head-related_transfer_function.
+
+* [[[ref_bbcvid, 3]]] YouTube - Australian Film Television and Radio School. The Right Way to Mix Binaural Audio – Catherine Robinson's Top Tips  [Internet]. 2018. Available from: https://www.youtube.com/watch?v=ILcQX_GMd5w.
+
+* [[[ref_bbc, 4]]] BBC.co.uk. Binaural Sound [Internet]. 2012-present. BBC. Available from: https://www.bbc.co.uk/rd/projects/binaural-broadcasting.
+
+* [[[ref_iapod, 5]]] Apple.com. Immersive Audio Podcast [Internet]. n.d. Available from: https://podcasts.apple.com/ie/podcast/immersive-audio-podcast/id1360242294.
+
+---
+
 
 * [[[ref_mandelbulb, 3]]] vfxblog.com. Mandelbulbs, mutations, and motion capture: the visual effects of Annihilation [Internet interview]. VFXBLOG. 2018. Available from: https://vfxblog.com/2018/03/12/mandelbulbs-mutations-and-motion-capture-the-visual-effects-of-annihilation/.
 
