@@ -40,7 +40,7 @@ Below is the song I made:
 video::F_PfTrxxxzo[youtube, width=700, height=400, theme=dark]
 
 The melody and lyrics were written by Michelle Pretorius and the singer was Clare Dublin.
-
+TODO
 ++++
 Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>MP3</a>
 ++++
@@ -60,7 +60,7 @@ points in space around the head.
 
 === Binaural (3D) sounds
 
-Twelve years ago in 2007 I heard one of the most popular binaural microphone demonstrations -
+Twelve years ago in 2007 I heard one of the most popular and inspiring binaural microphone demonstrations -
 https://www.youtube.com/watch?v=IUDTlvagjJA[_The virtual barbershop_] <<ref_barbershop>> :
 
 video::IUDTlvagjJA[youtube, width=700, height=400, theme=dark]
@@ -73,12 +73,12 @@ that we choose. If you listen to the barbershop video above without headphones y
 technique degrades elegantly onto stereo speakers - you lose the binaural effect but the mix still
 sounds good.
 
-I found two free VSTs that look suitable:
+I found two free VSTs that looked suitable:
 
 - http://anaglyph.dalembert.upmc.fr[_Anaglyph_]
 - https://en-us.sennheiser.com/ambeo-orbit[_AMBEO Orbit_]
 
-AMBEO Orbit is made by Sennheiser and looks better designed but doesn't support distance from the head,
+AMBEO Orbit is made by Sennheiser and looks more professionaly made but doesn't support distance from the head,
 only direction. Anaglyph supports both parameters and additionally allows from micro-oscillations -
 continuous small changes in position that improve the realistic effect of a sound being positioned in space.
 
@@ -105,20 +105,95 @@ does not become cluttered and the ear becomes too overwhelmed to maintain the 3D
 
 Searching Google and YouTube in 2019 for binaural music finds nothing - only references to binaural beats and immersive audio (not music).
 In fact the whole BBC binaural sound department has no reference to music at all.<<ref_bbc>>
-Nor does the Immersive Audio podcast.<<ref_iapod>>
+Nor does the _Immersive Audio podcast_.<<ref_iapod>>
 
-The only music I managed to find
+The only music I managed to find was the playlist https://music.apple.com/in/playlist/introduction-to-binaural-tracks/pl.u-kv9lbRjC7qVXKRE?app=music[_here_].<<ref_binplay>>
+These songs are all beautifully mixed and sound great through headphones or speakers.
+But I don't feel much opportunity was taken to use spatial illusions fully.
+The sounds are all from a static position in space and never move in any direction.
+I aimed to make better use of movement, position, distance, and reverberation in my song.
+
+=== Initial idea
+
+Last year I created a piece of music focussing on the Kreepy Krauly and the sound of water in general.<<ref_kreepy>>
+
+video::X-prfGOo_wA[youtube, width=700, height=400, theme=dark]
+
+I thought water would be a rich source of ideas for a piece.
+I also wanted to write a pop song for a while.
+Thus I asked a classmate, Michelle Pretorius, to write a melody and lyrics for a water themed song.
+I took her ideas and notated them neatly in Musescore to arrange a verse, prechorus, chorus, and bridge, shown below:
+
+TODO
+
+Following this I downloaded various no-attribution-required water sounds and sea sounds from freesound.org<<ref_freesound>> and recorded the vocals with another classmate, Clare Dublin.
+I aimed to merge the water sounds and vocals with an atmospheric electro-pop composition and then mix it binaurally.
+
+Other than the vocals and water samples I wanted to use only virtual instruments as I much prefer the ease of working with MIDI to the immutability of recorded sound.
+My DAW of choice for this project was FL Studio<<ref_fls>>, as I enjoy its pattern based approach to composition, its workflow and native plugins being optimised for electronic music, and single-window optimised screen layout with function key shortcuts to all major sections: patterns, playlist, MIDI, mixer, and instruments.
+
+=== Reference songs
+
+The lyrics of the song use the following ideas:
+
+- crystal
+- ocean
+- sadness
+- drowning / sinking
+- flying
+- striving
+
+I searched through my music collection and looked online for some very recent EDM songs to copy that were musically suitable for the ideas above.
+Specifically, I needed to find ideas for the:
+
+- bass sound
+- harmony sound
+- textural ideas
+- and other things I hadn't thought of.
+
+Here is the full list of songs I wanted to copy in some way for my composition:
+
+-
+-
+-
+-
+-
+-
+-
+-
+
+TODO referencing
+
+I also used a lot of ideas from this FL Studio orientated music production and mixing https://www.youtube.com/channel/UCIcCXe3iWo6lq-iWKV40Oug/videos[YouTube channel].<<ref_inthemix>>
 
 
-my old water song
-
-1) Concept plan: which includes creative ideas and reference mixes /
-audio files as inspiration. The majority of material should be your own, i.e.
-recorded, synthesized, sampled and processed or created by you. You
-may use up to 10% of found creative commons audio material, but you
-must reference their copyright in the essay component.
 
 == Composition plan
+
+Given the reference songs above, below is a coarse grained plan of the whole composition:
+
+=== Introduction
+
+=== Verse 1
+
+=== Prechorus 1
+
+=== Chorus 1
+
+=== Verse 2
+
+=== Prechorus 2
+
+=== Chorus 2
+
+=== Bridge
+
+=== Chorus 3
+
+=== Coda
+
+=== No idea
+
 
 Michy & Clare
 2) Mixing Aesthetics: Write a mixing strategy for your project and what
@@ -141,116 +216,29 @@ shortcomings that you need to work on in order to realize this assignment.
 trouble-shooting strategies, so you do not fall into easily avoidable
 potholes along the way.
 
+synths and sytrus
+sound design paralysis
+time
+cluttering the 3d mix
+producer noob
+
 == Retrospective
 6) Critical Reflection: Once your mix is complete, rest your ears for a few
 days, and then listen critically. Review your mix as objectively as possible.
 State what worked well and not so well, and how you could improve in a
 future mixing project.
 
-=== 2D animation
-
-==== Dots
-
-My first inspiration was early abstract animation music videos. The best example of this is Norman McLaren's https://www.youtube.com/watch?v=E3-vsKwQ0Cg[_Dots_] <<ref_dots>>, shown below:
-
-video::E3-vsKwQ0Cg[youtube, width=700, height=400, theme=dark]
-
-* it is 2D (making it much simpler to create than a 3D animation where physics and camera positioning matter)
-* shapes move, scale, and rotate (this is simple to do on computer)
-
-==== Preflight nerves
-video::hMaeY0aP1xQ[youtube, width=700, height=400, theme=dark]
-
-==== Dennis
-
-I then discovered the most impressive video yet. http://www.dennis.video[_Dennis_] is a procedurally generated 3D animated, gesture interactive, beat synchronised music video <<ref_dennis>>:
-
-+++
-<iframe src='http://www.dennis.video' width='700px' height='400px'></iframe>
-+++
-
-The animation was programmed in https://threejs.org/[three.js].
-
 ==== Synfig Studio
 
-For 2D vector animation the best tool I could find was Synfig Studio <<ref_synfig>>.
 
 image::https://i1.wp.com/www.synfig.org/wp-content/uploads/2018/02/screenshot-07.png[Synfig Studio, 700, 400]
 
-Synfig allows you to draw complex vector shapes directly into the application or import external images.
-Each object's properties (e.g. size, rotation, outline, color, etc.) can be independently altered at any point (keyframe) in an animation of any length.
-Synfig will then automically fill in (tween) the animation between each keyframe.
-It also supports advanced functions like masking layers, blend modes, duplication and time manipuation, and skeleton animation.
-
-Synfig would be the perfect tool to make something simple like _Dots_ and I was able to work through all the tutorials in a day.
-
-==== two.js
-
-For 2D programmatic animation the best framework I found was https://two.js.org/examples/[two.js] <<ref_twojs>>.
-
-+++
-<iframe src='https://two.js.org/examples' width='700px' height='600px'></iframe>
-+++
-
-two.js would be best for creating a video like _Dots_ but with much more complexity and movement, or for creating something with text, like _Preflight nerves_.
-
-
-=== 3D animation
-
-==== Blender & Grease Pencil
-
-https://www.blender.org[Blender] is the undisputed champion of free 3D modelling and animation software.
-It has been around for years and its features rival industry standards like _Maya_.
-
-Recently Blender has also added powerful capabilities for beautiful 2D illustrated animations through its https://vimeo.com/155635261[_grease pencil_] tool (which used to be a simple way for animators to annotate their work quickly for later use) <<ref_greasepencil>>.
-
-video::155635261[vimeo, width=700, height=400, theme=dark, start=20]
-
-
-=== Programmatic 3D animation
-
-==== three.js
-
-The best framework I could find for 3D programmatic animation was https://threejs.org[three.js] <<ref_threejs>>.
-
-+++
-<iframe src='https://threejs.org/examples/#webgl_gpgpu_birds' width='700px' height='600px'></iframe>
-+++
-
-There is a called https://doc.babylonjs.com[Babylon.js]
-
-== Construction
-I decided to write a little story about an acoustic bass meeting a modern synthesiser and having a conversation/song.
-
-=== Audio
-I wrote the audio
-
 image::song.png[]
-
-DAW I use, _Reaper_
-
-=== Video
-
-I spend a
-
-- using an
-- animating
-- understand
-
-==== Converting .png to video
-
-Blender
-
 
 [source,dos]
 ----
 ffmpeg -framerate 60 -i temp%4d.png -i a.mp3 -start_number 0000  -vcodec libx264  -crf 16 -r 60  output.mp4
 ----
-
-
-== Critique & conclusion
-
-Overall
 
 // page break
 <<<
@@ -269,6 +257,16 @@ _All Internet resources were accessed on 19 September 2019._
 * [[[ref_bbc, 4]]] BBC.co.uk. Binaural Sound [Internet]. 2012-present. BBC. Available from: https://www.bbc.co.uk/rd/projects/binaural-broadcasting.
 
 * [[[ref_iapod, 5]]] Apple.com. Immersive Audio Podcast [Internet]. n.d. Available from: https://podcasts.apple.com/ie/podcast/immersive-audio-podcast/id1360242294.
+
+* [[[ref_binplay, 6]]] Apple.com. Introduction to Binaural Tracks [Internet]. n.d. Available from: https://music.apple.com/in/playlist/introduction-to-binaural-tracks/pl.u-kv9lbRjC7qVXKRE?app=music.
+
+* [[[ref_kreepy, 7]]] Youtube - Richard JE Cooke. Kreepy Krauly - music video [Internet]. 2018. Available from: https://www.youtube.com/watch?v=X-prfGOo_wA.
+
+* [[[ref_freesound, 8]]] freesound [Internet]. n.d. Available from https://freesound.org/.
+
+* [[[ref_fls, 9]]] FL Studio [Internet]. n.d. Available from https://www.image-line.com/flstudio/.
+
+* [[[ref_inthemix, 10]]] Youtube - In the mix [Internet]. n.d. Available from https://www.youtube.com/channel/UCIcCXe3iWo6lq-iWKV40Oug/videos.
 
 ---
 
