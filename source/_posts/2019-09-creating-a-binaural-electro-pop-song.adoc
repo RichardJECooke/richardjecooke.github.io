@@ -153,7 +153,7 @@ Specifically, I needed to find ideas for the:
 
 Here is the full list of songs I wanted to copy in some way for my composition:
 
--
+- Alan Walker - Faded
 -
 -
 -
@@ -170,21 +170,57 @@ I also used a lot of ideas from this FL Studio orientated music production and m
 
 == Composition plan
 
+=== General ideas
+
+- Background flutes
+- Alex & Sierra - Scarecrow - Subtle clap mixed over kick in chorus
+- Alex & Sierra - Scarecrow - Strummed acoustic guitar on verses
+- Amphibia - Grey Area - Clicks with delay
+- All Saints - Pure Shores - Delay synths & tambourines & bass
+- Austra - Lose it - bells, vibrato on the bridge and bass
+- Avicii - Broken arrows - raising the cut off throughout a verse, guitar bass, dual synths (pluck and supersaw), put a low pass on the prechorus and remove on the chorus
+- Avicii - Two similar rhythm guitars with slight differences panned left and right, glissando lead synth
+- Bart & Baker - Thrift Shop (remix of Macklemore) - glitch loops on the bridge
+- Chris Brayman - The Dive (Ecoquest) - open the song with a gull's cry
+- Coldplay - every song - change the harmony to a four chord progression (with interesting inversions) and sus4 dominants, choir-like pads
+- Coldplay - Viva la vida - bells on off beats, reverse bells, long strings, short punchy strings on off beats
+- Coldplay - Fix you - organ
+- deadmau5 - Raise your weapon - staccato supersaw chords on 8th notes, mixture of piano and guitar bass
+- DJ Sammy - Heaven - long strings, high piano
+- Donna Lewis - I love you - high bass on 16th notes, long thick piano chords on bridge
+- Donna Lewis - Harvest moon - vibrato rhodes piano
+- Ellie Golding - Burn - tape stop on the end of vocal phrases
+- Jordan Sparks - Tattoo - continuous ghost snares
+- Katy Perry - I'm still breathing - snare rolls
+- Moby - Porcelain - reversed strings, slow high piano melody over faster lower song
+- Sugababes - Good to be gone - a simple bass ostinato on the verse
+- Taylor Swift - Wildest dreams - low passed kick drum, reverb on end of all words, wordless vocals in musical interlude
+
+
+- Exciters on everything
+
 Given the reference songs above, below is a coarse grained plan of the whole composition:
 
 === Introduction
 
 === Verse 1
+shaker
 
 === Prechorus 1
+hats
 
 === Chorus 1
 
 === Verse 2
+rain
 
 === Prechorus 2
 
 === Chorus 2
+
+=== Interlude
+
+kick drum sidechain
 
 === Bridge
 
