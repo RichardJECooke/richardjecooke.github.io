@@ -43,6 +43,8 @@ The melody and lyrics were written by Michelle Pretorius and the singer was Clar
 TODO
 ++++
 Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>MP3</a>
+Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>Musescore score</a>
+Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>PDF score</a>
 ++++
 
 == Inspiration
@@ -143,7 +145,6 @@ The lyrics of the song use the following ideas:
 - flying
 - striving
 
-I searched through my music collection and looked online for some very recent EDM songs to copy that were musically suitable for the ideas above.
 Specifically, I needed to find ideas for the:
 
 - bass sound
@@ -151,30 +152,13 @@ Specifically, I needed to find ideas for the:
 - textural ideas
 - and other things I hadn't thought of.
 
-Here is the full list of songs I wanted to copy in some way for my composition:
-
-- Alan Walker - Faded
--
--
--
--
--
--
--
-
-TODO referencing
-
 I also used a lot of ideas from this FL Studio orientated music production and mixing https://www.youtube.com/channel/UCIcCXe3iWo6lq-iWKV40Oug/videos[YouTube channel].<<ref_inthemix>>
 
+=== Reference songs
+After looking through my music that spans a couple of decades I found the following songs that inspired techniques to try:
 
-
-== Composition plan
-
-=== General ideas
-
-- Background flutes
-- Alex & Sierra - Scarecrow - Subtle clap mixed over kick in chorus
-- Alex & Sierra - Scarecrow - Strummed acoustic guitar on verses
+- Alan Walker - Faded
+- Alex & Sierra - Scarecrow - Subtle clap mixed over kick in chorus, strummed acoustic guitar on verses
 - Amphibia - Grey Area - Clicks with delay
 - All Saints - Pure Shores - Delay synths & tambourines & bass
 - Austra - Lose it - bells, vibrato on the bridge and bass
@@ -197,41 +181,72 @@ I also used a lot of ideas from this FL Studio orientated music production and m
 - Taylor Swift - Wildest dreams - low passed kick drum, reverb on end of all words, wordless vocals in musical interlude
 
 
-- Exciters on everything
+
+== Composition plan
 
 Given the reference songs above, below is a coarse grained plan of the whole composition:
 
 === Introduction
+- kick, shaker, last bar snare fill
+- bass ostinato: using the pluck bass from this video, but made in Sytrus: https://www.youtube.com/watch?v=H6i55lXAMh0
+- ambient ocean sound at very low volume
+- vinyl plugin for fuzz and scratches
 
 === Verse 1
-shaker
+- add snare to drums
+- add sub bass
+- supersaw plucked with delay left vs another synth right, with slightly different rhythms
+- high tinkle bell (crystal)
+- raise cutoff on both synths through the verse
+- reverb on vocal word ends
+- foley: dolphin
 
 === Prechorus 1
-hats
+- low pass everything
+- remove subbass
+- remove kick
+- add clicks
+- add hats
+- ocean sound buildup to the chorus
 
 === Chorus 1
+- kick louder
+- clap on kick
+- tambourine on off beat opposite side to hat
 
 === Verse 2
-rain
+- rain
+- long strings
+- continuous ghost snares and rolls
+- strummed acoustic guitar?
+- foley: seagull, whale
 
 === Prechorus 2
+- tape stop on word ends
 
 === Chorus 2
 
 === Interlude
-
-kick drum sidechain
+- kick drum sidechain
+- reversed strings
+- slow piano melody over faster beat
+- some vocal ohhahhs
 
 === Bridge
+- bass is piano and guitar, long notes
+- vibrato rhodes piano
+- vibrato on vocals
+- glitch
 
 === Chorus 3
 
 === Coda
+No idea
 
-=== No idea
 
+== Mixing strategy
+- Exciters/saturators on everything
 
-Michy & Clare
 2) Mixing Aesthetics: Write a mixing strategy for your project and what
 your intentions are aesthetically.
 
@@ -258,13 +273,11 @@ time
 cluttering the 3d mix
 producer noob
 
-== Retrospective
+== Retrospective critique
 6) Critical Reflection: Once your mix is complete, rest your ears for a few
 days, and then listen critically. Review your mix as objectively as possible.
 State what worked well and not so well, and how you could improve in a
 future mixing project.
-
-==== Synfig Studio
 
 
 image::https://i1.wp.com/www.synfig.org/wp-content/uploads/2018/02/screenshot-07.png[Synfig Studio, 700, 400]
