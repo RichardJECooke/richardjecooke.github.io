@@ -5,8 +5,6 @@ tags:
   - binaural
   - 3d
   - music
-  - fl studio
-  - fruity
 categories:
   - music
 ---
@@ -33,19 +31,6 @@ of music where the instruments sound as if they are positioned in 3D space and
 move through it, around the head of the listener.
 
 This was done as an assignment for the course Music Technology 3A at UCT.
-
-== The final product
-Below is the song I made:
-
-video::F_PfTrxxxzo[youtube, width=700, height=400, theme=dark]
-
-The melody and lyrics were written by Michelle Pretorius and the singer was Clare Dublin.
-TODO
-++++
-Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>MP3</a>
-Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>Musescore score</a>
-Download the <a href='2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3'>PDF score</a>
-++++
 
 == Inspiration
 
@@ -83,11 +68,12 @@ I found two free VSTs that looked suitable:
 AMBEO Orbit is made by Sennheiser and looks more professionaly made but doesn't support distance from the head,
 only direction. Anaglyph supports both parameters and additionally allows from micro-oscillations -
 continuous small changes in position that improve the realistic effect of a sound being positioned in space.
+But Anaglyph tends to crash when using automation.
 
 === Binaural music and resources
 
 Mixing a song in 3D as opposed to in stereo seems to be almost non-existent, at least in chart-toppers.
-This is suprising as one can imagine how much more immersive and exciting music would be if it sounded like it was all around you.
+This is suprising as one can imagine how much more immersive and exciting music would be if it sounded like it was moving all around you.
 I can think of a few reasons for binaural mixing not being done:
 
 - Most people listen to music on mono radios or car stereo systems. Thus it is more economical to mix for these systems to appeal to the most listeners and make the most profit.
@@ -95,7 +81,7 @@ I can think of a few reasons for binaural mixing not being done:
 - Producers don't think the effect enhances the music enough to do it.
 - Maintaining the realism reduces creative possibilities. I.e. for a sound to maintain the illusion of 3D you can do far less with EQ, reverb, and other effects.
 
-I don't think the first point is relevant binaural music doesn't sound worse on speakers than normal stereo mixes.
+I don't think the first point is relevant as binaural music doesn't sound worse on speakers than normal stereo mixes.
 The last point is however a possiblity I had to consider carefully when writing the song. Certain necessities arise:
 
 - All sounds have to be reduced to mono before positioned in space.
@@ -121,12 +107,12 @@ Last year I created a piece of music focussing on the Kreepy Krauly and the soun
 
 video::X-prfGOo_wA[youtube, width=700, height=400, theme=dark]
 
-I thought water would be a rich source of ideas for a piece.
-I also wanted to write a pop song for a while.
+I thought water would be a rich source of ideas for a new binaural piece.
+I have also wanted to write a pop song for a while.
 Thus I asked a classmate, Michelle Pretorius, to write a melody and lyrics for a water themed song.
 I took her ideas and notated them neatly in Musescore to arrange a verse, prechorus, chorus, and bridge, shown below:
 
-TODO
+image::score.png[Sheet music]
 
 Following this I downloaded various no-attribution-required water sounds and sea sounds from freesound.org<<ref_freesound>> and recorded the vocals with another classmate, Clare Dublin.
 I aimed to merge the water sounds and vocals with an atmospheric electro-pop composition and then mix it binaurally.
@@ -152,12 +138,10 @@ Specifically, I needed to find ideas for the:
 - textural ideas
 - and other things I hadn't thought of.
 
-I also used a lot of ideas from this FL Studio orientated music production and mixing https://www.youtube.com/channel/UCIcCXe3iWo6lq-iWKV40Oug/videos[YouTube channel].<<ref_inthemix>>
-
 === Reference songs
 After looking through my music that spans a couple of decades I found the following songs that inspired techniques to try:
 
-- Alan Walker - Faded
+- Alan Walker - Faded - Modern synthesizer soudns
 - Alex & Sierra - Scarecrow - Subtle clap mixed over kick in chorus, strummed acoustic guitar on verses
 - Amphibia - Grey Area - Clicks with delay
 - All Saints - Pure Shores - Delay synths & tambourines & bass
@@ -179,8 +163,6 @@ After looking through my music that spans a couple of decades I found the follow
 - Moby - Porcelain - reversed strings, slow high piano melody over faster lower song
 - Sugababes - Good to be gone - a simple bass ostinato on the verse
 - Taylor Swift - Wildest dreams - low passed kick drum, reverb on end of all words, wordless vocals in musical interlude
-
-
 
 == Composition plan
 
@@ -225,6 +207,7 @@ Given the reference songs above, below is a coarse grained plan of the whole com
 - tape stop on word ends
 
 === Chorus 2
+- Add one more element - possibly water sounds to chorus 1
 
 === Interlude
 - kick drum sidechain
@@ -239,55 +222,57 @@ Given the reference songs above, below is a coarse grained plan of the whole com
 - glitch
 
 === Chorus 3
+- same as chorus 2
 
 === Coda
-No idea
-
+No idea yet. I planned to be inspired from something during the productiion process.
 
 == Mixing strategy
-- Exciters/saturators on everything
+To get mixing ideas I read Rumsey's book on spatial audio <<ref_rumsey>> and found that only two points were worthwhile to this process:
 
-2) Mixing Aesthetics: Write a mixing strategy for your project and what
-your intentions are aesthetically.
+- binaural audio is not effective unless the listener can turn their head to eliminate any confusion in pinpointing the elevation of a source,
+and whether it is front or rear. This can be fixed by moving the virtual sound source, rather than keeping it static.
+- pop music is artificial and thus harder to make 3D than an orchestra or natural soundscape.
 
+I also watched a lot of mixing and sound production videos from this FL Studio orientated music production and mixing https://www.youtube.com/channel/UCIcCXe3iWo6lq-iWKV40Oug/videos[YouTube channel].<<ref_inthemix>>
 
-4) Practical Mix Plan: Draw up a plan considering how best to tackle your
-mix and which processes you would follow while carefully considering and
-discussing your chosen material. This section may include diagrams /
-timelines / audio files etc.
+I combined this with my previous years' mixing experience, and inspiration gained by listening to all the binaural tracks mentioned previously, to create a mixing strategy. The items in this strategy were to be applied in conjunction with the composition plan listed previously.
+
+This was the plan:
+
+- Give each instrument/sound in the song its own position in 3D space and move it slightly but continuously throughout to mimic reality.
+- The spatial change between verse and chorus should be large to create contrast and interest.
+- Reverb should be used sparingly and have a long predelay so as not to interfere with the binaural effect.
+- Some sounds, mostly the large surf and ocean sounds, should not be binaural and should have a lot of reverb, to create contrast with the more precise and clean instrument sounds.
+
+Other than these 3D considerations my mix plan was similar to any other pop song plan, including ideas such as:
+
+- Using exciters/saturators on all instruments
+- Putting the bass and vocals in the center
+- Using EQ to eliminate any masking and separate instruments clearly
+- Using automated low pass EQ to create change between verse and chorus, and increasing excitement over time
 
 == Dangers
 
-3) Technical Skills Analysis: Discuss the technical skills you will need to
-complete this assignment. Consider your current technical skill level in
-terms
-of critical listening, plug-in skills and mix technique and identify any
-shortcomings that you need to work on in order to realize this assignment.
-5) Potential Problems: Identify possible problems, potential solutions and
-trouble-shooting strategies, so you do not fall into easily avoidable
-potholes along the way.
+This section discusses risks to creating the intended song from the plan in this document.
 
-synths and sytrus
-sound design paralysis
-time
-cluttering the 3d mix
-producer noob
+=== Technical skills
 
-== Retrospective critique
-6) Critical Reflection: Once your mix is complete, rest your ears for a few
-days, and then listen critically. Review your mix as objectively as possible.
-State what worked well and not so well, and how you could improve in a
-future mixing project.
+The biggest skill deficit I had was the music composition itself.
+I anticipated having trouble trying to create music that sounded as good as my reference tracks and suited the lyrics.
+Most importantly, I had no experience at all in creating entirely synthesizer music, and little in synthesizer sound design.
 
+As a contingency if I failed at synthesizer music when composing I could always retreat to acoustic virtual instruments, where I have a little more experience.
 
-image::https://i1.wp.com/www.synfig.org/wp-content/uploads/2018/02/screenshot-07.png[Synfig Studio, 700, 400]
+On the mixing side I didn't see any potential skill deficits.
+I have made many mixes in the past and was entirely at ease with DAWs, VSTs, and automation of effects.
+Furthermore after experimenting with the binaural VST I found it simple to use.
 
-image::song.png[]
+=== Potential problems
 
-[source,dos]
-----
-ffmpeg -framerate 60 -i temp%4d.png -i a.mp3 -start_number 0000  -vcodec libx264  -crf 16 -r 60  output.mp4
-----
+The biggest problem, other than composition, that I expected was that the binaural effect would not be as appealing as expected, or it would be difficult to achieve without creating an overly simple mix.
+The first problem cannot be overcome and is the research part of this original composition.
+The second problem could be dealt with by using fewer sounds.
 
 // page break
 <<<
@@ -317,19 +302,4 @@ _All Internet resources were accessed on 19 September 2019._
 
 * [[[ref_inthemix, 10]]] Youtube - In the mix [Internet]. n.d. Available from https://www.youtube.com/channel/UCIcCXe3iWo6lq-iWKV40Oug/videos.
 
----
-
-
-* [[[ref_mandelbulb, 3]]] vfxblog.com. Mandelbulbs, mutations, and motion capture: the visual effects of Annihilation [Internet interview]. VFXBLOG. 2018. Available from: https://vfxblog.com/2018/03/12/mandelbulbs-mutations-and-motion-capture-the-visual-effects-of-annihilation/.
-
-* [[[ref_tweetvid, 4]]] Medium.com - Charlie Gleason. Making An Interactive Music Video With WebGL [Internet]. 2015. Available from: https://medium.com/superhighfives/making-a-music-video-f60757ceb4cf.
-
-* [[[ref_dennis, 5]]] Brower BM and popcorn_10. Dennis [Internet music video]. n.d. Available from: http://www.dennis.video/#about.
-
-* [[[ref_synfig, 6]]] Synfig.org. Synfig Studio [Internet]. 2018. Available from: https://www.synfig.org.
-
-* [[[ref_twojs, 7]]] Two.js [Internet]. 2018. Available from: https://two.js.org/examples.
-
-* [[[ref_greasepencil, 8]]] Blender 2.79 manual. User Interface » Grease Pencil » Introduction [Internet]. 2018. Available from: https://docs.blender.org/manual/ko/dev/interface/grease_pencil/introduction.html.
-
-* [[[ref_threejs, 9]]] Three.js [Internet]. 2018. Available from: https://threejs.org.
+* [[[ref_rumsey, 11]]] Rumsey F. Spatial Audio. Oxford: Focal Press; 2001.

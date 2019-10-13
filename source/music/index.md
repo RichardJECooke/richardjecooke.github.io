@@ -105,7 +105,10 @@ Here are all my tracks that aren't on YouTube. Click next to cycle through them.
 
 - Guitarento: [MP3](/assets/music/2010-02-05 - Richard JE Cooke - Guitarento.mp3)
 
-
+<br/><br/>
+## 2018 · 1+2+2+1 (piano and either clarinet or violin duo)
+{% youtube fLnIDQyZ6bs %}
+Download: [PDF - Full score](/assets/scores/2019-09 - Richard JE Cooke - 1+2+2+1 - v4.pdf), [PDF - Clarinet part](/assets/scores/2019-09 - Richard JE Cooke - 1+2+2+1 - v4 - clarinet part.pdf), [Musescore](/assets/scores/2019-09 - Richard JE Cooke - 1+2+2+1 - v4.mscx)
 
 <br/><br/>
 ## 2018 · Wait for it (cello & piano duo)
