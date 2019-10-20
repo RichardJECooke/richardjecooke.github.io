@@ -14,11 +14,11 @@
 - https://github.com/EYHN/hexo-tag-cplayer
 - https://www.npmjs.com/package/cplayer
 
-# What to install  
+# What to install 
 Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
 ```
-sudo apt-get update -y && 
-sudo apt-get install curl -y && 
+sudo apt-get update -y &&
+sudo apt-get install curl -y &&
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &&
 nvm install node
 #restart

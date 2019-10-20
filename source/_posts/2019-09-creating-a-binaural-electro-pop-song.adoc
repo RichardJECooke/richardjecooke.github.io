@@ -274,6 +274,31 @@ The biggest problem, other than composition, that I expected was that the binaur
 The first problem cannot be overcome and is the research part of this original composition.
 The second problem could be dealt with by using fewer sounds.
 
+== Retrospective critique
+
+*_This section was written after the song was completed_*
+
+I failed entirely with the musical side of the exercise.
+I couldn't write any interesting harmonies or melodies, and couldn't figure out to make electronic instruments sound good.
+So I retreated to just some cheesy simple chords on piano and strings, and monotonous drums, that I copied and pasted over and over.
+
+I feel the mix is reasonly clear though. I did some interesting things:
+
+- automated the hihat pitch randomly
+- put a telephone vocal effect on the prechorus
+- used a low pass on the prechorus that is removed on the chorus
+- used some delay effects on the snare to make it somewhat interesting
+
+I did learn some things about 3D mixing that are very useful:
+
+- it sounds fine on both speakers and headphones.
+- the effect is more realistic than stereo mixing, but not by much - there is a feeling of space that is missing when using virtual instruments. I think ambient noise in a 3D recording is useful to convey location. However I would definitely binaural mixing in future.
+- AMBEO orbit does direction well, but next time I think it should be preceded by something like https://www.tokyodawn.net/proximity/[Proximity] to give a feeling of distance (Anaglyph does distance but crashed too much to be useable).
+- you can add reverb and other effects first on an instrument with no problem - the binaural plugin will sum them all to mono first and everything will sound like it is coming from a single point in space.
+- you can add a limiter at the end on the master channel without harming the 3D illusion at all.
+- sound coming from in front of you seems far louder than sounds that move to the side. I.e. AMBEO does not use panning gain compensation. I didn't do this manually but I would in future for a song that's worth my time.
+
+
 // page break
 <<<
 
