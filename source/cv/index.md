@@ -99,7 +99,7 @@ Year | Organisation | Job | Technology
 *   KW Johnstone scholarship (2005)
 *   Twamley scholarship (2005)
 *   UCT Spilhaus council scholarship (2005)
-*   Dean's merit list (2000, 2001, 2017)
+*   Dean's merit list (2000, 2001, 2017-2019)
 *   Department of Commerce entrance merit scholarship (2000)
 *   James Owen Brunt scholarship (2000)
 *   Grade 8 piano (ABRSM, 2005)
