@@ -95,6 +95,7 @@ Year | Organisation | Job | Technology
 <br /><br />
 ## Sundry achievements
 
+*   UCT \[ZA\]Artsong competition winner, 2019
 *   Microsoft qualification: MCTS & MCP in .NET 3.5 Windows Forms (2010)
 *   KW Johnstone scholarship (2005)
 *   Twamley scholarship (2005)

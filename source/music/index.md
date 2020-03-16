@@ -106,7 +106,12 @@ Here are all my tracks that aren't on YouTube. Click next to cycle through them.
 - Guitarento: [MP3](/assets/music/2010-02-05 - Richard JE Cooke - Guitarento.mp3)
 
 <br/><br/>
-## 2018 · 1+2+2+1 (piano and either clarinet or violin duo)
+## 2020 · Emakhaya (Xhosa art song) · Clare Dublin (vocals)
+{% youtube Qc4_xDFTuXo %}
+Download: [PDF](/assets/scores/2020-03 - Richard JE Cooke - Emakhaya - v7.pdf), [Musescore](/assets/scores/2020-03 - Richard JE Cooke - Emakhaya - v7.mscx)
+
+<br/><br/>
+## 2019 · 1+2+2+1 (piano and either clarinet or violin duo)
 {% youtube fLnIDQyZ6bs %}
 Download: [PDF - Full score](/assets/scores/2019-09 - Richard JE Cooke - 1+2+2+1 - v4.pdf), [PDF - Clarinet part](/assets/scores/2019-09 - Richard JE Cooke - 1+2+2+1 - v4 - clarinet part.pdf), [Musescore](/assets/scores/2019-09 - Richard JE Cooke - 1+2+2+1 - v4.mscx)
 
