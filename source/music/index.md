@@ -106,7 +106,7 @@ Here are all my tracks that aren't on YouTube. Click next to cycle through them.
 - Guitarento: [MP3](/assets/music/2010-02-05 - Richard JE Cooke - Guitarento.mp3)
 
 <br/><br/>
-## 2020 · Emakhaya (Xhosa art song) · Clare Dublin (vocals)
+## 2020 · Emakhaya (Xhosa art song) · (Clare Dublin singing)
 {% youtube Qc4_xDFTuXo %}
 Download: [PDF](/assets/scores/2020-03 - Richard JE Cooke - Emakhaya - v7.pdf), [Musescore](/assets/scores/2020-03 - Richard JE Cooke - Emakhaya - v7.mscx)
 
