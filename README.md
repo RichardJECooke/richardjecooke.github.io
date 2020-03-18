@@ -58,7 +58,7 @@ Log in with WinSCP and copy the public folder contents into the public_html fold
 The ftp deployer doesn't seem to work.
 
 ## Bitbucket deploy
-- Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too.
+- Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too (should be already done)
 - Keep committing locally to master.
 ```bash
 ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
