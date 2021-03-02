@@ -34,6 +34,7 @@ I specialise in front end web development as I love Javascript, but have written
 #### University of Cape Town
 
 *   **B.Mus** in classical composition (2020)
+	* distinctions in composition and history
 
 *   **M.Sc** in computer science by [dissertation](http://pubs.cs.uct.ac.za/archive/00000370/) (2006)
     *   distinction
