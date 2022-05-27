@@ -14,7 +14,7 @@
 - https://github.com/EYHN/hexo-tag-cplayer
 - https://www.npmjs.com/package/cplayer
 
-# What to install 
+# What to install
 Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
 ```
 sudo apt-get update -y &&
@@ -34,7 +34,7 @@ npm install hexo-cli
 npm install hexo-renderer-asciidoc
 npm install hexo-deployer-git
 npm install hexo-deployer-jsftp
-git remote add origin https://bitbucket.org/RichardJECooke/richardjecooke.bitbucket.io
+git remote add origin https://github.com/RichardJECooke/richardjecooke.github.io
 ```
 
 # Run locally
@@ -47,23 +47,22 @@ npm update
 
 # Deploy
 - https://hexo.io/docs/deployment.html
-- This site deploys to https://richardjecooke.bitbucket.io/ and https://richardcooke.info
+- This site deploys to https://richardjecooke.github.io and https://richardcooke.info
 
 ## richardcooke.info deploy
 ```
 ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
 # ./node_modules/.bin/hexo deploy password=enter_password
 ```
-Log in with WinSCP and copy the public folder contents into the public_html folder manually.
+Log in with WinSCP and copy the `docs` folder contents into the public_html folder manually.
 The ftp deployer doesn't seem to work.
 
-## Bitbucket deploy
-- Set your main branch in bitbucket or github to 'deployed' and set this branch in your config to deploy too (should be already done)
-- Keep committing locally to master.
+## Github deploy
 ```bash
 ./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
 ./node_modules/.bin/hexo deploy
 ```
+- Push to github. The docs folder is automatically output as the webpage.
 - Username is richard.j.e.cooke@gmail.com (when asked for credentials by git)
 
 # Themes

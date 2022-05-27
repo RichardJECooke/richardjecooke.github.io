@@ -77,8 +77,8 @@ pagination_dir: page
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
-  repo: https://bitbucket.org/RichardJECooke/richardjecooke.bitbucket.io
-  branch: deployed
+  repo: https://github.com/RichardJECooke/richardjecooke.github.io
+  branch: main
 # - type: ftp
 #   connection:
 #     host: richardcooke.info
