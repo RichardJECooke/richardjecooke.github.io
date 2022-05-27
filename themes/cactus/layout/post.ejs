@@ -8,16 +8,10 @@
       <%- partial('_partial/post/date', { post: page, class_name: 'postdate' }) %>
       <%- partial('_partial/post/tag') %>
     </div>
-    <%- fbcommentshead() %>
   </header>
   <%- partial('_partial/post/gallery') %>
   <div class="content" itemprop="articleBody">
     <%- page.content %>
   </div>
 </article>
-<br /><br />
-<hr />
-<br />
-<%- fbcomments(page.permalink) %>
 <%- partial('_partial/comments') %>
-
