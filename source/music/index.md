@@ -15,6 +15,7 @@ You may freely listen to and share this music, but may not use it for commercial
 Follow me on [YouTube](https://www.youtube.com/user/richardjecooke/videos) or [Metapop](https://metapop.com/richardjecooke) to hear new tracks.
 
 <br/><br/>
+
 ## Tracks
 Here are all my tracks that aren't on YouTube. Click next to cycle through them.
   <!-- volume: 0.5
@@ -85,6 +86,7 @@ Here are all my tracks that aren't on YouTube. Click next to cycle through them.
   }
 ]
 {% endcplayer %}
+
 - Amen Breakdown: [MP3](/assets/music/2018-08 - Richard JE Cooke - Amen breakdown - v4.mp3), [PDF](/assets/scores/2018-08 - Richard JE Cooke - Amen breakdown v4.pdf), [Sibelius](/assets/scores/2018-08 - Richard JE Cooke - Amen breakdown - v4.sib), [MusicXML](/assets/scores/2018-08 - Richard JE Cooke - Amen breakdown - v4.mxl)
 
 - Klondyke: [MP3](/assets/music/2015-02-25 - Richard JE Cooke - Klondyke - V4.mp3)

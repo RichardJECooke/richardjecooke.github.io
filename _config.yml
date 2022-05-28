@@ -30,6 +30,7 @@ i18n_dir: :lang
 skip_render:
   - assets/**/*
   - google1515058ef76c5056.html
+  - .nojekyll
 
 # Writing
 new_post_name: :year-:month-:title.md # File name of new posts
@@ -76,9 +77,9 @@ pagination_dir: page
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-- type: git
-  repo: https://github.com/RichardJECooke/richardjecooke.github.io
-  branch: main
+# - type: git
+#   repo: https://github.com/RichardJECooke/richardjecooke.github.io
+#   branch: main
 # - type: ftp
 #   connection:
 #     host: richardcooke.info
@@ -101,3 +102,8 @@ feed:
   content_limit: 200
   content_limit_delim: '.'
   order_by: -date
+
+# Markdown options for hexo-renderer-marked
+marked:
+  gfm: true
+

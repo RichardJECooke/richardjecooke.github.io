@@ -39,9 +39,9 @@
     <category term="coding" scheme="https://richardcooke.info/categories/coding/"/>
     
     
-    <category term="wordpress" scheme="https://richardcooke.info/tags/wordpress/"/>
-    
     <category term="javascript" scheme="https://richardcooke.info/tags/javascript/"/>
+    
+    <category term="wordpress" scheme="https://richardcooke.info/tags/wordpress/"/>
     
     <category term="hexo" scheme="https://richardcooke.info/tags/hexo/"/>
     
@@ -196,8 +196,6 @@
     <category term="wordpress" scheme="https://richardcooke.info/categories/wordpress/"/>
     
     
-    <category term="wordpress" scheme="https://richardcooke.info/tags/wordpress/"/>
-    
     <category term="avada" scheme="https://richardcooke.info/tags/avada/"/>
     
     <category term="beaver builder" scheme="https://richardcooke.info/tags/beaver-builder/"/>
@@ -211,6 +209,8 @@
     <category term="genesis" scheme="https://richardcooke.info/tags/genesis/"/>
     
     <category term="jupiter" scheme="https://richardcooke.info/tags/jupiter/"/>
+    
+    <category term="wordpress" scheme="https://richardcooke.info/tags/wordpress/"/>
     
   </entry>
   
@@ -239,9 +239,9 @@
     
     <category term="testing" scheme="https://richardcooke.info/tags/testing/"/>
     
-    <category term="rails" scheme="https://richardcooke.info/tags/rails/"/>
-    
     <category term="mysql" scheme="https://richardcooke.info/tags/mysql/"/>
+    
+    <category term="rails" scheme="https://richardcooke.info/tags/rails/"/>
     
     <category term="rAM" scheme="https://richardcooke.info/tags/rAM/"/>
     
@@ -339,9 +339,9 @@
     <category term="ruby on rails" scheme="https://richardcooke.info/categories/ruby-on-rails/"/>
     
     
-    <category term="activeRecord" scheme="https://richardcooke.info/tags/activeRecord/"/>
-    
     <category term="rails" scheme="https://richardcooke.info/tags/rails/"/>
+    
+    <category term="activeRecord" scheme="https://richardcooke.info/tags/activeRecord/"/>
     
     <category term="ruby" scheme="https://richardcooke.info/tags/ruby/"/>
     
@@ -1451,9 +1451,9 @@
     <category term="coding" scheme="https://richardcooke.info/categories/javascript/coding/"/>
     
     
-    <category term="jquery mobile" scheme="https://richardcooke.info/tags/jquery-mobile/"/>
-    
     <category term="jquery" scheme="https://richardcooke.info/tags/jquery/"/>
+    
+    <category term="jquery mobile" scheme="https://richardcooke.info/tags/jquery-mobile/"/>
     
   </entry>
   

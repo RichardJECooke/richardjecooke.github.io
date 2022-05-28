@@ -13,15 +13,15 @@ tags:
 
 <br />
 
-{% post_link eccr-the-western-cape-government-health-web-application-for-discharges ECCR %} | | {% post_link the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants Ekaya.vip %} | | Weaverlution.com
------|-|-|-|-
-Electronic medical records for Western Cape government hospitals | | Tenant identification & credit check website in the rental industry | | Partnering NGOs with corporate and individual support
-<a href='{% post_path eccr-the-western-cape-government-health-web-application-for-discharges %}' >![ECCR](6_diagnosis-300x226.png)</a> | | [![Ekaya](vip-300x148.png)]({% post_path en/2016/the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants/ %}) | | [![Weaverlution](weaverlution-300x170.jpg)](weaverlution.jpg)
+| {% post_link eccr-the-western-cape-government-health-web-application-for-discharges ECCR %} | | {% post_link the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants Ekaya.vip %} | | Weaverlution.com |
+|-----|-|-|-|-|
+| Electronic medical records for Western Cape government hospitals | | Tenant identification & credit check website in the rental industry | | Partnering NGOs with corporate and individual support
+| <a href='{% post_path eccr-the-western-cape-government-health-web-application-for-discharges %}' >![ECCR](6_diagnosis-300x226.png)</a> | | [![Ekaya](vip-300x148.png)]({% post_path en/2016/ |the-making-of-ekaya-vip-easy-identity-credit-checks-for-tenants/ %}) | | [![Weaverlution](weaverlution-300x170.jpg)](weaverlution.jpg) |
 
 <br /><br />
-## **Résumé** &nbsp; &nbsp; · &nbsp; &nbsp; *Updated September 2018*
+## **Résumé** · *Updated September 2018*
 
-I specialise in front end web development as I love Javascript, but have written all kinds of software: 
+I specialise in front end web development as I love Javascript, but have written all kinds of software:
 - full stack ASP.NET & node.js web sites
 - Windows Mobile
 - SSIS data transformations & reporting
@@ -57,8 +57,8 @@ I specialise in front end web development as I love Javascript, but have written
 User interface & usability design · Leading presentations & workshops · Leading small teams & being Scrum master · Research & report writing · English
 
 #### Favoured technologies
-Linux (Ubuntu) on Windows · Docker 
-Node.js with Javascript/Typescript 
+Linux (Ubuntu) on Windows · Docker
+Node.js with Javascript/Typescript
 Postgresql · git · HTML · CSS (Bootstrap) · parcel.js · Vue.js · Hexo.js · Adonis.js
 
 #### Experienced in
@@ -87,7 +87,7 @@ Year | Organisation | Job | Technology
   | | As a temporary BI programmer, imported various data sources using the Kimball methodology to convert an existing data warehouse from Oracle to MS SQL  | SSIS
 2012-2010 |  | In a team of seven, imported diverse data sources to create a unified transactional database view of client & intermediary data for marketing analysis. This included social network visualisation work using yFiles for Silverlight | SQL Server · yFiles
 2010 | [HST](http://www.healthsystems.co.za/) | In a team of two, rearchitected a medical billing system used in hospitals nationally  | Caché · ASP .NET
-2010 | [Saratoga Software](http://saratoga.co.za/) | Team leader for three junior programmers, managed the coding of new features for an SMS based insurance system  | 
+2010 | [Saratoga Software](http://saratoga.co.za/) | Team leader for three junior programmers, managed the coding of new features for an SMS based insurance system  |
 2008 | AppointMate | Designed and coded an SMS gateway  | MySQL · Kannel
 2007 - 2009 | [Itron](http://itron.com/) | Coded enhancements, including a new workflow framework, for a meter reading client-server system used in Africa, the middle east, & France | SQL Compact · Windows Mobile
 2007 | [Hawkins County Gas, Tennessee](http://hcgas.com/) | Maintained & enhanced a natural gas billing system  | Visual Basic · SQL · Microsoft Dynamics
@@ -110,11 +110,11 @@ Year | Organisation | Job | Technology
 <br /><br />
 ## Publications
 
-[Link prediction and link detection in sequences of large social networks using temporal and local metrics](http://pubs.cs.uct.ac.za/archive/00000370/) 
+[Link prediction and link detection in sequences of large social networks using temporal and local metrics](http://pubs.cs.uct.ac.za/archive/00000370/)
 UCT masters dissertation, 2006
 
-[Adaptive Bayesian agents: Enabling distributed social networks](http://pubs.cs.uct.ac.za/archive/00000309/) 
+[Adaptive Bayesian agents: Enabling distributed social networks](http://pubs.cs.uct.ac.za/archive/00000309/)
 South African Journal of Business Management, vol. 37, no. 1, pp. 41-55
 
-[Using Bayesian Agents to Enable Distributed Network Knowledge: A Critique](http://pubs.cs.uct.ac.za/archive/00000221/01/Bayesian_Agents.pdf) 
+[Using Bayesian Agents to Enable Distributed Network Knowledge: A Critique](http://pubs.cs.uct.ac.za/archive/00000221/01/Bayesian_Agents.pdf)
 Proceedings 4th International Critical Management Studies Conference, 4-6 July 2005
