@@ -13,6 +13,7 @@
 - https://github.com/probberechts/hexo-theme-cactus
 - https://github.com/EYHN/hexo-tag-cplayer
 - https://www.npmjs.com/package/cplayer
+- .nojekyll file ensures github won't alter the site
 
 # What to install
 Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
