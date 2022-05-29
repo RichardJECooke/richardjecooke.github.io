@@ -1,22 +1,9 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
-  "private": true,
-  "hexo": {
-    "version": "6.2.0"
-  },
-  "dependencies": {
-    "hexo": "^6.2.0",
-    "hexo-generator-archive": "^1.0.0",
-    "hexo-generator-category": "^1.0.0",
-    "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index": "^2.0.0",
-    "hexo-generator-tag": "^1.0.0",
-    "hexo-renderer-asciidoc": "^2.1.1",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-marked": "^5.0.0",
-    "hexo-renderer-stylus": "^2.1.0",
-    "hexo-server": "^3.0.0",
-    "hexo-tag-cplayer": "^1.0.0"
-  }
+	"name": "richardjecooke_homepage_11ty",
+	"version": "1.0.0",
+	"private": true,
+	"dependencies":
+	{
+		"@11ty/eleventy": "^1.0.1"
+	}
 }

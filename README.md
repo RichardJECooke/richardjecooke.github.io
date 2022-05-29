@@ -1,21 +1,14 @@
-# Todo
-- use rsync instead of ftp (or ftps?)
+## Todo
 - add search
 - pond5 / metapop / audiojungle
 - check out next theme / or make a theme with bootstrap
-- add new options to hexo cplayer https://github.com/EYHN/hexo-tag-cplayer/issues/4
-  - or switch to aplayer - https://github.com/MoePlayer/APlayer
-  - https://github.com/MoePlayer/hexo-tag-aplayer
-  - then add to docs
 
-# Notes
-- Forum: https://gitter.im/hexojs/hexo
-- https://github.com/probberechts/hexo-theme-cactus
-- https://github.com/EYHN/hexo-tag-cplayer
-- https://www.npmjs.com/package/cplayer
+## Notes
+- https://www.11ty.dev/docs
 - .nojekyll file ensures github won't alter the site
+- Uses node 16.15.0
 
-# What to install
+## Setup
 Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
 ```
 sudo apt-get update -y &&
@@ -24,51 +17,31 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | b
 nvm install node
 #restart
 sudo apt install npm
+nvm install 16.15.0
+nvm alias default 16.15.0
+nvm alias system 16.15.0
+nvm use 16.15.0
 ```
 
-# Initial creation
+## Run locally on localhost:8080
 Run Ubuntu console
 ```
-npm install hexo-cli
-.node_modules/.bin/hexo init mysite
-//copy it up a folder
-npm install hexo-renderer-asciidoc
-npm install hexo-deployer-git
-npm install hexo-deployer-jsftp
-git remote add origin https://github.com/RichardJECooke/richardjecooke.github.io
-```
-
-# Run locally
-Run Ubuntu console
-```
-cd /mnt/c/data/site
+cd /mnt/c/data/mysite
 npm update
-./node_modules/.bin/hexo server
+rm -rf ./docs && npx @11ty/eleventy --serve    #  run local server
+rm -rf ./docs && npx @11ty/eleventy    #  build for deploy
+# DEBUG=Eleventy* npx @11ty/eleventy
 ```
 
-# Deploy
-- https://hexo.io/docs/deployment.html
+Alternative command: `node ../node_modules/@11ty/eleventy/cmd.js`
+
+## Deploy
 - This site deploys to https://richardjecooke.github.io and https://richardcooke.info
 
-## richardcooke.info deploy
-```
-./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
-# ./node_modules/.bin/hexo deploy password=enter_password
-```
-Log in with WinSCP and copy the `docs` folder contents into the public_html folder manually.
-The ftp deployer doesn't seem to work.
+### richardcooke.info deploy
+- rm -rf ./docs && npx @11ty/eleventy
+- Log in with WinSCP and copy the `docs` folder contents into the public_html folder manually.
 
-## Github deploy
-```bash
-./node_modules/.bin/hexo clean && ./node_modules/.bin/hexo generate
-./node_modules/.bin/hexo deploy
-```
-- Push to github. The docs folder is automatically output as the webpage.
+### Github deploy
+- Build and push to github. The docs folder is automatically output as the webpage.
 - Username is richard.j.e.cooke@gmail.com (when asked for credentials by git)
-
-# Themes
-- Using my own fork of cactus (must be copied manually to update): https://bitbucket.org/rjeapps/hexo_cactus_theme_fork/src/master/
-forked from https://probberechts.github.io/hexo-theme-cactus/cactus-dark/public/
-
-# New post
-hexo new [layout] <title>
