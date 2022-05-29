@@ -1,14 +1,17 @@
 "use strict";
 
-module.exports = function(eleventyConfig)
+module.exports = function(config)
 {
-	return {
+	const folderSetup =
+	{
 		dir: {
 			input: './src',
-			includes: '_lib', //relative to input folder
 			output: './docs'
 		}
 	};
+	config.addPassthroughCopy('./src/media/');
+
+	return folderSetup
 };
 
 /* # Hexo Configuration
