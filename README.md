@@ -1,12 +1,14 @@
 ## Todo
+- download all fonts, js, styles instead of cdn
+- get ideas from https://darekkay.com/blog/hexo-to-eleventy/
 - add search
 - pond5 / metapop / audiojungle
 - check out next theme / or make a theme with bootstrap
 
 ## Notes
-- https://www.11ty.dev/docs
-- .nojekyll file ensures github won't alter the site
-- Uses node 16.15.0
+- node 16.15.0
+- https://www.11ty.dev/docs (version in the package.json file)
+- Bulma 0.9.4: https://bulma.io/documentation/overview/start/
 
 ## Setup
 Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
@@ -28,9 +30,9 @@ Run Ubuntu console
 ```
 cd /mnt/c/data/mysite
 npm update
-rm -rf ./docs && npx @11ty/eleventy --serve    #  run local server
-rm -rf ./docs && npx @11ty/eleventy    #  build for deploy
-# DEBUG=Eleventy* npx @11ty/eleventy
+clear && rm -rf ./docs && npx @11ty/eleventy --serve    #  run local server
+clear && rm -rf ./docs && npx @11ty/eleventy    #  build for deploy
+clear && rm -rf ./docs && DEBUG=Eleventy* npx @11ty/eleventy  # debug
 ```
 
 Alternative command: `node ../node_modules/@11ty/eleventy/cmd.js`

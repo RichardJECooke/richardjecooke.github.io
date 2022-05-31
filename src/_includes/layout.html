@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>LAYOUT TITLE</title>
-</head>
-<body>
-	{{ content -}}
-	<hr />
-	{{ content -}}
-</body>
-</html>
+{%- include '_html_head.html'- %}
+{% include '_header.html'- %}
+{{ content }}
+<!-- {% include '_footer.html' -%} -->
+{% include '_html_close.html' -%}
