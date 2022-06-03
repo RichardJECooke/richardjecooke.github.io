@@ -6,6 +6,7 @@
 	--border_color: hsl(0, 0%, 5%);
 	--text_color: hsl(0, 0%, 98%);
 	--link_color: hsl(45, 100%, 50%);
+	--link_brighten_color: hsl(35, 100%, 90%);
 	--heading_color: hsl(0, 0%, 93%);
 	--shadow_color: hsl(0, 0%, 10%);
 	/* layout */
