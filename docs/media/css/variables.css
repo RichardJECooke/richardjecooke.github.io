@@ -1,0 +1,16 @@
+:root
+{
+	/* color */
+	--html_bgcolor: hsl(0, 0%, 13%);
+	--footer_bgcolor: hsl(0, 0%, 20%);
+	--border_color: hsl(0, 0%, 5%);
+	--text_color: hsl(0, 0%, 98%);
+	--link_color: hsl(45, 100%, 50%);
+	--heading_color: hsl(0, 0%, 93%);
+	--shadow_color: hsl(0, 0%, 10%);
+	/* layout */
+	--gutter_width: 2rem;
+	--hspacer: 1.5rem;
+	--reading_width: 45rem;
+	--vspacer: 2rem;
+}

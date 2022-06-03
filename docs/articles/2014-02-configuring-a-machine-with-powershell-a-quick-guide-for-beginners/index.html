@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title> · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/media/css/main.css">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script>
+<div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters grid_min_auto">
+			<div>
+				<img src="media/img/logo.png" width="60px" class="white_image"></img>
+			</div>
+			<div>
+				<div>
+					<h1 class="no_margin">Richard JE Cooke</h1>
+				</div>
+				<div class="flex">
+					<div class="hspacer">
+						<a href="articles/index.html">Articles</a>
+					</div>
+					<div class="hspacer">
+						<a href="apps/index.html">Apps</a>
+					</div>
+					<div class="hspacer">
+						<a href="music/index.html">Music</a>
+					</div>
+					<div  class="hspacer">
+						<a href="cv/index.html">C.V.</a>
+					</div>
+					<div>
+						<a href="rss/index.html">RSS feed</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+
+<p>This article will show you everything you need to know to use PowerShell to setup Windows services and IIS applications.  It's aimed at complete beginners and is as concise as possible.</p>
+<h2>Why do this in PowerShell?</h2>
+<p>I wrote the script discussed in this article to completely automate the configuration of our virtual machines. Whenever a new environment is created for testing or deployment all that needs to be done is to run a script, rather than install and configure everything manually. Why PowerShell? Because it's the Microsoft standard tool for system administration.</p>
+<h2>Install PowerShell</h2>
+<p>Google the latest version of the Windows Management Framework, download and install it.  <a href="http://www.microsoft.com/en-za/download/details.aspx?id=40855">Version 4 of PowerShell</a> is the latest at the time of writing.</p>
+<p><strong>WARNING</strong> Some of the modules available in PowerShell depend on the version of Windows you have, not the version of PowerShell.  If you find a function you are trying to use just isn't working check in the MSDN documentation to see if its module is in your version of Windows.</p>
+<h2>Windows PowerShell ISE (integrated scripting environment)</h2>
+<p>The ISE is a useful text editor for your scripts and can run them too.</p>
+<h3>Hotkeys</h3>
+<p>- Ctrl 1 to Ctrl 3 change the arrangement of the script and console windows</p>
+<ul>
+<li>Ctrl R switches between the script and console windows</li>
+</ul>
+<p><strong>WARNING</strong> The ISE does not clear the PowerShell session whenever you click run. If you make a change to a script used by another script the change won't be used. This is because all the functions have already been defined in the session. Instead you have to use only one file, or restart the ISE.</p>
+<h2>Allow PowerShell to run scripts</h2>
+<p>Start a PowerShell command window and run the following command <code>Set-Executionpolicy RemoteSigned</code></p>
+<p>This will allow you to run scripts in the current folder by typing <code>./MyScript.ps1</code></p>
+<h2>Make some configuration settings</h2>
+<p>Let's look at a basic script</p>
+<pre><code class="language-powershell">&lt;#
+Purpose:
+    This script configures a machine.
+#&gt;
+
+
+# The line below ensures we have correct version, it is not just a comment
+#requires -Version 3.0
+
+#region Settings
+
+$folders = @(
+    [pscustomobject] @{name=&quot;Books&quot;; file = &quot;C:\temp\Books&quot;; user = &quot;EVERYONE&quot;; };
+    [pscustomobject] @{name=&quot;Sound&quot;; file = &quot;C:\temp\Sound&quot;; user = &quot;EVERYONE&quot;; };
+)
+
+#endregion
+
+cls
+Write-Host &quot;Starting program&quot;
+foreach ($item in $folders)
+{
+    Write-Host $item.file
+}
+</code></pre>
+<ul>
+<li>Line 1 shows multi-line comments.</li>
+<li>Line 6 shows single line comments.</li>
+<li>Line 7 shows an interpreter directive - the script won't run unless PowerShell is the right version.</li>
+<li>Lines 9 and 16 define a region that you can minimise in the ISE to keep your script uncluttered.</li>
+<li>Line 11 defines a variable. Variables start with $. The @ symbol means the following lines are all one command (otherwise PowerShell thinks one line is one command; there are no semicolon endings). This line also defines an array.  It casts two anonymous dictionaries of three strings to a pscustomerobject.</li>
+<li>Line 18 shows that DOS commands are included in PowerShell, and clears the screen.</li>
+<li>Line 19 allows you to write to the screen and the next few lines show you a foreach loop.</li>
+</ul>
+<h2>Put the configuration in a separate file</h2>
+<p>Let's put the configuration arrays in a separate file so we can edit them separately later. Make a new script called Configuration.ps1 and add these lines:</p>
+<pre><code class="language-powershell">$version = 1
+
+$folders = @(
+    pscustomobject @{name=&quot;Books&quot;; file = &quot;C:\temp\Books&quot;; user = &quot;EVERYONE&quot;; };
+    pscustomobject @{name=&quot;Sound&quot;; file = &quot;C:\temp\Sound&quot;; user = &quot;EVERYONE&quot;; };
+)
+
+$windowsServices = @(
+    pscustomobject @{name=&quot;Monitoring Service&quot;;     file = &quot;C:\temp\Movie\SystemsMonitor.exe&quot;;                  user = &quot;NetworkService&quot;;         password = &quot;1gn0red&quot; };
+)
+</code></pre>
+<p>We can then make a script that uses these settings like so:</p>
+<pre><code class="language-powershell">Write-Host $version
+Write-Host &quot;Importing configuration settings&quot;
+. $PSScriptRoot\Configuration.ps1
+Write-Host $version
+</code></pre>
+<p><strong>WARNING</strong> Note that line 1 won't work because the variable hasn't been defined yet. PowerShell doesn't look forward through a file - functions and variables must be declared before being used. Line 3 is called dot sourcing. It's as if the other script file had been copied and pasted into that line. It's more neat to make your script libraries into standalone reusable modules, but we'll get to that later.</p>
+<h2>Functions and parameters</h2>
+<p>Let's look at a basic function and its use:</p>
+<pre><code class="language-powershell">function Get-ValueOrUseDefault($message, $default)
+{
+    $input = Read-Host $message
+    if ($input -eq $null) { return $default }
+    if ($input -eq &quot;&quot;)    { return $default }
+    return $input
+}
+
+$scheduledTaskUser = &quot;Richard&quot;
+$scheduledTaskUser = Get-ValueOrUseDefault (&quot;Enter the user to run scheduled tasks as, or push enter to use the default value '&quot; + $scheduledTaskUser + &quot;'&quot;) (scheduledTaskUser)
+</code></pre>
+<p>Functions work as you'd expect except for a couple of surprises:</p>
+<ul>
+<li>Line 1: PowerShell expects functions to start with a verb from the list found by running Get-Verb.  It won't error but will warn you.</li>
+<li>Line 4: Comparison operators are -eq for =, -ne for &lt;&gt;, -gt for &gt;, and so on. Null, true, and false are represented by $null, $true, and $false.</li>
+<li>Line 10: Functions are not called with parameters in brackets, nor separated by commas.  Parameters are separated only by whitespace. Brackets are used to wrap something that contains spaces into one parameter.</li>
+<li>Parameters are passed by value unless you preceed the formal and actual parameters by ref. If the function can't find a variable in the parameter list it will create a global variable (like Javascript if you create a variable without using 'var').</li>
+</ul>
+<h2>Modules &amp; logging</h2>
+<p>PowerShell groups code for reuse by making modules (similar to packages or assemblies in other languages). Here's how to import and use a logging module. Download and unzip this logging <a href="http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927">module</a> into a subfolder called PSLog beneath your script. Notice that the folder contains a module manifest file and a code file.  To make your own module just copy this folder and rename the files and manifest information. To import and use the module use this code:</p>
+<pre><code class="language-powershell">Write-Host &quot;Creating log file&quot;
+Import-Module $PSScriptRoot\PSLog
+Start-Log -LogName PrepareMachineForDTS -LogPath $PSScriptRoot -Level All
+Write-Host &quot;I'm in a file and on the screen&quot;
+</code></pre>
+<p>Line 1 will just write to the screen.
+The module is then imported in line 2 ($PSScriptRoot is the folder the script is in).
+Line 3 activates it to create a log file and writes further Write-Host output to the file as well as the screen.</p>
+<h2>Calling DOS commands</h2>
+<p>If you're not using Windows 8 or the server version you'll find many missing PowerShell commands and you'll have to rely on the standard DOS management applications.  Calling them with the correct parameters can be tricky. PowerShell is usually pretty clever and correctly surrounds a variable's content with &quot; &quot; when passing it as parameter.  But if it doesn't work put the whole command in a string and run it like this:</p>
+<pre><code class="language-powershell">$command = &quot;cmd /c '&quot; + &quot;schtasks /create /tn `&quot;&quot; + $item.name + &quot;`&quot; /TR  `&quot;&quot; + $item.file + &quot;`&quot; /RU &quot; + $scheduledTaskUser + &quot; /RP &quot; + $scheduledTaskUserPassword + &quot; &quot; + $item.schedule + &quot;'&quot;
+$output = Invoke-Expression $command
+Write-Host $output
+</code></pre>
+<h2>A full script with useful functions</h2>
+<p>That's about it. We've covered the basics of PowerShell and all the suprises for a novice user. The code below gives you a lot of useful functions to create folders, share folders on the network, create IIS applications, create scheduled tasks, and create Windows services. It's quite simple but if you have questions please ask them in a comment at the bottom of this page.</p>
+<pre><code class="language-powershell">$folders  = @(
+    pscustomobject @{file = &quot;C:\temp\movie&quot;;   };
+    pscustomobject @{file = &quot;C:\temp\sound&quot;;   };
+)
+
+$sharedFolders = @(
+    pscustomobject @{name=&quot;movie&quot;; file = &quot;C:\movie&quot;; user = &quot;EVERYONE&quot;;     };
+    pscustomobject @{name=&quot;sound&quot;; file = &quot;C:\temp\sound&quot;; user = &quot;EVERYONE&quot;;     };
+)
+
+$scheduledTasks = @(
+    pscustomobject @{name=&quot;Run movies&quot;; file = &quot;C:\temp\movie\Go.bat&quot;;  enabled = $true; schedule=&quot; /ST 19:00 /SC DAILY &quot;  };
+)
+
+$windowsServices = @(
+    pscustomobject @{name=&quot;Monitor movie&quot;;     file = &quot;C:\temp\movie&quot;; user = &quot;NetworkService&quot;; password = &quot;1gn0red&quot; };
+)
+
+$virtualDirectories = @(
+    pscustomobject @{name=&quot;MovieSite&quot;; file=&quot;C:\temp\movie\webapp&quot;; user=&quot;NetworkService&quot;; password = &quot;1gn0red&quot;;   authentication=&quot;Windows&quot;          };
+)
+
+# The line below ensures we have correct version, it is not just a comment
+#requires -Version 3.0
+
+#region Functions
+function Get-ParentFolder($folder)
+{
+    return (Split-Path -parent $folder)
+}
+
+function Confirm-WindowsServiceExists($name)
+{
+    if (Get-Service $name -ErrorAction SilentlyContinue)
+    {
+        return $true
+    }
+    return $false
+}
+
+function Remove-WindowsServiceIfItExists($name)
+{
+    $exists = Confirm-WindowsServiceExists $name
+    if ($exists)
+    {
+        Write-Host &quot;Remove Windows service - &quot; $name
+        $output = (sc.exe delete $name)
+        Write-Host $output
+    }
+}
+
+function Confirm-ScheduledTaskExists($name)
+{
+    schtasks /query /TN $name 2&gt;&amp;1&gt;null       #hide error and standard output from displaying
+    return $LastExitCode -eq 0       #if task exists exit code won't be an error
+}
+
+function Remove-ScheduledTaskIfItExists($name)
+{
+    $exists = Confirm-ScheduledTaskExists $name
+    if ($exists)
+    {
+        $output = (schtasks /delete /f /tn $name)  #/f = suppress confirmation message so it can delete without user input
+        Write-Host $output
+    }
+}
+
+function Initialize-Logging
+{
+    $parentFolder = Get-Parent-Folder $PSScriptRoot
+    Import-Module $parentFolder\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
+    Start-Log -LogName PrepareMachineForDTS -LogPath $parentFolder -Level All
+}
+
+function Protect-Password($password)
+{
+    return ($password | ConvertTo-SecureString -asPlainText -Force)
+}
+
+function Add-WindowsServices($windowsServices)
+{
+    Write-Host &quot;Creating Windows services&quot;
+    foreach ($item in $windowsServices)
+    {
+        Write-Host &quot;Adding Windows service - &quot; $item.name
+        $securePassword = Protect-Password $item.password
+        $user = New-Object System.Management.Automation.PSCredential ($item.user, $securePassword )
+        New-Service -name $item.name -binaryPathName $item.file -credential $user
+    }
+}
+
+function Add-ScheduledTasks($scheduledTaskUser, $scheduledTaskUserPassword, $scheduledTasks)
+{
+    Write-Host &quot;Creating scheduled tasks&quot;
+
+    foreach ($item in $scheduledTasks)
+    {
+        $command = &quot;cmd /c '&quot; + &quot;schtasks /create /tn `&quot;&quot; + $item.name + &quot;`&quot; /TR  `&quot;&quot; + $item.file + &quot;`&quot; /RU &quot; + $scheduledTaskUser + &quot; /RP &quot; + $scheduledTaskUserPassword + &quot; &quot; + $item.schedule + &quot;'&quot;
+        $command
+        $output = Invoke-Expression $command
+        Write-Host $output
+
+        if ($item.enabled -eq $true)
+        {
+            continue
+        }
+        $command = &quot;schtasks /change /tn `&quot;&quot; + $item.name + &quot;`&quot; /DISABLE&quot;
+        $command
+        $output = Invoke-Expression $command
+        Write-Host $output
+    }
+}
+
+function Remove-ScheduledTasks($scheduledTasks)
+{
+    Write-Host &quot;Deleting scheduled tasks if they exist&quot;
+    foreach ($item in $scheduledTasks)
+    {
+        Remove-ScheduledTaskIfItExists($item.name)
+    }
+}
+
+function Remove-WindowsServices($services)
+{
+    Write-Host &quot;Deleting Windows services if they exist&quot;
+    foreach ($item in $services)
+    {
+        Remove-WindowsServiceIfItExists($item.name)
+    }
+}
+
+function Get-ValueOrUseDefault($message, $default)
+{
+    $input = Read-Host $message
+    if ($input -eq $null) { return $default }
+    if ($input -eq &quot;&quot;)    { return $default }
+    return $input
+}
+
+function Add-AppPool($virtualDirectory)
+{
+    Write-Host &quot;Creating IIS app pool - &quot; $virtualDirectory.name
+    $poolName = &quot;IIS:\AppPools\&quot; + $virtualDirectory.name
+    $pool = New-Item $poolName
+    $pool.processModel.userName = $virtualDirectory.user
+    $pool.processModel.password = $virtualDirectory.password
+    $pool.processModel.identityType = &quot;SpecificUser&quot;
+    $pool.processModel.idleTimeout = TimeSpan &quot;0.00:00:00&quot;
+    $pool.managedRuntimeVersion = &quot;4.0&quot;
+    $pool.recycling.periodicRestart.time = TimeSpan &quot;00:00:00&quot;
+    $pool | Set-Item
+}
+
+function Add-VirtualDirectory($virtualDirectory)
+{
+    Write-Host &quot;Creating IIS virtual directory - &quot; $virtualDirectory.name
+    $name = &quot;IIS:\Sites\Default Web Site\&quot; + $virtualDirectory.name
+    New-Item $name -Type Application -physicalPath $virtualDirectory.file
+    Set-ItemProperty $name -Name applicationPool -Value $virtualDirectory.name
+}
+
+function Add-WindowsAuthenticationToAppIfNecessary($virtualDirectory)
+{
+    if ($virtualDirectory.authentication -ne &quot;Windows&quot;)
+    {
+        return
+    }
+    Write-Host &quot;Setting Windows authentication for IIS app - &quot; $virtualDirectory.name
+    $command = $env:SystemRoot + &quot;\system32\inetsrv\AppCmd.exe set config `&quot;Default Web Site/&quot;+$virtualDirectory.name+&quot;`&quot; -section:system.webServer/security/authentication/anonymousAuthentication /enabled:`&quot;False`&quot; /commit:apphost&quot;
+    Write-Host $command
+    Invoke-Expression $command
+
+    $command = $env:SystemRoot + &quot;\system32\inetsrv\AppCmd.exe set config `&quot;Default Web Site/&quot;+$virtualDirectory.name+&quot;`&quot; -section:system.webServer/security/authentication/windowsAuthentication /enabled:`&quot;True`&quot; /commit:apphost&quot;
+    Write-Host $command
+    Invoke-Expression $command
+}
+
+function Add-VirtualDirectories($virtualDirectories)
+{
+    C:\Windows\system32\inetsrv\AppCmd.exe unlock config  /section:security/authentication/anonymousAuthentication # allow us to make changed to authentication types of apps
+    C:\Windows\system32\inetsrv\AppCmd.exe unlock config  /section:security/authentication/windowsAuthentication   # allow us to make changed to authentication types of apps
+
+    foreach ($virtualDirectory in $virtualDirectories)
+    {
+        Add-AppPool $virtualDirectory
+        Add-VirtualDirectory $virtualDirectory
+    }
+}
+
+function Remove-VirtualDirectories($virtualDirectories)
+{
+    foreach ($item in $virtualDirectories)
+    {
+        $pool = &quot;IIS:\AppPools\&quot; + $item.name
+        if (Test-Path $pool)
+        {
+            Write-Host &quot;Removing IIS app pool - &quot; $item.name
+            Remove-Item $pool -Force -Recurse
+        }
+
+        $exists = Confirm-VirtualDirectoryExists $item.name
+        if ($exists -eq $false -or $item.name -eq &quot;&quot; -or $item.name -eq $null)
+        {
+            continue
+        }
+        Write-Host &quot;Removing IIS virtual directory - &quot; $item.name
+        $parameter = &quot;IIS:\Sites\Default Web Site\&quot; + $item.name
+        Remove-Item $parameter -Recurse
+    }
+}
+
+function Confirm-VirtualDirectoryExists($name)
+{
+    $parameter = &quot;IIS:\Sites\Default Web Site\&quot; + $item.name
+    Get-Item $parameter -ErrorAction SilentlyContinue
+    return ($?) #if last command was successful return true
+}
+
+function Get-WindowsServiceUsers($windowsServices)
+{
+    foreach ($item in $windowsServices)
+    {
+        $message =   &quot;Enter the user to run the Windows service '&quot; + $item.name + &quot;' as, or push enter to use the default value '&quot; + $item.user + &quot;'&quot;
+        $item.user = Get-ValueOrUseDefault $message $item.user
+        Write-Host &quot;&quot;
+
+        $message =   &quot;Enter the password for this user, or push enter to use the default value '&quot; + $item.password + &quot;'&quot;
+        $item.password = Get-ValueOrUseDefault $message $item.password
+        Write-Host &quot;&quot;
+    }
+}
+
+function Get-IisUsers($virtualDirectories)
+{
+    foreach ($item in $virtualDirectories)
+    {
+        $message =   &quot;Enter the user to run the IIS app '&quot; + $item.name + &quot;' as, or push enter to use the default value '&quot; + $item.user + &quot;'&quot;
+        $item.user = Get-ValueOrUseDefault $message $item.user
+        Write-Host &quot;&quot;
+
+        $message =   &quot;Enter the password for this user, or push enter to use the default value '&quot; + $item.password + &quot;'&quot;
+        $item.password = Get-ValueOrUseDefault $message $item.password
+        Write-Host &quot;&quot;
+    }
+}
+
+function Add-FolderIfItDoesNotExist($path)
+{
+    $folderExists = Test-Path -Path $path
+    if ($folderExists -eq $false) # leave folder alone if it exists
+    {
+        Write-Host &quot;Adding new folder &quot; $path
+        $output = New-Item -ItemType Directory -Path $path
+        Write-Host $output
+    }
+}
+
+function Add-Folders($folders)
+{
+    foreach ($item in $folders)
+    {
+        Add-FolderIfItDoesNotExist $item.file
+    }
+}
+
+function Add-SharedFolders($sharedFolders)
+{
+    Write-Host &quot;Adding folders shared on network&quot;
+
+    $share = WMICLASS &quot;WIN32_Share&quot;
+
+    foreach ($item in $sharedFolders)
+    {
+        Add-FolderIfItDoesNotExist $item.file
+
+        $command = &quot;(Get-WmiObject -Class Win32_Share -ComputerName . -Filter `&quot;Name='&quot; + $item.name + &quot;'`&quot;)&quot;
+        $shareExists = Invoke-Expression $command
+        if ($shareExists -ne  $null)  # remove share if it exists, in case it points to the wrong folder
+        {
+            Write-Host &quot;Deleting network share - &quot; $item.name
+            $command = &quot;(Get-WmiObject -Class Win32_Share -ComputerName . -Filter `&quot;Name='&quot; + $item.name + &quot;'`&quot;).InvokeMethod(`&quot;Delete`&quot;,`$null)&quot;
+            $command
+            $output = Invoke-Expression $command
+            Write-Host $output
+        }
+
+        Write-Host &quot;Adding network share - &quot; $item.name
+        #$output = $share.Create($item.file, $item.name, 0)  # the powershell way of doing it doesn't grant rights
+        $command = &quot;cmd /c ' net share `&quot;&quot; + $item.name + &quot;`&quot;=`&quot;&quot;+$item.file+&quot;`&quot; /GRANT:&quot;+$item.user+&quot;,FULL'&quot;
+        $output = Invoke-Expression $command
+        Write-Host $output
+    }
+}
+
+function Open-FireWallPort
+{
+    Write-Host &quot;Opening firewall port 8085 for TCP on the domain only.&quot;
+    $port = New-Object -ComObject HNetCfg.FWOpenPort
+    $port.Port = 8085
+    $port.Name = 'Movie port has been opened'
+    $port.Enabled = $true
+
+    $fwMgr = New-Object -ComObject HNetCfg.FwMgr
+    $profile=$fwMgr.LocalPolicy.GetProfileByType(0)  #domain profile only
+    $profile.GloballyOpenPorts.Add($port)
+}
+
+#endregion
+
+cls
+Write-Host &quot;Starting program&quot;
+
+Write-Host &quot;Creating log file&quot;
+Import-Module $PSScriptRoot\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
+Start-Log -LogName PrepareMachineForDTS -LogPath $PSScriptRoot -Level All
+Write-Host &quot;___________________________________________________&quot;
+
+$scheduledTaskUser = &quot;NetworkService&quot;
+$scheduledTaskUserPassword = &quot;1gn0r3d&quot;
+
+Write-Host &quot;Importing PowerShell IIS functions&quot;
+Import-Module WebAdministration
+
+Write-Host &quot;Getting all settings needed from the user&quot;
+Get-WindowsServiceUsers $windowsServices
+Get-IisUsers($virtualDirectories)
+$scheduledTaskUser = Get-ValueOrUseDefault (&quot;Enter the user to run scheduled tasks as, or push enter to use the default value '&quot; + $scheduledTaskUser + &quot;'&quot;) (scheduledTaskUser)
+$scheduledTaskUserPassword = Get-ValueOrUseDefault (&quot;Enter the password for this user, or push enter to use the default value '&quot; + $scheduledTaskUserPassword + &quot;'&quot;) (scheduledTaskUserPassword)
+
+Open-FireWallPort
+
+Add-Folders $folders
+Add-SharedFolders $sharedFolders
+
+Remove-ScheduledTasks $scheduledTasks
+Add-ScheduledTasks $scheduledTaskUser $scheduledTaskUserPassword $scheduledTasks
+
+Remove-WindowsServices $windowsServices
+Add-WindowsServices $windowsServices
+
+Remove-VirtualDirectories $virtualDirectories
+Add-VirtualDirectories $virtualDirectories
+
+Write-Host &quot;Closing log file&quot;
+Stop-Log
+Write-Host &quot;Log closed. Program finished&quot;
+
+ 
+
+# The line below ensures we have correct version, it is not just a comment
+#requires -Version 3.0
+
+#region Settings
+
+$apiSourceFolder = &quot;.\src\WebAPI\*&quot;
+$apiDeploymentFolder = &quot;\\10.10.10.30\Web.Api.V1.Dev&quot;
+$configFilename = $apiDeploymentFolder + &quot;\Web.config&quot;
+
+#endregion
+
+cls
+Write-Host &quot;Starting program&quot;
+
+Write-Host &quot;Copy contents of web api folder to dev&quot;
+Copy-Item $apiSourceFolder $apiDeploymentFolder -recurse -force
+
+Write-Host &quot;Change dev config file&quot;
+(Get-Content $configFilename).replace('connectionString=&quot;Dsn=DEV64&quot;','connectionString=&quot;Dsn=CLB-DEV&quot;') | Set-Content $configFilename
+
+Write-Host &quot;Finished&quot;
+</code></pre>
+
+<!-- <div class="block">&nbsp;</div>
+<footer class="footer  border_top">
+	<div class="section">
+		<div class="container is-max-desktop">
+			<a href="https://bulma.io">
+				<img src="https://bulma.io/images/made-with-bulma--dark.png" alt="Made with Bulma" width="128" height="24">
+			</a>
+		</div>
+	</div>
+</footer>-->
+</body>
+</html>

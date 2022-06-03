@@ -1,0 +1,10 @@
+body > footer
+{
+	position: sticky;
+	top: 100vh;
+}
+
+.footer
+{
+	background-color: var(--footer_bgcolor);
+}

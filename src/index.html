@@ -1,26 +1,36 @@
 ---
 page_title: Home
-layout: layout.html
+layout: layout_page.html
 ---
-<div class="section">
-	<div class="container is-max-desktop">
-		<div class="columns v-centered is-mobile">
-			<div class="column is-narrow">
-				<img src="media/img/profilepic_300x300.png" class="round" width="150px"></img>
-			</div>
-			<div class="column">
-				<br />
-				<p>
-				Hi, I'm Richard - professional programmer and amateur composer.
-				</p>
-				<div class="block"></div>
-				<p>
-				Follow me on
-				<a href="https://music.youtube.com/channel/UCB9ymHb9ZybTNH1GmQD0FYg" target="_blank" rel="noopener noreferrer">
-					YouTube</a>, or <a href="mailto:richard.j.e.cooke@gmail.com">email me</href>.
-				</p>
-				<!-- main channel: https://www.youtube.com/channel/UC54C1xWcFys14onrcPveOfw -->
-			</div>
+<div class="vspacer"></div>
+<div class="full_column">
+<!-- ME -->
+	<div class="grid_min_auto  ">
+		<div class="">
+			<img src="media/img/profilepic_300x300.png" class="round" width="150px"></img>
 		</div>
+		<div class="">
+			<p>
+				Hi, I'm Richard - professional programmer and amateur composer.
+			</p>
+			<p>
+				Follow my music on
+				<a href="https://music.youtube.com/channel/UCB9ymHb9ZybTNH1GmQD0FYg" target="_blank" rel="noopener noreferrer">
+				YouTube</a>, <!-- main channel: https://www.youtube.com/channel/UC54C1xWcFys14onrcPveOfw -->
+				my blog on <a href="atom.xml">RSS</a> in your news reader,
+				or <a href="mailto:richard.j.e.cooke@gmail.com">email me</a>.
+			</p>
+		</div>
+		<div class="vspacer"></div>
+	</div>
+<!-- ARTICLES -->
+	<div class="vspacer"></div>
+	<div>
+		<h2>Articles</h2>
+		<ul>
+			{%- for post in collections.post -%}
+				<li>{{ post.data.title }}</li>
+			{%- endfor -%}
+		</ul>
 	</div>
 </div>
