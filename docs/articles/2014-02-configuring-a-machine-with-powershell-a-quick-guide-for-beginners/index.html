@@ -3,7 +3,6 @@
 <head>
 	<title> · Richard JE Cooke</title>
 	<meta charset="utf-8">
-	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
@@ -16,6 +15,7 @@
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="/media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
 
 	<!--
 	TODO
@@ -41,8 +41,7 @@
 </head>
 <!-- avoid flash of unstyled content -->
 <body onload="document.body.style.visibility=`visible`;">
-<script>document.body.style.visibility=`hidden`;</script>
-<div class="vspacer"></div>
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
 <div class="border_bottom shadow">
 	<div class="center_children">
 		<div class="gutters grid_min_auto">
@@ -52,7 +51,7 @@
 				</a>
 			</div>
 			<div>
-				<div>
+				<div class="h1_margin_bottom">
 					<a href="/" class="no_link_styling">
 						<h1 class="no_margin">Richard JE Cooke</h1>
 					</a>
@@ -80,8 +79,8 @@
 	<div class="vspacer"></div>
 </div>
 <div class="vspacer"></div>
-
-<p>This article will show you everything you need to know to use PowerShell to setup Windows services and IIS applications.  It's aimed at complete beginners and is as concise as possible.</p>
+<div class="full_column">
+<p>This article will show you everything you need to know to use PowerShell to programmatically setup Windows services and IIS applications on a new machine.  It's aimed at complete beginners and is as concise as possible.</p>
 <h2>Why do this in PowerShell?</h2>
 <p>I wrote the script discussed in this article to completely automate the configuration of our virtual machines. Whenever a new environment is created for testing or deployment all that needs to be done is to run a script, rather than install and configure everything manually. Why PowerShell? Because it's the Microsoft standard tool for system administration.</p>
 <h2>Install PowerShell</h2>
@@ -100,31 +99,7 @@
 <p>This will allow you to run scripts in the current folder by typing <code>./MyScript.ps1</code></p>
 <h2>Make some configuration settings</h2>
 <p>Let's look at a basic script</p>
-<pre><code class="language-powershell">&lt;#
-Purpose:
-    This script configures a machine.
-#&gt;
-
-
-# The line below ensures we have correct version, it is not just a comment
-#requires -Version 3.0
-
-#region Settings
-
-$folders = @(
-    [pscustomobject] @{name=&quot;Books&quot;; file = &quot;C:\temp\Books&quot;; user = &quot;EVERYONE&quot;; };
-    [pscustomobject] @{name=&quot;Sound&quot;; file = &quot;C:\temp\Sound&quot;; user = &quot;EVERYONE&quot;; };
-)
-
-#endregion
-
-cls
-Write-Host &quot;Starting program&quot;
-foreach ($item in $folders)
-{
-    Write-Host $item.file
-}
-</code></pre>
+<pre class="language-powershell"><code class="language-powershell"><span class="token comment">&lt;#<br>Purpose:<br>    This script configures a machine.<br>#></span><br><br><br><span class="token comment"># The line below ensures we have correct version, it is not just a comment</span><br><span class="token comment">#requires -Version 3.0</span><br><br><span class="token comment">#region Settings</span><br><br><span class="token variable">$folders</span> = @<span class="token punctuation">(</span><br>    <span class="token namespace">[pscustomobject]</span> @<span class="token punctuation">{</span>name=<span class="token string">"Books"</span><span class="token punctuation">;</span> file = <span class="token string">"C:\temp\Books"</span><span class="token punctuation">;</span> user = <span class="token string">"EVERYONE"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><br>    <span class="token namespace">[pscustomobject]</span> @<span class="token punctuation">{</span>name=<span class="token string">"Sound"</span><span class="token punctuation">;</span> file = <span class="token string">"C:\temp\Sound"</span><span class="token punctuation">;</span> user = <span class="token string">"EVERYONE"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span><br><br><span class="token comment">#endregion</span><br><br>cls<br><span class="token function">Write-Host</span> <span class="token string">"Starting program"</span><br><span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$folders</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token variable">$item</span><span class="token punctuation">.</span>file<br><span class="token punctuation">}</span></code></pre>
 <ul>
 <li>Line 1 shows multi-line comments.</li>
 <li>Line 6 shows single line comments.</li>
@@ -136,37 +111,13 @@ foreach ($item in $folders)
 </ul>
 <h2>Put the configuration in a separate file</h2>
 <p>Let's put the configuration arrays in a separate file so we can edit them separately later. Make a new script called Configuration.ps1 and add these lines:</p>
-<pre><code class="language-powershell">$version = 1
-
-$folders = @(
-    pscustomobject @{name=&quot;Books&quot;; file = &quot;C:\temp\Books&quot;; user = &quot;EVERYONE&quot;; };
-    pscustomobject @{name=&quot;Sound&quot;; file = &quot;C:\temp\Sound&quot;; user = &quot;EVERYONE&quot;; };
-)
-
-$windowsServices = @(
-    pscustomobject @{name=&quot;Monitoring Service&quot;;     file = &quot;C:\temp\Movie\SystemsMonitor.exe&quot;;                  user = &quot;NetworkService&quot;;         password = &quot;1gn0red&quot; };
-)
-</code></pre>
+<pre class="language-powershell"><code class="language-powershell"><span class="token variable">$version</span> = 1<br><br><span class="token variable">$folders</span> = @<span class="token punctuation">(</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"Books"</span><span class="token punctuation">;</span> file = <span class="token string">"C:\temp\Books"</span><span class="token punctuation">;</span> user = <span class="token string">"EVERYONE"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"Sound"</span><span class="token punctuation">;</span> file = <span class="token string">"C:\temp\Sound"</span><span class="token punctuation">;</span> user = <span class="token string">"EVERYONE"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span><br><br><span class="token variable">$windowsServices</span> = @<span class="token punctuation">(</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"Monitoring Service"</span><span class="token punctuation">;</span>     file = <span class="token string">"C:\temp\Movie\SystemsMonitor.exe"</span><span class="token punctuation">;</span>                  user = <span class="token string">"NetworkService"</span><span class="token punctuation">;</span>         password = <span class="token string">"1gn0red"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span></code></pre>
 <p>We can then make a script that uses these settings like so:</p>
-<pre><code class="language-powershell">Write-Host $version
-Write-Host &quot;Importing configuration settings&quot;
-. $PSScriptRoot\Configuration.ps1
-Write-Host $version
-</code></pre>
+<pre class="language-powershell"><code class="language-powershell"><span class="token function">Write-Host</span> <span class="token variable">$version</span><br><span class="token function">Write-Host</span> <span class="token string">"Importing configuration settings"</span><br><span class="token punctuation">.</span> <span class="token variable">$PSScriptRoot</span>\Configuration<span class="token punctuation">.</span>ps1<br><span class="token function">Write-Host</span> <span class="token variable">$version</span></code></pre>
 <p><strong>WARNING</strong> Note that line 1 won't work because the variable hasn't been defined yet. PowerShell doesn't look forward through a file - functions and variables must be declared before being used. Line 3 is called dot sourcing. It's as if the other script file had been copied and pasted into that line. It's more neat to make your script libraries into standalone reusable modules, but we'll get to that later.</p>
 <h2>Functions and parameters</h2>
 <p>Let's look at a basic function and its use:</p>
-<pre><code class="language-powershell">function Get-ValueOrUseDefault($message, $default)
-{
-    $input = Read-Host $message
-    if ($input -eq $null) { return $default }
-    if ($input -eq &quot;&quot;)    { return $default }
-    return $input
-}
-
-$scheduledTaskUser = &quot;Richard&quot;
-$scheduledTaskUser = Get-ValueOrUseDefault (&quot;Enter the user to run scheduled tasks as, or push enter to use the default value '&quot; + $scheduledTaskUser + &quot;'&quot;) (scheduledTaskUser)
-</code></pre>
+<pre class="language-powershell"><code class="language-powershell"><span class="token keyword">function</span> <span class="token function">Get-ValueOrUseDefault</span><span class="token punctuation">(</span><span class="token variable">$message</span><span class="token punctuation">,</span> <span class="token variable">$default</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token variable">$input</span> = <span class="token function">Read-Host</span> <span class="token variable">$message</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$input</span> <span class="token operator">-eq</span> <span class="token variable">$null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token variable">$default</span> <span class="token punctuation">}</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$input</span> <span class="token operator">-eq</span> <span class="token string">""</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token variable">$default</span> <span class="token punctuation">}</span><br>    <span class="token keyword">return</span> <span class="token variable">$input</span><br><span class="token punctuation">}</span><br><br><span class="token variable">$scheduledTaskUser</span> = <span class="token string">"Richard"</span><br><span class="token variable">$scheduledTaskUser</span> = <span class="token function">Get-ValueOrUseDefault</span> <span class="token punctuation">(</span><span class="token string">"Enter the user to run scheduled tasks as, or push enter to use the default value '"</span> <span class="token operator">+</span> <span class="token variable">$scheduledTaskUser</span> <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>scheduledTaskUser<span class="token punctuation">)</span></code></pre>
 <p>Functions work as you'd expect except for a couple of surprises:</p>
 <ul>
 <li>Line 1: PowerShell expects functions to start with a verb from the list found by running Get-Verb.  It won't error but will warn you.</li>
@@ -176,403 +127,22 @@ $scheduledTaskUser = Get-ValueOrUseDefault (&quot;Enter the user to run schedule
 </ul>
 <h2>Modules &amp; logging</h2>
 <p>PowerShell groups code for reuse by making modules (similar to packages or assemblies in other languages). Here's how to import and use a logging module. Download and unzip this logging <a href="http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927">module</a> into a subfolder called PSLog beneath your script. Notice that the folder contains a module manifest file and a code file.  To make your own module just copy this folder and rename the files and manifest information. To import and use the module use this code:</p>
-<pre><code class="language-powershell">Write-Host &quot;Creating log file&quot;
-Import-Module $PSScriptRoot\PSLog
-Start-Log -LogName PrepareMachineForDTS -LogPath $PSScriptRoot -Level All
-Write-Host &quot;I'm in a file and on the screen&quot;
-</code></pre>
+<pre class="language-powershell"><code class="language-powershell"><span class="token function">Write-Host</span> <span class="token string">"Creating log file"</span><br><span class="token function">Import-Module</span> <span class="token variable">$PSScriptRoot</span>\PSLog<br><span class="token function">Start-Log</span> <span class="token operator">-</span>LogName PrepareMachineForDTS <span class="token operator">-</span>LogPath <span class="token variable">$PSScriptRoot</span> <span class="token operator">-</span>Level All<br><span class="token function">Write-Host</span> <span class="token string">"I'm in a file and on the screen"</span></code></pre>
 <p>Line 1 will just write to the screen.
 The module is then imported in line 2 ($PSScriptRoot is the folder the script is in).
 Line 3 activates it to create a log file and writes further Write-Host output to the file as well as the screen.</p>
 <h2>Calling DOS commands</h2>
 <p>If you're not using Windows 8 or the server version you'll find many missing PowerShell commands and you'll have to rely on the standard DOS management applications.  Calling them with the correct parameters can be tricky. PowerShell is usually pretty clever and correctly surrounds a variable's content with &quot; &quot; when passing it as parameter.  But if it doesn't work put the whole command in a string and run it like this:</p>
-<pre><code class="language-powershell">$command = &quot;cmd /c '&quot; + &quot;schtasks /create /tn `&quot;&quot; + $item.name + &quot;`&quot; /TR  `&quot;&quot; + $item.file + &quot;`&quot; /RU &quot; + $scheduledTaskUser + &quot; /RP &quot; + $scheduledTaskUserPassword + &quot; &quot; + $item.schedule + &quot;'&quot;
-$output = Invoke-Expression $command
-Write-Host $output
-</code></pre>
+<pre class="language-powershell"><code class="language-powershell"><span class="token variable">$command</span> = <span class="token string">"cmd /c '"</span> <span class="token operator">+</span> <span class="token string">"schtasks /create /tn `""</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"`" /TR  `""</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>file <span class="token operator">+</span> <span class="token string">"`" /RU "</span> <span class="token operator">+</span> <span class="token variable">$scheduledTaskUser</span> <span class="token operator">+</span> <span class="token string">" /RP "</span> <span class="token operator">+</span> <span class="token variable">$scheduledTaskUserPassword</span> <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>schedule <span class="token operator">+</span> <span class="token string">"'"</span><br><span class="token variable">$output</span> = <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br><span class="token function">Write-Host</span> <span class="token variable">$output</span></code></pre>
 <h2>A full script with useful functions</h2>
 <p>That's about it. We've covered the basics of PowerShell and all the suprises for a novice user. The code below gives you a lot of useful functions to create folders, share folders on the network, create IIS applications, create scheduled tasks, and create Windows services. It's quite simple but if you have questions please ask them in a comment at the bottom of this page.</p>
-<pre><code class="language-powershell">$folders  = @(
-    pscustomobject @{file = &quot;C:\temp\movie&quot;;   };
-    pscustomobject @{file = &quot;C:\temp\sound&quot;;   };
-)
+<pre class="language-powershell"><code class="language-powershell"><span class="token variable">$folders</span>  = @<span class="token punctuation">(</span><br>    pscustomobject @<span class="token punctuation">{</span>file = <span class="token string">"C:\temp\movie"</span><span class="token punctuation">;</span>   <span class="token punctuation">}</span><span class="token punctuation">;</span><br>    pscustomobject @<span class="token punctuation">{</span>file = <span class="token string">"C:\temp\sound"</span><span class="token punctuation">;</span>   <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span><br><br><span class="token variable">$sharedFolders</span> = @<span class="token punctuation">(</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"movie"</span><span class="token punctuation">;</span> file = <span class="token string">"C:\movie"</span><span class="token punctuation">;</span> user = <span class="token string">"EVERYONE"</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span><span class="token punctuation">;</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"sound"</span><span class="token punctuation">;</span> file = <span class="token string">"C:\temp\sound"</span><span class="token punctuation">;</span> user = <span class="token string">"EVERYONE"</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span><br><br><span class="token variable">$scheduledTasks</span> = @<span class="token punctuation">(</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"Run movies"</span><span class="token punctuation">;</span> file = <span class="token string">"C:\temp\movie\Go.bat"</span><span class="token punctuation">;</span>  enabled = <span class="token boolean">$true</span><span class="token punctuation">;</span> schedule=<span class="token string">" /ST 19:00 /SC DAILY "</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span><br><br><span class="token variable">$windowsServices</span> = @<span class="token punctuation">(</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"Monitor movie"</span><span class="token punctuation">;</span>     file = <span class="token string">"C:\temp\movie"</span><span class="token punctuation">;</span> user = <span class="token string">"NetworkService"</span><span class="token punctuation">;</span> password = <span class="token string">"1gn0red"</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span><br><br><span class="token variable">$virtualDirectories</span> = @<span class="token punctuation">(</span><br>    pscustomobject @<span class="token punctuation">{</span>name=<span class="token string">"MovieSite"</span><span class="token punctuation">;</span> file=<span class="token string">"C:\temp\movie\webapp"</span><span class="token punctuation">;</span> user=<span class="token string">"NetworkService"</span><span class="token punctuation">;</span> password = <span class="token string">"1gn0red"</span><span class="token punctuation">;</span>   authentication=<span class="token string">"Windows"</span>          <span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token punctuation">)</span><br><br><span class="token comment"># The line below ensures we have correct version, it is not just a comment</span><br><span class="token comment">#requires -Version 3.0</span><br><br><span class="token comment">#region Functions</span><br><span class="token keyword">function</span> <span class="token function">Get-ParentFolder</span><span class="token punctuation">(</span><span class="token variable">$folder</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">Split-Path</span> <span class="token operator">-</span>parent <span class="token variable">$folder</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Confirm-WindowsServiceExists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Get-Service</span> <span class="token variable">$name</span> <span class="token operator">-</span>ErrorAction SilentlyContinue<span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token keyword">return</span> <span class="token boolean">$true</span><br>    <span class="token punctuation">}</span><br>    <span class="token keyword">return</span> <span class="token boolean">$false</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Remove-WindowsServiceIfItExists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token variable">$exists</span> = <span class="token function">Confirm-WindowsServiceExists</span> <span class="token variable">$name</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$exists</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Write-Host</span> <span class="token string">"Remove Windows service - "</span> <span class="token variable">$name</span><br>        <span class="token variable">$output</span> = <span class="token punctuation">(</span><span class="token function">sc</span><span class="token punctuation">.</span>exe delete <span class="token variable">$name</span><span class="token punctuation">)</span><br>        <span class="token function">Write-Host</span> <span class="token variable">$output</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Confirm-ScheduledTaskExists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    schtasks <span class="token operator">/</span>query <span class="token operator">/</span>TN <span class="token variable">$name</span> 2>&amp;1>null       <span class="token comment">#hide error and standard output from displaying</span><br>    <span class="token keyword">return</span> <span class="token variable">$LastExitCode</span> <span class="token operator">-eq</span> 0       <span class="token comment">#if task exists exit code won't be an error</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Remove-ScheduledTaskIfItExists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token variable">$exists</span> = <span class="token function">Confirm-ScheduledTaskExists</span> <span class="token variable">$name</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$exists</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token variable">$output</span> = <span class="token punctuation">(</span>schtasks <span class="token operator">/</span>delete <span class="token operator">/</span>f <span class="token operator">/</span>tn <span class="token variable">$name</span><span class="token punctuation">)</span>  <span class="token comment">#/f = suppress confirmation message so it can delete without user input</span><br>        <span class="token function">Write-Host</span> <span class="token variable">$output</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Initialize-Logging</span><br><span class="token punctuation">{</span><br>    <span class="token variable">$parentFolder</span> = <span class="token function">Get-Parent</span><span class="token operator">-</span>Folder <span class="token variable">$PSScriptRoot</span><br>    <span class="token function">Import-Module</span> <span class="token variable">$parentFolder</span>\PSLog       <span class="token comment"># allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927</span><br>    <span class="token function">Start-Log</span> <span class="token operator">-</span>LogName PrepareMachineForDTS <span class="token operator">-</span>LogPath <span class="token variable">$parentFolder</span> <span class="token operator">-</span>Level All<br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Protect-Password</span><span class="token punctuation">(</span><span class="token variable">$password</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token variable">$password</span> <span class="token punctuation">|</span> <span class="token function">ConvertTo-SecureString</span> <span class="token operator">-</span>asPlainText <span class="token operator">-</span>Force<span class="token punctuation">)</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-WindowsServices</span><span class="token punctuation">(</span><span class="token variable">$windowsServices</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Creating Windows services"</span><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$windowsServices</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Write-Host</span> <span class="token string">"Adding Windows service - "</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>        <span class="token variable">$securePassword</span> = <span class="token function">Protect-Password</span> <span class="token variable">$item</span><span class="token punctuation">.</span>password<br>        <span class="token variable">$user</span> = <span class="token function">New-Object</span> System<span class="token punctuation">.</span>Management<span class="token punctuation">.</span>Automation<span class="token punctuation">.</span>PSCredential <span class="token punctuation">(</span><span class="token variable">$item</span><span class="token punctuation">.</span>user<span class="token punctuation">,</span> <span class="token variable">$securePassword</span> <span class="token punctuation">)</span><br>        <span class="token function">New-Service</span> <span class="token operator">-</span>name <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">-</span>binaryPathName <span class="token variable">$item</span><span class="token punctuation">.</span>file <span class="token operator">-</span>credential <span class="token variable">$user</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-ScheduledTasks</span><span class="token punctuation">(</span><span class="token variable">$scheduledTaskUser</span><span class="token punctuation">,</span> <span class="token variable">$scheduledTaskUserPassword</span><span class="token punctuation">,</span> <span class="token variable">$scheduledTasks</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Creating scheduled tasks"</span><br><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$scheduledTasks</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token variable">$command</span> = <span class="token string">"cmd /c '"</span> <span class="token operator">+</span> <span class="token string">"schtasks /create /tn `""</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"`" /TR  `""</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>file <span class="token operator">+</span> <span class="token string">"`" /RU "</span> <span class="token operator">+</span> <span class="token variable">$scheduledTaskUser</span> <span class="token operator">+</span> <span class="token string">" /RP "</span> <span class="token operator">+</span> <span class="token variable">$scheduledTaskUserPassword</span> <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>schedule <span class="token operator">+</span> <span class="token string">"'"</span><br>        <span class="token variable">$command</span><br>        <span class="token variable">$output</span> = <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br>        <span class="token function">Write-Host</span> <span class="token variable">$output</span><br><br>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$item</span><span class="token punctuation">.</span>enabled <span class="token operator">-eq</span> <span class="token boolean">$true</span><span class="token punctuation">)</span><br>        <span class="token punctuation">{</span><br>            <span class="token keyword">continue</span><br>        <span class="token punctuation">}</span><br>        <span class="token variable">$command</span> = <span class="token string">"schtasks /change /tn `""</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"`" /DISABLE"</span><br>        <span class="token variable">$command</span><br>        <span class="token variable">$output</span> = <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br>        <span class="token function">Write-Host</span> <span class="token variable">$output</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Remove-ScheduledTasks</span><span class="token punctuation">(</span><span class="token variable">$scheduledTasks</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Deleting scheduled tasks if they exist"</span><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$scheduledTasks</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Remove-ScheduledTaskIfItExists</span><span class="token punctuation">(</span><span class="token variable">$item</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Remove-WindowsServices</span><span class="token punctuation">(</span><span class="token variable">$services</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Deleting Windows services if they exist"</span><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$services</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Remove-WindowsServiceIfItExists</span><span class="token punctuation">(</span><span class="token variable">$item</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Get-ValueOrUseDefault</span><span class="token punctuation">(</span><span class="token variable">$message</span><span class="token punctuation">,</span> <span class="token variable">$default</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token variable">$input</span> = <span class="token function">Read-Host</span> <span class="token variable">$message</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$input</span> <span class="token operator">-eq</span> <span class="token variable">$null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token variable">$default</span> <span class="token punctuation">}</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$input</span> <span class="token operator">-eq</span> <span class="token string">""</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token variable">$default</span> <span class="token punctuation">}</span><br>    <span class="token keyword">return</span> <span class="token variable">$input</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-AppPool</span><span class="token punctuation">(</span><span class="token variable">$virtualDirectory</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Creating IIS app pool - "</span> <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name<br>    <span class="token variable">$poolName</span> = <span class="token string">"IIS:\AppPools\"</span> <span class="token operator">+</span> <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name<br>    <span class="token variable">$pool</span> = <span class="token function">New-Item</span> <span class="token variable">$poolName</span><br>    <span class="token variable">$pool</span><span class="token punctuation">.</span>processModel<span class="token punctuation">.</span>userName = <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>user<br>    <span class="token variable">$pool</span><span class="token punctuation">.</span>processModel<span class="token punctuation">.</span>password = <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>password<br>    <span class="token variable">$pool</span><span class="token punctuation">.</span>processModel<span class="token punctuation">.</span>identityType = <span class="token string">"SpecificUser"</span><br>    <span class="token variable">$pool</span><span class="token punctuation">.</span>processModel<span class="token punctuation">.</span>idleTimeout = TimeSpan <span class="token string">"0.00:00:00"</span><br>    <span class="token variable">$pool</span><span class="token punctuation">.</span>managedRuntimeVersion = <span class="token string">"4.0"</span><br>    <span class="token variable">$pool</span><span class="token punctuation">.</span>recycling<span class="token punctuation">.</span>periodicRestart<span class="token punctuation">.</span>time = TimeSpan <span class="token string">"00:00:00"</span><br>    <span class="token variable">$pool</span> <span class="token punctuation">|</span> <span class="token function">Set-Item</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-VirtualDirectory</span><span class="token punctuation">(</span><span class="token variable">$virtualDirectory</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Creating IIS virtual directory - "</span> <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name<br>    <span class="token variable">$name</span> = <span class="token string">"IIS:\Sites\Default Web Site\"</span> <span class="token operator">+</span> <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name<br>    <span class="token function">New-Item</span> <span class="token variable">$name</span> <span class="token operator">-</span><span class="token function">Type</span> Application <span class="token operator">-</span>physicalPath <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>file<br>    <span class="token function">Set-ItemProperty</span> <span class="token variable">$name</span> <span class="token operator">-</span>Name applicationPool <span class="token operator">-</span>Value <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name<br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-WindowsAuthenticationToAppIfNecessary</span><span class="token punctuation">(</span><span class="token variable">$virtualDirectory</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>authentication <span class="token operator">-ne</span> <span class="token string">"Windows"</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token keyword">return</span><br>    <span class="token punctuation">}</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Setting Windows authentication for IIS app - "</span> <span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name<br>    <span class="token variable">$command</span> = <span class="token variable">$env</span>:SystemRoot <span class="token operator">+</span> <span class="token string">"\system32\inetsrv\AppCmd.exe set config `"Default Web Site/"</span><span class="token operator">+</span><span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name+<span class="token string">"`" -section:system.webServer/security/authentication/anonymousAuthentication /enabled:`"False`" /commit:apphost"</span><br>    <span class="token function">Write-Host</span> <span class="token variable">$command</span><br>    <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br><br>    <span class="token variable">$command</span> = <span class="token variable">$env</span>:SystemRoot <span class="token operator">+</span> <span class="token string">"\system32\inetsrv\AppCmd.exe set config `"Default Web Site/"</span><span class="token operator">+</span><span class="token variable">$virtualDirectory</span><span class="token punctuation">.</span>name+<span class="token string">"`" -section:system.webServer/security/authentication/windowsAuthentication /enabled:`"True`" /commit:apphost"</span><br>    <span class="token function">Write-Host</span> <span class="token variable">$command</span><br>    <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-VirtualDirectories</span><span class="token punctuation">(</span><span class="token variable">$virtualDirectories</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    C:\Windows\system32\inetsrv\AppCmd<span class="token punctuation">.</span>exe unlock config  <span class="token operator">/</span>section:security/authentication/anonymousAuthentication <span class="token comment"># allow us to make changed to authentication types of apps</span><br>    C:\Windows\system32\inetsrv\AppCmd<span class="token punctuation">.</span>exe unlock config  <span class="token operator">/</span>section:security/authentication/windowsAuthentication   <span class="token comment"># allow us to make changed to authentication types of apps</span><br><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$virtualDirectory</span> in <span class="token variable">$virtualDirectories</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Add-AppPool</span> <span class="token variable">$virtualDirectory</span><br>        <span class="token function">Add-VirtualDirectory</span> <span class="token variable">$virtualDirectory</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Remove-VirtualDirectories</span><span class="token punctuation">(</span><span class="token variable">$virtualDirectories</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$virtualDirectories</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token variable">$pool</span> = <span class="token string">"IIS:\AppPools\"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">Test-Path</span> <span class="token variable">$pool</span><span class="token punctuation">)</span><br>        <span class="token punctuation">{</span><br>            <span class="token function">Write-Host</span> <span class="token string">"Removing IIS app pool - "</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>            <span class="token function">Remove-Item</span> <span class="token variable">$pool</span> <span class="token operator">-</span>Force <span class="token operator">-</span>Recurse<br>        <span class="token punctuation">}</span><br><br>        <span class="token variable">$exists</span> = <span class="token function">Confirm-VirtualDirectoryExists</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$exists</span> <span class="token operator">-eq</span> <span class="token boolean">$false</span> <span class="token operator">-or</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">-eq</span> <span class="token string">""</span> <span class="token operator">-or</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">-eq</span> <span class="token variable">$null</span><span class="token punctuation">)</span><br>        <span class="token punctuation">{</span><br>            <span class="token keyword">continue</span><br>        <span class="token punctuation">}</span><br>        <span class="token function">Write-Host</span> <span class="token string">"Removing IIS virtual directory - "</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>        <span class="token variable">$parameter</span> = <span class="token string">"IIS:\Sites\Default Web Site\"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>        <span class="token function">Remove-Item</span> <span class="token variable">$parameter</span> <span class="token operator">-</span>Recurse<br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Confirm-VirtualDirectoryExists</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token variable">$parameter</span> = <span class="token string">"IIS:\Sites\Default Web Site\"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>    <span class="token function">Get-Item</span> <span class="token variable">$parameter</span> <span class="token operator">-</span>ErrorAction SilentlyContinue<br>    <span class="token keyword">return</span> <span class="token punctuation">(</span>$?<span class="token punctuation">)</span> <span class="token comment">#if last command was successful return true</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Get-WindowsServiceUsers</span><span class="token punctuation">(</span><span class="token variable">$windowsServices</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$windowsServices</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token variable">$message</span> =   <span class="token string">"Enter the user to run the Windows service '"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"' as, or push enter to use the default value '"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>user <span class="token operator">+</span> <span class="token string">"'"</span><br>        <span class="token variable">$item</span><span class="token punctuation">.</span>user = <span class="token function">Get-ValueOrUseDefault</span> <span class="token variable">$message</span> <span class="token variable">$item</span><span class="token punctuation">.</span>user<br>        <span class="token function">Write-Host</span> <span class="token string">""</span><br><br>        <span class="token variable">$message</span> =   <span class="token string">"Enter the password for this user, or push enter to use the default value '"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>password <span class="token operator">+</span> <span class="token string">"'"</span><br>        <span class="token variable">$item</span><span class="token punctuation">.</span>password = <span class="token function">Get-ValueOrUseDefault</span> <span class="token variable">$message</span> <span class="token variable">$item</span><span class="token punctuation">.</span>password<br>        <span class="token function">Write-Host</span> <span class="token string">""</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Get-IisUsers</span><span class="token punctuation">(</span><span class="token variable">$virtualDirectories</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$virtualDirectories</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token variable">$message</span> =   <span class="token string">"Enter the user to run the IIS app '"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"' as, or push enter to use the default value '"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>user <span class="token operator">+</span> <span class="token string">"'"</span><br>        <span class="token variable">$item</span><span class="token punctuation">.</span>user = <span class="token function">Get-ValueOrUseDefault</span> <span class="token variable">$message</span> <span class="token variable">$item</span><span class="token punctuation">.</span>user<br>        <span class="token function">Write-Host</span> <span class="token string">""</span><br><br>        <span class="token variable">$message</span> =   <span class="token string">"Enter the password for this user, or push enter to use the default value '"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>password <span class="token operator">+</span> <span class="token string">"'"</span><br>        <span class="token variable">$item</span><span class="token punctuation">.</span>password = <span class="token function">Get-ValueOrUseDefault</span> <span class="token variable">$message</span> <span class="token variable">$item</span><span class="token punctuation">.</span>password<br>        <span class="token function">Write-Host</span> <span class="token string">""</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-FolderIfItDoesNotExist</span><span class="token punctuation">(</span><span class="token variable">$path</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token variable">$folderExists</span> = <span class="token function">Test-Path</span> <span class="token operator">-</span>Path <span class="token variable">$path</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$folderExists</span> <span class="token operator">-eq</span> <span class="token boolean">$false</span><span class="token punctuation">)</span> <span class="token comment"># leave folder alone if it exists</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Write-Host</span> <span class="token string">"Adding new folder "</span> <span class="token variable">$path</span><br>        <span class="token variable">$output</span> = <span class="token function">New-Item</span> <span class="token operator">-</span>ItemType Directory <span class="token operator">-</span>Path <span class="token variable">$path</span><br>        <span class="token function">Write-Host</span> <span class="token variable">$output</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-Folders</span><span class="token punctuation">(</span><span class="token variable">$folders</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$folders</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Add-FolderIfItDoesNotExist</span> <span class="token variable">$item</span><span class="token punctuation">.</span>file<br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Add-SharedFolders</span><span class="token punctuation">(</span><span class="token variable">$sharedFolders</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Adding folders shared on network"</span><br><br>    <span class="token variable">$share</span> = WMICLASS <span class="token string">"WIN32_Share"</span><br><br>    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$item</span> in <span class="token variable">$sharedFolders</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token function">Add-FolderIfItDoesNotExist</span> <span class="token variable">$item</span><span class="token punctuation">.</span>file<br><br>        <span class="token variable">$command</span> = <span class="token string">"(Get-WmiObject -Class Win32_Share -ComputerName . -Filter `"Name='"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"'`")"</span><br>        <span class="token variable">$shareExists</span> = <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$shareExists</span> <span class="token operator">-ne</span>  <span class="token variable">$null</span><span class="token punctuation">)</span>  <span class="token comment"># remove share if it exists, in case it points to the wrong folder</span><br>        <span class="token punctuation">{</span><br>            <span class="token function">Write-Host</span> <span class="token string">"Deleting network share - "</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>            <span class="token variable">$command</span> = <span class="token string">"(Get-WmiObject -Class Win32_Share -ComputerName . -Filter `"Name='"</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"'`").InvokeMethod(`"Delete`",`<span class="token variable">$null</span>)"</span><br>            <span class="token variable">$command</span><br>            <span class="token variable">$output</span> = <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br>            <span class="token function">Write-Host</span> <span class="token variable">$output</span><br>        <span class="token punctuation">}</span><br><br>        <span class="token function">Write-Host</span> <span class="token string">"Adding network share - "</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name<br>        <span class="token comment">#$output = $share.Create($item.file, $item.name, 0)  # the powershell way of doing it doesn't grant rights</span><br>        <span class="token variable">$command</span> = <span class="token string">"cmd /c ' net share `""</span> <span class="token operator">+</span> <span class="token variable">$item</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">"`"=`""</span><span class="token operator">+</span><span class="token variable">$item</span><span class="token punctuation">.</span>file+<span class="token string">"`" /GRANT:"</span><span class="token operator">+</span><span class="token variable">$item</span><span class="token punctuation">.</span>user+<span class="token string">",FULL'"</span><br>        <span class="token variable">$output</span> = <span class="token function">Invoke-Expression</span> <span class="token variable">$command</span><br>        <span class="token function">Write-Host</span> <span class="token variable">$output</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span><br><br><span class="token keyword">function</span> <span class="token function">Open-FireWallPort</span><br><span class="token punctuation">{</span><br>    <span class="token function">Write-Host</span> <span class="token string">"Opening firewall port 8085 for TCP on the domain only."</span><br>    <span class="token variable">$port</span> = <span class="token function">New-Object</span> <span class="token operator">-</span>ComObject HNetCfg<span class="token punctuation">.</span>FWOpenPort<br>    <span class="token variable">$port</span><span class="token punctuation">.</span>Port = 8085<br>    <span class="token variable">$port</span><span class="token punctuation">.</span>Name = <span class="token string">'Movie port has been opened'</span><br>    <span class="token variable">$port</span><span class="token punctuation">.</span>Enabled = <span class="token boolean">$true</span><br><br>    <span class="token variable">$fwMgr</span> = <span class="token function">New-Object</span> <span class="token operator">-</span>ComObject HNetCfg<span class="token punctuation">.</span>FwMgr<br>    <span class="token variable">$profile</span>=<span class="token variable">$fwMgr</span><span class="token punctuation">.</span>LocalPolicy<span class="token punctuation">.</span>GetProfileByType<span class="token punctuation">(</span>0<span class="token punctuation">)</span>  <span class="token comment">#domain profile only</span><br>    <span class="token variable">$profile</span><span class="token punctuation">.</span>GloballyOpenPorts<span class="token punctuation">.</span>Add<span class="token punctuation">(</span><span class="token variable">$port</span><span class="token punctuation">)</span><br><span class="token punctuation">}</span><br><br><span class="token comment">#endregion</span><br><br>cls<br><span class="token function">Write-Host</span> <span class="token string">"Starting program"</span><br><br><span class="token function">Write-Host</span> <span class="token string">"Creating log file"</span><br><span class="token function">Import-Module</span> <span class="token variable">$PSScriptRoot</span>\PSLog       <span class="token comment"># allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927</span><br><span class="token function">Start-Log</span> <span class="token operator">-</span>LogName PrepareMachineForDTS <span class="token operator">-</span>LogPath <span class="token variable">$PSScriptRoot</span> <span class="token operator">-</span>Level All<br><span class="token function">Write-Host</span> <span class="token string">"___________________________________________________"</span><br><br><span class="token variable">$scheduledTaskUser</span> = <span class="token string">"NetworkService"</span><br><span class="token variable">$scheduledTaskUserPassword</span> = <span class="token string">"1gn0r3d"</span><br><br><span class="token function">Write-Host</span> <span class="token string">"Importing PowerShell IIS functions"</span><br><span class="token function">Import-Module</span> WebAdministration<br><br><span class="token function">Write-Host</span> <span class="token string">"Getting all settings needed from the user"</span><br><span class="token function">Get-WindowsServiceUsers</span> <span class="token variable">$windowsServices</span><br><span class="token function">Get-IisUsers</span><span class="token punctuation">(</span><span class="token variable">$virtualDirectories</span><span class="token punctuation">)</span><br><span class="token variable">$scheduledTaskUser</span> = <span class="token function">Get-ValueOrUseDefault</span> <span class="token punctuation">(</span><span class="token string">"Enter the user to run scheduled tasks as, or push enter to use the default value '"</span> <span class="token operator">+</span> <span class="token variable">$scheduledTaskUser</span> <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>scheduledTaskUser<span class="token punctuation">)</span><br><span class="token variable">$scheduledTaskUserPassword</span> = <span class="token function">Get-ValueOrUseDefault</span> <span class="token punctuation">(</span><span class="token string">"Enter the password for this user, or push enter to use the default value '"</span> <span class="token operator">+</span> <span class="token variable">$scheduledTaskUserPassword</span> <span class="token operator">+</span> <span class="token string">"'"</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>scheduledTaskUserPassword<span class="token punctuation">)</span><br><br><span class="token function">Open-FireWallPort</span><br><br><span class="token function">Add-Folders</span> <span class="token variable">$folders</span><br><span class="token function">Add-SharedFolders</span> <span class="token variable">$sharedFolders</span><br><br><span class="token function">Remove-ScheduledTasks</span> <span class="token variable">$scheduledTasks</span><br><span class="token function">Add-ScheduledTasks</span> <span class="token variable">$scheduledTaskUser</span> <span class="token variable">$scheduledTaskUserPassword</span> <span class="token variable">$scheduledTasks</span><br><br><span class="token function">Remove-WindowsServices</span> <span class="token variable">$windowsServices</span><br><span class="token function">Add-WindowsServices</span> <span class="token variable">$windowsServices</span><br><br><span class="token function">Remove-VirtualDirectories</span> <span class="token variable">$virtualDirectories</span><br><span class="token function">Add-VirtualDirectories</span> <span class="token variable">$virtualDirectories</span><br><br><span class="token function">Write-Host</span> <span class="token string">"Closing log file"</span><br><span class="token function">Stop-Log</span><br><span class="token function">Write-Host</span> <span class="token string">"Log closed. Program finished"</span><br><br> <br><br><span class="token comment"># The line below ensures we have correct version, it is not just a comment</span><br><span class="token comment">#requires -Version 3.0</span><br><br><span class="token comment">#region Settings</span><br><br><span class="token variable">$apiSourceFolder</span> = <span class="token string">".\src\WebAPI\*"</span><br><span class="token variable">$apiDeploymentFolder</span> = <span class="token string">"\\10.10.10.30\Web.Api.V1.Dev"</span><br><span class="token variable">$configFilename</span> = <span class="token variable">$apiDeploymentFolder</span> <span class="token operator">+</span> <span class="token string">"\Web.config"</span><br><br><span class="token comment">#endregion</span><br><br>cls<br><span class="token function">Write-Host</span> <span class="token string">"Starting program"</span><br><br><span class="token function">Write-Host</span> <span class="token string">"Copy contents of web api folder to dev"</span><br><span class="token function">Copy-Item</span> <span class="token variable">$apiSourceFolder</span> <span class="token variable">$apiDeploymentFolder</span> <span class="token operator">-</span>recurse <span class="token operator">-</span>force<br><br><span class="token function">Write-Host</span> <span class="token string">"Change dev config file"</span><br><span class="token punctuation">(</span><span class="token function">Get-Content</span> <span class="token variable">$configFilename</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">'connectionString="Dsn=DEV64"'</span><span class="token punctuation">,</span><span class="token string">'connectionString="Dsn=CLB-DEV"'</span><span class="token punctuation">)</span> <span class="token punctuation">|</span> <span class="token function">Set-Content</span> <span class="token variable">$configFilename</span><br><br><span class="token function">Write-Host</span> <span class="token string">"Finished"</span></code></pre>
 
-$sharedFolders = @(
-    pscustomobject @{name=&quot;movie&quot;; file = &quot;C:\movie&quot;; user = &quot;EVERYONE&quot;;     };
-    pscustomobject @{name=&quot;sound&quot;; file = &quot;C:\temp\sound&quot;; user = &quot;EVERYONE&quot;;     };
-)
-
-$scheduledTasks = @(
-    pscustomobject @{name=&quot;Run movies&quot;; file = &quot;C:\temp\movie\Go.bat&quot;;  enabled = $true; schedule=&quot; /ST 19:00 /SC DAILY &quot;  };
-)
-
-$windowsServices = @(
-    pscustomobject @{name=&quot;Monitor movie&quot;;     file = &quot;C:\temp\movie&quot;; user = &quot;NetworkService&quot;; password = &quot;1gn0red&quot; };
-)
-
-$virtualDirectories = @(
-    pscustomobject @{name=&quot;MovieSite&quot;; file=&quot;C:\temp\movie\webapp&quot;; user=&quot;NetworkService&quot;; password = &quot;1gn0red&quot;;   authentication=&quot;Windows&quot;          };
-)
-
-# The line below ensures we have correct version, it is not just a comment
-#requires -Version 3.0
-
-#region Functions
-function Get-ParentFolder($folder)
-{
-    return (Split-Path -parent $folder)
-}
-
-function Confirm-WindowsServiceExists($name)
-{
-    if (Get-Service $name -ErrorAction SilentlyContinue)
-    {
-        return $true
-    }
-    return $false
-}
-
-function Remove-WindowsServiceIfItExists($name)
-{
-    $exists = Confirm-WindowsServiceExists $name
-    if ($exists)
-    {
-        Write-Host &quot;Remove Windows service - &quot; $name
-        $output = (sc.exe delete $name)
-        Write-Host $output
-    }
-}
-
-function Confirm-ScheduledTaskExists($name)
-{
-    schtasks /query /TN $name 2&gt;&amp;1&gt;null       #hide error and standard output from displaying
-    return $LastExitCode -eq 0       #if task exists exit code won't be an error
-}
-
-function Remove-ScheduledTaskIfItExists($name)
-{
-    $exists = Confirm-ScheduledTaskExists $name
-    if ($exists)
-    {
-        $output = (schtasks /delete /f /tn $name)  #/f = suppress confirmation message so it can delete without user input
-        Write-Host $output
-    }
-}
-
-function Initialize-Logging
-{
-    $parentFolder = Get-Parent-Folder $PSScriptRoot
-    Import-Module $parentFolder\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
-    Start-Log -LogName PrepareMachineForDTS -LogPath $parentFolder -Level All
-}
-
-function Protect-Password($password)
-{
-    return ($password | ConvertTo-SecureString -asPlainText -Force)
-}
-
-function Add-WindowsServices($windowsServices)
-{
-    Write-Host &quot;Creating Windows services&quot;
-    foreach ($item in $windowsServices)
-    {
-        Write-Host &quot;Adding Windows service - &quot; $item.name
-        $securePassword = Protect-Password $item.password
-        $user = New-Object System.Management.Automation.PSCredential ($item.user, $securePassword )
-        New-Service -name $item.name -binaryPathName $item.file -credential $user
-    }
-}
-
-function Add-ScheduledTasks($scheduledTaskUser, $scheduledTaskUserPassword, $scheduledTasks)
-{
-    Write-Host &quot;Creating scheduled tasks&quot;
-
-    foreach ($item in $scheduledTasks)
-    {
-        $command = &quot;cmd /c '&quot; + &quot;schtasks /create /tn `&quot;&quot; + $item.name + &quot;`&quot; /TR  `&quot;&quot; + $item.file + &quot;`&quot; /RU &quot; + $scheduledTaskUser + &quot; /RP &quot; + $scheduledTaskUserPassword + &quot; &quot; + $item.schedule + &quot;'&quot;
-        $command
-        $output = Invoke-Expression $command
-        Write-Host $output
-
-        if ($item.enabled -eq $true)
-        {
-            continue
-        }
-        $command = &quot;schtasks /change /tn `&quot;&quot; + $item.name + &quot;`&quot; /DISABLE&quot;
-        $command
-        $output = Invoke-Expression $command
-        Write-Host $output
-    }
-}
-
-function Remove-ScheduledTasks($scheduledTasks)
-{
-    Write-Host &quot;Deleting scheduled tasks if they exist&quot;
-    foreach ($item in $scheduledTasks)
-    {
-        Remove-ScheduledTaskIfItExists($item.name)
-    }
-}
-
-function Remove-WindowsServices($services)
-{
-    Write-Host &quot;Deleting Windows services if they exist&quot;
-    foreach ($item in $services)
-    {
-        Remove-WindowsServiceIfItExists($item.name)
-    }
-}
-
-function Get-ValueOrUseDefault($message, $default)
-{
-    $input = Read-Host $message
-    if ($input -eq $null) { return $default }
-    if ($input -eq &quot;&quot;)    { return $default }
-    return $input
-}
-
-function Add-AppPool($virtualDirectory)
-{
-    Write-Host &quot;Creating IIS app pool - &quot; $virtualDirectory.name
-    $poolName = &quot;IIS:\AppPools\&quot; + $virtualDirectory.name
-    $pool = New-Item $poolName
-    $pool.processModel.userName = $virtualDirectory.user
-    $pool.processModel.password = $virtualDirectory.password
-    $pool.processModel.identityType = &quot;SpecificUser&quot;
-    $pool.processModel.idleTimeout = TimeSpan &quot;0.00:00:00&quot;
-    $pool.managedRuntimeVersion = &quot;4.0&quot;
-    $pool.recycling.periodicRestart.time = TimeSpan &quot;00:00:00&quot;
-    $pool | Set-Item
-}
-
-function Add-VirtualDirectory($virtualDirectory)
-{
-    Write-Host &quot;Creating IIS virtual directory - &quot; $virtualDirectory.name
-    $name = &quot;IIS:\Sites\Default Web Site\&quot; + $virtualDirectory.name
-    New-Item $name -Type Application -physicalPath $virtualDirectory.file
-    Set-ItemProperty $name -Name applicationPool -Value $virtualDirectory.name
-}
-
-function Add-WindowsAuthenticationToAppIfNecessary($virtualDirectory)
-{
-    if ($virtualDirectory.authentication -ne &quot;Windows&quot;)
-    {
-        return
-    }
-    Write-Host &quot;Setting Windows authentication for IIS app - &quot; $virtualDirectory.name
-    $command = $env:SystemRoot + &quot;\system32\inetsrv\AppCmd.exe set config `&quot;Default Web Site/&quot;+$virtualDirectory.name+&quot;`&quot; -section:system.webServer/security/authentication/anonymousAuthentication /enabled:`&quot;False`&quot; /commit:apphost&quot;
-    Write-Host $command
-    Invoke-Expression $command
-
-    $command = $env:SystemRoot + &quot;\system32\inetsrv\AppCmd.exe set config `&quot;Default Web Site/&quot;+$virtualDirectory.name+&quot;`&quot; -section:system.webServer/security/authentication/windowsAuthentication /enabled:`&quot;True`&quot; /commit:apphost&quot;
-    Write-Host $command
-    Invoke-Expression $command
-}
-
-function Add-VirtualDirectories($virtualDirectories)
-{
-    C:\Windows\system32\inetsrv\AppCmd.exe unlock config  /section:security/authentication/anonymousAuthentication # allow us to make changed to authentication types of apps
-    C:\Windows\system32\inetsrv\AppCmd.exe unlock config  /section:security/authentication/windowsAuthentication   # allow us to make changed to authentication types of apps
-
-    foreach ($virtualDirectory in $virtualDirectories)
-    {
-        Add-AppPool $virtualDirectory
-        Add-VirtualDirectory $virtualDirectory
-    }
-}
-
-function Remove-VirtualDirectories($virtualDirectories)
-{
-    foreach ($item in $virtualDirectories)
-    {
-        $pool = &quot;IIS:\AppPools\&quot; + $item.name
-        if (Test-Path $pool)
-        {
-            Write-Host &quot;Removing IIS app pool - &quot; $item.name
-            Remove-Item $pool -Force -Recurse
-        }
-
-        $exists = Confirm-VirtualDirectoryExists $item.name
-        if ($exists -eq $false -or $item.name -eq &quot;&quot; -or $item.name -eq $null)
-        {
-            continue
-        }
-        Write-Host &quot;Removing IIS virtual directory - &quot; $item.name
-        $parameter = &quot;IIS:\Sites\Default Web Site\&quot; + $item.name
-        Remove-Item $parameter -Recurse
-    }
-}
-
-function Confirm-VirtualDirectoryExists($name)
-{
-    $parameter = &quot;IIS:\Sites\Default Web Site\&quot; + $item.name
-    Get-Item $parameter -ErrorAction SilentlyContinue
-    return ($?) #if last command was successful return true
-}
-
-function Get-WindowsServiceUsers($windowsServices)
-{
-    foreach ($item in $windowsServices)
-    {
-        $message =   &quot;Enter the user to run the Windows service '&quot; + $item.name + &quot;' as, or push enter to use the default value '&quot; + $item.user + &quot;'&quot;
-        $item.user = Get-ValueOrUseDefault $message $item.user
-        Write-Host &quot;&quot;
-
-        $message =   &quot;Enter the password for this user, or push enter to use the default value '&quot; + $item.password + &quot;'&quot;
-        $item.password = Get-ValueOrUseDefault $message $item.password
-        Write-Host &quot;&quot;
-    }
-}
-
-function Get-IisUsers($virtualDirectories)
-{
-    foreach ($item in $virtualDirectories)
-    {
-        $message =   &quot;Enter the user to run the IIS app '&quot; + $item.name + &quot;' as, or push enter to use the default value '&quot; + $item.user + &quot;'&quot;
-        $item.user = Get-ValueOrUseDefault $message $item.user
-        Write-Host &quot;&quot;
-
-        $message =   &quot;Enter the password for this user, or push enter to use the default value '&quot; + $item.password + &quot;'&quot;
-        $item.password = Get-ValueOrUseDefault $message $item.password
-        Write-Host &quot;&quot;
-    }
-}
-
-function Add-FolderIfItDoesNotExist($path)
-{
-    $folderExists = Test-Path -Path $path
-    if ($folderExists -eq $false) # leave folder alone if it exists
-    {
-        Write-Host &quot;Adding new folder &quot; $path
-        $output = New-Item -ItemType Directory -Path $path
-        Write-Host $output
-    }
-}
-
-function Add-Folders($folders)
-{
-    foreach ($item in $folders)
-    {
-        Add-FolderIfItDoesNotExist $item.file
-    }
-}
-
-function Add-SharedFolders($sharedFolders)
-{
-    Write-Host &quot;Adding folders shared on network&quot;
-
-    $share = WMICLASS &quot;WIN32_Share&quot;
-
-    foreach ($item in $sharedFolders)
-    {
-        Add-FolderIfItDoesNotExist $item.file
-
-        $command = &quot;(Get-WmiObject -Class Win32_Share -ComputerName . -Filter `&quot;Name='&quot; + $item.name + &quot;'`&quot;)&quot;
-        $shareExists = Invoke-Expression $command
-        if ($shareExists -ne  $null)  # remove share if it exists, in case it points to the wrong folder
-        {
-            Write-Host &quot;Deleting network share - &quot; $item.name
-            $command = &quot;(Get-WmiObject -Class Win32_Share -ComputerName . -Filter `&quot;Name='&quot; + $item.name + &quot;'`&quot;).InvokeMethod(`&quot;Delete`&quot;,`$null)&quot;
-            $command
-            $output = Invoke-Expression $command
-            Write-Host $output
-        }
-
-        Write-Host &quot;Adding network share - &quot; $item.name
-        #$output = $share.Create($item.file, $item.name, 0)  # the powershell way of doing it doesn't grant rights
-        $command = &quot;cmd /c ' net share `&quot;&quot; + $item.name + &quot;`&quot;=`&quot;&quot;+$item.file+&quot;`&quot; /GRANT:&quot;+$item.user+&quot;,FULL'&quot;
-        $output = Invoke-Expression $command
-        Write-Host $output
-    }
-}
-
-function Open-FireWallPort
-{
-    Write-Host &quot;Opening firewall port 8085 for TCP on the domain only.&quot;
-    $port = New-Object -ComObject HNetCfg.FWOpenPort
-    $port.Port = 8085
-    $port.Name = 'Movie port has been opened'
-    $port.Enabled = $true
-
-    $fwMgr = New-Object -ComObject HNetCfg.FwMgr
-    $profile=$fwMgr.LocalPolicy.GetProfileByType(0)  #domain profile only
-    $profile.GloballyOpenPorts.Add($port)
-}
-
-#endregion
-
-cls
-Write-Host &quot;Starting program&quot;
-
-Write-Host &quot;Creating log file&quot;
-Import-Module $PSScriptRoot\PSLog       # allows us to write a log file of this machine setup.  sourced from: http://gallery.technet.microsoft.com/scriptcenter/PSLog-Send-messages-to-a-db389927
-Start-Log -LogName PrepareMachineForDTS -LogPath $PSScriptRoot -Level All
-Write-Host &quot;___________________________________________________&quot;
-
-$scheduledTaskUser = &quot;NetworkService&quot;
-$scheduledTaskUserPassword = &quot;1gn0r3d&quot;
-
-Write-Host &quot;Importing PowerShell IIS functions&quot;
-Import-Module WebAdministration
-
-Write-Host &quot;Getting all settings needed from the user&quot;
-Get-WindowsServiceUsers $windowsServices
-Get-IisUsers($virtualDirectories)
-$scheduledTaskUser = Get-ValueOrUseDefault (&quot;Enter the user to run scheduled tasks as, or push enter to use the default value '&quot; + $scheduledTaskUser + &quot;'&quot;) (scheduledTaskUser)
-$scheduledTaskUserPassword = Get-ValueOrUseDefault (&quot;Enter the password for this user, or push enter to use the default value '&quot; + $scheduledTaskUserPassword + &quot;'&quot;) (scheduledTaskUserPassword)
-
-Open-FireWallPort
-
-Add-Folders $folders
-Add-SharedFolders $sharedFolders
-
-Remove-ScheduledTasks $scheduledTasks
-Add-ScheduledTasks $scheduledTaskUser $scheduledTaskUserPassword $scheduledTasks
-
-Remove-WindowsServices $windowsServices
-Add-WindowsServices $windowsServices
-
-Remove-VirtualDirectories $virtualDirectories
-Add-VirtualDirectories $virtualDirectories
-
-Write-Host &quot;Closing log file&quot;
-Stop-Log
-Write-Host &quot;Log closed. Program finished&quot;
-
- 
-
-# The line below ensures we have correct version, it is not just a comment
-#requires -Version 3.0
-
-#region Settings
-
-$apiSourceFolder = &quot;.\src\WebAPI\*&quot;
-$apiDeploymentFolder = &quot;\\10.10.10.30\Web.Api.V1.Dev&quot;
-$configFilename = $apiDeploymentFolder + &quot;\Web.config&quot;
-
-#endregion
-
-cls
-Write-Host &quot;Starting program&quot;
-
-Write-Host &quot;Copy contents of web api folder to dev&quot;
-Copy-Item $apiSourceFolder $apiDeploymentFolder -recurse -force
-
-Write-Host &quot;Change dev config file&quot;
-(Get-Content $configFilename).replace('connectionString=&quot;Dsn=DEV64&quot;','connectionString=&quot;Dsn=CLB-DEV&quot;') | Set-Content $configFilename
-
-Write-Host &quot;Finished&quot;
-</code></pre>
-
-<!-- <div class="block">&nbsp;</div>
-<footer class="footer  border_top">
-	<div class="section">
-		<div class="container is-max-desktop">
-			<a href="https://bulma.io">
-				<img src="https://bulma.io/images/made-with-bulma--dark.png" alt="Made with Bulma" width="128" height="24">
-			</a>
-		</div>
-	</div>
+</div>
+<!-- <footer class="footer  border_top">
+	footer innit
 </footer>-->
+<div class="vspacer"></div>
+<div class="vspacer"></div>
 </body>
 </html>

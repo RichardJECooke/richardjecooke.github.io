@@ -1,5 +1,7 @@
 ## Todo
-- fix bouncy anchor underlines
+- fix md posts
+- fix adoc posts
+- https://github.com/11ty/eleventy/issues/1072
 - 404 - https://www.11ty.dev/docs/quicktips/not-found/
 - https://music.youtube.com/channel/UCB9ymHb9ZybTNH1GmQD0FYg
 - download all fonts, js, styles instead of cdn
@@ -12,7 +14,6 @@
 ## Notes
 - node 16.15.0
 - https://www.11ty.dev/docs (version in the package.json file)
-- Bulma 0.9.4: https://bulma.io/documentation/overview/start/
 
 ## Setup
 Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
