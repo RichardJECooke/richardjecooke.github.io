@@ -7,6 +7,7 @@
 	--html_bgcolor: hsl(0, 0%, 13%);
 	--footer_bgcolor: hsl(0, 0%, 20%);
 	--border_color: hsl(0, 0%, 5%);
+	--text_color_dark: hsl(0, 0%, 50%);
 	--text_color: hsl(0, 0%, 80%);
 	--link_color: hsl(45, 100%, 50%);
 	--link_brighten_color: hsl(35, 100%, 90%);
@@ -16,7 +17,7 @@
 	--font-size: 18px;
 	--gutter_width: 2rem;
 	--hspacer: 1.5rem;
-	--line-height: 1.4rem;
+	--line-height: 1.4em;
 	--reading_width: 42rem;
 	--space_above_heading: 3rem;
 	--space_below_heading: 1rem;
@@ -36,12 +37,12 @@ body
 	font-size: var(--font-size);
 	height: 100%;
 	line-height: var(--line-height);
-	/* overflow-x: hidden; */
 }
 html { overflow-y: auto; height: 100%; background-color: var(--html_bgcolor); }
 h1,h2,h3,h4,h5,h6
 { 	font-family: 'Comfortaa', sans-serif; color: var(--heading_color);
 	margin-top: var(--space_above_heading); margin-bottom: var(--space_below_heading);
+	line-height: var(--line-height);
 }
 
 /* common ------------------------------------------------- */
@@ -64,4 +65,8 @@ h1,h2,h3,h4,h5,h6
 
 /* footer ------------------------------------------------- */
 body > footer { position: sticky; top: 100vh; }
-.footer { background-color: var(--footer_bgcolor); }
+footer { background-color: var(--footer_bgcolor); }
+
+/* post ------------------------------------------------- */
+.post_title { margin-bottom: 0.5rem; }
+.post_date { color: var(--text_color_dark); }

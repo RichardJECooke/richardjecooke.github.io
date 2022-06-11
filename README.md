@@ -1,4 +1,5 @@
 ## Todo
+- search for all todos
 - fix md posts
 - fix adoc posts
 - https://github.com/11ty/eleventy/issues/1072

@@ -1,15 +1,23 @@
 `use strict`;
 
+const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(config)
 {
 	config.addPlugin(syntaxHighlight);
 	config.setTemplateFormats([`adoc`, `html`, `md`]);
+	addFilters(config);
 	addPassthroughFiles(config);
 	setLiquidOptions(config);
 	return getFolderSetup();
 };
+
+function addFilters(config)
+{
+	//https://moment.github.io/luxon/#/formatting?id=table-of-tokens
+	config.addFilter("formatDate", (date) => { return DateTime.fromJSDate(date).toFormat('d MMMM y'); });
+}
 
 function getFolderSetup()
 {
@@ -29,23 +37,21 @@ function addPassthroughFiles(config)
 	//admin files
 	config.addPassthroughCopy(`./src/.nojekyll`); //stops github using jekyll on the files
 	config.addPassthroughCopy(`./src/media/`); // you can't copy something twice, i.e. with a folder and a wildcard below
-	// style
-	// config.addPassthroughCopy(`**/*.css`);
 	// //images
-	// config.addPassthroughCopy(`**/*.bmp`);
-	// config.addPassthroughCopy(`**/*.jpeg`);
-	// config.addPassthroughCopy(`**/*.jpg`);
-	// config.addPassthroughCopy(`**/*.png`);
-	// config.addPassthroughCopy(`**/*.svg`);
-	// config.addPassthroughCopy(`**/*.webp`);
-	// //audio
-	// config.addPassthroughCopy(`**/*.flac`);
-	// config.addPassthroughCopy(`**/*.mp3`);
-	// //books
-	// config.addPassthroughCopy(`**/*.pdf`);
-	// config.addPassthroughCopy(`**/*.epub`);
-	// //downloads
-	// config.addPassthroughCopy(`**/*.zip`);
+	config.addPassthroughCopy(`**/articles/**/*.bmp`);
+	config.addPassthroughCopy(`**/articles/**/*.jpeg`);
+	config.addPassthroughCopy(`**/articles/**/*.jpg`);
+	config.addPassthroughCopy(`**/articles/**/*.png`);
+	config.addPassthroughCopy(`**/articles/**/*.svg`);
+	config.addPassthroughCopy(`**/articles/**/*.webp`);
+	//audio
+	config.addPassthroughCopy(`**/articles/**/*.flac`);
+	config.addPassthroughCopy(`**/articles/**/*.mp3`);
+	//books
+	config.addPassthroughCopy(`**/articles/**/*.pdf`);
+	config.addPassthroughCopy(`**/articles/**/*.epub`);
+	//downloads
+	config.addPassthroughCopy(`**/articles/**/*.zip`);
 }
 
 function setLiquidOptions(config)
