@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title> · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/atom.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column">
+	<h2 class="post_title">jQuery Mobile notification popup</h2>
+	<span class="post_date">5 February 2014</span>
+	<p>This function adds a jQuery Mobile popup programmatically to a page and displays it.  The user needs to click to dismiss it. If you want it to fade automatically then close it using <code>setTimeout()</code>.</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">notify</span><span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">var</span> id <span class="token operator">=</span> <span class="token string">"popupid"</span><span class="token punctuation">;</span><br>    <span class="token keyword">try</span> <span class="token punctuation">{</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token operator">+</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><br>    <span class="token keyword">var</span> popup <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    popup<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"data-role"</span><span class="token punctuation">,</span> <span class="token string">"popup"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    popup<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"data-transition"</span><span class="token punctuation">,</span> <span class="token string">"pop"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    popup<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"data-theme"</span><span class="token punctuation">,</span> <span class="token string">"a"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    popup<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"data-overlay-theme"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    popup<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    popup<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"&lt;p style='margin:1em 2em 1em 2em'>"</span> <span class="token operator">+</span> message <span class="token operator">+</span> <span class="token string">"&lt;/p>"</span><span class="token punctuation">;</span><br>    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'div[data-role="content"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>popup<span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token operator">+</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">popup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#"</span><span class="token operator">+</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">popup</span><span class="token punctuation">(</span><span class="token string">"open"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><br><span class="token function">notify</span><span class="token punctuation">(</span><span class="token string">"Stop!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>Line 3 deletes the popup div if it has been used before.</li>
+<li>Line 10 adds the popup inside the content element of the jQuery Mobile page. This is essential or it won't display. This is the page without the notification:</li>
+</ul>
+<p><img src="nopopup.png" alt="nopopup"></p>
+<p>And this is the page with the notification:
+<img src="popup.png" alt="popup"></p>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>
