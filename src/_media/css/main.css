@@ -74,5 +74,6 @@ footer { background-color: var(--footer_bgcolor); }
 .title_container { display: flex; }
 
 /* post ------------------------------------------------- */
+.post_container img { max-width: 100%;}
 .post_title { margin-bottom: 0.5rem; }
 .post_date { color: var(--text_color_dark); }

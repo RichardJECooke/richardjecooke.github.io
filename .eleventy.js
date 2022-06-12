@@ -37,8 +37,9 @@ function addPassthroughFiles(config)
 	//admin files
 	config.addPassthroughCopy(`./src/.nojekyll`); //stops github using jekyll on the files
 	config.addPassthroughCopy(`./src/_media/`); // you can't copy something twice, i.e. with a folder and a wildcard below
-	// //images
+	//images
 	config.addPassthroughCopy(`**/articles/**/*.bmp`);
+	config.addPassthroughCopy(`**/articles/**/*.gif`);
 	config.addPassthroughCopy(`**/articles/**/*.jpeg`);
 	config.addPassthroughCopy(`**/articles/**/*.jpg`);
 	config.addPassthroughCopy(`**/articles/**/*.png`);
