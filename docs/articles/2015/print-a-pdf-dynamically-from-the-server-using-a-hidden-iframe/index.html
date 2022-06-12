@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title> · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/atom.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">Print a PDF dynamically from the server using a hidden iframe</h2>
+	<span class="post_date">3 June 2015</span>
+	<p>Loading a PDF using a link with the src attribute pointing to a public PDF is easy. But how to print a PDF retrieved from a web service in Javascript, without displaying it on the screen first?  Use a dynamically added form in a hidden iframe.</p>
+<p>If you just want to display the PDF dynamically, then see my other PDF <a href="/articles/2015/show-a-pdf-from-the-server-in-a-new-tab-on-button-click/">post</a>.</p>
+<p>Below is the browser code (vanilla Javascript) to create a dynamic hidden form in a dynamic hidden iframe, submit it, wait for the PDF to return, and then print it:</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">//have a div in your html somewhere with this id. height=0 width=0</span><br><span class="token keyword">var</span> div <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'pdfDiv'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">//we make a new iframe every time we print or the DOM manipulation below breaks</span><br>div<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'&lt;iframe width="0" height="0" id="pdfFrame">&lt;/iframe>'</span><span class="token punctuation">;</span><br><span class="token keyword">var</span> frame <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'pdfFrame'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span>document<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">//add a &lt;body> to the iframe so we can add a form to it below</span><br>frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span>document<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span><span class="token string">'&lt;body>&lt;/body>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span>document<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token keyword">var</span> url <span class="token operator">=</span> <span class="token string">'http://localhost/Pdf/GetPdfForConsultation?consultationId='</span> <span class="token operator">+</span> consultation<span class="token punctuation">.</span>Id<span class="token punctuation">;</span><br><span class="token comment">//make a form to call the url above and return the pdf</span><br><span class="token keyword">var</span> form <span class="token operator">=</span> frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span>document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"form"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>form<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span> <span class="token string">"pdfForm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>form<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"method"</span><span class="token punctuation">,</span> <span class="token string">"post"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>form<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"action"</span><span class="token punctuation">,</span> url<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">//add as many input fields as your service needs</span><br><span class="token keyword">var</span> field <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">"input"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>field<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">'token'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>field<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">"value"</span><span class="token punctuation">,</span> AccountService<span class="token punctuation">.</span><span class="token function">GetAuthenticationToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>form<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>field<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">//add the form to the new iframe body</span><br>frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span>document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>form<span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token comment">//wait until the pdf has loaded until printing just this hidden frame, not the surrounding page</span><br>frame<span class="token punctuation">.</span><span class="token function-variable function">onload</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    frame<span class="token punctuation">.</span>contentWindow<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span><span class="token punctuation">;</span><br><span class="token comment">//start loading the pdf from the server</span><br>form<span class="token punctuation">.</span><span class="token function">submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The server code (C# WebAPI) to return a PDF:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">Route</span><span class="token attribute-arguments"><span class="token punctuation">(</span><span class="token string">"GetPdfForConsultation"</span><span class="token punctuation">)</span></span></span><span class="token punctuation">]</span><br><span class="token punctuation">[</span><span class="token attribute"><span class="token class-name">HttpPost</span></span><span class="token punctuation">]</span><br><span class="token keyword">public</span> <span class="token return-type class-name">IHttpActionResult</span> <span class="token function">GetPdfForConsultation</span><span class="token punctuation">(</span><span class="token class-name">HttpRequestMessage</span> request<span class="token punctuation">,</span> <span class="token class-name"><span class="token keyword">long</span></span> consultationId<span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>	<span class="token class-name"><span class="token keyword">var</span></span> content <span class="token operator">=</span> request<span class="token punctuation">.</span>Content<span class="token punctuation">.</span><span class="token function">ReadAsStringAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>Result<span class="token punctuation">;</span><br>	<span class="token class-name"><span class="token keyword">var</span></span> token <span class="token operator">=</span> content<span class="token punctuation">.</span><span class="token function">Substring</span><span class="token punctuation">(</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//"token=243lblahblahblah"</span><br>	<span class="token class-name"><span class="token keyword">var</span></span> path <span class="token operator">=</span> HostingEnvironment<span class="token punctuation">.</span><span class="token function">MapPath</span><span class="token punctuation">(</span><span class="token string">@"~/"</span> <span class="token operator">+</span> Core<span class="token punctuation">.</span>Configuration<span class="token punctuation">.</span>PdfFolder <span class="token operator">+</span> <span class="token string">"2015-05-25-13h41m54-TBH20949482.pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token class-name"><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span></span> fileBytes <span class="token operator">=</span> System<span class="token punctuation">.</span>IO<span class="token punctuation">.</span>File<span class="token punctuation">.</span><span class="token function">ReadAllBytes</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>	<span class="token class-name"><span class="token keyword">var</span></span> response <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">HttpResponseMessage</span><span class="token punctuation">(</span>HttpStatusCode<span class="token punctuation">.</span>OK<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	response<span class="token punctuation">.</span>Content <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ByteArrayContent</span><span class="token punctuation">(</span>fileBytes<span class="token punctuation">)</span><span class="token punctuation">;</span><br>	response<span class="token punctuation">.</span>Content<span class="token punctuation">.</span>Headers<span class="token punctuation">.</span>ContentDisposition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">ContentDispositionHeaderValue</span><span class="token punctuation">(</span><span class="token string">"inline"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//opens in tab, use 'attachment' to download instead</span><br>	response<span class="token punctuation">.</span>Content<span class="token punctuation">.</span>Headers<span class="token punctuation">.</span>ContentDisposition<span class="token punctuation">.</span>FileName <span class="token operator">=</span> <span class="token string">"2015-05-25-13h41m54-TBH20949482.pdf"</span><span class="token punctuation">;</span><br>	response<span class="token punctuation">.</span>Content<span class="token punctuation">.</span>Headers<span class="token punctuation">.</span>ContentType <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">MediaTypeHeaderValue</span><span class="token punctuation">(</span><span class="token string">"application/pdf"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>	<span class="token keyword">return</span> <span class="token function">ResponseMessage</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

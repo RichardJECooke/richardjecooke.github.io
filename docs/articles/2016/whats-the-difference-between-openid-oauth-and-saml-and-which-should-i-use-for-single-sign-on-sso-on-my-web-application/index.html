@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title> · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/atom.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">What's the difference between OpenID, OAuth, and SAML - and which should I use for single sign on (SSO) on my web application?</h2>
+	<span class="post_date">18 March 2016</span>
+	<p>Disclaimer: This is a summary of all the articles I can find on the Net. I'm not a security expert, nor have I implemented SSO yet - once I have I'll update this document.</p>
+<h2>The goal of single sign on (SSO)</h2>
+<p>You want your users to be able to click one button to sign in (the same button for sign up if they're new users on your site) without having to enter a username or password. And the benefit for you is that you don't have to store &amp; manage your users' passwords (getting encryption right, coding lost password pages).</p>
+<h2>Terminology</h2>
+<ul>
+<li>Provider (IDP) - Google, Yahoo, Facebook, etc</li>
+<li>Relying party (RP) - your app (your app relies on the provider)</li>
+<li>Authentication - your app trusts that the user is who she says she is</li>
+<li>Authorisation - the user allows your app to access Facebook *<em>*</em> Google *<em>*</em> etc and do stuff on it (e.g. make a post on your behalf)</li>
+</ul>
+<h2>SAML</h2>
+<p>SAML is a legacy XML server to server protocol not suitable for modern mobile and web apps.</p>
+<h2>OpenID</h2>
+<p>OpenID provides authentication. Its major benefit is that the user can use any provider to sign in - you don't have to code separate functionality for each provider.</p>
+<h2>OAuth</h2>
+<p>OAuth provides authorisation. And can be used for pseudo-authentication because the provider gives your app a token it can use to ask the provider questions. The problem is you need to code support for each provider separately.</p>
+<h3>Security flaws in OAuth</h3>
+<p>If you're writing any app where security is crucial, like finance or medical, then <a href="http://security.stackexchange.com/questions/94995/oauth-2-vs-openid-connect-to-secure-api">don't use OAuth</a>. From Wikipedia:</p>
+<p>OAuth 2.0 has had numerous security flaws exposed in implementations.<a href="https://en.wikipedia.org/wiki/OAuth#cite_note-17">[17]</a> The protocol itself has been described as inherently insecure by security experts and a primary contributor to the specification stated that implementation mistakes are almost inevitable.<a href="https://en.wikipedia.org/wiki/OAuth#cite_note-18">[18]</a><a href="https://en.wikipedia.org/wiki/OAuth#cite_note-19">[19]</a></p>
+<p>In January 2013, the Internet Engineering Task Force published a number of threat models for OAuth 2.0.<a href="https://en.wikipedia.org/wiki/OAuth#cite_note-rfc-20">[20]</a> Among them was one called &quot;Open Redirector&quot;; in the spring of 2014, this was described under the name &quot;Covert Redirect&quot; by Wang Jing.<a href="https://en.wikipedia.org/wiki/OAuth#cite_note-OAuth_Covert_Redirect-21">[21]</a><a href="https://en.wikipedia.org/wiki/OAuth#cite_note-CNET-22">[22]</a><a href="https://en.wikipedia.org/wiki/OAuth#cite_note-PhysOrg-23">[23]</a><a href="https://en.wikipedia.org/wiki/OAuth#cite_note-Covert_Redirect-24">[24]</a></p>
+<p>Possibly the most devastating OAuth security failure is phishing vulnerability:<a href="https://en.wikipedia.org/wiki/OAuth#cite_note-25">[25]</a> every web site using OAuth is visually (but not technically) asking end users for their username and password of their master identity, which prevents ordinary users from understanding that they should not type those in should they encounter an attacker's web site that visually emulates this process to steal credentials. Two-factor authentication does not prevent this attack, because the phishing site can steal that as well (and use it right away).</p>
+<h2>So we should use OpenID for SSO because it's far less coding?</h2>
+<p>No. Unfortunately the biggest providers, Facebook, Google &amp; Twitter, don't support OpenID.</p>
+<h2>OpenID Connect</h2>
+<p>OpenID Connect is a new technology that implements OpenID as a JSON webservice on top of OAuth (it's kinda OpenID 3). In other words you get the simplicity and smallness of code of OpenID with the large number of providers offering OAuth. Well, except Facebook. Watch this video: <a href="https://www.youtube.com/watch?v=Kb56GzQ2pSk">https://www.youtube.com/watch?v=Kb56GzQ2pSk</a></p>
+<h2>Does your programming language have a OpenID Connect library?</h2>
+<p>http://openid.net/developers/libraries/</p>
+<h2>Is it being used &amp; has it won the protocol war?</h2>
+<p>Yes, I can't find any alternative.</p>
+<h2>What companies use OpenID Connect?</h2>
+<p>Google, Microsoft, PayPal. The specification was finalised in 2015 so it's still new, hopefully more providers will join. Facebook has their own API. Twitter &amp; LinkedIn don't support OpenId Connect.</p>
+<h2>Conclusion</h2>
+<p>Since Twitter &amp; LinkedIn &amp; FB don't support Connect then you can't use it for your app yet because you'll exclude users. And you can't use OAuth 2 because it's not secure. So your only options are:</p>
+<ul>
+<li>use standard old email &amp; password sign in and wait until (if) the big providers support Connect</li>
+<li>write your own more secure protocol on top of separate OAuth 2 connections to each of the big providers (ha)</li>
+</ul>
+<h2>Sources</h2>
+<ul>
+<li>http://stackoverflow.com/questions/1087031/whats-the-difference-between-openid-and-oauth</li>
+<li>https://en.wikipedia.org/wiki/OAuth</li>
+<li>https://en.wikipedia.org/wiki/OpenId</li>
+<li>http://stackoverflow.com/questions/1827997/is-facebook-an-openid-provider</li>
+<li>https://en.wikipedia.org/wiki/OpenID_Connect</li>
+<li>http://security.stackexchange.com/questions/37818/why-use-openid-connect-instead-of-plain-oauth</li>
+<li>https://www.mutuallyhuman.com/blog/2015/07/17/an-updated-look-at-choosing-between-oauth2-and-saml/</li>
+<li>http://stackoverflow.com/questions/36080561/why-dont-twitter-facebook-and-linkedin-support-openid-connect</li>
+<li>http://stackoverflow.com/questions/36080422/if-i-my-app-uses-open-id-connect-does-it-also-have-to-support-oauth</li>
+</ul>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

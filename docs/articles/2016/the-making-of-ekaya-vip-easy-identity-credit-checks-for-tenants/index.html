@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title> · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/atom.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">The making of Ekaya.vip - easy identity & credit checks for tenants</h2>
+	<span class="post_date">11 October 2016</span>
+	<p>I've just finished &amp; released my new project, <a href="https://ekaya.vip">https://ekaya.vip</a>, as part of the team at <a href="https://ekaya.com">Ekaya.com</a>.</p>
+<p>This blog discusses the web app and its creation, similarly to my earlier review of the Angular medical record app, <a href="/articles/2015/eccr-the-western-cape-government-health-web-application-for-discharges/">ECCR</a>.</p>
+<h2>The app</h2>
+<p>Vip is a web app that creates a profile page for a user showing her: verified personal details, credit score and bank statements, and character references.</p>
+<p>The user can then share this profile with prospective landlords as an indication she would be a good tenant. Here's part of the profile page for a user:
+<img src="vip-1024x505.png" alt="Ekaya.vip profile"></p>
+<p>The screenshot below shows how a landlord (non-user of Vip) can email anyone asking them to create a profile for review:
+<img src="invitetenant-1024x828.png" alt="Invite a tenant to use Vip"></p>
+<p>Finally, the image below shows bank login, part of the profile creation process:
+<img src="bank-1024x798.png" alt="Bank login"></p>
+<p>Currently it costs R99 to create a profile, and R49 to optionally refresh all your verified data after three months.</p>
+<h2>Office &amp; team</h2>
+<p>Our office was in leafy green Newlands, holding six programmers, two business people (one customer experience and one designer), and two customer support people.
+<img src="office-1024x576.jpg" alt="office">]</p>
+<p>This was one of the best teams I've worked with: no rockstars, no hostility or insecurity, and no laziness. Everyone at the firm was passionate about software - always posting links to interesting tech articles and videos, discussing past- and side- projects, and generally having fun coding something beautiful.</p>
+<h2>Design</h2>
+<p>The app has few screens - it's just a payment screen, some id verification question screens, bank login screens, the main profile screen, and sharing screens. Thus design was completed by the designer/CEO before coding began and all wireframes were small enough to fit on our office wall:</p>
+<p><img src="wireframes-1024x576.jpg" alt="wireframes">
+We hired a team in the Ukraine to create the CSS for our wireframes to save time. Which was a terrible idea. Old fashioned Bootstrap CSS is very hard to cut up and put into React components using CSS modules. Never again.</p>
+<h2>Project management</h2>
+<p>We tried out lots of online project management web apps, looking for the set of features we wanted at the best price:</p>
+<ul>
+<li>task lifecycle managements and grouping into stories and epics</li>
+<li>automated burndown chart creation</li>
+</ul>
+<h3>Axosoft</h3>
+<p>Axosoft seemed decent and we trialled it for a month.
+<img src="axosoft-1024x512.png" alt="Axosoft backlog"></p>
+<p>However it has serious flaws and we wouldn't recommend it because it:</p>
+<ul>
+<li>is very slow</li>
+<li>refreshed the task backlog constantly, making you lose your place</li>
+<li>is far too cluttered with too many unnecessary features</li>
+<li>makes moving tasks around difficult</li>
+<li>makes finding out how to do something obscure and difficult</li>
+<li>and no one wants to enter work logs, or does them accurately</li>
+</ul>
+<p>Furthermore the automated time tracking and estimation features were hard to use. Even now I can't remember exactly what combination of estimated time, work logs, and work completed entries you are supposed to use generate correct graphs. Which is unfortunate as they look quite useful:
+<img src="dashboard-1024x507.png" alt="Axosoft dashboard">]</p>
+<h3>Trello</h3>
+<p>Since our time estimates as a team were unhelpful and Axosoft was cluttered we decided to try something completely different. We:</p>
+<ul>
+<li>switched to the free version of Trello</li>
+<li>stopped grouping tasks</li>
+<li>stopped assigning points or hour estimates</li>
+<li>and had only two boards:
+<ol>
+<li>company backlog (big long-term stories)</li>
+<li>current sprint (small tasks)</li>
+</ol>
+</li>
+</ul>
+<p><img src="trello-sprint-board-1024x501.png" alt="Trello sprint board"></p>
+<p><img src="trello-backlog-board-1024x746.png" alt="Trello backlog board"></p>
+<p>At the end of every sprint I made a new board with the date of that sprint and moved all our <strong>done</strong> and <strong>rejected</strong> cards into that board and closed it. Thus our current sprint board never closes, so people don't have to update their bookmarked urls and I didn't have to copy and paste lots of cards and columns.</p>
+<h3>Standups &amp; teamwork</h3>
+<p>We permanently displayed both boards on our TVs and had daily standups around them.</p>
+<p><img src="trello-169x300.jpg" alt="trello"></p>
+<p>Standups happened whenever everyone had arrived at the office, sometimes only 11h30. When people were working from home they could Skype/Hangouts in, or we'd just skip a day's standup.</p>
+<h3>Process</h3>
+<p>Tasks went from <strong>backlog</strong> to <strong>coding</strong> to <strong>code review</strong> to <strong>deploying</strong> to <strong>testing</strong> (done by our CXO / unoffical QA tester). We started off tackling tasks separately to get through them faster.</p>
+<p>But I think this ended up making us slower than if we had collaborated and code reviewed more. At the end of of the project we switched to peer programming at least hour a day for those who were willing. And put every task through code review before deploying it.</p>
+<h2>Pair programming</h2>
+<p>I used to dislike this activity when I first tried it because:</p>
+<ul>
+<li>it's exhausting</li>
+<li>I got lost or one of us wasn't contributing</li>
+<li>it was not ergonomic - trying to share a keyboard and fit behind one screen</li>
+</ul>
+<p>With a few changes though I now am very happy with it:</p>
+<ul>
+<li>Only one person handles the mouse and keyboard, at their pc
+<ul>
+<li>This removes the awkwardness of other people disrupting your personalised setup</li>
+</ul>
+</li>
+<li>The person at the pc must always be the less experienced on a feature, or on the technology, or as a programmer in general. This ensures
+<ul>
+<li>they learn by doing (coding) while the other person talks</li>
+<li>they can slow down and look around and ask questions without being rushed as they would be having the more experienced person at the keyboard</li>
+<li>they always contribute and can't get lost, as would happen if the person who has all the knowledge also zooms around the code and does all the typing</li>
+</ul>
+</li>
+<li>We do it only for a few hours a day, so everyone has lots of personal time to code in silence and relax listening to YouTube or checking Facebook or whatever.</li>
+</ul>
+<h2>Apple / Ubuntu</h2>
+<p>All the coders have Apple PCs, except me. I find the Apple OS difficult to use, unpleasant, and their computers overpriced even with all their deficiencies compared to Windows computers.</p>
+<p>So the company bought me a Windows laptop. It is far more powerful than the Apples in the office, at a fraction of the price. I installed Ubuntu on VirtualBox on it to program and had no problems with this setup.</p>
+<p>Ubuntu is necessary to use the same shell scripts as the Apple machines, which Windows can't do easily just yet. I also found working in a VM advantageous at times because of its ability to save and restore images - especially before upgrading my system.</p>
+<h3>VirtualBox</h3>
+<p>I used VirtualBox happily, except for one graphics bug. You need to download and use the guest additions ISO for 5.0.16 until this <a href="https://www.virtualbox.org/ticket/15526">bug</a> is fixed. Any images later than that version will cause graphics errors in VirtualBox Ubuntu with apps like Gitkraken, Atom, Chrome (and other Electron apps too I assume). Here's the ISO to use: <a href="http://download.virtualbox.org/virtualbox/5.0.16/VBoxGuestAdditions_5.0.16.iso">http://download.virtualbox.org/virtualbox/5.0.16/VBoxGuestAdditions_5.0.16.iso</a></p>
+<h3>Linuxbrew</h3>
+<p>The Apples use <strong>Brew</strong> as their package manager, whereas Linux uses <strong>apt</strong>. Apt needs to run as root (all apps are installed globally) whereas Brew installs apps for the local user. This makes things like accessing a database different, as using Brew you don't need to set a password because your current user already has access.</p>
+<p>In future to avoid these differences in setup I'd like to give Linuxbrew a try - a fork of Brew compiled for Linux.</p>
+<h2>Slack</h2>
+<p>We used the free version Slack for almost all team communication. It was my first time trying it, having used Gmail &amp; Hangouts before. I like Slack's channels and ability to link to bots, like git commit. But I don't like that messages can whizz by ignored by users if they miss them, unlike email which has to be addressed consciously.</p>
+<p>And I detest that that messages get deleted past a certain number, making searching for important old comments impossible. I'd stick with Gmail &amp; Hangouts again in future I had the choice.
+<img src="slack-1024x504.png" alt="Slack"></p>
+<h2>Passpack</h2>
+<p>We stored all our passwords in the Passpack free version, including our config files for deployment. No passwords were kept in git, meaning we could open source our code safely at any point if we wished. Passpack worked well.
+<img src="passpack-1024x840.png" alt="Passpack"></p>
+<p>Our passwords were saved to environment variables on our server and not needed to be entered during deployment - as per the 12 factor app best practice guide.</p>
+<h2>Bitbucket</h2>
+<p>We kept our repositories in Bitbucket. The only difference between Bitbucket and Github is that Bitbucket charges per user for an infinite number of repositories and Github charges per repository for an infinite number of users.</p>
+<p>The former is clearly far more preferable for a firm with a set number of employees.
+<img src="bitbucket-1024x463.png" alt="Bitbucket"></p>
+<h2>Other online services we used</h2>
+<h3>Peach Payments</h3>
+<p>Peach Payments is a credit card payment gateway that is easy to use with a support team that responds quickly. The only problem I have with it is that they have no API for testing.</p>
+<p>So if you want to write automated tests to see how your app behaves when payments fail or succeed for various reasons you are out of luck. Hopefully they'll add this useful feature someday.</p>
+<h3>Intercom</h3>
+<p>Intercom provides the chat bubble on our app. Intercom's app provides a profile for each user with their full chat history, and any events or data our app has stored in Intercom for that user.</p>
+<p>It can also send emails.  A very useful tool I'd recommend.</p>
+<h3>Yodlee</h3>
+<p>We worked with a local partner to leverage Yodlee’s services and consumer credit checks via an API. The API had it’s problems though:</p>
+<ul>
+<li>It uses HTML error codes as custom error codes, in inconsistent ways</li>
+<li>They don't version their API, and make breaking changes in QA</li>
+<li>Their test server connects to live banks</li>
+<li>Their documentation doesn't match their API</li>
+</ul>
+<h2>Gitkraken</h2>
+<p>Gitkraken is the only cross platform git GUI, written in Electron. I prefer it to SourceTree, but perhaps not as much as Tortoisegit. But it worked well on my Linux machine.</p>
+<p>Watching the other coders in the office struggle to recall and correct lists of git command line statements instead of clicking one button on a GUI was laughable. I'd definitely recommend Gitkraken to anyone in future.
+<img src="gitkraken-1024x484.png" alt="Gitkraken"></p>
+<h2>Atom &amp; IDEs</h2>
+<p>Two of us used Atom as our IDE (our language was Typescript). One used Jetbrains Webstorm. One used Visual Studio Code. And two used Sublime.  We had no conflicts.</p>
+<p><img src="atom-1024x496.png" alt="Atom"></p>
+<p>Atom worked perfectly for me. The Sublime users had difficulty installing the Typescript and linting plugins. And nearly all of us used Visual Studio Code for debugging the node server in compiled Javascript because it was powerful and easy to use.</p>
+<p>I would not recommend Sublime. Sublime is significantly slower to code in, losing the power to jump directly to declarations in code, find usages, and refactor / rename easily. I did miss having Notepad++ on Ubuntu on several occasions when I wanted to record and run macros, and do clever regular expression search and replaces. But the handy thing about being on an Ubuntu VM was that I could swap back to Windows to run Notepad++ when necessary with one click.</p>
+<h2>Coding the app</h2>
+<h3>Language choice</h3>
+<p>We'd heard only good things about React &amp; Redux &amp; Typescript, so we chose those for the browser code. Typescript is wonderful in many ways:</p>
+<ul>
+<li>it provides all the power of statically typed languages (and every new language these days is statically typed, no one wants to use dynamic languages anymore)</li>
+<li>it's almost identical to Javascript</li>
+<li>if you want to get rid of it at some future stage you can just compile it to almost identical Javascript and use those files as your files</li>
+</ul>
+<p>For the server we had far more choices:</p>
+<ul>
+<li>Nodejs – same language for front and back end. Typescript allows static typing. Mostly but not completely OO and functional. Means you can use the same JS libraries in both server and browser and share code libraries we make too – hopefully faster easier coding. Politically neutral (the Switzerland of languages to .NET &amp; Java people)</li>
+<li>Scala – speed and libraries of the JVM. Fully OO and functional. But we'll still have to use a different language for front end stuff.</li>
+<li>Python – bad static type support using comments. Kinda OO and functional.</li>
+<li>Ruby – no static typing at all, blocks vs clean first order functions like Python. Full OO.</li>
+<li>Haskell – beautiful but super difficult so can't hire new coders</li>
+<li>Clojure – no static types. Lots of brackets.</li>
+<li>Elixir – too new</li>
+<li>Go – too new. Controversial on forums. Has an ugly gopher mascot</li>
+<li>Java – too verbose, no functional supporting</li>
+<li>Rust – a systems level language with manual memory management</li>
+<li>F#, C# - bad Linux support</li>
+<li>Dart – is dead</li>
+</ul>
+<p>Typescript with node.js and Scala with Java were the clear top two choices. In the end we chose Typescript because:</p>
+<ul>
+<li>I had experience in Typesript and no one had experience in Scala</li>
+<li>We liked the idea of learning only one language</li>
+<li>node.js fits well with Docker and scalable web apps</li>
+</ul>
+<p>We were happy with our choice.</p>
+<h3>Docker</h3>
+<p>We used Docker to create small rebuildable images to deploy our code to test and production.  It's the an excellent technology and the way of the future.</p>
+<p>There's nothing more to say - except perhaps that is difficult on your localhost in one regard for people using Apple or Windows pcs. If you pull your packages (e.g. npm, gems, nuget) off the Net every time your container builds then it's very slow to change a line of code and see what the effect is on your site immediately.</p>
+<p>You can share a packages folder between your local machine and the docker machine if you're on Linux so you don't have to update packages every compile - but you can't on Apple/Windows, because the packages are built for a different operating system.</p>
+<p>And also, the images take up quite a bit of space - better to have a big harddrive than a small SSD. I had no trouble with speed, but colleagues did have trouble with space.</p>
+<h4>Deployment - scripts, docker-swarm, Kubernetes</h4>
+<p>At first we wrote simple deployment scripts for our dev server. They ssh'ed onto the server, copied across the code, and ran the dockerfile. For production the guy who was tasked with improving deployment first tried Kubernetes - as we'd heard it was the best. But he found it too hard and swapped to docker-swarm.</p>
+<p>When I look at the docker-swarm code I still don't understand it - it's complicated stuff. But it works - we have always online blue/green deployments to production. I'd like to give Kubernetes a try in a future project.</p>
+<h3>Tabs vs spaces</h3>
+<p>I've assumed for years that spaces are dead - because tabs allow everyone to set their preferred length of indentation. But the team eventually decided to pick two spaces (or soft tabs) as the standard as it allows aligning columns and is the Facebook standard. It really made no difference to anything - once everyone had set their darn IDE to the same setting.</p>
+<h3>Logging</h3>
+<p>Our logging is the ELK stack (ElasticSearch, Logstash, Kibana). I didn't work on it so I can't comment.
+<img src="kibana-1024x505.png" alt="Kibana"></p>
+<h3>Email</h3>
+<p>We used Sendgrid to send emails, queued in RabbitMQ (a base Docker image).</p>
+<p>Sendgrid works well, and has templates.</p>
+<h3>Database</h3>
+<p>We used Postgres.</p>
+<h4>Script management (migrations)</h4>
+<p>We used Flyway.</p>
+<h4>Sequelize.js</h4>
+<p>Sequelize is the ORM for Node. An ORM's main benefits are:</p>
+<ol>
+<li>You need change only your table model when you change the database, and don't need to update every SQL query that references that table</li>
+<li>The ORM automatically handles converting linked database tables to a tree view of objects in code</li>
+<li>You'll write less code than custom SQL queries</li>
+</ol>
+<p>The problem with Sequelize is it's very poorly documented. I couldn't figure out how to properly associate linked tables in complex cases (where Sequelize presumes you'll use their format, and we used our own).</p>
+<p>So we gained benefit number 1, but not so much numbers 2 and 3 - as we ended up writing some custom SQL and conversion code anyway. I'd use Sequelize again, but only until something better and simpler arrives.</p>
+<h3>hapi.js</h3>
+<p>This was our API webserver (like express or koa). We chose it as it's made by Walmart for massive speed. It works well.</p>
+<p>But I'm sure the others would be fine too - as they don't really do that much work. I did miss the power and in-the-box features that frameworks like Laravel provide. Strongloop didn't look appealing.</p>
+<p>But in my next project I'd love to try Adonis.js.</p>
+<h3>Other packages</h3>
+<ul>
+<li>inversify.js - dependency injection</li>
+<li>tape-async.js &amp; faucet.js - for unit &amp; integration tests</li>
+<li>request-promise - for REST calls</li>
+<li>sharp.js - for image resizing</li>
+<li>nightmare.js - a browser tester (like Selenium) but based on Javascript (Electron) and can run headlessly to test anywhere. It is great, except at handling iframes, which made it impossible to test our credit card payments. I'd still use it again.</li>
+</ul>
+<h2>My experience of open source</h2>
+<p>Having used Linux &amp; open source tools now, after being a .NET programmer for nine years, I wouldn't go back to Windows. Everything is so much easier on Linux:</p>
+<ul>
+<li>Everything has a CLI that you use to automate every task</li>
+<li>Package managers make life easy.</li>
+<li>SSH keys over remembering passwords</li>
+<li>Framework versioning like rvm and nvm over installing one version of .NET in exactly the right order</li>
+</ul>
+<p>However I don't like the generally dynamically typed tendency in old open source languages like Ruby &amp; Python. Python now has types, as does Typescript, and PHP does partially too.</p>
+<p>But languages like Ruby I find to hard to use: no find references, go to definition, or refactor, make navigating code incredibly tedious.</p>
+<h2>English</h2>
+<p>I was not involved in writing the copy nor proofreading it. I personally <a href="/articles/2015/prefer-sentence-case-to-title-case/">dislike the German looking title case the app uses</a>. So if you do too, please don't judge me by the app's text.</p>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>
