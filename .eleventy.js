@@ -6,30 +6,56 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 module.exports = function(config)
 {
 	config.addPlugin(syntaxHighlight);
-	config.setTemplateFormats([`adoc`, `html`, `md`]);
+	config.setTemplateFormats([`adoc`, `html`, `md`, `njk`]);
 	addFilters(config);
+	addPostYearCollection(config);
 	addPassthroughFiles(config);
 	setLiquidOptions(config);
-	return getFolderSetup();
+	setNunjucksOptions(config);
+	return getSettings();
 };
 
 function addFilters(config)
 {
 	//https://moment.github.io/luxon/#/formatting?id=table-of-tokens
 	config.addFilter("formatDate", (date) => { return DateTime.fromJSDate(date).toFormat('d MMMM y'); });
+	config.addFilter("shortDate", (date) => { return DateTime.fromJSDate(date).toFormat('y-MM-dd'); });
 }
 
-function getFolderSetup()
+function addPostYearCollection(config)
 {
-	const folderSetup =
+	config.addCollection("postsByYear", (collection) =>
 	{
+		const posts = collection.getFilteredByTag('post').reverse();
+		const years = posts.map(post => post.date.getFullYear());
+		const uniqueYears = [...new Set(years)];
+		const postsByYear = [];
+		uniqueYears.map
+		(
+			(currentYear) =>
+			{
+				const postsThisYear = posts.filter(post => post.date.getFullYear() === currentYear);
+				postsByYear.push([currentYear, postsThisYear]);
+			}
+		);
+		return postsByYear;
+	});
+}
+
+function getSettings()
+{
+	const settings =
+	{
+		markdownTemplateEngine: `njk`, //set default template engine to mozilla nunjucks
+		dataTemplateEngine: `njk`,
+		htmlTemplateEngine: `njk`,
 		dir:
 		{
 			input: `./src`,
 			output: `./docs`
 		}
 	};
-	return folderSetup;
+	return settings;
 }
 
 function addPassthroughFiles(config)
@@ -61,6 +87,18 @@ function setLiquidOptions(config)
 	(
 		{
 			dynamicPartials: true // use {% include with a quoted " filename "
+		}
+	);
+}
+
+function setNunjucksOptions(config)
+{
+	config.setNunjucksEnvironmentOptions
+	(
+		{
+			autoescape: false,
+			throwOnUndefined: true,
+			trimBlocks: true
 		}
 	);
 }

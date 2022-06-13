@@ -27,18 +27,13 @@ We want to choose an API framework that has the following features:
 
 First we go to [http://nodeframework.com/](http://nodeframework.com/) to see the options with a lot of github stars. We ignore the full MVC client frameworks:
 
-### Name | Stars | Comment
-[koa.js](http://koajs.com/) · 10050 · [Has TS support.](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/koa) No ORM. 2013.
-
-[LoopBack](http://loopback.io/) · 6544 · No TS support. [Used by GoDaddy & Symantec.](http://loopback.io/users/) [Has a powerful ORM.](http://loopback.io/examples/) 2013
-
-[hapi](http://hapijs.com/) · 5960 · [Has TS support.](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/hapi) [Used by Paypal & Walmart & npm.](http://hapijs.com/community) No ORM. 2011.
-
-[total.js](https://www.totaljs.com/) · 1749 · No ORM. Small.
-
-[actionHero.js](http://www.actionherojs.com) · 1328 · No ORM. Small.
-
-[flatiron](http://flatironjs.org/) · 1312 · No ORM. Small.
+### Name · Stars · Comment
+- [koa.js](http://koajs.com/) · 10050 · [Has TS support.](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/koa) No ORM. 2013.
+- [LoopBack](http://loopback.io/) · 6544 · No TS support. [Used by GoDaddy & Symantec.](http://loopback.io/users/) [Has a powerful ORM.](http://loopback.io/examples/) 2013
+- [hapi](http://hapijs.com/) · 5960 · [Has TS support.](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/hapi) [Used by Paypal & Walmart & npm.](http://hapijs.com/community) No ORM. 2011.
+- [total.js](https://www.totaljs.com/) · 1749 · No ORM. Small.
+- [actionHero.js](http://www.actionherojs.com) · 1328 · No ORM. Small.
+- [flatiron](http://flatironjs.org/) · 1312 · No ORM. Small.
 
 ## ORMs
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
-	<title> · Richard JE Cooke</title>
+	<title>Richard JE Cooke</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="HandheldFriendly" content="True">
@@ -78,7 +78,7 @@
 	<span class="post_date">11 March 2015</span>
 	<p>Assume you have a large JSON string full of reference data you want to use in the browser (for instance displaying 60 000 ICD codes in a tree view). If it's 8 MB in size and it's not a static file you'll want to compress it manually before sending it to the client.</p>
 <p>It's tricky to find a zip library that is both in your server language (C#, Python, PHP, etc) and in Javascript.  You also want a library that keeps compressed data as a string, not as some funny array of bytes - because you'll want to store your string in your browser's local storage.</p>
-<p>The best one I found is <a href="http://pieroxy.net/blog/pages/lz-string/index.html" title="lz-string">lz-string</a>. There's a C# version <a href="https://github.com/jawa-the-hutt/lz-string-csharp" title="https://github.com/jawa-the-hutt/lz-string-csharp">here</a>, though I had to change the string field 'str' to StringBuilder before it ran fast enough (I think the author has added my change to the code now so it should be fine).  lz-string compressed my file to 7% of its original size (300 kb) Here's how to use the code:</p>
+<p>The best one I found is <a href="http://pieroxy.net/blog/pages/lz-string/index.html">lz-string</a>. There's a C# version <a href="https://github.com/jawa-the-hutt/lz-string-csharp">here</a>, though I had to change the string field 'str' to StringBuilder before it ran fast enough (I think the author has added my change to the code now so it should be fine).  lz-string compressed my file to 7% of its original size (300 kb) Here's how to use the code:</p>
 <h2>C#</h2>
 <pre class="language-csharp"><code class="language-csharp"><span class="token class-name"><span class="token keyword">var</span></span> compressedString <span class="token operator">=</span> LZString<span class="token punctuation">.</span><span class="token function">compressToUTF16</span><span class="token punctuation">(</span>jsonString<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2>Javascript</h2>

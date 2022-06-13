@@ -35,7 +35,7 @@ Currently it costs R99 to create a profile, and R49 to optionally refresh all yo
 
 ## Office & team
 Our office was in leafy green Newlands, holding six programmers, two business people (one customer experience and one designer), and two customer support people.
-![office](office-1024x576.jpg)]
+![office](office-1024x576.jpg)
 
 This was one of the best teams I've worked with: no rockstars, no hostility or insecurity, and no laziness. Everyone at the firm was passionate about software - always posting links to interesting tech articles and videos, discussing past- and side- projects, and generally having fun coding something beautiful.
 
@@ -65,7 +65,7 @@ However it has serious flaws and we wouldn't recommend it because it:
 *   and no one wants to enter work logs, or does them accurately
 
 Furthermore the automated time tracking and estimation features were hard to use. Even now I can't remember exactly what combination of estimated time, work logs, and work completed entries you are supposed to use generate correct graphs. Which is unfortunate as they look quite useful:
-![Axosoft dashboard](dashboard-1024x507.png)]
+![Axosoft dashboard](dashboard-1024x507.png)
 
 ### Trello
 Since our time estimates as a team were unhelpful and Axosoft was cluttered we decided to try something completely different. We:

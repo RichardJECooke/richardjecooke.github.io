@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
-	<title> · Richard JE Cooke</title>
+	<title>Richard JE Cooke</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="HandheldFriendly" content="True">
@@ -88,7 +88,7 @@
 <p>(To redirect a URL to a specific server, alter your <a href="https://en.wikipedia.org/wiki/Hosts_%28file%29">hosts file</a>, like this: <img src="hosts.png" alt="hosts"></p>
 <h2>Put each app in its own site</h2>
 <p>So rather delete the default web site and create a site for <strong>a</strong> and a site for <strong>b</strong>, both on port 80, with apps for each inside each site, like this:
-<img src="separate-iis-sites.png" alt="separate iis sites">]</p>
+<img src="separate-iis-sites.png" alt="separate iis sites"></p>
 <p>In this example, if you browse to <strong>http://localhost/a</strong> you'll hit web app <strong>a</strong>, and if you browse to <strong>http://www.b.com</strong> you'll hit web app <strong>b</strong>. <img src="browsing-sites.png" alt="browsing sites"></p>
 <p>The important trick here is when creating web site <strong>b</strong> you need to <a href="https://technet.microsoft.com/en-us/library/cc753195%28v=ws.10%29.aspx">set the <strong>host name</strong></a>, otherwise IIS will tell you it can't handle two sites both trying to listen on port 80. This setting is checked by IIS when receiving a web request and is part of the HTTP request header. <img src="host-header.png" alt="host header"></p>
 <h2>Another way of configuring URLs</h2>
