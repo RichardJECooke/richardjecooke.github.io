@@ -7,6 +7,7 @@ module.exports = function(config)
 {
 	config.addPlugin(syntaxHighlight);
 	config.setTemplateFormats([`adoc`, `html`, `md`, `njk`]);
+	addIgnores(config);
 	addFilters(config);
 	addPostYearCollection(config);
 	addPassthroughFiles(config);
@@ -20,6 +21,12 @@ function addFilters(config)
 	//https://moment.github.io/luxon/#/formatting?id=table-of-tokens
 	config.addFilter("formatDate", (date) => { return DateTime.fromJSDate(date).toFormat('d MMMM y'); });
 	config.addFilter("shortDate", (date) => { return DateTime.fromJSDate(date).toFormat('y-MM-dd'); });
+}
+
+function addIgnores(config)
+{
+	config.ignores.add("README.md");
+	config.ignores.add("docs/");
 }
 
 function addPostYearCollection(config)

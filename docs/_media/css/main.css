@@ -74,6 +74,9 @@ footer { background-color: var(--footer_bgcolor); }
 .title { display: inline; line-height: 1em; margin: 0.4rem 0 0.4rem 0.4rem;}
 .title_container { display: flex; }
 
+/* music ------------------------------------------------- */
+
+
 /* post ------------------------------------------------- */
 .post_container img { max-width: 100%;}
 .post_title { margin-bottom: 0.5rem; }

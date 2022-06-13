@@ -1,7 +1,7 @@
 ## Todo
 - search for all todos
 - fix adoc posts
-- add post and page titles to html_head
+- put categories and tags back
 - https://github.com/11ty/eleventy/issues/1072
 - 404 - https://www.11ty.dev/docs/quicktips/not-found/
 - https://music.youtube.com/channel/UCB9ymHb9ZybTNH1GmQD0FYg
@@ -13,6 +13,8 @@
 - run lighthouse test
 - fix mobile layout
 - bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work
+- deploy
+- bitrot
 
 ## Notes
 - node 16.15.0

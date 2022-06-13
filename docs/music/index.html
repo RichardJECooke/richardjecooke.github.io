@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
 <head>
-	<title>How to set up Flyway command line to deploy multiple databases · Richard JE Cooke</title>
+	<title>Music · Richard JE Cooke</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="HandheldFriendly" content="True">
@@ -73,46 +73,15 @@
 	<div class="vspacer"></div>
 </div>
 <div class="vspacer"></div>
-<div class="full_column post_container">
-	<h2 class="post_title">How to set up Flyway command line to deploy multiple databases</h2>
-	<span class="post_date">2 May 2016</span>
-	<p>If you follow this setup tutorial you'll have</p>
-<ul>
-<li>Flyway installed</li>
-<li>database upgrade scripts</li>
-<li>configuration files for your local machine, dev server, test server, live server</li>
-</ul>
-<p>I presume you're working on Linux or Apple. Windows doesn't change much, just environment variables and path slashes.</p>
-<h2>Let's begin</h2>
-<ol>
-<li>Download Flyway and unzip it into <strong>~/apps/flyway</strong> (or wherever you want)</li>
-<li>Put it in your ~/.profile: <code>export PATH=$PATH:~/apps/flyway</code></li>
-<li>Restart</li>
-<li>Make a repository or folder to hold your database upgrade stuff</li>
-<li>For each database you want to maintain make a folder with its name</li>
-<li>In the folder, make a folder called <strong>scripts</strong> and one called <strong>config</strong> (or whatever you want to call them)</li>
-<li>In scripts, add all your upgrade scripts
-<ul>
-<li>Start them with the letter V (Flyway requires this), followed by the creation date and time to ensure they're unique and in the right order, followed by two underscores and then a description of the upgrade</li>
-</ul>
-</li>
-<li>In config, add four config files as shown in the screenshot below (you can move the original config from the Flyway install folder):
-<img src="flywaysetup.png" alt="flywaysetup"></li>
-<li>You can see I have a database called <strong>ekaya</strong> in this example.</li>
-<li>In the local sample file I have set the connection details to my local database. Each user of this project will copy this sample on their local machine to <strong>1_local.config</strong> and set their own username and password (.gitignore <strong>1_local.config</strong> to keep it safe).</li>
-<li>Don't save the password in any of the server config files (2 to 4). Instead you'll type it in on the command line every time you want to upgrade the server</li>
-<li>Finally, create a database that you want to upgrade (e.g. in my case its <strong>ekaya_dev</strong>, my local copy of the server's <strong>ekaya_dev</strong>).</li>
-<li>Now you can run Flyway, from a command line in the config folder (for relative paths to work):
-<ul>
-<li>flyway -configFile=./1_local.conf migrate</li>
-</ul>
-</li>
-</ol>
-<p>You're done. Your database should be updated with all scripts. To delete the database just run the same command, but replace <strong>migrate</strong> with <strong>clean</strong>.</p>
-<p>For the server config files, change the url. And run them similarly, e.g.:</p>
-<p><code>flyway -configFile=./2_dev.conf migrate</code></p>
-
+<div class="full_column">
+	<div>
+		<h2>Music</h2>
+		<iframe src="//www.youtube.com/embed/Qc4_xDFTuXo" allowfullscreen="" ></iframe>
+	</div>
 </div>
+<!-- <footer class="border_top">
+	footer innit
+</footer>-->
 <div class="vspacer"></div>
 <div class="vspacer"></div>
 </body>
