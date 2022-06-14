@@ -27,6 +27,8 @@ function addIgnores(config)
 {
 	config.ignores.add("README.md");
 	config.ignores.add("docs/");
+	config.ignores.add("docs/");
+	config.ignores.add("docs/**");
 }
 
 function addPostYearCollection(config)
