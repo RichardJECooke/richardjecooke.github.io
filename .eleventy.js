@@ -81,9 +81,11 @@ function addPassthroughFiles(config)
 	config.addPassthroughCopy(`**/articles/**/*.svg`);
 	config.addPassthroughCopy(`**/articles/**/*.webp`);
 	//audio
-	config.addPassthroughCopy(`**/articles/**/*.flac`);
-	config.addPassthroughCopy(`**/articles/**/*.mp3`);
+	config.addPassthroughCopy(`**/music/**/*.flac`);
+	config.addPassthroughCopy(`**/music/**/*.mp3`);
 	//books
+	config.addPassthroughCopy(`**/music/**/*.pdf`);
+	config.addPassthroughCopy(`**/music/**/*.pdf`);
 	config.addPassthroughCopy(`**/articles/**/*.pdf`);
 	config.addPassthroughCopy(`**/articles/**/*.epub`);
 	//downloads
