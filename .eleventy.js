@@ -1,11 +1,12 @@
 `use strict`;
 
 const { DateTime } = require("luxon");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(config)
 {
-	config.addPlugin(syntaxHighlight);
+	addPlugins(config);
 	config.setTemplateFormats([`adoc`, `html`, `md`, `njk`]);
 	addIgnores(config);
 	addFilters(config);
@@ -29,6 +30,12 @@ function addIgnores(config)
 	config.ignores.add("docs/");
 	config.ignores.add("docs/");
 	config.ignores.add("docs/**");
+}
+
+function addPlugins(config)
+{
+	config.addPlugin(syntaxHighlight);
+	config.addPlugin(pluginRss);
 }
 
 function addPostYearCollection(config)

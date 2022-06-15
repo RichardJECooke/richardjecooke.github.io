@@ -2,9 +2,10 @@
 	"name": "richardjecooke_homepage_11ty",
 	"version": "1.0.0",
 	"private": true,
-	"dependencies": {},
-	"devDependencies": {
+	"devDependencies":
+	{
 		"@11ty/eleventy": "^1.0.1",
-		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0"
+		"@11ty/eleventy-plugin-rss": "^1.1.2",
+		"@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
 	}
 }
