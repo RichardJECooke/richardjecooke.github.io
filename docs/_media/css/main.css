@@ -5,6 +5,7 @@
 {
 	/* color */
 	--html_bgcolor: hsl(0, 0%, 13%);
+	--bgcolor_lighter: hsl(0, 0%, 18%);
 	--footer_bgcolor: hsl(0, 0%, 20%);
 	--border_color: hsl(0, 0%, 5%);
 	--text_color_dark: hsl(0, 0%, 50%);
@@ -76,7 +77,28 @@ footer { background-color: var(--footer_bgcolor); }
 .title_container { display: flex; }
 
 /* cv ----------------------------------------------------- */
-.grid_min300 { display: grid; grid-template-columns: repeat(auto-fit, 300px); gap: 4rem; }
+.grid_min300 { display: grid; grid-template-columns: repeat(auto-fill, 300px); gap: 4rem; }
+.grid_experience
+{
+	display: grid;
+	grid-template-columns: minmax(5rem, 1fr) minmax(10rem, 2fr) minmax(10rem, 5fr) minmax(6rem, 2fr);
+	overflow-x: auto;
+}
+.grid_experience div { word-break: normal; padding-right: 1rem; }
+
+.grid_experience > div:nth-child(4n-3),   /*  first 3 columns  */
+.grid_experience > div:nth-child(4n-2),
+.grid_experience > div:nth-child(4n-1) { padding-right: 1rem; }
+
+.grid_experience > div:nth-child(8n-7),    /*  background color rows  */
+.grid_experience > div:nth-child(8n-6),
+.grid_experience > div:nth-child(8n-5),
+.grid_experience > div:nth-child(8n-4)   { padding-top: 2rem; padding-bottom: 2rem; }
+
+.grid_experience > div:nth-child(8n-3),    /*  colored rows  */
+.grid_experience > div:nth-child(8n-2),
+.grid_experience > div:nth-child(8n-1),
+.grid_experience > div:nth-child(8n-0)   { background: var(--bgcolor_lighter); }
 
 /* post ------------------------------------------------- */
 .post_container img { max-width: 100%;}
