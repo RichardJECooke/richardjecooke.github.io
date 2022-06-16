@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
-tags: post
+tags: ['post', 'jquery mobile', 'javascript', 'coding']
 title: jQuery Mobile notification popup
-# tags: post
-#   - jquery mobile
-# categories:
-#   - javascript
-#   - coding
 date: 2014-02-05 20:06:12
 ---
 This function adds a jQuery Mobile popup programmatically to a page and displays it.  The user needs to click to dismiss it. If you want it to fade automatically then close it using `setTimeout()`.

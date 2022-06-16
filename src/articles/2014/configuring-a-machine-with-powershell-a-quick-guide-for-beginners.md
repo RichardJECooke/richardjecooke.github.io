@@ -1,15 +1,8 @@
 ---
 layout: layout_post.html
-tags: post
 title: Configuring a new machine with PowerShell
 date: 2014-02-04 19:05:17
-# tags: post
-#   - iis
-#   - powershell
-#   - windows service
-# categories:
-#   - powershell
-#   - programming
+tags: ['post', 'iis', 'powershell', 'windows service', 'powershell', 'programming']
 ---
 
 This article will show you everything you need to know to use PowerShell to programmatically setup Windows services and IIS applications on a new machine.  It's aimed at complete beginners and is as concise as possible.

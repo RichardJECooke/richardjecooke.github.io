@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: Export SVN to Git
-tags: post
-#   - git
-#   - svn
-# categories:
-#   - coding
+tags: ['post', 'git', 'svn', 'coding']
 date: 2014-07-18 21:51:47
 ---
 

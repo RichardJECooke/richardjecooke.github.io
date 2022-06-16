@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: 'Setup a callback in C# with Moq using params parameters'
-tags: post
-#   - 'c#'
-#   - moq
-#   - testing
-# categories:
-#   - 'c#'
+tags: ['post', 'c#', 'moq', 'testing']
 date: 2014-05-06 20:00:46
 ---
 

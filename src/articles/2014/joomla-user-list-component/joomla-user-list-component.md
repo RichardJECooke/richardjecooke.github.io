@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: Joomla user list component
-tags: post
-#   - joomla
-# categories:
-#   - joomla
-#   - php
-#   - coding
+tags: ['post', 'joomla', 'php', 'coding']
 date: 2014-06-21 21:14:02
 ---
 

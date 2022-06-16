@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>How to create your web site, application, and URLs in IIS · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/feed.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">How to create your web site, application, and URLs in IIS</h2>
+	<span class="post_date">22 September 2015</span>
+	<p>My team had just finished a .NET web service and AngularJS web app that used it and we wanted to deploy to IIS.</p>
+<h2>Adding applications to the default site</h2>
+<p>When newly installed, IIS has one default website that listens for calls on the standard HTTP port, 80. <a href="https://www.iis.net/learn/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis">According to Microsoft</a>, each website you create needs at least one application. So one option is to add your service and app to the default site. However, each app you add must have an alias. This alias is appended the URL of the default site.</p>
+<p>However, each app you add must have an alias. This alias is appended the URL of the default site. For instance, below I've added two apps to the default site, with aliases <strong>a</strong> and <strong>b</strong>. <img src="default-iis.png" alt="default iis"></p>
+<p>You can browse to the b app by browsing to <strong>http://localhost/b</strong>.</p>
+<h2>Problems with this approach</h2>
+<p>But what if your client doesn't want to type <strong>/b</strong> to view the website?  For instance, they might have configured <strong>www.b.com</strong> on their intranet to point to server <strong>192.168.0.1</strong>.</p>
+<p>But in the setup above they would have to browse to <strong>www.b.com/b</strong>. Very annoying.</p>
+<p>Secondly, <a href="http://serverfault.com/questions/427531/in-iis-is-it-better-to-host-multiple-applications-as-independent-web-sites-or-a">it's better to have each app in it's own site</a> to allow greater control, being able to restart each site individually, and avoiding web.config clashes.</p>
+<p>(To redirect a URL to a specific server, alter your <a href="https://en.wikipedia.org/wiki/Hosts_%28file%29">hosts file</a>, like this: <img src="hosts.png" alt="hosts"></p>
+<h2>Put each app in its own site</h2>
+<p>So rather delete the default web site and create a site for <strong>a</strong> and a site for <strong>b</strong>, both on port 80, with apps for each inside each site, like this:
+<img src="separate-iis-sites.png" alt="separate iis sites"></p>
+<p>In this example, if you browse to <strong>http://localhost/a</strong> you'll hit web app <strong>a</strong>, and if you browse to <strong>http://www.b.com</strong> you'll hit web app <strong>b</strong>. <img src="browsing-sites.png" alt="browsing sites"></p>
+<p>The important trick here is when creating web site <strong>b</strong> you need to <a href="https://technet.microsoft.com/en-us/library/cc753195%28v=ws.10%29.aspx">set the <strong>host name</strong></a>, otherwise IIS will tell you it can't handle two sites both trying to listen on port 80. This setting is checked by IIS when receiving a web request and is part of the HTTP request header. <img src="host-header.png" alt="host header"></p>
+<h2>Another way of configuring URLs</h2>
+<p>If the technique above doesn't satisfy what you need to do in your configuration, maybe <a href="http://blogs.technet.com/b/mspfe/archive/2013/11/27/how-to-create-a-url-alias-using-iis-url-rewrite.aspx">rewriting</a> can help you.</p>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

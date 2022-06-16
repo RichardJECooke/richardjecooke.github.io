@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: Which referencing system is best? (or why footnotes are worse than numbers)
-tags: post
-#   - academics
-#   - citations
-#   - referencing system
-# categories:
-#   - uncategorized
+tags: ['post', 'academics', 'citations', 'referencing system']
 date: 2017-06-23 23:38:54
 ---
 

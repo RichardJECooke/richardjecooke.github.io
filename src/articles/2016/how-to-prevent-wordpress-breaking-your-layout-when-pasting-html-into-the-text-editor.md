@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
-title: How to prevent WordPress breaking your layout when pasting HTML into the text
-  editor
-tags: post
-#   - wordpress
-# categories:
-#   - wordpress
+title: How to prevent WordPress breaking your layout when pasting HTML into the text editor
+tags: ['post', 'wordpress']
 date: 2016-02-17 16:24:30
 ---
 

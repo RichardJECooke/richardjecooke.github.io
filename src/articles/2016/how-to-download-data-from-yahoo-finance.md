@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: How to download data from Yahoo finance
-tags: post
-#   - finance
-#   - yahoo
-# categories:
-#   - finance
+tags: ['post', 'finance', 'yahoo']
 date: 2016-02-18 14:17:27
 ---
 

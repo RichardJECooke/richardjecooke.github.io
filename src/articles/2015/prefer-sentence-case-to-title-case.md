@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: Prefer sentence case to title case
-tags: post
-#   - english
-#   - ui
-#   - ux
-# categories:
-#   - design
+tags: ['post', 'english', 'ui', 'ux', 'design']
 date: 2015-03-28 08:05:36
 ---
 

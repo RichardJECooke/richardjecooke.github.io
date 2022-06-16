@@ -1,12 +1,8 @@
 ---
 title: A prepared digital piano in Pure Data
+layout: layout_post.html
 date: 2019-06-19 13:49:00
-tags:
-  - pure data
-  - music
-categories:
-  - software
-  - music
+tags: ['post', 'pure data', 'music', 'software']
 ---
 
 //asciidoc metadata ------------------------------------------
@@ -30,7 +26,7 @@ This article describes the creation of a prepared piano created digitally and pe
 
 With 12 000 moving parts, the piano is the most technologically advanced acoustic instrument. In the 20th century, composers tried to make the sound more interesting by attaching objects to the strings, establishing the prepared piano - e.g. Cage's https://www.youtube.com/watch?v=ce4TCth0gGM[Sonata X]. Later the piano keyboard was used in conjunction with digital controllers to create the infinite sonic possibilities of a digital synthesizer.
 
-However, there has been almost no work (other than the https://bitklavier.com/inaction/[bitKlavier etudes by Dan Trueman]) trying to write purely for the piano keyboard while also using the full range of audio effects and timbres digitally available. 
+However, there has been almost no work (other than the https://bitklavier.com/inaction/[bitKlavier etudes by Dan Trueman]) trying to write purely for the piano keyboard while also using the full range of audio effects and timbres digitally available.
 
 I wanted to create a prepared digital piano that uses various audio effects that are triggered procedurally by combinations of notes being played through the keyboard without any other controller input. It is a glimpse of what could be possible if composers wrote standard music notation for piano, while simultaneously writing the effects and sounds that will occur in the piano when those notes are performed.
 

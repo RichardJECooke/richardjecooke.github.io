@@ -1,14 +1,7 @@
 ---
 layout: layout_post.html
 title: How to switch your website to free HTTPS using Let's Encrypt certificates
-tags: post
-#   - http
-#   - https
-#   - let's encrypt
-#   - ssl
-#   - tls
-# categories:
-#   - security
+tags: ['post', 'http', 'https', "let's encrypt", 'ssl', 'tls', 'security']
 date: 2016-03-20 10:02:52
 ---
 

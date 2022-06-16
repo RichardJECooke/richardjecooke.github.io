@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: Show a PDF from the server in a new tab on button click
-tags: post
-#   - 'c#'
-#   - pdf
-# categories:
-#   - javascript
+tags: ['post', 'c#', 'pdf', 'javascript', 'coding']
 date: 2015-05-26 11:56:58
 ---
 

@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: How to post cron job results or any other script to Slack
-tags: post
-#   - cron
-#   - devops
-#   - slack
-# categories:
-#   - programming
+tags: ['post', 'cron', 'devops', 'slack', 'coding']
 date: 2017-01-05 10:16:42
 ---
 

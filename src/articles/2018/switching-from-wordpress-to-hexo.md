@@ -2,12 +2,7 @@
 title: Switching from Wordpress to Hexo
 date: 2018-09-03 12:33:09
 layout: layout_post.html
-# categories:
-# - coding
-tags: post
-# - hexo
-# - wordpress
-# - javascript
+tags: ['post', 'coding', 'hexo', 'wordpress', 'javascript']
 ---
 
 I've just deleted my old Wordpress site and switched to [Hexo.js](https://hexo.io/).

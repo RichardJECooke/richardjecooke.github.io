@@ -1,14 +1,8 @@
 ---
 title: Creating an abstract animation music video in Blender
 date: 2018-09-25 13:16:42
-tags:
-  - animation
-  - music
-  - javascript
-categories:
-  - software
-  - music
-  - art
+layout: layout_post.html
+tags: ['post', 'animation', 'music', 'javascript', 'software', 'music', 'art']
 ---
 
 //asciidoc metadata ------------------------------------------

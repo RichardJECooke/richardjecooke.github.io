@@ -1,14 +1,7 @@
 ---
 layout: layout_post.html
 title: Compressing data between server and web browser using LZstring and local storage in HTML 5
-tags: post
-#   - 'c#'
-#   - compression
-#   - json
-#   - lzstring
-#   - zip
-# categories:
-#   - coding
+tags: ['post', 'c#', 'compression', 'json', 'lzstring', 'zip', 'coding']
 date: 2015-03-11 21:36:58
 ---
 

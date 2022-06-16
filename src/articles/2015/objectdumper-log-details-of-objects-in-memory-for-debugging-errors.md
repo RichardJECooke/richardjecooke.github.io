@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: ObjectDumper - log details of objects in memory for debugging errors
-tags: post
-#   - .net
-#   - objectdumper
-# categories:
-#   - coding
+tags: ['post', '.net', 'objectdumper', 'coding']
 date: 2015-08-14 14:13:48
 ---
 

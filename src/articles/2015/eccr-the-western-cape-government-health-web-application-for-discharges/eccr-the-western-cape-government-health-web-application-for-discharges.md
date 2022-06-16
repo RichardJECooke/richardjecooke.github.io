@@ -1,22 +1,7 @@
 ---
 layout: layout_post.html
 title: ECCR - The Western Cape Government Health web application for discharges
-tags: post
-#   - angular.js
-#   - asp.net
-#   - 'c#'
-#   - eccr
-#   - hst
-#   - saratoga
-# categories:
-#   - angularjs
-#   - 'c#'
-#   - design
-#   - intersystems caché
-#   - javascript
-#   - portfolio
-#   - programming
-#   - software
+tags: ['post', 'angular.js', 'asp.net', 'c#', 'eccr', 'hst', 'saratoga', 'design', 'intersystems caché', 'javascript', 'portfolio', 'software', 'coding']
 date: 2015-09-14 23:03:24
 ---
 

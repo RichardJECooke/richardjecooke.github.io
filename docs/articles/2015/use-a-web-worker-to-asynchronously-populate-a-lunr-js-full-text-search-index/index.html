@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>Use a web worker to asynchronously populate a lunr.js full text search index · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/feed.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">Use a web worker to asynchronously populate a lunr.js full text search index</h2>
+	<span class="post_date">16 March 2015</span>
+	<p>I was using <a href="http://underscorejs.org" title="underscorejs">underscorejs</a> to loop through a list of 60 00 ICD codes to put in a <a href="http://lunrjs.com/" title="lunrjs.com">lunr.js</a> full text search index, like this:</p>
+<pre class="language-js"><code class="language-js">_<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span>dictionary<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">document</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> index<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2>Too slow</h2>
+<p>This took about 5 seconds and was freezing the browser page.</p>
+<h2>Async.js</h2>
+<p>I then tried using <a href="https://github.com/caolan/async" title="async.js">async.js</a>, thinking that it would run my code asynchronously giving the browser some time to draw.</p>
+<pre class="language-js"><code class="language-js">async<span class="token punctuation">.</span><span class="token function">eachSeries</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>dictionary<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>  index<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>dictionary<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>  <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//and also tried 'nextTick' to do this asynchronously</span><br><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Unfortunately that made no difference.  I realised although this code is being called asynchronously once called it still monopolises the processor for five seconds.</p>
+<h2>SetTimeout()</h2>
+<p>I then tried putting my code in a loop and every 100 or 1000 entries taking a break using setTimeout(100) to let the browser handle events.  This also made no difference.</p>
+<h2>Web worker</h2>
+<p>Finally I tried to use a web worker - an HTML 5 background thread specifically provided for intensive calculations that might freeze the browser.  For a tutorial see <a href="http://www.html5rocks.com/en/tutorials/workers/basics/" title="html5rocks">http://www.html5rocks.com/en/tutorials/workers/basics/</a>. This worked perfectly. My main thread (UI code) now looks like this:</p>
+<pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">createFullTextSearchIndexInWebWorker</span><span class="token punctuation">(</span><span class="token parameter">dictionary</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>  <span class="token keyword">var</span> worker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Worker</span><span class="token punctuation">(</span><span class="token string">"Content/js/workers/AddDocumentsToSearchIndex.js"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//create a web worker to add documents to full text index in the background</span><br>  worker<span class="token punctuation">.</span><span class="token function-variable function">onmessage</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token comment">//update our full text when the worker sends us its output when finished</span><br>  <span class="token punctuation">{</span><br>     _icdDiagnosisCodesFullTextIndex <span class="token operator">=</span> lunr<span class="token punctuation">.</span>Index<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><br>     worker<span class="token punctuation">.</span><span class="token function">terminate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//kill the thread cos it no longer benefits us and must die</span><br>  <span class="token punctuation">}</span><br>  worker<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span>dictionary<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//start the worker by giving it the documents to index</span><br><span class="token punctuation">}</span></code></pre>
+<p>and my web worker js file looks like this</p>
+<pre class="language-js"><code class="language-js"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>  self<span class="token punctuation">.</span><span class="token function">importScripts</span><br>  <span class="token punctuation">(</span><br>    <span class="token string">"../../bower_components/underscore/underscore.js"</span><br>    <span class="token punctuation">,</span><span class="token string">"../../bower_components/lunr.js/lunr.min.js"</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><br>  self<span class="token punctuation">.</span><span class="token function">addEventListener</span><br>  <span class="token punctuation">(</span><br>    <span class="token string">'message'</span><br>    <span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>      <span class="token keyword">var</span> index <span class="token operator">=</span> <span class="token function">lunr</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><br>      <span class="token punctuation">{</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'Name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'Code'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'Instructions_Includes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'Instructions_Excludes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'Instructions_Notes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'Instructions_Terminology'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">field</span><span class="token punctuation">(</span><span class="token string">'Instructions_Morbidity'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'Id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      _<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span>e<span class="token punctuation">.</span>data<span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">document</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> index<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>      self<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>index<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br>    <span class="token punctuation">,</span> <span class="token boolean">false</span><br>  <span class="token punctuation">)</span><span class="token punctuation">;</span><br><br><span class="token punctuation">}</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

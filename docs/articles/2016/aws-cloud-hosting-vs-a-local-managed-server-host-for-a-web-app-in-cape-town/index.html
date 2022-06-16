@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>AWS cloud hosting vs. a local managed server host for a web app in Cape Town · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/feed.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">AWS cloud hosting vs. a local managed server host for a web app in Cape Town</h2>
+	<span class="post_date">19 April 2016</span>
+	<p>Host your new web app on AWS or on your own server at a local hosting company?  If you're in most countries AWS wins, but not in South Africa.</p>
+<h2>Cloud advantages</h2>
+<ul>
+<li>Autoscaling up and down as load changes</li>
+<li>Price flexibility - scale up, scale down easily</li>
+<li>Less maintenance: no need to ever upgrade or patch anything - servers or databases</li>
+<li>We can separate components more safely on isolated machines - less chance of breaking the live website server</li>
+</ul>
+<h3>Minor advantages</h3>
+<ul>
+<li>Slightly more reliable</li>
+<li>Slightly more secure</li>
+<li>Slightly cheaper</li>
+</ul>
+<h2>Cloud disadvantages</h2>
+<ul>
+<li>150 ms latency on each request to the server (but total load time is the same)</li>
+</ul>
+<h3>Minor disadvantages</h3>
+<ul>
+<li>Slight currency risk (more expensive as rand depreciates)</li>
+</ul>
+<h2>Costs</h2>
+<p>Costs for AWS and a dedicated box are about the same:</p>
+<ul>
+<li>A high quality box at Hetzner in South Africa costs R2400 p.m. in 2016 (quad core 3.2 GHz, 16 GB RAM, 2 TB drive).</li>
+<li>AWS instances will be roughly the same, depending on exactly how much power you want.</li>
+</ul>
+<h2>The speed test</h2>
+<p>I created a 22MB static web page (some text &amp; seven images) and deployed it to AWS in Ireland and to Hetzner in Westerford, Cape Town. The load times for AWS were 500 ms for the text (DOM) and 30 s for the full page. The load times for local were 28 ms for the text (DOM) and 28 s for the full page.</p>
+<h2>Conclusion</h2>
+<p>Even though the time taken to load a full page is the same on AWS &amp; locally, having a user wait an extra 200 ms or so on every button click makes a big difference to the appearance of speed on a modern web app. We decided to use a local server. But we can always cancel our monthly subscription any time and move to AWS later if we want. All components will run in Docker instances on one server so they're isolated.</p>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: Two quick tips to reduce Azure cloud service costs
-tags: post
-#   - azure
-# categories:
-#   - azure
-#   - coding
+tags: ['post', 'azure', 'coding']
 date: 2014-11-12 22:05:04
 ---
 

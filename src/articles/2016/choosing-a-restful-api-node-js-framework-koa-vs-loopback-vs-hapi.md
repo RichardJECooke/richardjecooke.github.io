@@ -1,16 +1,7 @@
 ---
 layout: layout_post.html
 title: "Choosing a RESTful API node.js framework: koa vs loopback vs hapi"
-tags: post
-#   - api
-#   - hapi
-#   - javascript
-#   - koa
-#   - loopback
-#   - node
-#   - typescript
-# categories:
-#   - node.js
+tags: ['post', 'api', 'hapi', 'javascript', 'koa', 'loopback', 'node', 'typescript', 'coding']
 date: 2016-05-05 12:22:45
 ---
 We want to choose an API framework that has the following features:

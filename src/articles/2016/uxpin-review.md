@@ -1,13 +1,7 @@
 ---
 layout: layout_post.html
 title: UXPin review (and Pidoco & web Balsamiq)
-tags: post
-#   - balsamiq
-#   - pidoco
-#   - uxpin
-#   - wireframe
-# categories:
-#   - design
+tags: ['post', 'balsamiq', 'pidoco', 'uxpin', 'wireframe', 'design']
 date: 2016-04-10 14:27:01
 ---
 

@@ -1,14 +1,7 @@
 ---
 layout: layout_post.html
 title: Keep users signed in after ASP.NET deploy
-tags: post
-#   - asp.net
-#   - azure
-# categories:
-#   - asp.net
-#   - azure
-#   - 'c#'
-#   - programming
+tags: ['post', 'asp.net', 'azure', 'c#', 'programming']
 date: 2014-11-18 14:11:10
 ---
 

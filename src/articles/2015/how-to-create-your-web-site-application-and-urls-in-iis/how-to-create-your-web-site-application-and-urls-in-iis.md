@@ -1,10 +1,7 @@
 ---
 layout: layout_post.html
 title: How to create your web site, application, and URLs in IIS
-tags: post
-#   - iis
-# categories:
-#   - iis
+tags: ['post', 'iis']
 date: 2015-09-22 20:54:36
 ---
 

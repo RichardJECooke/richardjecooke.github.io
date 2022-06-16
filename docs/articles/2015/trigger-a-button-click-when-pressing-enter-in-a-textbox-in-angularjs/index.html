@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>Trigger a button click when pressing enter in a textbox in AngularJS · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/feed.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">Trigger a button click when pressing enter in a textbox in AngularJS</h2>
+	<span class="post_date">14 February 2015</span>
+	<p>This post explains how to trigger a button click when pressing enter in a textbox in AngularJS.</p>
+<p>Here's the HTML view containing an input textbox and a button.  Note that we use the ng-keypress to call a function in the associated controller, <code>$scope.data.onFolderNumberKeyPress()</code>.</p>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span><br>  <span class="token attr-name">data-ng-keypress</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>data.onFolderNumberKeyPress($event)<span class="token punctuation">"</span></span><br>  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>txtFolderNumber<span class="token punctuation">"</span></span><br>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>form-control smallMarginRight width20Percent<span class="token punctuation">"</span></span><br>  <span class="token attr-name">data-ng-model</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>data.patientNumber<span class="token punctuation">"</span></span><br>  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span><br>  <span class="token attr-name">autofocus</span><br>  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>{ {messages.EnterFolderNumber}}<span class="token punctuation">"</span></span><br>  <span class="token attr-name">data-ng-cloak</span> <span class="token punctuation">/></span></span><br><br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><br>  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btnSearch<span class="token punctuation">"</span></span><br>  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span><br>  <span class="token attr-name">data-ng-cloak</span><br>  <span class="token attr-name">data-ng-click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>data.search()<span class="token punctuation">"</span></span><br>  <span class="token attr-name">data-ng-disabled</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>data.isBusy<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><br>    { {data.searchButtonMessage}}<br><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<p>In the controller we check if enter was pressed (as opposed to all the other letters the user types as input) and if so, then we call the function the button normally calls when clicked.</p>
+<pre class="language-js"><code class="language-js">$scope<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function-variable function">onFolderNumberKeyPress</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">if</span> <span class="token punctuation">(</span>event<span class="token punctuation">.</span>charCode <span class="token operator">==</span> <span class="token number">13</span><span class="token punctuation">)</span> <span class="token comment">//if enter then hit the search button</span><br>        $scope<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">search</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br><span class="token punctuation">}</span></code></pre>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: How to make a video in Reaper
-tags: post
-#   - reaper
-#   - video
-# categories:
-#   - software
+tags: ['post', 'reaper', 'video', 'software']
 date: 2017-08-17 15:07:53
 ---
 

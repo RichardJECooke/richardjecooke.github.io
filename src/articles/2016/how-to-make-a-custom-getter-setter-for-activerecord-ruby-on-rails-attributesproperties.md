@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: How to make a custom getter & setter for an ActiveRecord (Ruby on Rails) model's attributes/properties
-tags: post
-#   - activeRecord
-#   - rails
-#   - ruby
-# categories:
-#   - ruby on rails
+tags: ['post', 'activeRecord', 'rails', 'ruby', 'ruby on rails', 'coding']
 date: 2016-12-07 13:12:00
 ---
 

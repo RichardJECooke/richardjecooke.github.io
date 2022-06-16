@@ -1,10 +1,7 @@
 ---
 layout: layout_post.html
 title: Dynamically (programmatically) add a directive to an AngularJS view on click
-tags: post
-#   - angular.js
-# categories:
-#   - coding
+tags: ['post', 'angular.js', 'coding']
 date: 2015-04-14 15:38:43
 ---
 

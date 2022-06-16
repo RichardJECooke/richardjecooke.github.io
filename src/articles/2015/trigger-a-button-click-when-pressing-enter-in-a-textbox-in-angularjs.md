@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: Trigger a button click when pressing enter in a textbox in AngularJS
-tags: post
-#   - angular.js
-# categories:
-#   - angularjs
-#   - javascript
-#   - programming
+tags: ['post', 'angular.js', 'javascript', 'coding']
 date: 2015-02-14 19:43:43
 ---
 

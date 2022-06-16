@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: Print a PDF dynamically from the server using a hidden iframe
-tags: post
-#   - iframe
-#   - pdf
-#   - print
-# categories:
-#   - coding
+tags: ['post', 'iframe', 'pdf', 'print', 'coding']
 date: 2015-06-03 10:57:44
 ---
 

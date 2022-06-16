@@ -1,13 +1,7 @@
 ---
 layout: layout_post.html
 title: '''Your'' versus ''my'' on website interfaces'
-tags: post
-#   - design
-#   - english
-#   - ui
-# categories:
-#   - design
-#   - software
+tags: ['post', 'design', 'english', 'ui', 'design', 'software']
 date: 2015-02-20 09:04:52
 ---
 

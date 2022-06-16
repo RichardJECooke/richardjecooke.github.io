@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: 'WellSaid: ''30 Seconds'' board game clone'
-tags: post
-#   - jquery
-#   - jquery mobile
-# categories:
-#   - javascript
-#   - coding
+tags: ['post', 'jquery', 'jquery mobile', 'javascript', 'coding']
 date: 2014-05-24 13:03:19
 ---
 

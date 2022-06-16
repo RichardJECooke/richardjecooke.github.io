@@ -1,13 +1,7 @@
 ---
 layout: layout_post.html
 title: How to use Docker to experiment on an existing Wordpress site
-tags: post
-#   - docker
-#   - docker-compose
-#   - wordpress
-# categories:
-#   - coding
-#   - wordpress
+tags: ['post', 'docker', 'docker-compose', 'wordpress', 'coding']
 date: 2017-01-02 16:09:00
 ---
 

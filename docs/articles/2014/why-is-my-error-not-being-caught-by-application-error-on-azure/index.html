@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>Why is my error not being caught by Application_Error() on Azure? · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/feed.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">Why is my error not being caught by Application_Error() on Azure?</h2>
+	<span class="post_date">14 November 2014</span>
+	<p>Are you having errors that are triggering <code>Global.asax.cs.Application_Error()</code> locally correctly but don't work when you deploy to Azure or another remote IIS host?</p>
+<p>Check if the value of CustomErrors in your web.config is 'On' or 'RemoteOnly' (or missing - which defaults to 'RemoteOnly'). 'RemoteOnly' means that the full error message is hidden from the user on remote sites, like Azure, but will be shown when running on your local machine.So when an error occurs on Azure MVC doesn't go to <code>Global.asax.cs</code> to call the <code>Application_Error</code> method, it instead redirects to the first Error view page it can find and discards the error.</p>
+<h2>Solution</h2>
+<p>The solution is just to add a custom filter to log the error in addition to showing the page.</p>
+<p>Make this class:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">using</span> <span class="token namespace">log4net</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">StructureMap</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Web</span><span class="token punctuation">;</span><br><span class="token keyword">using</span> <span class="token namespace">System<span class="token punctuation">.</span>Web<span class="token punctuation">.</span>Mvc</span><span class="token punctuation">;</span><br><br><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ErrorHandlingFilter</span> <span class="token punctuation">:</span> <span class="token type-list"><span class="token class-name">IExceptionFilter</span></span><br><span class="token punctuation">{</span><br><br>    <span class="token keyword">public</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">OnException</span><span class="token punctuation">(</span><span class="token class-name">ExceptionContext</span> context<span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        <span class="token keyword">try</span><br>        <span class="token punctuation">{</span><br>            <span class="token class-name"><span class="token keyword">var</span></span> exception <span class="token operator">=</span> context<span class="token punctuation">.</span>Exception<span class="token punctuation">;</span><br>            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>exception <span class="token keyword">is</span> <span class="token class-name">HttpException</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//ignore "file not found"</span><br>                ObjectFactory<span class="token punctuation">.</span><span class="token generic-method"><span class="token function">GetInstance</span><span class="token generic class-name"><span class="token punctuation">&lt;</span>ILog<span class="token punctuation">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span><span class="token string">"An unhandled exception was caught in ErrorHandlingFilter.OnException()"</span><span class="token punctuation">,</span> exception<span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><br>        <span class="token keyword">finally</span><br>        <span class="token punctuation">{</span><br>            context<span class="token punctuation">.</span>Result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token constructor-invocation class-name">RedirectToRouteResult</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">RouteValueDictionary</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token punctuation">{</span> controller <span class="token operator">=</span> <span class="token string">"Shared"</span><span class="token punctuation">,</span> action <span class="token operator">=</span> <span class="token string">"Error"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>            context<span class="token punctuation">.</span>Result<span class="token punctuation">.</span><span class="token function">ExecuteResult</span><span class="token punctuation">(</span>context<span class="token punctuation">.</span>Controller<span class="token punctuation">.</span>ControllerContext<span class="token punctuation">)</span><span class="token punctuation">;</span><br>        <span class="token punctuation">}</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>Then add it to your startup FilterConfig.cs:</p>
+<pre class="language-csharp"><code class="language-csharp"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FilterConfig</span><br><span class="token punctuation">{</span><br>    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token return-type class-name"><span class="token keyword">void</span></span> <span class="token function">RegisterGlobalFilters</span><span class="token punctuation">(</span><span class="token class-name">GlobalFilterCollection</span> filters<span class="token punctuation">)</span><br>    <span class="token punctuation">{</span><br>        filters<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">ErrorHandlingFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//must be before HandleErrorAttribute</span><br>        filters<span class="token punctuation">.</span><span class="token function">Add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token constructor-invocation class-name">HandleErrorAttribute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>    <span class="token punctuation">}</span><br><span class="token punctuation">}</span></code></pre>
+<p>For more info see: <a href="http://stackoverflow.com/questions/6508415/application-error-not-firing-when-customerrors-on#answer-7551256">http://stackoverflow.com/questions/6508415/application-error-not-firing-when-customerrors-on#answer-7551256</a></p>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

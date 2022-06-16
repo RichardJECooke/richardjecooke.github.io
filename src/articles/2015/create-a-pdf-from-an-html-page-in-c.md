@@ -1,13 +1,7 @@
 ---
 layout: layout_post.html
 title: Create a PDF from an HTML page in C#
-tags: post
-#   - 'c#'
-#   - html
-#   - pdf
-#   - tuespechkin
-# categories:
-#   - coding
+tags: ['post', 'c#', 'html', 'pdf', 'tuespechkin', 'coding']
 date: 2015-06-03 12:15:59
 ---
 

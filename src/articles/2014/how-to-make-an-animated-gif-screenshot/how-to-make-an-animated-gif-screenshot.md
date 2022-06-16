@@ -1,16 +1,7 @@
 ---
 layout: layout_post.html
 title: How to make an animated .GIF screenshot
-tags: post
-#   - animated
-#   - gif
-#   - licecap
-#   - screen capture
-# categories:
-#   - marketing
-#   - programming
-#   - software
-#   - tools
+tags: ['post', 'animation', 'gif', 'licecap', 'screen capture', 'marketing', 'coding', 'software', 'tools']
 date: 2014-11-19 15:56:04
 ---
 

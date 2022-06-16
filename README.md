@@ -1,17 +1,14 @@
 ## Todo
 - search for all todos
 - fix adoc posts
-- put categories and tags back
+- put tags in post layout, and articles page
 - https://github.com/11ty/eleventy/issues/1072
 - 404 - https://www.11ty.dev/docs/quicktips/not-found/
 - https://music.youtube.com/channel/UCB9ymHb9ZybTNH1GmQD0FYg
 - download all fonts, js, styles instead of cdn
 - get ideas from https://darekkay.com/blog/hexo-to-eleventy/
 - add search
-- pond5 / metapop / audiojungle
-- check out next theme / or make a theme with bootstrap
 - run lighthouse test
-- fix output folder duplicates
 - fix mobile layout
 - bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work
 - deploy

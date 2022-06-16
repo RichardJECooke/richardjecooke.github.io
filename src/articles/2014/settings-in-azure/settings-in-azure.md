@@ -1,10 +1,7 @@
 ---
 layout: layout_post.html
 title: Settings in Azure
-tags: post
-#   - azure
-#   - 'c#'
-# categories:
+tags: ['post', 'azure', 'c#']
 date: 2014-10-19 11:13:27
 ---
 

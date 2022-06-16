@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>Choosing a RESTful API node.js framework: koa vs loopback vs hapi · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/_media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/_media/css/main.css">
+	<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+	<!-- rss -->
+	<!-- TODO -->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/_media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+				<div>
+					<a href="/feed.xml">RSS</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">Choosing a RESTful API node.js framework: koa vs loopback vs hapi</h2>
+	<span class="post_date">5 May 2016</span>
+	<p>We want to choose an API framework that has the following features:</p>
+<ul>
+<li>runs in node.js</li>
+<li>is API only (no oldschool MVC client side stuff, please. The website is a separate React project)</li>
+<li>has an ORM / database framework &amp; supports transactions</li>
+<li>widely used and robust</li>
+<li>ideally has Typescript definitions</li>
+</ul>
+<blockquote>
+<p>UPDATE 2017: I would strongly look into Adonis.js now if I were to do this again. Or perhaps Scala if I wanted a server that is typed and functional.</p>
+</blockquote>
+<h2>The options</h2>
+<p>First we go to <a href="http://nodeframework.com/">http://nodeframework.com/</a> to see the options with a lot of github stars. We ignore the full MVC client frameworks:</p>
+<h3>Name · Stars · Comment</h3>
+<ul>
+<li><a href="http://koajs.com/">koa.js</a> · 10050 · <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/koa">Has TS support.</a> No ORM. 2013.</li>
+<li><a href="http://loopback.io/">LoopBack</a> · 6544 · No TS support. <a href="http://loopback.io/users/">Used by GoDaddy &amp; Symantec.</a> <a href="http://loopback.io/examples/">Has a powerful ORM.</a> 2013</li>
+<li><a href="http://hapijs.com/">hapi</a> · 5960 · <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/hapi">Has TS support.</a> <a href="http://hapijs.com/community">Used by Paypal &amp; Walmart &amp; npm.</a> No ORM. 2011.</li>
+<li><a href="https://www.totaljs.com/">total.js</a> · 1749 · No ORM. Small.</li>
+<li><a href="http://www.actionherojs.com">actionHero.js</a> · 1328 · No ORM. Small.</li>
+<li><a href="http://flatironjs.org/">flatiron</a> · 1312 · No ORM. Small.</li>
+</ul>
+<h2>ORMs</h2>
+<p>Since Loopback is the only framework with an ORM let's look at general ORMs in node.js.  <a href="http://docs.sequelizejs.com/en/latest/">Sequelize</a> is the biggest Javascript ORM| but has <a href="https://www.reddit.com/r/node/comments/3bye2l/has_anyone_used_an_orm_with_nodejs_that_they/">mixed reviews</a>. It does have <a href="https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/sequelize">TS definitions</a> though. <a href="http://knexjs.org">Knex</a> has good reviews but is just a SQL query generator.</p>
+<h2>Comments from Reddit searches</h2>
+<ul>
+<li>Koa has the smallest code. It was started by <a href="http://thefullstack.xyz/history-express-javascript-framework/">TJ Holowaychuk</a>, the creator of Express.js. Express was sold to Strongloop (the creators of Loopback.js) who did nothing with it (it was maintained solely by Doug Wilson). It's not stable yet.</li>
+<li>People like Hapi. And it's maintained by Walmart so it's stable.</li>
+<li>Can't find many people with opinions on Loopback. It seems fast to code, but tightly coupled to the database model magically. Every route needs a database model. And people don't seem to like its opinionated convention over configuration style.</li>
+<li>Loopback has a steep learning curve because it has so many features.</li>
+<li>Loopback's ORM documentation has inaccuracies.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Loopback seems to have everything we need but I can't find any posts by anyone actually using it. And there are lots of posts about Hapi and everyone likes it - there are zero complaints. Thus I think it would be best to start with Hapi &amp; Sequelize. If there are too many difficulties we could switch to Loopback.</p>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>

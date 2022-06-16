@@ -1,14 +1,7 @@
 ---
 layout: layout_post.html
 title: How to run your tests against an in-memory database (with a Rails Rspec MySql example)
-tags: post
-#   - mysql
-#   - rails
-#   - rAM
-#   - rspec
-#   - testing
-# categories:
-#   - coding
+tags: ['post', 'mysql', 'rails', 'RAM', 'rspec', 'testing', 'coding']
 date: 2017-01-17 09:29:02
 ---
 

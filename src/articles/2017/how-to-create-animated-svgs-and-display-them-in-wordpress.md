@@ -1,13 +1,7 @@
 ---
 layout: layout_post.html
 title: How to create animated SVGs (and display them in WordPress)
-tags: post
-#   - animation
-#   - svg
-# categories:
-#   - coding
-#   - design
-#   - art
+tags: ['post', 'animation', 'svg', 'coding', 'design', 'art']
 date: 2017-01-29 12:16:39
 ---
 

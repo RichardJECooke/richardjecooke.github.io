@@ -1,13 +1,7 @@
 ---
 layout: layout_post.html
 title: Use a web worker to asynchronously populate a lunr.js full text search index
-tags: post
-#   - async.js
-#   - lunr.js
-#   - underscorejs
-#   - web worker
-# categories:
-#   - coding
+tags: ['post', 'async.js', 'lunr.js', 'underscore.js', 'web worker', 'coding']
 date: 2015-03-16 15:18:28
 ---
 

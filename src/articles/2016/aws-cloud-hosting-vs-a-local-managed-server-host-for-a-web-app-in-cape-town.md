@@ -1,12 +1,7 @@
 ---
 layout: layout_post.html
 title: AWS cloud hosting vs. a local managed server host for a web app in Cape Town
-tags: post
-#   - aws
-#   - cloud
-#   - hosting
-# categories:
-#   - infrastructure
+tags: ['post', 'aws', 'cloud', 'hosting', 'infrastructure']
 date: 2016-04-19 16:14:44
 ---
 

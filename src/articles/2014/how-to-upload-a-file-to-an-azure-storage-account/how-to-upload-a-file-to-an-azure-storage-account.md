@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: How to upload a file to an Azure storage account
-tags: post
-#   - azure
-#   - 'c#'
-#   - coding
-# categories:
+tags: ['post', 'azure', 'c#', 'coding']
 date: 2014-10-15 08:31:29
 ---
 

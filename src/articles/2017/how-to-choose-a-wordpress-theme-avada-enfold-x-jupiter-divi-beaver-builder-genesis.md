@@ -1,17 +1,7 @@
 ---
 layout: layout_post.html
 title: "How to choose a WordPress theme: Avada vs Enfold vs X vs Jupiter vs Divi vs Beaver Builder vs Genesis"
-tags: post
-#   - avada
-#   - beaver builder
-#   - divi
-#   - enfold
-#   - envato
-#   - genesis
-#   - jupiter
-#   - wordpress
-# categories:
-#   - wordpress
+tags: ['post', 'avada', 'beaver builder', 'divi', 'enfold', 'envato', 'genesis', 'jupiter', 'wordpress']
 date: 2017-01-28 21:14:05
 ---
 

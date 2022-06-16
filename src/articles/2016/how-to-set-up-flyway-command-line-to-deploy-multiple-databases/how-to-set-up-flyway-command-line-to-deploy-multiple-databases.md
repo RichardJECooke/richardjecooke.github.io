@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: How to set up Flyway command line to deploy multiple databases
-tags: post
-#   - database
-#   - flyway
-# categories:
-#   - infrastructure
+tags: ['post', 'database', 'flyway', 'infrastructure']
 date: 2016-05-02 18:33:51
 ---
 

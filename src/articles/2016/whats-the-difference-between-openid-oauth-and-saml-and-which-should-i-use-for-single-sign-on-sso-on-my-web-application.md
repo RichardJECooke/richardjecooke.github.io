@@ -3,13 +3,7 @@ layout: layout_post.html
 title: >-
   What's the difference between OpenID, OAuth, and SAML - and which should I use
   for single sign on (SSO) on my web application?
-tags: post
-#   - oauth
-#   - openid connect
-#   - security
-#   - sso
-# categories:
-#   - coding
+tags: ['post', 'oauth', 'openid connect', 'security', 'sso', 'coding']
 date: 2016-03-18 11:30:12
 ---
 

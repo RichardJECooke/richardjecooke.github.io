@@ -1,14 +1,7 @@
 ---
 layout: layout_post.html
 title: Why is my error not being caught by Application_Error() on Azure?
-tags: post
-#   - asp.net
-#   - azure
-# categories:
-#   - asp.net
-#   - azure
-#   - 'c#'
-#   - coding
+tags: ['post', 'asp.net', 'azure', 'c#', 'coding']
 date: 2014-11-14 15:51:16
 ---
 

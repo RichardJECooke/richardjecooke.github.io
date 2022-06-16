@@ -1,11 +1,7 @@
 ---
 layout: layout_post.html
 title: How to migrate Azure environments (copy databases & storage accounts)
-tags: post
-#   - azure
-# categories:
-#   - azure
-#   - coding
+tags: ['post', 'azure', 'coding']
 date: 2014-10-27 09:58:55
 ---
 
