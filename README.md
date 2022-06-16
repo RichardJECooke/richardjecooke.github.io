@@ -1,6 +1,8 @@
 ## Todo
 - search for all todos
 - fix adoc posts
+- rss test
+- facebook link
 - put tags in post layout, and articles page
 - https://github.com/11ty/eleventy/issues/1072
 - 404 - https://www.11ty.dev/docs/quicktips/not-found/
