@@ -90,6 +90,15 @@ function addPassthroughFiles(config)
 	config.addPassthroughCopy(`./src/articles/**/*.png`);
 	config.addPassthroughCopy(`./src/articles/**/*.svg`);
 	config.addPassthroughCopy(`./src/articles/**/*.webp`);
+
+	config.addPassthroughCopy(`./src/cv/*.bmp`);
+	config.addPassthroughCopy(`./src/cv/*.gif`);
+	config.addPassthroughCopy(`./src/cv/*.jpeg`);
+	config.addPassthroughCopy(`./src/cv/*.jpg`);
+	config.addPassthroughCopy(`./src/cv/*.png`);
+	config.addPassthroughCopy(`./src/cv/*.svg`);
+	config.addPassthroughCopy(`./src/cv/*.webp`);
+
 	//audio
 	config.addPassthroughCopy(`./src/music/**/*.flac`);
 	config.addPassthroughCopy(`./src/music/**/*.mp3`);

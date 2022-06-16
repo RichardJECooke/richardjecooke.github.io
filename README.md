@@ -8,6 +8,7 @@
 - download all fonts, js, styles instead of cdn
 - get ideas from https://darekkay.com/blog/hexo-to-eleventy/
 - add search
+- ekaya fix image widths
 - run lighthouse test
 - fix mobile layout
 - bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work

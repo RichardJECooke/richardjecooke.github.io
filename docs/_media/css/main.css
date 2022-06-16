@@ -48,6 +48,7 @@ h1,h2,h3,h4,h5,h6
 }
 
 /* common ------------------------------------------------- */
+.bold { font-weight: bold;}
 .border_bottom { border-bottom: 1px solid var(--border_color); }
 .border_top { border-top: 1px solid var(--border_color); }
 .center_children { display: flex; justify-content: center; }
@@ -74,8 +75,8 @@ footer { background-color: var(--footer_bgcolor); }
 .title { display: inline; line-height: 1em; margin: 0.4rem 0 0.4rem 0.4rem;}
 .title_container { display: flex; }
 
-/* music ------------------------------------------------- */
-
+/* cv ----------------------------------------------------- */
+.grid_min300 { display: grid; grid-template-columns: repeat(auto-fit, 300px); gap: 4rem; }
 
 /* post ------------------------------------------------- */
 .post_container img { max-width: 100%;}
