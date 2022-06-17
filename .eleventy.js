@@ -21,7 +21,6 @@ function addFilters(config)
 {
 	//https://moment.github.io/luxon/#/formatting?id=table-of-tokens
 	config.addFilter("formatDate", (date) => { return DateTime.fromJSDate(date).toFormat('d MMMM y'); });
-	config.addFilter("shortDate", (date) => { return DateTime.fromJSDate(date).toFormat('y-MM-dd'); });
 }
 
 function addIgnores(config)
@@ -81,7 +80,9 @@ function addPassthroughFiles(config)
 {
 	//admin files
 	config.addPassthroughCopy(`./src/.nojekyll`); //stops github using jekyll on the files
-	config.addPassthroughCopy(`./src/_media/`); // you can't copy something twice, i.e. with a folder and a wildcard below
+	config.addPassthroughCopy(`./src/media/`); // you can't copy something twice, i.e. with a folder and a wildcard below
+	//apps
+	config.addPassthroughCopy(`./src/apps/apps/**`);
 	//images
 	config.addPassthroughCopy(`./src/articles/**/*.bmp`);
 	config.addPassthroughCopy(`./src/articles/**/*.gif`);
@@ -90,7 +91,6 @@ function addPassthroughFiles(config)
 	config.addPassthroughCopy(`./src/articles/**/*.png`);
 	config.addPassthroughCopy(`./src/articles/**/*.svg`);
 	config.addPassthroughCopy(`./src/articles/**/*.webp`);
-
 	config.addPassthroughCopy(`./src/cv/*.bmp`);
 	config.addPassthroughCopy(`./src/cv/*.gif`);
 	config.addPassthroughCopy(`./src/cv/*.jpeg`);
@@ -98,7 +98,7 @@ function addPassthroughFiles(config)
 	config.addPassthroughCopy(`./src/cv/*.png`);
 	config.addPassthroughCopy(`./src/cv/*.svg`);
 	config.addPassthroughCopy(`./src/cv/*.webp`);
-
+	config.addPassthroughCopy(`./src/apps/*.png`);
 	//audio
 	config.addPassthroughCopy(`./src/music/**/*.flac`);
 	config.addPassthroughCopy(`./src/music/**/*.mp3`);

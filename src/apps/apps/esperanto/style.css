@@ -1,0 +1,26 @@
+.textarea
+{
+	width: 100%;
+}
+
+.rightarrow
+{
+	font-size: calc(20px + 2vw);
+	justify-self: center;
+}
+
+.rightarrow_column
+{
+	display: grid;
+	padding: 0px !important;
+}
+
+.subtle
+{
+	color: #555;
+}
+
+.no-bot-margin
+{
+	margin-bottom: 0;
+}

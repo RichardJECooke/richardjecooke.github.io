@@ -1,0 +1,23 @@
+---
+title: Articles
+layout: layout_page.html
+date: 2022-06-14
+tags: ['page']
+---
+<div class="full_column">
+	<div>
+		<h2>Articles</h2>
+		{% for year, yearPosts in collections.postsByYear %}
+			<h3>{{ year }}</h3>
+			<ul>
+				{% for post in yearPosts  %}
+				<li>
+					<a href="{{post.url}}">
+						{{- post.data.title }}
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		{% endfor %}
+	</div>
+</div>
