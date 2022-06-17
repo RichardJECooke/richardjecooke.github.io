@@ -1451,6 +1451,181 @@ Use the webm format as the others are huge. 25 fps. 1920x1080. A couple of minut
 <p>Basically it's great for a personal or project page, not for  multi-user web apps.</p>
 </content>
   </entry>    <entry>
+    <title>Creating an abstract animation music video in Blender</title>
+    <link href="https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/"/>
+    <updated>2018-09-25T13:16:42Z</updated>
+    <id>https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/</id>
+    <content type="html"><p>This article describes the inspiration, design, and construction of an abstract animation music video using <em>Blender</em>.</p>
+<p>This was done as an assignment for the course Music Technology 2A at UCT.</p>
+<h2>The final product</h2>
+<p>Below is the animated music video I made:</p>
+<p>http://www.youtube.com/watch?v=F_PfTrxxxzo</p>
+<p>You can download the FL Studio (FLS) project file to see how the audio was made. <a href="https://www.image-line.com/downloads/flstudiodownload.html">FL Studio 20</a> runs on Apple &amp; Windows and the project can be viewed and played for free (but not saved with the free FLS version).</p>
+<p>The <a href="https://www.blender.org/download/">Blender</a> animation file is also available below for download. It needs Blender version 2.79 (the latest at the time of writing). Later versions of Blender use a new rendering engine that won't work with this file.</p>
+<h3>Download:</h3>
+<p><a href="https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/animation.blend">Blender 2.79 project file</a></p>
+<p><a href="https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.mp3">MP3</a></p>
+<p><a href="https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/2018-09%20-%20Richard%20JE%20Cooke%20-%20Prime%20Directive%20-%20Version%206.flp">FLS 20 project file</a></p>
+<h2>Inspiration</h2>
+<p>I began my search for ideas by looking for purely abstractly animated music videos.</p>
+<p>I knew I didn't want to use illustrations or photographs as I had done that last year for another music video project.
+Instead this work would be done manually on computer or programmatically in code.</p>
+<h3>2D animation</h3>
+<h4>Dots</h4>
+<p>My first inspiration was early abstract animation music videos. The best example of this is Norman McLaren's <a href="https://www.youtube.com/watch?v=E3-vsKwQ0Cg"><em>Dots</em></a> (1), shown below:</p>
+<p>http://www.youtube.com/watch?v=E3-vsKwQ0Cg</p>
+<p>This video has some noteworthy features:</p>
+<ul>
+<li>it is 2D (making it much simpler to create than a 3D animation where physics and camera positioning matter)</li>
+<li>shapes move, scale, and rotate (this is simple to do on computer)</li>
+<li>shapes morph from one shape to another (this may be the same amount of work by hand as scale and rotation, but on a computer it requires much more work to draw two different shapes and tween all the points in between them)</li>
+<li>the animation is synchronised to the beat of the music (this is more work than having a freely moving animation because you have to coordinate visuals and music precisely to the millisecond).</li>
+</ul>
+<h3>3D animation</h3>
+<h4>Sliced</h4>
+<p>I then looked for 3D abstract animation and found SLICED by <a href="https://vimeo.com/69668299">dxmiq</a> (2).</p>
+<p>This looks pretty and impressive but I imagine is quite simple to make.
+I would simply draw a long line of shapes and then automate the camera to move down the line, with a clipping plane &quot;slicing&quot; the shapes as the camera passes along them.</p>
+<h4>Annihilation</h4>
+<p>An example of Hollywood level commercial production is the fantastic work by <em>Milk</em> <em>VFX</em> on the film <a href="https://www.youtube.com/watch?v=L6gwu8cOfVk"><em>Annihilation</em></a>, created in <em>Houdini</em> (3).</p>
+<p>http://www.youtube.com/watch?v=L6gwu8cOfVk</p>
+<p>This is obviously the ultimate goal for a musical animation, but is possible only with a paid experienced VFX team, and weeks of paid rendering on a server farm.</p>
+<p>This video also is the basis for my musical inspiration.
+It is synthesized, complex, and vague, but has clear melodic elements and rhythm.</p>
+<h3>Programmatic animation</h3>
+<h4>Preflight nerves</h4>
+<p>I had made an application for <em>TEDx Cape Town</em> a few years ago that pulled tweets from <em>Twitter</em> that were tagged with the conference hashtag and displayed them on a giant projector on the wall.
+I thought about something similar for a music video and searched to see if anything like this had been done before. It has, by Brightly for their song <a href="https://www.youtube.com/watch?v=hMaeY0aP1xQ"><em>Preflight nerves</em></a> (4):</p>
+<p>http://www.youtube.com/watch?v=hMaeY0aP1xQ</p>
+<p>The video above is static, but the one on their <a href="http://tweetflight.wearebrightly.com/">website</a> pulls fresh tweets to match the song lyrics in realtime each time you play it.</p>
+<h4>Dennis</h4>
+<p>I then discovered the most impressive video yet. <a href="http://www.dennis.video/"><em>Dennis</em></a> is a procedurally generated 3D animated, gesture interactive, beat synchronised music video (5).</p>
+<p>The animation was programmed in <a href="https://threejs.org/">three.js</a>.</p>
+<p>It is very smooth and quick to render as it uses modern web browsers' support for the graphics processing unit (GPU) by using WebGL.
+Finally, the animation was synchronised to the beat of the song by using WebAudio's native analysis capability.</p>
+<p>This video shows the power you have when you don't have to animate every shape manually, but can write code to create and manipulate the shapes and camera for you.</p>
+<h2>Software tools</h2>
+<p>After getting some idea of what could be created I began to look for free software tools to work in.</p>
+<h3>2D animation</h3>
+<h4>Synfig Studio</h4>
+<p>For 2D vector animation the best tool I could find was Synfig Studio (6).</p>
+<p><img src="https://i1.wp.com/www.synfig.org/wp-content/uploads/2018/02/screenshot-07.png" alt="Synfig Studio, 700, 400" /></p>
+<p>Synfig allows you to draw complex vector shapes directly into the application or import external images.
+Each object's properties (e.g. size, rotation, outline, color, etc.) can be independently altered at any point (keyframe) in an animation of any length.
+Synfig will then automically fill in (tween) the animation between each keyframe.
+It also supports advanced functions like masking layers, blend modes, duplication and time manipuation, and skeleton animation.</p>
+<p>Synfig would be the perfect tool to make something simple like <em>Dots</em> and I was able to work through all the tutorials in a day.</p>
+<h4>two.js</h4>
+<p>For 2D programmatic animation the best framework I found was <a href="https://two.js.org/examples/">two.js</a> (7).</p>
+<p>two.js would be best for creating a video like <em>Dots</em> but with much more complexity and movement, or for creating something with text, like <em>Preflight nerves</em>.</p>
+<h3>3D animation</h3>
+<h4>Blender &amp; Grease Pencil</h4>
+<p><a href="https://www.blender.org/">Blender</a> is the undisputed champion of free 3D modelling and animation software.
+It has been around for years and its features rival industry standards like <em>Maya</em>.</p>
+<p>Recently Blender has also added powerful capabilities for beautiful 2D illustrated animations through its <a href="https://vimeo.com/155635261"><em>grease pencil</em></a> tool (which used to be a simple way for animators to annotate their work quickly for later use) (8).</p>
+<p>Plain Blender would be the best tool for making a video like <em>SLICED</em>.</p>
+<p>Blender with Grease Pencil would be the best tool for making something like <em>Dots</em>, but with 3D effects.</p>
+<p>The problem is that Blender takes at least a week of learning and practising to become proficient at the basics, and I didn't have the time or skill for that.</p>
+<h3>Programmatic 3D animation</h3>
+<h4>three.js</h4>
+<p>The best framework I could find for 3D programmatic animation was <a href="https://threejs.org/">three.js</a> (9).
+It was used for the <em>Dennis</em> video above and supports almost anything you could imagine.</p>
+<p>Move your mouse through the birds in this <a href="https://threejs.org/examples/#webgl_gpgpu_birds">demo</a> to scatter them.</p>
+<p>There is a competitor made by Microsoft, called <a href="https://doc.babylonjs.com/">Babylon.js</a>, which is more suited to game development as it simplifies commonly used functions like lighting, but three.js is well established.</p>
+<h2>Construction</h2>
+<p>I decided to write a little story about an acoustic bass meeting a modern synthesiser and having a conversation/song.
+The <em>Annihilation</em> movie inspired me to finish the story by having the bass being transfigured into a more evolved creature by meeting the synthesiser.</p>
+<h3>Audio</h3>
+<p>I wrote the audio in FLS as it is an excellent choice for making electronic music fast.</p>
+<p>I particularly enjoy the ability to put snippets of MIDI and automation into a library of clips which can then be cloned, reused, and rearranged easily.
+As far as I know no other DAW other than <a href="https://www.tracktion.com/products/waveform">Tracktion's Waveform</a> and possibly <a href="https://www.presonus.com/products/Studio-One">Studio One</a> can do this.</p>
+<p>It also has a fully scalable vector graphic interface, and the hotkeys enable me to switch between the playlist and each MIDI clip incredibly quickly.</p>
+<p>Below is an image of the track. You can zoom in to see the labels of each section.</p>
+<p><img src="https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/song.png" alt="" /></p>
+<p>The disadvantage of FLS compared to the other DAW I use, <em>Reaper</em>, is that it has poor routing. To overcome this, and route one MIDI clip to multiple instruments to create the complex sounds for each character in the animation, I used <em>Patcher</em> for almost every instrument track.</p>
+<p><img src="https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/patcher.png" alt="" /></p>
+<p>Finally, <em>Effector</em> is plugin that provides useful special effects, like bitcrushng, vocal formants, and flanging.</p>
+<p><img src="https://richardcooke.info/articles/2018/creating-an-abstract-animation-music-video-in-blender/effector.png" alt="" /></p>
+<p>I wrote the music at 120 bpm so it was easy to synchronise with the video (where each second is simply two beats).</p>
+<p>For the sounds themselves I used the <em>Sytrus</em> and <em>Harmor</em> synths with preset sounds to save as much time as possible.
+I used only synthesizers, no samples, as I find it easier to work with MIDI.</p>
+<h3>Video</h3>
+<p>I spend a few days writing the video in <em>three.js</em> but quickly encountered difficulties.
+It's hard to programmatically specify what you want to happen on screen if you can't see it and are completely new to 3D graphics.
+Finding errors and fixing them is difficult. And documentation is lacking.</p>
+<p>So I decided to switch to Blender. This took a week to learn from reading a couple of tutorials.
+But the good thing was all my questions could be answered within an hour by asking on the forum, so I never got stuck on a problem.</p>
+<p>Putting two shapes on the screen and using keyframes to animate them was easy.
+The time consuming task was synchronising the video and audio.
+I also had to learn some intermediate techniques:</p>
+<ul>
+<li>using an orthographic camera for the 2D section of the video, then switching to perspective for the 3D section</li>
+<li>animating the camera to move in a circle while tracking the center of the scene</li>
+<li>understanding the differences in the Internal and Cycles renderers and how to choose the right one and perform my renders in less than a day.</li>
+</ul>
+<p>Finally, I didn't have time to do interesting textures or particle effects, which would have greatly improved the impressiveness of the evolved bass in the second half of the video. I tried these, but couldn't get them to work with my limited skills.</p>
+<h4>Converting .png to video</h4>
+<p>Blender outputs each frame as a png rather than exporting video, so if your computer restarts you don't lose hours of rendering.</p>
+<p>To convert the .pngs and my mp3 file to a video I used the command:</p>
+<p><code>ffmpeg -framerate 60 -i temp%4d.png -i a.mp3 -start_number 0000  -vcodec libx264  -crf 16 -r 60  output.mp4</code></p>
+<h2>Critique &amp; conclusion</h2>
+<p>Overall this was a useful experience and I learnt a great deal about animation and the available options.</p>
+<p>The audio part took only a few hours and suits the idea I was trying to convey quite well.
+The video is suited to the audio too, but is clearly the work of an absolute beginner in modelling and animation.
+I think using simple abstract shapes allows the audience member's mind to freely interpret the experience.</p>
+<p>However, I don't think this is much of a contribution to art overall.
+While the idea is fun, it is not original, and the graphical execution would need a lot more work to make it of a professional standard.</p>
+<h2>References</h2>
+<p><em>All Internet resources were accessed on 25 September 2018.</em></p>
+<ul>
+<li>
+<ol>
+<li>YouTube - thecipo. Normal McLaren - Dots (1940) [Internet]. 2007. Available from: https://www.youtube.com/watch?v=E3-vsKwQ0Cg.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Vimeo - dxmiq. SLICED [Internet]. 2013. Available from: https://vimeo.com/69668299.</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>vfxblog.com. Mandelbulbs, mutations, and motion capture: the visual effects of Annihilation [Internet interview]. VFXBLOG. 2018. Available from: https://vfxblog.com/2018/03/12/mandelbulbs-mutations-and-motion-capture-the-visual-effects-of-annihilation/.</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Medium.com - Charlie Gleason. Making An Interactive Music Video With WebGL [Internet]. 2015. Available from: https://medium.com/superhighfives/making-a-music-video-f60757ceb4cf.</li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li>Brower BM and popcorn_10. Dennis [Internet music video]. n.d. Available from: http://www.dennis.video/#about.</li>
+</ol>
+</li>
+<li>
+<ol start="6">
+<li>Synfig.org. Synfig Studio [Internet]. 2018. Available from: https://www.synfig.org.</li>
+</ol>
+</li>
+<li>
+<ol start="7">
+<li>Two.js [Internet]. 2018. Available from: https://two.js.org/examples.</li>
+</ol>
+</li>
+<li>
+<ol start="8">
+<li>Blender 2.79 manual. User Interface » Grease Pencil » Introduction [Internet]. 2018. Available from: https://docs.blender.org/manual/ko/dev/interface/grease_pencil/introduction.html.</li>
+</ol>
+</li>
+<li>
+<ol start="9">
+<li>Three.js [Internet]. 2018. Available from: https://threejs.org.</li>
+</ol>
+</li>
+</ul>
+</content>
+  </entry>    <entry>
     <title>A prepared digital piano in Pure Data</title>
     <link href="https://richardcooke.info/articles/2019/a-prepared-digital-piano-in-pure-data/"/>
     <updated>2019-06-19T13:49:00Z</updated>

@@ -85,7 +85,11 @@ function addPassthroughFiles(config)
 	config.addPassthroughCopy(`./src/media/`); // you can't copy something twice, i.e. with a folder and a wildcard below
 	//apps
 	config.addPassthroughCopy(`./src/apps/apps/**`);
-	//images
+	config.addPassthroughCopy(`./src/apps/*.png`);
+	//articles
+	config.addPassthroughCopy(`./src/articles/**/*.blend`);
+	config.addPassthroughCopy(`./src/articles/**/*.mp3`);
+	config.addPassthroughCopy(`./src/articles/**/*.flp`);
 	config.addPassthroughCopy(`./src/articles/**/*.bmp`);
 	config.addPassthroughCopy(`./src/articles/**/*.gif`);
 	config.addPassthroughCopy(`./src/articles/**/*.jpeg`);
@@ -93,6 +97,9 @@ function addPassthroughFiles(config)
 	config.addPassthroughCopy(`./src/articles/**/*.png`);
 	config.addPassthroughCopy(`./src/articles/**/*.svg`);
 	config.addPassthroughCopy(`./src/articles/**/*.webp`);
+	config.addPassthroughCopy(`./src/articles/**/*.pdf`);
+	config.addPassthroughCopy(`./src/articles/**/*.epub`);
+	//cv
 	config.addPassthroughCopy(`./src/cv/*.bmp`);
 	config.addPassthroughCopy(`./src/cv/*.gif`);
 	config.addPassthroughCopy(`./src/cv/*.jpeg`);
@@ -100,17 +107,12 @@ function addPassthroughFiles(config)
 	config.addPassthroughCopy(`./src/cv/*.png`);
 	config.addPassthroughCopy(`./src/cv/*.svg`);
 	config.addPassthroughCopy(`./src/cv/*.webp`);
-	config.addPassthroughCopy(`./src/apps/*.png`);
-	//audio
+	//music
 	config.addPassthroughCopy(`./src/music/**/*.flac`);
 	config.addPassthroughCopy(`./src/music/**/*.mp3`);
 	//books
 	config.addPassthroughCopy(`./src/music/**/*.pdf`);
 	config.addPassthroughCopy(`./src/music/**/*.pdf`);
-	config.addPassthroughCopy(`./src/articles/**/*.pdf`);
-	config.addPassthroughCopy(`./src/articles/**/*.epub`);
-	//downloads
-	config.addPassthroughCopy(`./src/articles/**/*.zip`);
 }
 
 function setLiquidOptions(config)
