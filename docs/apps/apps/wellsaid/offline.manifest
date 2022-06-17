@@ -1,0 +1,22 @@
+CACHE MANIFEST
+#This is a comment
+
+CACHE
+index.html
+favicon.ico
+/css/images/ajax-loader.gif
+/css/jquery.mobile.min.css
+/css/wellsaid.layout.css
+/css/wellsaid.style.css
+/js/data/wellsaid.afrikaans.js
+/js/data/wellsaid.english.js
+/js/models/wellsaid.model.js
+/js/views/wellsaid.answer.js
+/js/views/wellsaid.ask.js
+/js/views/wellsaid.end.js
+/js/views/wellsaid.start.js
+/js/wellsaid.main.js
+/lib/jquery-min.js
+/lib/jquery.mobile.min.js
+/lib/json2.min.js
+/lib/knockout.min.js

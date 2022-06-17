@@ -1,0 +1,70 @@
+body * {
+   font-family: 'Open Sans', sans-serif !important; 
+}
+
+.cursive {
+    font-family: 'Playball', sans-serif  !important;    
+}
+
+.title {
+    color: gainsboro;
+}
+
+.pnlHelp {
+    color: gainsboro;
+}
+
+.divPlay {
+    font-size: 1.5em;
+}
+
+.divTeam1Score .spanTeam1Score {
+    color: grey;
+}
+
+.grey {
+    color: grey;
+}
+
+.divTeam2Score .spanTeam2Score {
+    color: grey;
+}
+
+div.divHeader[data-role='header'] {
+    border-bottom: 1px solid #111111;
+}    
+
+.spanTeam1ScoreValue {
+    color: orange;
+}
+
+.spanTeam2ScoreValue {
+    color: deepskyblue;
+}
+
+
+
+
+/* make slider into progress bar */
+div.ui-slider-bg {
+    background-image: none;
+    background-color: dimgrey !important;    
+}
+
+.ui-btn-down-a {
+    background-image: none;
+    background-color: dimgrey;
+}
+/* end make slider into progress bar */
+
+div.divDescribeTitle {
+    color: grey;
+}
+
+span.round {
+    color: lightgrey;
+}
+
+.grey {
+    color: grey;
+}

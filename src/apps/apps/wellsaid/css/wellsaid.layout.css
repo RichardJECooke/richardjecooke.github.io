@@ -1,0 +1,83 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+div.divHeader h1.ui-title {
+    text-align: left;
+    margin-left: 1em;
+}
+
+.center {
+    text-align: center;
+    width: 100%;    
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.divPlay {    
+    text-align: center;
+    width: 100%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+span.spanPlay {
+    margin: 0 3em 0 3em;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.divTeam1Score, .divTeam2Score {
+    margin: 0.3em 0 0.4em 0 ;
+}
+
+.divTeam1Score .spanTeam1Score {
+    margin: 0 0 0 1em;
+}
+
+.divTeam2Score .spanTeam2ScoreValue {
+    margin: 0 1em 0 0;
+}
+
+.divEnd {
+    margin-top: 4em;    
+}    
+
+.full-width-slider input {
+    display: none;
+}
+
+.full-width-slider .ui-slider-track {
+    margin-left: 15px;
+}
+
+.full-width-slider .ui-slider-handle {
+    display: none;
+}
+
+/* jquery mobile overrides ----------------- */
+div .ui-flipswitch {   /* make flipswitch line up horizontally with audio button in help panel */
+    margin-top: 0;
+}
+
+div .ui-panel-inner {  /* make collapsible contained in help panel be near the top of the screen */
+   padding-top: 0;
+}
+
+
+
+

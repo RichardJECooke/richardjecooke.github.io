@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" manifest="offline.manifest">
+
+    <head>
+        <meta charset='utf-8' /> 
+        <meta name="description" content="WellSaid - the fast talking game of eloquence">
+        <meta name="keywords" content="WellSaid, Richard Cooke, Richard JE Cooke">
+        <meta name="author" content="Richard JE Cooke">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+        <title>WellSaid</title>
+        <link rel="shortcut icon" href="favicon.ico" />
+
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Playball' type='text/css'>
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Open+Sans:600' type='text/css'>
+
+        <link rel="stylesheet" href="css/jquery.mobile.min.css">
+        <link rel="stylesheet" href="css/wellsaid.style.css">
+        <link rel="stylesheet" href="css/wellsaid.layout.css">
+    </head>
+
+    
+    <body  >
+        <div class='loading'><br /><br /><br /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Loading...</div>
+        
+<!-- page -->        
+        <div data-role="page" class="page" data-theme="b" style="display:none" > <!-- hide the entire page until loading complete -->
+            
+<!--title bar -->
+            <div data-role="header" class="divHeader"   >
+                <h1 class="cursive title">WellSaid</h1>
+                <a href="#pnlHelpContainer" class="ui-btn-right ui-icon-nodisc" data-iconshadow="false" data-role="button" data-icon="gear" data-iconpos="notext">Instructions</a>
+            </div>                        
+            
+<!-- score bar   -->
+            <div data-role="header" class="divScore" >
+                <div class="divTeam1Score float-left" >
+                    <span class="spanTeam1Score">Team 1 score: </span>
+                    <span class="spanTeam1ScoreValue" data-bind="text: team1Score"></span>
+                </div> 
+                <div class="divTeam2Score float-right">
+                    <span class="spanTeam2Score">Team 2 score: </span>
+                    <span class="spanTeam2ScoreValue" data-bind="text: team2Score"></span>
+                </div> 
+                <div class="clear"></div>
+            </div>
+
+<!-- content -->
+            <div data-role="content" class="divContent" >                 
+            </div>
+<!-- /content -->            
+
+<!-- help panel -->
+            <div id="pnlHelpContainer"  data-role="panel" data-position="right" data-display="overlay" data-theme="b" data-mini="true">
+                <div class="pnlHelp" data-role="collapsibleset" data-inset="false">
+                    
+<!-- instructions collapsible -->                    
+                    <div data-role="collapsible" data-inset="false" data-collapsed="false">
+                        <h1>Instructions</h1>
+                        Make two teams of at least two people.
+                        <br /><br />
+                        A player in team 1 holds the game and clicks start.
+                        <br /><br />
+                        He or she then describes each word listed, without using the word itself. Team 1 tries to guess the words. Team 2 remains silent.
+                        <br /><br />
+                        When the time runs out team 1 clicks the words they guessed and passes the game to team 2.
+                        <br /><br />
+                        Team 2 starts their turn when ready.  The team with the highest score after ten rounds wins.
+                    </div>
+<!-- /instructions collapsible -->                                        
+                    
+<!-- settings collapsible -->                                        
+                    <div data-role="collapsible" data-inset="false">                        
+                        <h1>Settings</h1>                        
+                        
+                        <br />
+                        <label><input class="inputSound" type="checkbox" data-mini="true" checked="true" /><span  class="ui-btn ui-corner-all ui-icon-audio ui-btn-icon-notext" /></label>
+                        
+                        <br />
+                        <fieldset data-role="controlgroup">
+                            <legend class="grey" >Questions:</legend>
+                            <label><input class="inputEnglish"   type="checkbox" data-mini="true" checked="true" />English</label>
+                            <label><input class="inputAfrikaans" type="checkbox" data-mini="true"  />Afrikaans</label>                            
+                        </fieldset>
+                        
+<!--
+                        <br /><br />                        
+                        <label for="slider-1">Number of rounds</label>
+                        <input name="slider-1" id="slider-1" min="1" max="60" value="10" type="range" />
+                        <br />   
+                        <label for="slider-2">Round length</label>
+                        <input name="slider-2" id="slider-2" min="10" max="120" value="30" type="range" />
+-->
+                                                                                                        
+                    </div>
+<!-- settings collapsible -->                                        
+                    
+                </div>
+            </div>
+<!-- /help panel -->
+
+        </div> 
+<!-- /data-role="page" -->
+
+        
+<!-- load javascript libraries ------------------------------------------------------>        
+        <script src="lib/jquery.min.js"></script>
+        <script src="lib/jquery.mobile.min.js"></script>
+        <script src="lib/json2.min.js"></script> 
+        <script src="lib/knockout.min.js"></script> 
+        
+        <script src="js/data/wellsaid.english.js"></script>
+        <script src="js/data/wellsaid.afrikaans.js"></script> 
+        <script src="js/models/wellsaid.model.js"></script> 
+        
+        <script src="js/views/wellsaid.answer.js"></script> 
+        <script src="js/views/wellsaid.ask.js"></script> 
+        <script src="js/views/wellsaid.end.js"></script> 
+        <script src="js/views/wellsaid.start.js"></script> 
+                
+        <script src="js/wellsaid.main.js"></script> 
+            
+    </body>
+</html>
