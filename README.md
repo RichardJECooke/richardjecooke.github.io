@@ -1,19 +1,13 @@
 ## Todo
-- rss test
-- facebook link
+- article on eleventy - darekkay, nunjucks, folder structur, passhtrough, nojekyll, plugins, bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work
 - set twitter and facebook metadata
-
-- add wellsaid to apps
-- look at google analytics
 - put tags in post layout, and articles page
-- https://github.com/11ty/eleventy/issues/1072
-- 404 - https://www.11ty.dev/docs/quicktips/not-found/
-- link to main youtube channel
-
 - get ideas from https://darekkay.com/blog/hexo-to-eleventy/
 - add search
+- 404 - https://www.11ty.dev/docs/quicktips/not-found/
+- link to main youtube channel
 - run lighthouse test
-- bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work
+
 
 ## Notes
 - node 16.15.0
