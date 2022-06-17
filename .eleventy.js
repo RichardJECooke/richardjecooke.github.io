@@ -3,6 +3,7 @@
 const { DateTime } = require("luxon");
 const pluginRss = require("@11ty/eleventy-plugin-rss");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const embedYouTube = require("eleventy-plugin-youtube-embed");
 
 module.exports = function(config)
 {
@@ -36,6 +37,7 @@ function addIgnores(config)
 
 function addPlugins(config)
 {
+	config.addPlugin(embedYouTube);
 	config.addPlugin(syntaxHighlight);
 	config.addPlugin(pluginRss);
 }

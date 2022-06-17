@@ -1,5 +1,4 @@
 ## Todo
-- search for all todos
 - fix adoc posts
 - rss test
 - facebook link
