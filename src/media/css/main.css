@@ -1,4 +1,5 @@
-@import "https://necolas.github.io/normalize.css/8.0.1/normalize.css";
+@import "./normalize.css";
+@import "./prism-okaidia.css";
 
 /* variables  ------------------------------------------------ */
 :root
@@ -27,7 +28,7 @@
 
 /* elements  ------------------------------------------------- */
 * {	font-family: 'Mulish', sans-serif; }
-a, .link {	color: var(--link_color); text-decoration: none;}
+a, .link {	color: var(--link_color); text-decoration: none; word-break: break-word; }
 a.no_link_styling { color: inherit; }
 a:hover, a.no_link_styling:hover {color: var(--link_brighten_color);}
 body

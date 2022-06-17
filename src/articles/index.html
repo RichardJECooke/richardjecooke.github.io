@@ -7,6 +7,9 @@ tags: ['page']
 <div class="full_column">
 	<div>
 		<h2>Articles</h2>
+		Add my <a href="/feed.xml">RSS feed</a> to your newsreader.
+		<br /><br />
+
 		{% for year, yearPosts in collections.postsByYear %}
 			<h3>{{ year }}</h3>
 			<ul>

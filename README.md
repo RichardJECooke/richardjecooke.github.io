@@ -1,19 +1,19 @@
 ## Todo
-- fix adoc posts
+- remove from bitbucket
+- deploy
 - rss test
 - facebook link
+- set twitter and facebook metadata
+
 - put tags in post layout, and articles page
 - https://github.com/11ty/eleventy/issues/1072
 - 404 - https://www.11ty.dev/docs/quicktips/not-found/
-- https://music.youtube.com/channel/UCB9ymHb9ZybTNH1GmQD0FYg
-- download all fonts, js, styles instead of cdn
+- link to main youtube channel
+
 - get ideas from https://darekkay.com/blog/hexo-to-eleventy/
 - add search
 - run lighthouse test
-- fix mobile layout
 - bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work
-- deploy
-- bitrot
 
 ## Notes
 - node 16.15.0
