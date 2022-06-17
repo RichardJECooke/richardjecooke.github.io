@@ -1,10 +1,10 @@
 ## Todo
-- remove from bitbucket
-- deploy
 - rss test
 - facebook link
 - set twitter and facebook metadata
 
+- add wellsaid to apps
+- look at google analytics
 - put tags in post layout, and articles page
 - https://github.com/11ty/eleventy/issues/1072
 - 404 - https://www.11ty.dev/docs/quicktips/not-found/
