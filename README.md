@@ -18,10 +18,10 @@ Run Ubuntu console (install from Windows store & programs & features - turn wind
 ```
 sudo apt-get update -y &&
 sudo apt-get install curl -y &&
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.0/install.sh | bash &&
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash &&
 nvm install node
 #restart
-sudo apt install npm
+sudo apt install npm -y
 nvm install 16.15.0
 nvm alias default 16.15.0
 nvm alias system 16.15.0

@@ -4,7 +4,7 @@
   <subtitle></subtitle>
   <link href="https://richardcooke.info/feed.xml" rel="self"/>
   <link href="https://richardcooke.info/"/>
-  <updated>2019-06-19T13:49:00Z</updated>
+  <updated>2022-06-21T10:00:00Z</updated>
   <id>https://richardcooke.info/</id>
   <author>
     <name>Richard JE Cooke</name>
@@ -1650,5 +1650,61 @@ While the idea is fun, it is not original, and the graphical execution would nee
 <p>The midi note comes in, is sent to the pedal patch (which mimics a real piano pedal), then is sent to one of 88 separate patches that produce a sound and add effects. The separate notes' audio is all sent to the left hand side, where it can be stored in a loop and replayed if the player presses the high B and C on the keyboard, and global effects are added that are triggered each time a key is pressed. The chance of a global effect triggering on each keypress is a percentage kept in the <code>set_constants</code> patch.</p>
 <p>The main problem I had with this instrument was computing power. Computers aren't powerful enough to have multiple soundfonts and effects running separately in real time (at 44100 Hz) for 88 different notes. I thus had to use only two small soundfont instruments (piano &amp; strings), one synthesizer, and one effect - panning. Even using switch~ to disable effects and samples when not in use was not fast or powerful enough to add effects per key.</p>
 <p>All other effects (flanger, wahwah, bitcrusher, pitch bend, etc) were added only on the master output. Thus this doesn't truly copy a prepared acoustic piano, but sounds similar.</p>
+</content>
+  </entry>    <entry>
+    <title>How to create neural style art on your local machine</title>
+    <link href="https://richardcooke.info/articles/2022/how-to-create-neural-style-art-on-your-local-machine/"/>
+    <updated>2022-06-21T10:00:00Z</updated>
+    <id>https://richardcooke.info/articles/2022/how-to-create-neural-style-art-on-your-local-machine/</id>
+    <content type="html"><p>This article explains every step needed to create &quot;deep style&quot; neural art in the style of
+<a href="https://deepdreamgenerator.com/">deep dream generator.com</a> on your own machine.</p>
+<p>Deepdreamgenerator.com charges money to create high resolution art, but you can do it
+at home for free.</p>
+<p>Here's an example of their &quot;neural style&quot; - where you combine an input image with a guide (or texture) image:
+<img src="https://richardcooke.info/articles/2022/how-to-create-neural-style-art-on-your-local-machine/dd.webp" alt="" /></p>
+<h2>&quot;Deep dream&quot; versus &quot;neural style&quot;</h2>
+<p>There are two types of image merging to differentiate. Originally, Google developed
+&quot;deep dream&quot;, a surreal style that mostly looks like a painting made of shiny dogs.</p>
+<p>Later, the &quot;neural style&quot; was created (called &quot;deep style&quot; on deepdreamgenerator.com). This avoids the
+dogs and looks more like the image above.</p>
+<h2>Why Docker isn't a great option</h2>
+<p>At first, you might want to download a virtual machine or Docker image that has all the software you need
+already configured. There are lots of images available on <a href="https://hub.docker.com/search?q=neural-style">hub.docker.com</a> if you search
+for the terms in the last section.</p>
+<p>However, the image merge process is highly GPU intensive. If you try to use only your CPU it will take far too
+long. And trying to install the NVIDIA CUDA framework inside a Docker image inside the WSL was more work than
+just installing everything on my main machine.</p>
+<p>If you want to try get your GPU to work in Docker look at this <a href="https://www.logic2020.com/insight/tactical/wsl-docker-gpu-enabled-nvidia">article</a>.</p>
+<h2>How to install</h2>
+<p>These are instructions for Windows. If you're using Apple or Linux things should be similar with only a few changes.</p>
+<p>Here we go:</p>
+<ul>
+<li><a href="https://developer.nvidia.com/cuda-downloads">Install CUDA on windows</a>.</li>
+<li><a href="https://developer.nvidia.com/cudnn">Register an account and download CUDNN</a>.</li>
+<li>Unzip CUDNN and copy the files in the <code>lib</code>, <code>bin</code>, and <code>include</code> folders to the corresponding folders in C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7.</li>
+<li>Download <a href="https://zlib.net/">zlib</a>, unzip it somewhere, and put that folder in your Windows PATH environment variable.</li>
+<li>Create a folder called something like <code>C:\dd</code> and downoad and extract the art library <a href="https://github.com/anishathalye/neural-style">here</a> into it (code - download .zip). Keep this link open, as it contains documentation on the various settings you can tweak to alter your images.</li>
+<li>Download the <a href="https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat">trained neural network file</a> to this same folder.</li>
+<li>Create <code>C:\dd\images</code> folder.</li>
+<li>Put an image called <code>texture.jpg</code> and another called <code>input.jpg</code> into it. I found .webp and .png files didn't work.
+Also start with images no bigger than 500KB, or less if you have little RAM. If they work, then try bigger images.</li>
+<li>Open a command prompt:</li>
+</ul>
+<pre class="language-powershell"><code class="language-powershell">winget install python3 <span class="token comment"># you may have to do this twice to get it to run</span><br />python   <span class="token comment"># to test it's installed</span><br /><span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br />cd c:\dd<br />pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt<br />cls &amp;&amp; python <span class="token punctuation">.</span>\neural_style<span class="token punctuation">.</span>py <span class="token operator">--</span>content c:\dd\input<span class="token punctuation">.</span>jpg <span class="token operator">--</span>styles c:\dd\texture<span class="token punctuation">.</span>jpg <span class="token operator">--</span>output c:\dd\output<span class="token punctuation">.</span>jpg <span class="token operator">--</span>iterations 500 <span class="token operator">--</span>overwrite</code></pre>
+<ul>
+<li>I sometimes had to push enter on the last command as it hung.</li>
+<li>If this works then try more iterations and changing some settings:
+<code>python .\neural_style.py --content c:\dd\input.jpg --styles c:\dd\texture.jpg --output c:\dd\output.jpg --iterations 1000 --overwrite --style-layer-weight-exp 2.0 --content-weight-blend 0.1 --preserve-colors</code></li>
+</ul>
+<h2>Problems</h2>
+<p>Here's an example of my input, texture, and output files (with and without color preservation):</p>
+<p><img src="https://richardcooke.info/articles/2022/how-to-create-neural-style-art-on-your-local-machine/input.webp" alt="" />
+<img src="https://richardcooke.info/articles/2022/how-to-create-neural-style-art-on-your-local-machine/texture.webp" alt="" />
+<img src="https://richardcooke.info/articles/2022/how-to-create-neural-style-art-on-your-local-machine/output.webp" alt="" />
+<img src="https://richardcooke.info/articles/2022/how-to-create-neural-style-art-on-your-local-machine/output_color.webp" alt="" /></p>
+<p>We can see that choice of images makes a huge different to the appeal of the output. As do the merge settings.</p>
+<p>Finally, I had trouble with images above 1920px resolution running out of memory.
+I need to investigate if there's a way to do this slower, but with less RAM.
+Otherwise there's no way to do resolutions detailed enough for large prints.</p>
 </content>
   </entry></feed>

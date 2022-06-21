@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+	<title>How to create neural style art on your local machine · Richard JE Cooke</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- make page size responsive -->
+
+	<link rel="shortcut icon" href="/media/img/logo.png">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Mulish&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/media/css/main.css">
+
+	<!--
+	TODO
+	<meta name="description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="keywords" content="pure data,music">
+	<meta property="og:type" content="article">
+	<meta property="og:title" content="A prepared digital piano in Pure Data">
+	<meta property="og:url" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/index.html">
+	<meta property="og:site_name" content="Richard JE Cooke">
+	<meta property="og:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta property="og:locale" content="en">
+	<meta property="og:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	<meta property="og:updated_time" content="2019-06-19T13:33:55.888Z">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="A prepared digital piano in Pure Data">
+	<meta name="twitter:description" content="Contents  1. Introduction 2. The final product 3. CSound &amp;amp; Cabbage 4. Pure Data      1. Introduction   This article describes the creation of a prepared piano created digitally and performed in">
+	<meta name="twitter:image" content="https://richardcooke.info/en/2019/prepared-digital-piano-in-pure-data/1.png">
+	-->
+
+</head>
+<!-- avoid flash of unstyled content -->
+<body onload="document.body.style.visibility=`visible`;">
+<script>document.body.style.visibility=`hidden`;</script><div class="vspacer"></div>
+<div class="border_bottom shadow">
+	<div class="center_children">
+		<div class="gutters ">
+			<div>
+				<a href="/" class="no_link_styling title_container">
+					<img src="/media/img/logo.png" width="40rem" height="40rem"  class="white_image"></img>
+					<h1 class="title">Richard JE Cooke</h1>
+				</a>
+			</div>
+			<div class="flex">
+				<div class="hspacer">
+					<a href="/articles">Articles</a>
+				</div>
+				<div class="hspacer">
+					<a href="/apps">Apps</a>
+				</div>
+				<div class="hspacer">
+					<a href="/music">Music</a>
+				</div>
+				<div class="hspacer">
+					<a href="/cv">C.V.</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="vspacer"></div>
+</div>
+<div class="vspacer"></div>
+<div class="full_column post_container">
+	<h2 class="post_title">How to create neural style art on your local machine</h2>
+	<span class="post_date">21 June 2022</span>
+	<p>This article explains every step needed to create &quot;deep style&quot; neural art in the style of
+<a href="https://deepdreamgenerator.com">deep dream generator.com</a> on your own machine.</p>
+<p>Deepdreamgenerator.com charges money to create high resolution art, but you can do it
+at home for free.</p>
+<p>Here's an example of their &quot;neural style&quot; - where you combine an input image with a guide (or texture) image:
+<img src="./dd.webp" alt=""></p>
+<h2>&quot;Deep dream&quot; versus &quot;neural style&quot;</h2>
+<p>There are two types of image merging to differentiate. Originally, Google developed
+&quot;deep dream&quot;, a surreal style that mostly looks like a painting made of shiny dogs.</p>
+<p>Later, the &quot;neural style&quot; was created (called &quot;deep style&quot; on deepdreamgenerator.com). This avoids the
+dogs and looks more like the image above.</p>
+<h2>Why Docker isn't a great option</h2>
+<p>At first, you might want to download a virtual machine or Docker image that has all the software you need
+already configured. There are lots of images available on <a href="https://hub.docker.com/search?q=neural-style">hub.docker.com</a> if you search
+for the terms in the last section.</p>
+<p>However, the image merge process is highly GPU intensive. If you try to use only your CPU it will take far too
+long. And trying to install the NVIDIA CUDA framework inside a Docker image inside the WSL was more work than
+just installing everything on my main machine.</p>
+<p>If you want to try get your GPU to work in Docker look at this <a href="https://www.logic2020.com/insight/tactical/wsl-docker-gpu-enabled-nvidia">article</a>.</p>
+<h2>How to install</h2>
+<p>These are instructions for Windows. If you're using Apple or Linux things should be similar with only a few changes.</p>
+<p>Here we go:</p>
+<ul>
+<li><a href="https://developer.nvidia.com/cuda-downloads">Install CUDA on windows</a>.</li>
+<li><a href="https://developer.nvidia.com/cudnn">Register an account and download CUDNN</a>.</li>
+<li>Unzip CUDNN and copy the files in the <code>lib</code>, <code>bin</code>, and <code>include</code> folders to the corresponding folders in C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7.</li>
+<li>Download <a href="https://zlib.net/">zlib</a>, unzip it somewhere, and put that folder in your Windows PATH environment variable.</li>
+<li>Create a folder called something like <code>C:\dd</code> and downoad and extract the art library <a href="https://github.com/anishathalye/neural-style">here</a> into it (code - download .zip). Keep this link open, as it contains documentation on the various settings you can tweak to alter your images.</li>
+<li>Download the <a href="https://www.vlfeat.org/matconvnet/models/imagenet-vgg-verydeep-19.mat">trained neural network file</a> to this same folder.</li>
+<li>Create <code>C:\dd\images</code> folder.</li>
+<li>Put an image called <code>texture.jpg</code> and another called <code>input.jpg</code> into it. I found .webp and .png files didn't work.
+Also start with images no bigger than 500KB, or less if you have little RAM. If they work, then try bigger images.</li>
+<li>Open a command prompt:</li>
+</ul>
+<pre class="language-powershell"><code class="language-powershell">winget install python3 <span class="token comment"># you may have to do this twice to get it to run</span><br>python   <span class="token comment"># to test it's installed</span><br><span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><br>cd c:\dd<br>pip install <span class="token operator">-</span>r requirements<span class="token punctuation">.</span>txt<br>cls &amp;&amp; python <span class="token punctuation">.</span>\neural_style<span class="token punctuation">.</span>py <span class="token operator">--</span>content c:\dd\input<span class="token punctuation">.</span>jpg <span class="token operator">--</span>styles c:\dd\texture<span class="token punctuation">.</span>jpg <span class="token operator">--</span>output c:\dd\output<span class="token punctuation">.</span>jpg <span class="token operator">--</span>iterations 500 <span class="token operator">--</span>overwrite</code></pre>
+<ul>
+<li>I sometimes had to push enter on the last command as it hung.</li>
+<li>If this works then try more iterations and changing some settings:
+<code>python .\neural_style.py --content c:\dd\input.jpg --styles c:\dd\texture.jpg --output c:\dd\output.jpg --iterations 1000 --overwrite --style-layer-weight-exp 2.0 --content-weight-blend 0.1 --preserve-colors</code></li>
+</ul>
+<h2>Problems</h2>
+<p>Here's an example of my input, texture, and output files (with and without color preservation):</p>
+<p><img src="./input.webp" alt="">
+<img src="./texture.webp" alt="">
+<img src="./output.webp" alt="">
+<img src="./output_color.webp" alt=""></p>
+<p>We can see that choice of images makes a huge different to the appeal of the output. As do the merge settings.</p>
+<p>Finally, I had trouble with images above 1920px resolution running out of memory.
+I need to investigate if there's a way to do this slower, but with less RAM.
+Otherwise there's no way to do resolutions detailed enough for large prints.</p>
+
+</div>
+<div class="vspacer"></div>
+<div class="vspacer"></div>
+</body>
+</html>
