@@ -19,7 +19,7 @@ There are two types of image merging to differentiate. Originally, Google develo
 "deep dream", a surreal style that mostly looks like a painting made of shiny dogs.
 
 Later, the "neural style" was created (called "deep style" on deepdreamgenerator.com). This avoids the
-dogs and looks more like the image above.
+dogs and looks more like the image above. It's also called "style transfer".
 
 ## Why Docker isn't a great option
 At first, you might want to download a virtual machine or Docker image that has all the software you need
@@ -72,3 +72,5 @@ We can see that choice of images makes a huge different to the appeal of the out
 Finally, I had trouble with images above 1920px resolution running out of memory.
 I need to investigate if there's a way to do this slower, but with less RAM.
 Otherwise there's no way to do resolutions detailed enough for large prints.
+
+Anish Athalye recommends looking at [https://github.com/lengstrom/fast-style-transfer](https://github.com/lengstrom/fast-style-transfer) for faster processing with less memory.
