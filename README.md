@@ -14,24 +14,23 @@
 - https://www.11ty.dev/docs (version in the package.json file)
 
 ## Setup
-Run Ubuntu console (install from Windows store & programs & features - turn windows settings on or off - windows subsystem for linux)
 ```
+clear &&
 sudo apt-get update -y &&
 sudo apt-get install curl -y &&
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash &&
-nvm install node
-#restart
-sudo apt install npm -y
-nvm install 16.15.0
-nvm alias default 16.15.0
-nvm alias system 16.15.0
+nvm install node &&
+# restart terminal
+sudo apt install npm -y &&
+nvm install 16.15.0 &&
+nvm alias default 16.15.0 &&
+nvm alias system 16.15.0 &&
 nvm use 16.15.0
 ```
 
 ## Run locally on localhost:8080
-Run Ubuntu console
 ```
-cd /mnt/c/data/mysite
+cd ~/mi/code/mysite
 npm update
 clear && rm -rf ./docs && npx @11ty/eleventy --serve    #  run local server
 clear && rm -rf ./docs && npx @11ty/eleventy    #  build for deploy

@@ -79,7 +79,7 @@ at home for free.</p>
 <p>There are two types of image merging to differentiate. Originally, Google developed
 &quot;deep dream&quot;, a surreal style that mostly looks like a painting made of shiny dogs.</p>
 <p>Later, the &quot;neural style&quot; was created (called &quot;deep style&quot; on deepdreamgenerator.com). This avoids the
-dogs and looks more like the image above.</p>
+dogs and looks more like the image above. It's also called &quot;style transfer&quot;.</p>
 <h2>Why Docker isn't a great option</h2>
 <p>At first, you might want to download a virtual machine or Docker image that has all the software you need
 already configured. There are lots of images available on <a href="https://hub.docker.com/search?q=neural-style">hub.docker.com</a> if you search
@@ -119,6 +119,7 @@ Also start with images no bigger than 500KB, or less if you have little RAM. If 
 <p>Finally, I had trouble with images above 1920px resolution running out of memory.
 I need to investigate if there's a way to do this slower, but with less RAM.
 Otherwise there's no way to do resolutions detailed enough for large prints.</p>
+<p>Anish Athalye recommends looking at <a href="https://github.com/lengstrom/fast-style-transfer">https://github.com/lengstrom/fast-style-transfer</a> for faster processing with less memory.</p>
 
 </div>
 <div class="vspacer"></div>

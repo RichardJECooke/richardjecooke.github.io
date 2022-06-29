@@ -4,7 +4,7 @@
   <subtitle></subtitle>
   <link href="https://richardcooke.info/feed.xml" rel="self"/>
   <link href="https://richardcooke.info/"/>
-  <updated>2022-06-21T10:00:00Z</updated>
+  <updated>2022-06-29T10:00:00Z</updated>
   <id>https://richardcooke.info/</id>
   <author>
     <name>Richard JE Cooke</name>
@@ -1666,7 +1666,7 @@ at home for free.</p>
 <p>There are two types of image merging to differentiate. Originally, Google developed
 &quot;deep dream&quot;, a surreal style that mostly looks like a painting made of shiny dogs.</p>
 <p>Later, the &quot;neural style&quot; was created (called &quot;deep style&quot; on deepdreamgenerator.com). This avoids the
-dogs and looks more like the image above.</p>
+dogs and looks more like the image above. It's also called &quot;style transfer&quot;.</p>
 <h2>Why Docker isn't a great option</h2>
 <p>At first, you might want to download a virtual machine or Docker image that has all the software you need
 already configured. There are lots of images available on <a href="https://hub.docker.com/search?q=neural-style">hub.docker.com</a> if you search
@@ -1706,5 +1706,68 @@ Also start with images no bigger than 500KB, or less if you have little RAM. If 
 <p>Finally, I had trouble with images above 1920px resolution running out of memory.
 I need to investigate if there's a way to do this slower, but with less RAM.
 Otherwise there's no way to do resolutions detailed enough for large prints.</p>
+<p>Anish Athalye recommends looking at <a href="https://github.com/lengstrom/fast-style-transfer">https://github.com/lengstrom/fast-style-transfer</a> for faster processing with less memory.</p>
+</content>
+  </entry>    <entry>
+    <title>The best cloud storage for Linux (Ubuntu · Kubuntu) - OneDrive · Dropbox · Mega · IceDrive · pCloud · InSync · ProtonDrive · Google Drive</title>
+    <link href="https://richardcooke.info/articles/2022/the-best-cloud-storage-for-linux/"/>
+    <updated>2022-06-29T10:00:00Z</updated>
+    <id>https://richardcooke.info/articles/2022/the-best-cloud-storage-for-linux/</id>
+    <content type="html"><p>I switched from Windows 10 to Ubuntu 22.04 (Kubuntu).
+The first challenge I had was wondering how to integrate my current cloud storage data backup service, OneDrive, with Linux.</p>
+<p>I investigated all the options briefly and here's what I chose. (Bear in mind I need to backup about 60GB, if you need less space consider the free pricing plans of some of these options.)</p>
+<h2>OneDrive</h2>
+<ul>
+<li>1TB is $60 per year.</li>
+<li>Does not have a Linux app.</li>
+</ul>
+<h2>IceDrive</h2>
+<ul>
+<li>1TB is $50 (and even cheaper p.a. for a lifetime purchase).</li>
+<li>The Linux snap client crashes, but the app image downloaded from their site works. However their folder setup is unnecessarily complicated.</li>
+<li>Does not have selective sync.</li>
+</ul>
+<h2>InSync</h2>
+<ul>
+<li>A management service, not a storage service.</li>
+<li>$50 for a lifetime purchase of managing <em>one</em> cloud account (e.g. OneDrive, Dropbox, etc) for multiple devices.</li>
+<li>Has a Linux app.</li>
+<li>Reviews claim it is buggy - files going missing and aren't synched correctly.</li>
+</ul>
+<h2>Mega</h2>
+<ul>
+<li>2TB for $126.</li>
+<li>The only company that limits bandwidth in addition to storage size. This was very unattractive for me, even though I probably would never reach their bandwidth use. What if you need to sync many computers in future, or reinstall lots of times?</li>
+</ul>
+<h2>Dropbox</h2>
+<ul>
+<li>2TB for $126.</li>
+<li>Works across all devices with a native app, including Linux. Very easy to install and use.</li>
+</ul>
+<h2>pCloud</h2>
+<ul>
+<li>$175 for lifetime 500GB.</li>
+<li>Has a Linux app.</li>
+<li>The company has very bad discussions on Reddit - people's accounts being suspended without refund for no reason.</li>
+</ul>
+<h2>Proton Drive</h2>
+<ul>
+<li>$120 for 500GB.</li>
+<li>No app for any device.</li>
+<li>While I admire the company, this is still in beta.</li>
+</ul>
+<h2>Google Drive</h2>
+<ul>
+<li>Ubuntu provides an account sign in mechanism as opposed to an independent app.</li>
+<li>My Google Drive is already filled with app backups, phone photos, and online documents. I don't want to get confused and clutter it more with file backups.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>In the end I chose to stay with OneDrive and simply backup my files manually through their web interface.
+It has proven to be a trustworthy service, with good selective sync, and Android support.</p>
+<p>Dropbox would be the best solution for all my needs, but is more expensive for more space than I use.</p>
+<p>Finally, while reading all the reviews on Reddit, I was reminded that you should always encrypt your files (e.g. with 7zip and a password) that you save on cloud storage. These companies have full access to your files, and regularly scan them for any content they deem inappropriate. They can cancel your account at any time with no recourse.</p>
+<p>And if they were truly malicious they could alter your files without you knowing, if you don't encrypt the files you upload.</p>
+<h2>P.S.</h2>
+<p>You might also want to look into <code>par</code> and <code>lzip</code> to handle error recovery in case your files ever get corrupted during years of storage.</p>
 </content>
   </entry></feed>
