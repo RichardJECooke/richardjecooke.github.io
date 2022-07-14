@@ -5,7 +5,7 @@ date: 2022-06-29 10:00:00
 tags: ['post', 'cloud storage', 'linux', 'ubuntu', 'kubuntu']
 ---
 
-I switched from Windows 10 to Ubuntu 22.04 (Kubuntu). 
+I switched from Windows 10 to Ubuntu 22.04 (Kubuntu).
 The first challenge I had was wondering how to integrate my current cloud storage data backup service, OneDrive, with Linux.
 
 I investigated all the options briefly and here's what I chose. (Bear in mind I need to backup about 60GB, if you need less space consider the free pricing plans of some of these options.)
@@ -27,11 +27,14 @@ I investigated all the options briefly and here's what I chose. (Bear in mind I 
 
 ## Mega
 - 2TB for $126.
+- 20 GB free storage (compared to most other services 5GB). But they delete your files after 3 months inactivity!
 - The only company that limits bandwidth in addition to storage size. This was very unattractive for me, even though I probably would never reach their bandwidth use. What if you need to sync many computers in future, or reinstall lots of times?
 
 ## Dropbox
 - 2TB for $126.
 - Works across all devices with a native app, including Linux. Very easy to install and use.
+- Maximum 3 devices on free version.
+- This service has never deleted my files for inactivity.
 
 ## pCloud
 - $175 for lifetime 500GB.
@@ -48,10 +51,12 @@ I investigated all the options briefly and here's what I chose. (Bear in mind I 
 - My Google Drive is already filled with app backups, phone photos, and online documents. I don't want to get confused and clutter it more with file backups.
 
 ## Conclusion
-In the end I chose to stay with OneDrive and simply backup my files manually through their web interface.
+In the end I chose to stay with OneDrive for most of my backups, and simply backup my files manually through their web interface.
 It has proven to be a trustworthy service, with good selective sync, and Android support.
 
-Dropbox would be the best solution for all my needs, but is more expensive for more space than I use.
+I use Dropbox free (5GB) to sync between two computers and my phone for current work and notes.
+
+Dropbox would be the best solution for all my needs, but 2TB is more expensive for more space than I use.
 
 Finally, while reading all the reviews on Reddit, I was reminded that you should always encrypt your files (e.g. with 7zip and a password) that you save on cloud storage. These companies have full access to your files, and regularly scan them for any content they deem inappropriate. They can cancel your account at any time with no recourse.
 
