@@ -1,15 +1,16 @@
 ## Todo
+- upgrade version
 - article on eleventy - darekkay, nunjucks, folder structur, passhtrough, nojekyll, plugins, bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work
 - set twitter and facebook metadata
 - put tags in post layout, and articles page
 - get ideas from https://darekkay.com/blog/hexo-to-eleventy/
 - add search
 - 404 - https://www.11ty.dev/docs/quicktips/not-found/
-- link to main youtube channel
 - run lighthouse test
 
 
 ## Notes
+- /docs is the output folder (because github uses it to make websites)
 - node 16.15.0
 - https://www.11ty.dev/docs (version in the package.json file)
 

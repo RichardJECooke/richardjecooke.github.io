@@ -72,7 +72,7 @@
 	<p>This article explains the fastest and easiest way to export an SVN repository to Git.  There are lots of explanations of this online but none handle complex SVN folder structures well.</p>
 <h2>Simple versus complex SVN folders</h2>
 <p>If your SVN repository has only trunk, branch, and tags you can use the standard export command:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> svn clone -r0:HEAD --follow-parent --prefix<span class="token operator">=</span>origin/ --stdlayout http://svn.com/svn/project</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> svn clone <span class="token parameter variable">-r0:HEAD</span> --follow-parent <span class="token parameter variable">--prefix</span><span class="token operator">=</span>origin/ <span class="token parameter variable">--stdlayout</span> http://svn.com/svn/project</code></pre>
 <p>But if your repository starts in a subfolder or has branches in subfolders this process will break. For example:</p>
 <pre class="language-bash"><code class="language-bash">http://svn.com/svn/ourcompany/project/trunk<br>http://svn.com/svn/ourcompany/project/branches/features/newlogo<br>http://svn.com/svn/ourcompany/project/branches/bugfixes/updatelogin</code></pre>
 <h2>The complete process</h2>
@@ -96,13 +96,13 @@
 <li>Delete the entire svn-remote section above from the config file.</li>
 <li>Open a command prompt in the folder and run this to copy your project to Github (or BitBucket or wherever):</li>
 </ul>
-<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> github https://github.com/MyCompany/project.git<br><span class="token function">git</span> push github --all</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> github https://github.com/MyCompany/project.git<br><span class="token function">git</span> push github <span class="token parameter variable">--all</span></code></pre>
 <ul>
 <li>Make prod the default branch in the Github project settings page and delete the master branch</li>
 </ul>
 <h2>How to empty a Github repository entirely without deleting it</h2>
 <p>If you make a mistake and need to clear github entirely do this in a new folder:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> init<br><span class="token punctuation">(</span>Add an empty <span class="token function">file</span> and commit it<span class="token punctuation">)</span><br><span class="token function">git</span> remote <span class="token function">add</span> github https://github.com/MyCompany/project.git<br><span class="token function">git</span> push github --mirror</code></pre>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> init<br><span class="token punctuation">(</span>Add an empty <span class="token function">file</span> and commit it<span class="token punctuation">)</span><br><span class="token function">git</span> remote <span class="token function">add</span> github https://github.com/MyCompany/project.git<br><span class="token function">git</span> push github <span class="token parameter variable">--mirror</span></code></pre>
 <h2>Add issue numbers in commits like TortoiseSVN</h2>
 <p>Finally, if you want to add numbers to commits in TortoiseGit put the following section in your new repository's /.git/config file:</p>
 <pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>bugtraq<span class="token punctuation">]</span><br>    url <span class="token operator">=</span> http://jira.mycompany.com:8080/browse/%BUGID%<br>    number <span class="token operator">=</span> <span class="token boolean">false</span><br>    warnifnoissue <span class="token operator">=</span> <span class="token boolean">true</span><br>    message <span class="token operator">=</span> http://jira.mycompany.com:8080/browse/%BUGID%<br>    label <span class="token operator">=</span> Issue number<br>    append <span class="token operator">=</span> <span class="token boolean">false</span></code></pre>
