@@ -1,5 +1,7 @@
 ## Todo
 - upgrade version
+- find todos
+- use new music logo with better crotchet
 - article on eleventy - darekkay, nunjucks, folder structur, passhtrough, nojekyll, plugins, bulma problems - heading sizes changed, bullet points gone, scroll overflow changed, container margins don't work
 - set twitter and facebook metadata
 - put tags in post layout, and articles page
@@ -45,8 +47,8 @@ Alternative command: `node ../node_modules/@11ty/eleventy/cmd.js`
 
 ### richardcooke.info deploy
 - rm -rf ./docs && npx @11ty/eleventy
-- Log in with WinSCP and copy the `docs` folder contents into the public_html folder manually.
+- Log in with WinSCP or Filezilla and copy the `docs` folder contents into the public_html folder manually.
 
 ### Github deploy
-- Build and push to github. The docs folder is automatically output as the webpage.
+- Build and push to github. The `docs` folder is automatically output as the webpage.
 - Username is richard.j.e.cooke@gmail.com (when asked for credentials by git)
