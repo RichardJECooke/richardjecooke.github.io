@@ -63,3 +63,5 @@ And if they were truly malicious they could alter your files without you knowing
 
 ## P.S.
 You might also want to look into `par` and `lzip` to handle error recovery in case your files ever get corrupted during years of storage.
+
+I do not recommend the encryption app Cryptomator. It corrupted my files irrecoverably.

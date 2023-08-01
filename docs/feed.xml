@@ -1772,5 +1772,6 @@ The first challenge I had was wondering how to integrate my current cloud storag
 <p>And if they were truly malicious they could alter your files without you knowing if you don't encrypt the files you upload.</p>
 <h2>P.S.</h2>
 <p>You might also want to look into <code>par</code> and <code>lzip</code> to handle error recovery in case your files ever get corrupted during years of storage.</p>
+<p>I do not recommend the encryption app Cryptomator. It corrupted my files irrecoverably.</p>
 </content>
   </entry></feed>
