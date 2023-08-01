@@ -25,14 +25,15 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash &
 nvm install node &&
 # restart terminal
 sudo apt install npm -y &&
-nvm install 16.15.0 &&
-nvm alias default 16.15.0 &&
-nvm alias system 16.15.0 &&
-nvm use 16.15.0
+nvm ls-remote # get latest version
+nvm install 18.17.0
+nvm alias default 18.17.0
+nvm alias system 18.17.0
+nvm use 18.17.0
 ```
 
 ## Run locally on localhost:8080
-```
+```bash
 cd ~/mi/code/mysite
 npm update
 clear && rm -rf ./docs && npx @11ty/eleventy --serve    #  run local server
@@ -46,9 +47,12 @@ Alternative command: `node ../node_modules/@11ty/eleventy/cmd.js`
 - This site deploys to https://richardjecooke.github.io and https://richardcooke.info
 
 ### richardcooke.info deploy
-- rm -rf ./docs && npx @11ty/eleventy
+```bash
+rm -rf ./docs && npx @11ty/eleventy
+```
 - Log in with WinSCP or Filezilla and copy the `docs` folder contents into the public_html folder manually.
 
 ### Github deploy
 - Build and push to github. The `docs` folder is automatically output as the webpage.
 - Username is richard.j.e.cooke@gmail.com (when asked for credentials by git)
+- Check https://richardjecooke.github.io/

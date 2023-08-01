@@ -69,17 +69,17 @@
 <div class="full_column post_container">
 	<h2 class="post_title">The best cloud storage for Linux (Ubuntu · Kubuntu) - OneDrive · Dropbox · Mega · IceDrive · pCloud · InSync · ProtonDrive · Google Drive</h2>
 	<span class="post_date">29 June 2022</span>
-	<p>I switched from Windows 10 to Ubuntu 22.04 (Kubuntu).
+	<p>I switched from Windows 10 to Ubuntu 22.04.
 The first challenge I had was wondering how to integrate my current cloud storage data backup service, OneDrive, with Linux.</p>
 <p>I investigated all the options briefly and here's what I chose. (Bear in mind I need to backup about 60GB, if you need less space consider the free pricing plans of some of these options.)</p>
 <h2>OneDrive</h2>
 <ul>
-<li>1TB is $60 per year.</li>
+<li>1 TB is $60 per year.</li>
 <li>Does not have a Linux app.</li>
 </ul>
 <h2>IceDrive</h2>
 <ul>
-<li>1TB is $50 (and even cheaper p.a. for a lifetime purchase).</li>
+<li>1 TB is $50 (and even cheaper p.a. for a lifetime purchase).</li>
 <li>The Linux snap client crashes, but the app image downloaded from their site works. However their folder setup is unnecessarily complicated.</li>
 <li>Does not have selective sync.</li>
 </ul>
@@ -88,30 +88,30 @@ The first challenge I had was wondering how to integrate my current cloud storag
 <li>A management service, not a storage service.</li>
 <li>$50 for a lifetime purchase of managing <em>one</em> cloud account (e.g. OneDrive, Dropbox, etc) for multiple devices.</li>
 <li>Has a Linux app.</li>
-<li>Reviews claim it is buggy - files going missing and aren't synched correctly.</li>
+<li>Reviews claim it is buggy — files going missing and aren't synched correctly.</li>
 </ul>
 <h2>Mega</h2>
 <ul>
-<li>2TB for $126.</li>
-<li>20 GB free storage (compared to most other services 5GB). But they delete your files after 3 months inactivity!</li>
+<li>2 TB for $126.</li>
+<li>20 GB free storage (compared to most other services 5GB). But they delete your files after 3 months inactivity.</li>
 <li>The only company that limits bandwidth in addition to storage size. This was very unattractive for me, even though I probably would never reach their bandwidth use. What if you need to sync many computers in future, or reinstall lots of times?</li>
 </ul>
 <h2>Dropbox</h2>
 <ul>
-<li>2TB for $126.</li>
+<li>2 TB for $126.</li>
 <li>Works across all devices with a native app, including Linux. Very easy to install and use.</li>
 <li>Maximum 3 devices on free version.</li>
 <li>This service has never deleted my files for inactivity.</li>
 </ul>
 <h2>pCloud</h2>
 <ul>
-<li>$175 for lifetime 500GB.</li>
+<li>$175 for lifetime 500 GB.</li>
 <li>Has a Linux app.</li>
-<li>The company has very bad discussions on Reddit - people's accounts being suspended without refund for no reason.</li>
+<li>The company has very bad discussions on Reddit — people's accounts being suspended without refund for no reason.</li>
 </ul>
 <h2>Proton Drive</h2>
 <ul>
-<li>$120 for 500GB.</li>
+<li>$120 for 500 GB.</li>
 <li>No app for any device.</li>
 <li>While I admire the company, this is still in beta.</li>
 </ul>
@@ -121,12 +121,11 @@ The first challenge I had was wondering how to integrate my current cloud storag
 <li>My Google Drive is already filled with app backups, phone photos, and online documents. I don't want to get confused and clutter it more with file backups.</li>
 </ul>
 <h2>Conclusion</h2>
-<p>In the end I chose to stay with OneDrive for most of my backups, and simply backup my files manually through their web interface.
-It has proven to be a trustworthy service, with good selective sync, and Android support.</p>
-<p>I use Dropbox free (5GB) to sync between two computers and my phone for current work and notes.</p>
-<p>Dropbox would be the best solution for all my needs, but 2TB is more expensive for more space than I use.</p>
+<p>I chose ProtonDrive for my main backup due its end-to-end encryption. This requires manually copying any folders I change on my local machine into the web app.</p>
+<p>For files that change frequently, like notes and my current projects, I use Dropbox free (5 GB). It syncs between my Linux and Window machines.</p>
+<p>For transferring files to my phone and tablet, such as books for reading, I use Sync.com. I drag them manually from my computer into the web interface — a one-way transfer.</p>
 <p>Finally, while reading all the reviews on Reddit, I was reminded that you should always encrypt your files (e.g. with 7zip and a password) that you save on cloud storage. These companies have full access to your files, and regularly scan them for any content they deem inappropriate. They can cancel your account at any time with no recourse.</p>
-<p>And if they were truly malicious they could alter your files without you knowing, if you don't encrypt the files you upload.</p>
+<p>And if they were truly malicious they could alter your files without you knowing if you don't encrypt the files you upload.</p>
 <h2>P.S.</h2>
 <p>You might also want to look into <code>par</code> and <code>lzip</code> to handle error recovery in case your files ever get corrupted during years of storage.</p>
 
