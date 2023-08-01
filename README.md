@@ -13,7 +13,6 @@
 
 ## Notes
 - /docs is the output folder (because github uses it to make websites)
-- node 16.15.0
 - https://www.11ty.dev/docs (version in the package.json file)
 
 ## Setup
@@ -54,5 +53,5 @@ rm -rf ./docs && npx @11ty/eleventy
 
 ### Github deploy
 - Build and push to github. The `docs` folder is automatically output as the webpage.
-- Username is richard.j.e.cooke@gmail.com (when asked for credentials by git)
+- Username is richard.j.e.cooke@protonmail.com (when asked for credentials by git)
 - Check https://richardjecooke.github.io/
