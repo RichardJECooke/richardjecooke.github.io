@@ -10,16 +10,27 @@
         tailwind.config = {
             darkMode: 'class'
         }
-      </script>
+    </script>
 </head>
 
 <body class="bg-slate-900 text-slate-300">
     <div class="flex m-5">
-        <div class="w-4/5 m-5">
-            table
+        <!-- <div class="w-4/5 m-5 grid grid-cols-5 grid-rows-6 gap-1 divide-x divide-y border border-slate-700 grid-flow-row"> -->
+        <div class="w-4/5 m-5 ">
+            <table class="w-full table-auto border border-slate-800">
+                <thead class="mb-2 text-lg">
+                    <th class=" m-2">Monday</th>
+                    <th class=" m-2">Tuesday</th>
+                    <th class=" m-2">Wednesday</th>
+                    <th class=" m-2">Thursday</th>
+                    <th class=" m-2">Friday</th>
+                </thead>
+                <tbody class="text-xs">
+                </tbody>
+            </table>
         </div>
-        <div class="w-1/5 m-5 items-center flex flex-col justify-center">
-            <div class="text-4xl">
+        <div class="w-1/5 m-5 items-center flex flex-col justify-start">
+            <div class="text-4xl mt-3 text-slate-500">
                 Score
             </div>
             <div class="text-4xl mt-2.5">
@@ -28,4 +39,25 @@
         </div>
     </div>
 </body>
+
+<script lang="js">
+generateTableRows();
+
+function generateTableRows() {
+    const tbody = document.querySelector('tbody');
+    for (let row = 1; row <= 8; row++) {
+        const tr = document.createElement('tr');
+        for (let col = 0; col < 5; col++) {
+            const td = document.createElement('td');
+            const div = document.createElement('div');
+            div.className = "bg-slate-800 m-1 p-1 opacity-0 transition-opacity duration-500";
+            div.textContent = row.toString();
+            td.appendChild(div);
+            tr.appendChild(td);
+            setTimeout(() => { div.classList.remove('opacity-0'); }, 4000 * Math.random());
+        }
+        tbody.appendChild(tr);
+    }
+}
+</script>
 </html>
