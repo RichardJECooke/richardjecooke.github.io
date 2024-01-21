@@ -33,11 +33,11 @@ nvm use 18.17.0
 
 ## Run locally on localhost:8080
 ```bash
-cd ~/mi/code/mysite
-npm update
-clear && rm -rf ./docs && npx @11ty/eleventy --serve    #  run local server
-clear && rm -rf ./docs && npx @11ty/eleventy    #  build for deploy
-clear && rm -rf ./docs && DEBUG=Eleventy* npx @11ty/eleventy  # debug
+cd ~/code/richardjecooke.github.io;
+npm update;
+clear && rm -rf ./docs && npx @11ty/eleventy --serve;    #  run local server
+clear && rm -rf ./docs && npx @11ty/eleventy;    #  build for deploy
+clear && rm -rf ./docs && DEBUG=Eleventy* npx @11ty/eleventy;  # debug
 ```
 
 Alternative command: `node ../node_modules/@11ty/eleventy/cmd.js`
