@@ -42,6 +42,7 @@
 
 <script lang="js">
 generateTableRows();
+setInterval(swapCellContents, 2000);
 
 function generateTableRows() {
     const tbody = document.querySelector('tbody');
@@ -51,13 +52,60 @@ function generateTableRows() {
             const td = document.createElement('td');
             const div = document.createElement('div');
             div.className = "bg-slate-800 m-1 p-1 opacity-0 transition-opacity duration-500";
-            div.textContent = row.toString();
+            div.textContent = Math.floor(Math.random()*10000000000);
             td.appendChild(div);
             tr.appendChild(td);
-            setTimeout(() => { div.classList.remove('opacity-0'); }, 4000 * Math.random());
+            setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
         }
         tbody.appendChild(tr);
     }
+}
+
+function swapCellContents() {
+    const cells = document.querySelectorAll('tbody td');
+    if (cells.length < 2) return;
+
+    // Randomly select two cells
+    let index1 = Math.floor(Math.random() * cells.length);
+    let index2;
+    do {
+        index2 = Math.floor(Math.random() * cells.length);
+    } while (index1 === index2);
+
+    const cell1 = cells[index1];
+    const cell2 = cells[index2];
+
+    // Calculate positions and apply transform
+    const rect1 = cell1.getBoundingClientRect();
+    const rect2 = cell2.getBoundingClientRect();
+
+    const translateX1 = rect2.left - rect1.left;
+    const translateY1 = rect2.top - rect1.top;
+    const translateX2 = rect1.left - rect2.left;
+    const translateY2 = rect1.top - rect2.top;
+
+    cell1.style.transition = 'transform 1000ms';
+    cell2.style.transition = 'transform 1000ms';
+    cell1.style.transform = `translate(${translateX1}px, ${translateY1}px)`;
+    cell2.style.transform = `translate(${translateX2}px, ${translateY2}px)`;
+
+    // Wait for the transition to complete, then swap cells in the DOM
+    setTimeout(() => {
+        cell1.style.transition = '';
+        cell2.style.transition = '';
+        cell1.style.transform = '';
+        cell2.style.transform = '';
+
+        // Swap cells in the DOM
+        const parent1 = cell1.parentNode;
+        const parent2 = cell2.parentNode;
+
+        const placeholder = document.createElement('td');
+        parent1.insertBefore(placeholder, cell1);
+        parent2.insertBefore(cell1, cell2);
+        parent1.insertBefore(cell2, placeholder);
+        parent1.removeChild(placeholder);
+    }, 1000);
 }
 </script>
 </html>
