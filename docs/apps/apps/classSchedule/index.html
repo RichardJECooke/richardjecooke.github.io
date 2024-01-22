@@ -42,7 +42,7 @@
 
 <script lang="js">
 generateTableRows();
-setInterval(swapCellContents, 2000);
+setInterval(swapCell, 2000);
 
 function generateTableRows() {
     const tbody = document.querySelector('tbody');
@@ -61,7 +61,7 @@ function generateTableRows() {
     }
 }
 
-function swapCellContents() {
+function swapCell() {
     const cells = document.querySelectorAll('tbody td');
     let index1 = Math.floor(Math.random() * cells.length);
     let index2;
