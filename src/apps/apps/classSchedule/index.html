@@ -181,5 +181,25 @@ function getData() {
     };
 }
 
+function getRandomRoomThatIsBigEnough(course, rooms) {
+    return getRandom(rooms.filter(r => r.numStudents >= course.numStudents));
+}
+
+function getRandom(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
+function getRandomSchedule(courses, rooms) {
+    const lessonList = getListOfWeeklyLessons(courses);
+
+}
+
+function getListOfWeeklyLessons(courses) {
+    // const result = [];
+    // courses.map(c => {for (i = 1; i <= c.numClasses; i++) {result.push[c.code]}});
+    return courses.flatMap(c => Array.from({ length: c.numClasses }, () => c.code));
+    // return result;
+}
+
 </script>
 </html>
