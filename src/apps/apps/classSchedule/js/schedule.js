@@ -1,6 +1,39 @@
 // npm install typescript; npx tsc --outDir src/apps/apps/classSchedule/js src/apps/apps/classSchedule/*.ts;
-generateTableRows();
-setInterval(swapCell, 2000);
+document.addEventListener('DOMContentLoaded', function () {
+    // generateTableRows();
+    // setInterval(swapCell, 2000);
+    var input = getData();
+    // setInterval(() => {showSchedule(getRandomSchedule(input), input)}, 1000);
+    var schedule = getRandomSchedule(input);
+    showSchedule(schedule, input);
+    // console.dir(schedule);
+});
+function showSchedule(schedule, input) {
+    var tbody = document.querySelector('tbody');
+    if (!tbody)
+        return;
+    tbody.innerHTML = "";
+    for (var period = input.settings.minPeriod; period <= input.settings.maxPeriod; period++) {
+        var tr = document.createElement('tr');
+        for (var day = input.settings.minDay; day <= input.settings.maxDay; day++) {
+            var td = document.createElement('td');
+            var div = document.createElement('div');
+            div.className = "bg-slate-800 m-1 p-1"; // opacity-0 transition-opacity duration-500
+            div.textContent = getCodesAtTime(schedule, day, period);
+            td.appendChild(div);
+            tr.appendChild(td);
+            // setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
+        }
+        tbody.appendChild(tr);
+    }
+}
+function getCodesAtTime(schedule, day, period) {
+    var result = schedule
+        .filter(function (c) { return c.day == day && c.period == period; })
+        .map(function (c) { return c.code; })
+        .join(' ');
+    return (!result) ? '_' : result;
+}
 function generateTableRows() {
     var tbody = document.querySelector('tbody');
     if (!tbody)
@@ -54,6 +87,35 @@ function swapCell() {
         (_c = cell1.parentNode) === null || _c === void 0 ? void 0 : _c.removeChild(cell1);
         (_d = cell2.parentNode) === null || _d === void 0 ? void 0 : _d.removeChild(cell2);
     }, 1000);
+}
+function getRandomSchedule(input) {
+    var lessonList = getListOfWeeklyLessons(input.courses);
+    var schedule = [];
+    for (var _i = 0, lessonList_1 = lessonList; _i < lessonList_1.length; _i++) {
+        var lesson = lessonList_1[_i];
+        schedule.push({
+            code: lesson.code,
+            day: getRandomDay(input),
+            period: getRandomPeriod(input),
+            room: getRandomRoomThatIsBigEnough(lesson, input.rooms).name
+        });
+    }
+    return schedule;
+}
+function getListOfWeeklyLessons(courses) {
+    return courses.flatMap(function (c) { return Array.from({ length: c.numClasses }, function () { return c; }); });
+}
+function getRandomRoomThatIsBigEnough(course, rooms) {
+    return getRandomItemFromList(rooms.filter(function (r) { return r.numStudents >= course.numStudents; }));
+}
+function getRandomItemFromList(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+function getRandomDay(input) {
+    return Math.ceil(Math.random() * input.settings.maxDay + 1) - input.settings.minDay;
+}
+function getRandomPeriod(input) {
+    return Math.ceil(Math.random() * input.settings.maxPeriod + 1) - input.settings.minPeriod;
 }
 function getData() {
     return {
@@ -138,21 +200,12 @@ function getData() {
             { name: 'D4', numStudents: 28 },
             { name: 'K8', numStudents: 5 },
             { name: 'L1', numStudents: 33 }
-        ]
+        ],
+        settings: {
+            minDay: 1,
+            maxDay: 5,
+            minPeriod: 1,
+            maxPeriod: 8
+        }
     };
-}
-function getRandomRoomThatIsBigEnough(course, rooms) {
-    return getRandom(rooms.filter(function (r) { return r.numStudents >= course.numStudents; }));
-}
-function getRandom(list) {
-    return list[Math.floor(Math.random() * list.length)];
-}
-function getRandomSchedule(courses, rooms) {
-    var lessonList = getListOfWeeklyLessons(courses);
-}
-function getListOfWeeklyLessons(courses) {
-    // const result = [];
-    // courses.map(c => {for (i = 1; i <= c.numClasses; i++) {result.push[c.code]}});
-    return courses.flatMap(function (c) { return Array.from({ length: c.numClasses }, function () { return c.code; }); });
-    // return result;
 }

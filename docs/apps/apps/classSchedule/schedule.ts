@@ -1,7 +1,60 @@
 // npm install typescript; npx tsc --outDir src/apps/apps/classSchedule/js src/apps/apps/classSchedule/*.ts;
 
-generateTableRows();
-setInterval(swapCell, 2000);
+document.addEventListener('DOMContentLoaded', function() {
+    // generateTableRows();
+    // setInterval(swapCell, 2000);
+    const input = getData();
+    // setInterval(() => {showSchedule(getRandomSchedule(input), input)}, 1000);
+    const schedule = getRandomSchedule(input);
+    showSchedule(schedule, input);
+    // console.dir(schedule);
+});
+
+type Tinput = {
+    courses: Tcourses,
+    rooms: Trooms,
+    settings: {
+        minDay: number,
+        maxDay: number,
+        minPeriod: number,
+        maxPeriod: number
+    }
+};
+type Troom = {name: string, numStudents: number};
+type Trooms = Array<Troom>;
+type Tcourse = {code: string, teacher: string, numClasses: number, numStudents: number, room: string};
+type Tcourses = Array<Tcourse>;
+type Tlesson = {code: string, day: number, period: number, room: string};
+type Tschedule = Array<Tlesson>;
+type Trule = {rule: string, score: number};
+type Trules = Array<Trule>;
+
+function showSchedule(schedule: Tschedule, input: Tinput) {
+    const tbody = document.querySelector('tbody');
+    if (!tbody) return;
+    tbody.innerHTML = "";
+    for (let period = input.settings.minPeriod; period <= input.settings.maxPeriod; period++) {
+        const tr = document.createElement('tr');
+        for (let day = input.settings.minDay; day <= input.settings.maxDay; day++) {
+            const td = document.createElement('td');
+            const div = document.createElement('div');
+            div.className = "bg-slate-800 m-1 p-1"; // opacity-0 transition-opacity duration-500
+            div.textContent = getCodesAtTime(schedule, day, period);
+            td.appendChild(div);
+            tr.appendChild(td);
+            // setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
+        }
+        tbody.appendChild(tr);
+    }
+}
+
+function getCodesAtTime(schedule: Tschedule, day: number, period: number): string {
+    const result = schedule
+        .filter(c => c.day == day && c.period == period)
+        .map(c => c.code)
+        .join(' ');
+    return (!result) ? '_' : result;
+}
 
 function generateTableRows() {
     const tbody = document.querySelector('tbody');
@@ -54,7 +107,40 @@ function swapCell() {
     }, 1000);
 }
 
-function getData() {
+function getRandomSchedule(input: Tinput): Tschedule {
+    const lessonList = getListOfWeeklyLessons(input.courses);
+    const schedule: Tschedule = [];
+    for (const lesson of lessonList) {
+        schedule.push({
+            code: lesson.code,
+            day: getRandomDay(input),
+            period: getRandomPeriod(input),
+            room: getRandomRoomThatIsBigEnough(lesson, input.rooms).name});
+    }
+    return schedule;
+}
+
+function getListOfWeeklyLessons(courses: Tcourses): Tcourses {
+    return courses.flatMap(c => Array.from({ length: c.numClasses }, () => c));
+}
+
+function getRandomRoomThatIsBigEnough(course: Tcourse, rooms: Trooms): Troom {
+    return getRandomItemFromList(rooms.filter(r => r.numStudents >= course.numStudents));
+}
+
+function getRandomItemFromList(list) {
+    return list[Math.floor(Math.random() * list.length)];
+}
+
+function getRandomDay(input: Tinput): number {
+    return Math.ceil(Math.random() * input.settings.maxDay + 1) - input.settings.minDay;
+}
+
+function getRandomPeriod(input: Tinput): number {
+    return Math.ceil(Math.random() * input.settings.maxPeriod + 1) - input.settings.minPeriod;
+}
+
+function getData(): Tinput {
     return {
         courses: [
             {code: 'MUZ439', teacher: 'Thomas', numClasses: 3, numStudents: 26, room: ''},
@@ -137,26 +223,12 @@ function getData() {
             {name: 'D4', numStudents: 28},
             {name: 'K8', numStudents: 5},
             {name: 'L1', numStudents: 33}
-        ]
+        ],
+        settings: {
+            minDay: 1,
+            maxDay: 5,
+            minPeriod: 1,
+            maxPeriod: 8
+        }
     };
-}
-
-function getRandomRoomThatIsBigEnough(course, rooms) {
-    return getRandom(rooms.filter(r => r.numStudents >= course.numStudents));
-}
-
-function getRandom(list) {
-    return list[Math.floor(Math.random() * list.length)];
-}
-
-function getRandomSchedule(courses, rooms) {
-    const lessonList = getListOfWeeklyLessons(courses);
-
-}
-
-function getListOfWeeklyLessons(courses) {
-    // const result = [];
-    // courses.map(c => {for (i = 1; i <= c.numClasses; i++) {result.push[c.code]}});
-    return courses.flatMap(c => Array.from({ length: c.numClasses }, () => c.code));
-    // return result;
 }
