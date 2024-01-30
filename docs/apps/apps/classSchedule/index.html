@@ -1,15 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Class schedule maker (genetic programming)</title>
     <meta name="description" content="Class schedule maker (genetic programming)">
     <meta name="author" content="Richard JE Cooke">
+    <title>Class schedule maker (genetic programming)</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/systemjs/dist/system.min.js"></script>
-    <script src="./main.js"></script>
+    <!-- <script src="https://unpkg.com/systemjs/dist/system.min.js"></script> -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class'
+        }
+    </script>
 </head>
-
 <body class="bg-slate-900 text-slate-300">
     <div class="flex m-5">
         <div class="w-4/5 m-5 ">
@@ -34,5 +37,6 @@
             </div>
         </div>
     </div>
+    <script src="js/schedule.js" defer></script>
 </body>
 </html>
