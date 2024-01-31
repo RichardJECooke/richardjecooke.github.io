@@ -5,3 +5,5 @@ node_modules
 node_modules/**/.bin/**
 **/node_modules/
 docs/apps/apps/classSchedule/tsconfig.json
+docs/apps/apps/classSchedule/package-lock.json
+docs/apps/apps/classSchedule/package.json

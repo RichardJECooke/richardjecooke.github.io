@@ -1,4 +1,4 @@
-// npm install typescript; npx tsc --project src/apps/apps/classSchedule/tsconfig.json;
+// cd richardjecooke.github.io/src/apps/apps/classSchedule; npx tsc;
 
 document.addEventListener('DOMContentLoaded', function() {
     // generateTableRows();

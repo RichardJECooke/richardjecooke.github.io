@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "module": "ESNext",
+        "moduleResolution": "node",
         "outDir": "js",
         "target": "es2021",
         "strict": true,
