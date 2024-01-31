@@ -29,6 +29,7 @@ function addIgnores(config)
 	config.ignores.add(".eleventy.js");
 	config.ignores.add("node_modules");
 	config.ignores.add("package.json");
+	config.ignores.add("package-lock.json");
 	config.ignores.add("README.md");
 	config.ignores.add("docs");
 	config.ignores.add("docs/");

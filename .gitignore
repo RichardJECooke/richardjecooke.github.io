@@ -3,3 +3,5 @@ Thumbs.db
 *.log
 node_modules
 node_modules/**/.bin/**
+**/node_modules/
+docs/apps/apps/classSchedule/tsconfig.json

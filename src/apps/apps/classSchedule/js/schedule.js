@@ -1,99 +1,107 @@
-// npm install typescript; npx tsc --outDir src/apps/apps/classSchedule/js src/apps/apps/classSchedule/*.ts;
+"use strict";
+// cd richardjecooke.github.io/src/apps/apps/classSchedule; npx tsc;
 document.addEventListener('DOMContentLoaded', function () {
     // generateTableRows();
     // setInterval(swapCell, 2000);
-    var input = getData();
+    const input = getData();
     // setInterval(() => {showSchedule(getRandomSchedule(input), input)}, 1000);
-    var schedule = getRandomSchedule(input);
+    const schedule = getRandomSchedule(input);
+    schedule.score = scoreSchedule(schedule, input);
     showSchedule(schedule, input);
     // console.dir(schedule);
 });
+function scoreSchedule(schedule, input) {
+    const score = schedule.lessons
+        .map(l => schedule.lessons.filter(l2 => l2.id !== l.id &&
+        l2.period === l.period &&
+        l2.day === l.day &&
+        l2.room === l.room).length)
+        .reduce((acc, curr) => acc + curr, 0) / 2;
+    return score * -1000;
+}
 function showSchedule(schedule, input) {
-    var tbody = document.querySelector('tbody');
+    if (document.querySelector('#score') != null)
+        document.querySelector('#score').innerHTML = schedule.score.toString();
+    const tbody = document.querySelector('tbody');
     if (!tbody)
         return;
     tbody.innerHTML = "";
-    for (var period = input.settings.minPeriod; period <= input.settings.maxPeriod; period++) {
-        var tr = document.createElement('tr');
-        for (var day = input.settings.minDay; day <= input.settings.maxDay; day++) {
-            var td = document.createElement('td');
-            var div = document.createElement('div');
+    for (let period = input.settings.minPeriod; period <= input.settings.maxPeriod; period++) {
+        const tr = document.createElement('tr');
+        for (let day = input.settings.minDay; day <= input.settings.maxDay; day++) {
+            const td = document.createElement('td');
+            const div = document.createElement('div');
             div.className = "bg-slate-800 m-1 p-1"; // opacity-0 transition-opacity duration-500
             div.textContent = getCodesAtTime(schedule, day, period);
             td.appendChild(div);
-            tr.appendChild(td);
-            // setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
+            tr.appendChild(td); // setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
         }
         tbody.appendChild(tr);
     }
 }
 function getCodesAtTime(schedule, day, period) {
-    var result = schedule
-        .filter(function (c) { return c.day == day && c.period == period; })
-        .map(function (c) { return c.code; })
+    const result = schedule.lessons
+        .filter(c => c.day == day && c.period == period)
+        .map(c => c.code)
         .join(' ');
     return (!result) ? '_' : result;
 }
 function generateTableRows() {
-    var tbody = document.querySelector('tbody');
+    const tbody = document.querySelector('tbody');
     if (!tbody)
         return;
-    for (var row = 1; row <= 8; row++) {
-        var tr = document.createElement('tr');
-        var _loop_1 = function (col) {
-            var td = document.createElement('td');
-            var div = document.createElement('div');
+    for (let row = 1; row <= 8; row++) {
+        const tr = document.createElement('tr');
+        for (let col = 0; col < 5; col++) {
+            const td = document.createElement('td');
+            const div = document.createElement('div');
             div.className = "bg-slate-800 m-1 p-1 opacity-0 transition-opacity duration-500";
             div.textContent = Math.floor(Math.random() * 10000000000).toString();
             td.appendChild(div);
             tr.appendChild(td);
-            setTimeout(function () { div.classList.remove('opacity-0'); }, 2000 * Math.random());
-        };
-        for (var col = 0; col < 5; col++) {
-            _loop_1(col);
+            setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
         }
         tbody.appendChild(tr);
     }
 }
 function swapCell() {
-    var cells = document.querySelectorAll('tbody td');
-    var index1 = Math.floor(Math.random() * cells.length);
-    var index2;
+    const cells = document.querySelectorAll('tbody td');
+    let index1 = Math.floor(Math.random() * cells.length);
+    let index2;
     do {
         index2 = Math.floor(Math.random() * cells.length);
     } while (index1 === index2);
-    var cell1 = cells[index1];
-    var cell2 = cells[index2];
-    var rect1 = cell1.getBoundingClientRect();
-    var rect2 = cell2.getBoundingClientRect();
-    var translateX1 = rect2.left - rect1.left;
-    var translateY1 = rect2.top - rect1.top;
-    var translateX2 = rect1.left - rect2.left;
-    var translateY2 = rect1.top - rect2.top;
+    const cell1 = cells[index1];
+    const cell2 = cells[index2];
+    const rect1 = cell1.getBoundingClientRect();
+    const rect2 = cell2.getBoundingClientRect();
+    const translateX1 = rect2.left - rect1.left;
+    const translateY1 = rect2.top - rect1.top;
+    const translateX2 = rect1.left - rect2.left;
+    const translateY2 = rect1.top - rect2.top;
     cell1.style.transition = 'transform 1000ms';
     cell2.style.transition = 'transform 1000ms';
-    cell1.style.transform = "translate(".concat(translateX1, "px, ").concat(translateY1, "px)");
-    cell2.style.transform = "translate(".concat(translateX2, "px, ").concat(translateY2, "px)");
-    setTimeout(function () {
-        var _a, _b, _c, _d;
+    cell1.style.transform = `translate(${translateX1}px, ${translateY1}px)`;
+    cell2.style.transform = `translate(${translateX2}px, ${translateY2}px)`;
+    setTimeout(() => {
         cell1.style.transition = '';
         cell2.style.transition = '';
         cell1.style.transform = '';
         cell2.style.transform = '';
-        var cell1Clone = cell1.cloneNode(true);
-        var cell2Clone = cell2.cloneNode(true);
-        (_a = cell1.parentNode) === null || _a === void 0 ? void 0 : _a.insertBefore(cell2Clone, cell1);
-        (_b = cell2.parentNode) === null || _b === void 0 ? void 0 : _b.insertBefore(cell1Clone, cell2);
-        (_c = cell1.parentNode) === null || _c === void 0 ? void 0 : _c.removeChild(cell1);
-        (_d = cell2.parentNode) === null || _d === void 0 ? void 0 : _d.removeChild(cell2);
+        const cell1Clone = cell1.cloneNode(true);
+        const cell2Clone = cell2.cloneNode(true);
+        cell1.parentNode?.insertBefore(cell2Clone, cell1);
+        cell2.parentNode?.insertBefore(cell1Clone, cell2);
+        cell1.parentNode?.removeChild(cell1);
+        cell2.parentNode?.removeChild(cell2);
     }, 1000);
 }
 function getRandomSchedule(input) {
-    var lessonList = getListOfWeeklyLessons(input.courses);
-    var schedule = [];
-    for (var _i = 0, lessonList_1 = lessonList; _i < lessonList_1.length; _i++) {
-        var lesson = lessonList_1[_i];
-        schedule.push({
+    const lessonList = getListOfWeeklyLessons(input.courses);
+    const schedule = { lessons: [], score: 0 };
+    for (const [index, lesson] of lessonList.entries()) {
+        schedule.lessons.push({
+            id: index,
             code: lesson.code,
             day: getRandomDay(input),
             period: getRandomPeriod(input),
@@ -103,10 +111,10 @@ function getRandomSchedule(input) {
     return schedule;
 }
 function getListOfWeeklyLessons(courses) {
-    return courses.flatMap(function (c) { return Array.from({ length: c.numClasses }, function () { return c; }); });
+    return courses.flatMap(c => Array.from({ length: c.numClasses }, () => c));
 }
 function getRandomRoomThatIsBigEnough(course, rooms) {
-    return getRandomItemFromList(rooms.filter(function (r) { return r.numStudents >= course.numStudents; }));
+    return getRandomItemFromList(rooms.filter(r => r.numStudents >= course.numStudents));
 }
 function getRandomItemFromList(list) {
     return list[Math.floor(Math.random() * list.length)];
@@ -206,6 +214,9 @@ function getData() {
             maxDay: 5,
             minPeriod: 1,
             maxPeriod: 8
-        }
+        },
+        rules: [
+            { description: "Room clash", rule: "schedule.lessons.", score: -1000 }
+        ]
     };
 }

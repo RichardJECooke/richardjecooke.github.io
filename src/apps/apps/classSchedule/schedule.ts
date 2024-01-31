@@ -1,4 +1,4 @@
-// npm install typescript; npx tsc --outDir src/apps/apps/classSchedule/js src/apps/apps/classSchedule/*.ts;
+// cd richardjecooke.github.io/src/apps/apps/classSchedule; npx tsc;
 
 document.addEventListener('DOMContentLoaded', function() {
     // generateTableRows();
@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const input = getData();
     // setInterval(() => {showSchedule(getRandomSchedule(input), input)}, 1000);
     const schedule = getRandomSchedule(input);
+    schedule.score = scoreSchedule(schedule, input);
     showSchedule(schedule, input);
     // console.dir(schedule);
 });
@@ -18,18 +19,32 @@ type Tinput = {
         maxDay: number,
         minPeriod: number,
         maxPeriod: number
-    }
+    },
+    rules: Trules
 };
 type Troom = {name: string, numStudents: number};
 type Trooms = Array<Troom>;
 type Tcourse = {code: string, teacher: string, numClasses: number, numStudents: number, room: string};
 type Tcourses = Array<Tcourse>;
-type Tlesson = {code: string, day: number, period: number, room: string};
-type Tschedule = Array<Tlesson>;
-type Trule = {rule: string, score: number};
+type Tlesson = {id: number, code: string, day: number, period: number, room: string};
+type Tschedule = {lessons: Array<Tlesson>, score: number};
+type Trule = {description: string, rule: string, score: number};
 type Trules = Array<Trule>;
 
+function scoreSchedule(schedule: Tschedule, input: Tinput): number {
+    const score = schedule.lessons
+        .map(l => schedule.lessons.filter(l2 =>
+            l2.id !== l.id &&
+            l2.period === l.period &&
+            l2.day === l.day &&
+            l2.room === l.room).length)
+        .reduce((acc, curr) => acc + curr, 0) / 2;
+    return score * -1000;
+}
+
 function showSchedule(schedule: Tschedule, input: Tinput) {
+    if (document.querySelector('#score') != null)
+        document.querySelector('#score')!.innerHTML = schedule.score.toString();
     const tbody = document.querySelector('tbody');
     if (!tbody) return;
     tbody.innerHTML = "";
@@ -41,15 +56,14 @@ function showSchedule(schedule: Tschedule, input: Tinput) {
             div.className = "bg-slate-800 m-1 p-1"; // opacity-0 transition-opacity duration-500
             div.textContent = getCodesAtTime(schedule, day, period);
             td.appendChild(div);
-            tr.appendChild(td);
-            // setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
+            tr.appendChild(td);   // setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
         }
         tbody.appendChild(tr);
     }
 }
 
 function getCodesAtTime(schedule: Tschedule, day: number, period: number): string {
-    const result = schedule
+    const result = schedule.lessons
         .filter(c => c.day == day && c.period == period)
         .map(c => c.code)
         .join(' ');
@@ -109,9 +123,10 @@ function swapCell() {
 
 function getRandomSchedule(input: Tinput): Tschedule {
     const lessonList = getListOfWeeklyLessons(input.courses);
-    const schedule: Tschedule = [];
-    for (const lesson of lessonList) {
-        schedule.push({
+    const schedule: Tschedule = {lessons: [], score: 0};
+    for (const [index, lesson] of lessonList.entries()) {
+        schedule.lessons.push({
+            id: index,
             code: lesson.code,
             day: getRandomDay(input),
             period: getRandomPeriod(input),
@@ -128,7 +143,7 @@ function getRandomRoomThatIsBigEnough(course: Tcourse, rooms: Trooms): Troom {
     return getRandomItemFromList(rooms.filter(r => r.numStudents >= course.numStudents));
 }
 
-function getRandomItemFromList(list) {
+function getRandomItemFromList<T>(list: T[]): T {
     return list[Math.floor(Math.random() * list.length)];
 }
 
@@ -229,6 +244,9 @@ function getData(): Tinput {
             maxDay: 5,
             minPeriod: 1,
             maxPeriod: 8
-        }
+        },
+        rules: [
+            {description: "Room clash", rule: "schedule.lessons.", score: -1000}
+        ]
     };
 }

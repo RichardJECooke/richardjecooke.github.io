@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "outDir": "js",
+        "target": "es2021",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "types": ["undici-types"],
+        "baseUrl": "./",
+        "paths": {
+            "undici-types": ["node_modules/undici-types"]
+        }
+    },
+
+}
