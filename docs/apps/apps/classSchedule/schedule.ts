@@ -4,9 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // generateTableRows();
     // setInterval(swapCell, 2000);
     const input = getData();
-    // setInterval(() => {showSchedule(getRandomSchedule(input), input)}, 1000);
-    const schedule = getRandomSchedule(input);
-    schedule.score = scoreSchedule(schedule, input);
+    setInterval(() => {showSchedule(getRandomScheduleWithScore(input), input)}, 2000);
+    const schedule = getRandomScheduleWithScore(input);
     showSchedule(schedule, input);
     // console.dir(schedule);
 });
@@ -30,6 +29,12 @@ type Tlesson = {id: number, code: string, day: number, period: number, room: str
 type Tschedule = {lessons: Array<Tlesson>, score: number};
 type Trule = {description: string, rule: string, score: number};
 type Trules = Array<Trule>;
+
+function  getRandomScheduleWithScore(input: Tinput): Tschedule {
+    const schedule = getRandomSchedule(input);
+    schedule.score = scoreSchedule(schedule, input);
+    return schedule;
+}
 
 function scoreSchedule(schedule: Tschedule, input: Tinput): number {
     const score = schedule.lessons

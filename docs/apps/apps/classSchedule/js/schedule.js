@@ -4,12 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // generateTableRows();
     // setInterval(swapCell, 2000);
     const input = getData();
-    // setInterval(() => {showSchedule(getRandomSchedule(input), input)}, 1000);
-    const schedule = getRandomSchedule(input);
-    schedule.score = scoreSchedule(schedule, input);
+    setInterval(() => { showSchedule(getRandomScheduleWithScore(input), input); }, 2000);
+    const schedule = getRandomScheduleWithScore(input);
     showSchedule(schedule, input);
     // console.dir(schedule);
 });
+function getRandomScheduleWithScore(input) {
+    const schedule = getRandomSchedule(input);
+    schedule.score = scoreSchedule(schedule, input);
+    return schedule;
+}
 function scoreSchedule(schedule, input) {
     const score = schedule.lessons
         .map(l => schedule.lessons.filter(l2 => l2.id !== l.id &&
