@@ -54,11 +54,15 @@ async function evolve(previousGeneration: Tschedules, input: Tinput) {
             children.push(child);
         }
     };
-    previousGeneration.map((s) => children.push(s));
-    children.sort((a,b) => b.score - a.score);
-    if (children[0].score > previousGeneration[0].score)
+    // const previousGenerationAndChildren = [...previousGeneration, ...children];
+    // previousGenerationAndChildren.sort((a,b) => b.score - a.score);
+    // const newGeneration = previousGenerationAndChildren.slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
+    TODO update to TS 5.2
+    const newGeneration = [...previousGeneration, ...children]
+        .toSorted((a,b) => b.score - a.score)
+        .slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
+    if (newGeneration[0].score > previousGeneration[0].score)
         showSchedule(children[0], input);
-    const newGeneration = children.slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
     for (let i = 0; i < input.settings.populationSize * input.settings.numberRandomsInNewGeneration; i++)
         newGeneration.push(getRandomScheduleWithScore(input));
     newGeneration.sort((a,b) => b.score - a.score);
