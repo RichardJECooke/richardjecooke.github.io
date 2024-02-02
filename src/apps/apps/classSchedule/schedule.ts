@@ -1,13 +1,13 @@
 // cd richardjecooke.github.io/src/apps/apps/classSchedule; npx tsc;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // generateTableRows();
-    // setInterval(swapCell, 2000);
     const input = getData();
-    setInterval(() => {showSchedule(getRandomScheduleWithScore(input), input)}, 2000);
-    const schedule = getRandomScheduleWithScore(input);
-    showSchedule(schedule, input);
-    // console.dir(schedule);
+    const generation: Tschedules = [];
+    for (let i = 1; i < input.settings.populationSize; i++)
+        generation.push(getRandomScheduleWithScore(input));
+    generation.sort((a,b) => b.score - a.score);
+    showSchedule(generation[0], input);
+    globalThis.setTimeout(() => evolve(generation, input), 10);
 });
 
 type Tinput = {
@@ -18,17 +18,52 @@ type Tinput = {
         maxDay: number,
         minPeriod: number,
         maxPeriod: number
+        populationSize: number,
+        numberOfChildrenPerBreeder: number,
+        numberRandomsInNewGeneration: number
     },
     rules: Trules
 };
 type Troom = {name: string, numStudents: number};
-type Trooms = Array<Troom>;
+type Trooms = Troom[];
 type Tcourse = {code: string, teacher: string, numClasses: number, numStudents: number, room: string};
-type Tcourses = Array<Tcourse>;
+type Tcourses = Tcourse[];
 type Tlesson = {id: number, code: string, day: number, period: number, room: string};
 type Tschedule = {lessons: Array<Tlesson>, score: number};
+type Tschedules = Tschedule[];
 type Trule = {description: string, rule: string, score: number};
-type Trules = Array<Trule>;
+type Trules = Trule[];
+
+async function evolve(previousGeneration: Tschedules, input: Tinput) {
+    const children: Tschedules = [];
+    for (let organismIndex = 0; organismIndex < previousGeneration.length; organismIndex++) {
+        const schedule = previousGeneration[organismIndex];
+        const breedingChance = (input.settings.populationSize - organismIndex) / input.settings.populationSize;
+        if (Math.random() + breedingChance < 1)
+            continue;
+        for (let childCounter = 0; childCounter < input.settings.numberOfChildrenPerBreeder*input.settings.populationSize; childCounter++) {
+            const partner = getRandomItemFromList(previousGeneration);
+            const child: Tschedule = {lessons: [], score: 0};
+            for (let gene = 0; gene < schedule.lessons.length; gene++) {
+                if (Math.random() > 0.5)
+                    child.lessons.push(schedule.lessons[gene]);
+                else
+                    child.lessons.push(partner.lessons[gene]);
+            }
+            child.score = scoreSchedule(child, input);
+            children.push(child);
+        }
+    };
+    previousGeneration.map((s) => children.push(s));
+    children.sort((a,b) => b.score - a.score);
+    if (children[0].score > previousGeneration[0].score)
+        showSchedule(children[0], input);
+    const newGeneration = children.slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
+    for (let i = 0; i < input.settings.populationSize * input.settings.numberRandomsInNewGeneration; i++)
+        newGeneration.push(getRandomScheduleWithScore(input));
+    newGeneration.sort((a,b) => b.score - a.score);
+    globalThis.setTimeout(() => evolve(newGeneration, input), 10);
+}
 
 function  getRandomScheduleWithScore(input: Tinput): Tschedule {
     const schedule = getRandomSchedule(input);
@@ -43,7 +78,7 @@ function scoreSchedule(schedule: Tschedule, input: Tinput): number {
             l2.period === l.period &&
             l2.day === l.day &&
             l2.room === l.room).length)
-        .reduce((acc, curr) => acc + curr, 0) / 2;
+        .reduce((acc, curr) => acc + curr, 0);
     return score * -1000;
 }
 
@@ -73,57 +108,6 @@ function getCodesAtTime(schedule: Tschedule, day: number, period: number): strin
         .map(c => c.code)
         .join(' ');
     return (!result) ? '_' : result;
-}
-
-function generateTableRows() {
-    const tbody = document.querySelector('tbody');
-    if (!tbody) return;
-    for (let row = 1; row <= 8; row++) {
-        const tr = document.createElement('tr');
-        for (let col = 0; col < 5; col++) {
-            const td = document.createElement('td');
-            const div = document.createElement('div');
-            div.className = "bg-slate-800 m-1 p-1 opacity-0 transition-opacity duration-500";
-            div.textContent = Math.floor(Math.random()*10000000000).toString();
-            td.appendChild(div);
-            tr.appendChild(td);
-            setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
-        }
-        tbody.appendChild(tr);
-    }
-}
-
-function swapCell() {
-    const cells: NodeListOf<HTMLTableCellElement> = document.querySelectorAll('tbody td');
-    let index1 = Math.floor(Math.random() * cells.length);
-    let index2;
-    do {
-        index2 = Math.floor(Math.random() * cells.length);
-    } while (index1 === index2);
-    const cell1 = cells[index1];
-    const cell2 = cells[index2];
-    const rect1 = cell1.getBoundingClientRect();
-    const rect2 = cell2.getBoundingClientRect();
-    const translateX1 = rect2.left - rect1.left;
-    const translateY1 = rect2.top - rect1.top;
-    const translateX2 = rect1.left - rect2.left;
-    const translateY2 = rect1.top - rect2.top;
-    cell1.style.transition = 'transform 1000ms';
-    cell2.style.transition = 'transform 1000ms';
-    cell1.style.transform = `translate(${translateX1}px, ${translateY1}px)`;
-    cell2.style.transform = `translate(${translateX2}px, ${translateY2}px)`;
-    setTimeout(() => { // swap the cells after animation has finished and remove the transform
-        cell1.style.transition = '';
-        cell2.style.transition = '';
-        cell1.style.transform = '';
-        cell2.style.transform = '';
-        const cell1Clone = cell1.cloneNode(true);
-        const cell2Clone = cell2.cloneNode(true);
-        cell1.parentNode?.insertBefore(cell2Clone, cell1);
-        cell2.parentNode?.insertBefore(cell1Clone, cell2);
-        cell1.parentNode?.removeChild(cell1);
-        cell2.parentNode?.removeChild(cell2);
-    }, 1000);
 }
 
 function getRandomSchedule(input: Tinput): Tschedule {
@@ -248,7 +232,10 @@ function getData(): Tinput {
             minDay: 1,
             maxDay: 5,
             minPeriod: 1,
-            maxPeriod: 8
+            maxPeriod: 8,
+            populationSize: 100,
+            numberOfChildrenPerBreeder: 0.02,
+            numberRandomsInNewGeneration: 0.2
         },
         rules: [
             {description: "Room clash", rule: "schedule.lessons.", score: -1000}
