@@ -62,7 +62,7 @@ async function evolve(previousGeneration: Tschedules, input: Tinput) {
     for (let i = 0; i < input.settings.populationSize * input.settings.numberRandomsInNewGeneration; i++)
         newGeneration.push(getRandomScheduleWithScore(input));
     newGeneration.sort((a,b) => b.score - a.score);
-    globalThis.setTimeout(() => evolve(newGeneration, input), 10);
+    globalThis.setTimeout(() => evolve(newGeneration, input), 500);
 }
 
 function  getRandomScheduleWithScore(input: Tinput): Tschedule {
