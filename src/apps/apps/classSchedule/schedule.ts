@@ -54,15 +54,16 @@ async function evolve(previousGeneration: Tschedules, input: Tinput) {
             children.push(child);
         }
     };
-    // const previousGenerationAndChildren = [...previousGeneration, ...children];
-    // previousGenerationAndChildren.sort((a,b) => b.score - a.score);
-    // const newGeneration = previousGenerationAndChildren.slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
-    TODO update to TS 5.2
-    const newGeneration = [...previousGeneration, ...children]
-        .toSorted((a,b) => b.score - a.score)
-        .slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
+    const previousGenerationAndChildren = [...previousGeneration, ...children];
+    console.log(previousGenerationAndChildren.length);
+    previousGenerationAndChildren.sort((a,b) => b.score - a.score);
+    const newGeneration = previousGenerationAndChildren.slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
+    // TODO update to TS 5.2
+    // const newGeneration = [...previousGeneration, ...children]
+    //     .toSorted((a,b) => b.score - a.score)
+    //     .slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
     if (newGeneration[0].score > previousGeneration[0].score)
-        showSchedule(children[0], input);
+        showSchedule(newGeneration[0], input);
     for (let i = 0; i < input.settings.populationSize * input.settings.numberRandomsInNewGeneration; i++)
         newGeneration.push(getRandomScheduleWithScore(input));
     newGeneration.sort((a,b) => b.score - a.score);
