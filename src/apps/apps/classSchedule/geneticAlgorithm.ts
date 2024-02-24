@@ -52,12 +52,11 @@ export function getNextGenerationAndAdjustSettings<T>(population: gaTypes.TOrgan
 
     //breed
     for (const pair of breeders) {
-        Array.from(pair, (_, i) => {
-            if (Math.random() > settings.crossoverRate)
-                nextGen.push(pair[i]);
-            else
-                nextGen.push(settings.crossoverFunction(pair[0], pair[1]));
-        });
+        if (Math.random() > settings.crossoverRate)
+            nextGen.push(...pair);
+        else
+            nextGen.push(settings.crossoverFunction(pair[0], pair[1]),
+                         settings.crossoverFunction(pair[0], pair[1]));
     }
 
     //mutate
