@@ -1,82 +1,21 @@
-// cd richardjecooke.github.io/src/apps/apps/classSchedule; npx tsc;
+import * as types from './types';
+import * as geneticAlgorithmTypes from './geneticAlgorithmTypes';
 
-document.addEventListener('DOMContentLoaded', function() {
-    const input = getData();
-    const generation: Tschedules = [];
-    for (let i = 1; i < input.settings.populationSize; i++)
-        generation.push(getRandomScheduleWithScore(input));
-    generation.sort((a,b) => b.score - a.score);
-    showSchedule(generation[0], input);
-    globalThis.setTimeout(() => evolve(generation, input), 10);
-});
-
-type Tinput = {
-    courses: Tcourses,
-    rooms: Trooms,
-    settings: {
-        minDay: number,
-        maxDay: number,
-        minPeriod: number,
-        maxPeriod: number
-        populationSize: number,
-        numberOfChildrenPerBreeder: number,
-        numberRandomsInNewGeneration: number
-    },
-    rules: Trules
-};
-type Troom = {name: string, numStudents: number};
-type Trooms = Troom[];
-type Tcourse = {code: string, teacher: string, numClasses: number, numStudents: number, room: string};
-type Tcourses = Tcourse[];
-type Tlesson = {id: number, code: string, day: number, period: number, room: string};
-type Tschedule = {lessons: Array<Tlesson>, score: number};
-type Tschedules = Tschedule[];
-type Trule = {description: string, rule: string, score: number};
-type Trules = Trule[];
-
-async function evolve(previousGeneration: Tschedules, input: Tinput) {
-    const children: Tschedules = [];
-    for (let organismIndex = 0; organismIndex < previousGeneration.length; organismIndex++) {
-        const schedule = previousGeneration[organismIndex];
-        const breedingChance = (input.settings.populationSize - organismIndex) / input.settings.populationSize;
-        if (Math.random() + breedingChance < 1)
-            continue;
-        for (let childCounter = 0; childCounter < input.settings.numberOfChildrenPerBreeder*input.settings.populationSize; childCounter++) {
-            const partner = getRandomItemFromList(previousGeneration);
-            const child: Tschedule = {lessons: [], score: 0};
-            for (let gene = 0; gene < schedule.lessons.length; gene++) {
-                if (Math.random() > 0.5)
-                    child.lessons.push(schedule.lessons[gene]);
-                else
-                    child.lessons.push(partner.lessons[gene]);
-            }
-            child.score = scoreSchedule(child, input);
-            children.push(child);
-        }
-    };
-    const previousGenerationAndChildren = [...previousGeneration, ...children];
-    console.log(previousGenerationAndChildren.length);
-    previousGenerationAndChildren.sort((a,b) => b.score - a.score);
-    const newGeneration = previousGenerationAndChildren.slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
-    // TODO update to TS 5.2
-    // const newGeneration = [...previousGeneration, ...children]
-    //     .toSorted((a,b) => b.score - a.score)
-    //     .slice(0, (1-input.settings.numberRandomsInNewGeneration)*input.settings.populationSize);
-    if (newGeneration[0].score > previousGeneration[0].score)
-        showSchedule(newGeneration[0], input);
-    for (let i = 0; i < input.settings.populationSize * input.settings.numberRandomsInNewGeneration; i++)
-        newGeneration.push(getRandomScheduleWithScore(input));
-    newGeneration.sort((a,b) => b.score - a.score);
-    globalThis.setTimeout(() => evolve(newGeneration, input), 500);
-}
-
-function  getRandomScheduleWithScore(input: Tinput): Tschedule {
+export function  getRandomScheduleWithScore(input: types.Tinput): types.Tschedule {
     const schedule = getRandomSchedule(input);
     schedule.score = scoreSchedule(schedule, input);
     return schedule;
 }
 
-function scoreSchedule(schedule: Tschedule, input: Tinput): number {
+export function getCodesAtTime(schedule: types.Tschedule, day: number, period: number): string {
+    const result = schedule.lessons
+        .filter(c => c.day == day && c.period == period)
+        .map(c => c.code)
+        .join(' ');
+    return (!result) ? '_' : result;
+}
+
+function scoreSchedule(schedule: types.Tschedule, input: types.Tinput): number {
     const score = schedule.lessons
         .map(l => schedule.lessons.filter(l2 =>
             l2.id !== l.id &&
@@ -87,37 +26,9 @@ function scoreSchedule(schedule: Tschedule, input: Tinput): number {
     return score * -1000;
 }
 
-function showSchedule(schedule: Tschedule, input: Tinput) {
-    if (document.querySelector('#score') != null)
-        document.querySelector('#score')!.innerHTML = schedule.score.toString();
-    const tbody = document.querySelector('tbody');
-    if (!tbody) return;
-    tbody.innerHTML = "";
-    for (let period = input.settings.minPeriod; period <= input.settings.maxPeriod; period++) {
-        const tr = document.createElement('tr');
-        for (let day = input.settings.minDay; day <= input.settings.maxDay; day++) {
-            const td = document.createElement('td');
-            const div = document.createElement('div');
-            div.className = "bg-slate-800 m-1 p-1"; // opacity-0 transition-opacity duration-500
-            div.textContent = getCodesAtTime(schedule, day, period);
-            td.appendChild(div);
-            tr.appendChild(td);   // setTimeout(() => { div.classList.remove('opacity-0'); }, 2000 * Math.random());
-        }
-        tbody.appendChild(tr);
-    }
-}
-
-function getCodesAtTime(schedule: Tschedule, day: number, period: number): string {
-    const result = schedule.lessons
-        .filter(c => c.day == day && c.period == period)
-        .map(c => c.code)
-        .join(' ');
-    return (!result) ? '_' : result;
-}
-
-function getRandomSchedule(input: Tinput): Tschedule {
+function getRandomSchedule(input: types.Tinput): types.Tschedule {
     const lessonList = getListOfWeeklyLessons(input.courses);
-    const schedule: Tschedule = {lessons: [], score: 0};
+    const schedule: types.Tschedule = {lessons: [], score: 0};
     for (const [index, lesson] of lessonList.entries()) {
         schedule.lessons.push({
             id: index,
@@ -129,11 +40,11 @@ function getRandomSchedule(input: Tinput): Tschedule {
     return schedule;
 }
 
-function getListOfWeeklyLessons(courses: Tcourses): Tcourses {
+function getListOfWeeklyLessons(courses: types.Tcourses): types.Tcourses {
     return courses.flatMap(c => Array.from({ length: c.numClasses }, () => c));
 }
 
-function getRandomRoomThatIsBigEnough(course: Tcourse, rooms: Trooms): Troom {
+function getRandomRoomThatIsBigEnough(course: types.Tcourse, rooms: types.Trooms): types.Troom {
     return getRandomItemFromList(rooms.filter(r => r.numStudents >= course.numStudents));
 }
 
@@ -141,15 +52,15 @@ function getRandomItemFromList<T>(list: T[]): T {
     return list[Math.floor(Math.random() * list.length)];
 }
 
-function getRandomDay(input: Tinput): number {
+function getRandomDay(input: types.Tinput): number {
     return Math.ceil(Math.random() * input.settings.maxDay + 1) - input.settings.minDay;
 }
 
-function getRandomPeriod(input: Tinput): number {
+function getRandomPeriod(input: types.Tinput): number {
     return Math.ceil(Math.random() * input.settings.maxPeriod + 1) - input.settings.minPeriod;
 }
 
-function getData(): Tinput {
+export function getData(): types.Tinput {
     return {
         courses: [
             {code: 'MUZ439', teacher: 'Thomas', numClasses: 3, numStudents: 26, room: ''},
