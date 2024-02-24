@@ -1,4 +1,3 @@
-import * as types from './types';
 import * as gaTypes from './geneticAlgorithmTypes';
 
 export function getSettings<T>(
