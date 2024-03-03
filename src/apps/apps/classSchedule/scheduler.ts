@@ -43,6 +43,26 @@ export function crossoverSchedules(scheduleA: types.Tschedule, scheduleB: types.
     return newSchedule;
 }
 
+export function getScheduleDifference(schedules: types.Tschedules): number {
+    // x * (x-1) * 0.5 combinations of pairs from x elements
+    const maximum = 3 * schedules[0].data.length * (schedules.length * (schedules.length-1) * 0.5); // day, period, room different for every lesson for every schedule
+    let difference = 0;
+    for (let scheduleA of schedules) {
+        for (let scheduleB of schedules) {
+            if (scheduleA == scheduleB)
+                continue;
+            for (let lessonA of scheduleA.data) {
+                const lessonB = scheduleB.data.find(l => l.id == lessonA.id)
+                if (!lessonB) throw new Error("Lesson not found");
+                if (lessonA.day != lessonB.day) difference++;
+                if (lessonA.period != lessonB.period) difference++;
+                if (lessonA.room != lessonB.room) difference++;
+            }
+        }
+    };
+    return difference / maximum;
+}
+
 export function getMutateScheduleFunction(input: types.Tinput): (schedule: types.Tschedule) => types.Tschedule {
     return function(schedule: types.Tschedule): types.Tschedule {
         return mutateSchedule(schedule, input);
@@ -92,7 +112,7 @@ function getRandomSchedule(input: types.Tinput): types.Tschedule {
     for (const [index, lesson] of lessonList.entries()) {
         schedule.data.push({
             id: index,
-            code: lesson.code,
+            course: lesson,
             day: getRandomDay(input),
             period: getRandomPeriod(input),
             room: getRandomRoomThatIsBigEnough(lesson, input.rooms).name});

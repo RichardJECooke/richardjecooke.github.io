@@ -1,8 +1,6 @@
 import * as types from './types';
-// import * as gaTypes from './geneticAlgorithmTypes';
 import * as scheduler from './scheduler';
 import * as geneticAlgorithm from './geneticAlgorithm';
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const input = scheduler.getData();
@@ -10,14 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
         scheduler.getScoreScheduleFunction(input),
         scheduler.crossoverSchedules,
         scheduler.getMutateScheduleFunction(input),
-        scheduler.getDiversityScheduleFunction(input),
+        scheduler.getScheduleDifference,
     );
     const generation: types.Tschedules = [];
     for (let i = 1; i < settings.populationSize; i++)
         generation.push(scheduler.getRandomScheduleWithScore(input));
     generation.sort((a,b) => b.score - a.score);
     showSchedule(generation[0], input);
-    globalThis.setTimeout(() => geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings), 10);
+    Array.from({ length: 500 }, () => {
+        const nextGen = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
+        showSchedule(generation[0], input);
+    });
 });
 
 function showSchedule(schedule: types.Tschedule, input: types.Tinput) {
