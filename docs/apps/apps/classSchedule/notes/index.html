@@ -1,0 +1,51 @@
+<h2>How to run</h2>
+<pre class="language-sh"><code class="language-sh"><span class="token builtin class-name">cd</span> ~/code/richardjecooke.github.io/src/apps/apps/classSchedule<span class="token punctuation">;</span><br><span class="token function">npm</span> <span class="token function">install</span><span class="token punctuation">;</span><br>npx tsc<span class="token punctuation">;</span><br><span class="token comment"># in root folder: clear &amp;&amp; rm -rf ./docs &amp;&amp; npx @11ty/eleventy --serve;</span><br><span class="token comment"># browse to index.html</span></code></pre>
+<h2>Architecture:</h2>
+<pre class="language-mermaid"><code class="language-mermaid"><span class="token keyword">flowchart</span> TD<br>    1<span class="token text string">[main.ts]</span> <span class="token arrow operator">--></span> 2<span class="token text string">[index.html]</span><br>    1 <span class="token arrow operator">--></span> 3<span class="token text string">[scheduler.ts]</span><br>    3 <span class="token arrow operator">--></span> 7<span class="token text string">[geneticAlgorithmTypes.ts]</span><br>    1 <span class="token arrow operator">--></span> 4<span class="token text string">[geneticAlgorithm.ts]</span><br>    4 <span class="token arrow operator">--></span> 7<br>    1 <span class="token arrow operator">--></span> 7<br>    4 <span class="token arrow operator">--></span> 5<span class="token text string">(Fitness function called per core)</span><br>    1 <span class="token arrow operator">--></span> 6<span class="token text string">[types.ts]</span><br>    4 <span class="token arrow operator">--></span> 6<br>    3 <span class="token arrow operator">--></span> 6</code></pre>
+<h2>Algorithms from ChatGPT</h2>
+<pre><code>// 1. Initialize population with N=100 individuals{
+// 2. Evaluate fitness of each individual
+</code></pre>
+<p>// 3. While termination condition not met (e.g., 100 generations):
+//     a. Selection:
+//         - Use tournament selection with a tournament size of 3 to select 50 pairs of parents
+//     b. Crossover:
+//         - Perform uniform crossover on selected pairs with a crossover rate of 0.7
+//         - Generate 100 offspring
+//     c. Mutation:
+//         - Apply mutation with a rate of 0.01 to each offspring
+//     d. Evaluate fitness of offspringer
+//     e. Selection for next generation:
+//         - Combine current population and offspring
+//         - Use rank-based selection to select the top N=100 individuals for the next generation</p>
+<p>// 4. Return the individual with the highest fitness from the final generation</p>
+<p>// ---</p>
+<p>// 1. Initialize population with N=100 individuals
+// 2. Evaluate fitness of each individual</p>
+<p>// 3. Initialize parameters:
+//     - ElitismCount = 2 (start with preserving 2 elite individuals)
+//     - CrossoverRate = 0.7
+//     - MutationRate = 0.01
+//     - DiversityThreshold = some predefined value to maintain diversity</p>
+<p>// 4. While termination condition not met (e.g., 100 generations):
+//     a. Selection:
+//         - Use tournament selection to select parents for breeding</p>
+<p>//     b. Crossover:
+//         - Perform uniform crossover on selected parents based on CrossoverRate</p>
+<p>//     c. Mutation:
+//         - Apply mutation to offspring based on MutationRate</p>
+<p>//     d. Evaluate fitness of offspring</p>
+<p>//     e. Adaptation step:
+//         - If diversity &lt; DiversityThreshold, adjust CrossoverRate and MutationRate to increase diversity
+//             - E.g., decrease CrossoverRate, increase MutationRate
+//         - If improvement in best fitness stagnates, adjust parameters to explore more:
+//             - E.g., slightly increase MutationRate or change ElitismCount</p>
+<p>//     f. Selection for next generation:
+//         - Include ElitismCount best individuals from the current generation unchanged
+//         - Fill the rest of the next generation with the best offspring</p>
+<p>//     g. Calculate diversity of the population (optional step for adaptive strategy)</p>
+<p>// 5. Return the individual with the highest fitness from the final generation</p>
+<p>// Note: The adaptation step (e) requires methods to measure diversity and to detect stagnation in
+// fitness improvement. Diversity can be measured in various ways, such as the spread of fitness values,
+// genetic variance, or using a specific diversity index. The adjustment of parameters should be done
+// carefully to maintain a balance between exploration and exploitation.</p>
