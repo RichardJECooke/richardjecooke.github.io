@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showSchedule(generation[0], input);
     Array.from({ length: 500 }, () => {
         const nextGen = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
-        showSchedule(generation[0], input);
+        showSchedule(nextGen[0], input);
     });
 });
 
