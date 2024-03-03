@@ -1,23 +1,22 @@
 import * as types from './types';
-import * as gaTypes from './geneticAlgorithmTypes';
+// import * as gaTypes from './geneticAlgorithmTypes';
 import * as scheduler from './scheduler';
 import * as geneticAlgorithm from './geneticAlgorithm';
 
 
 document.addEventListener('DOMContentLoaded', function() {
     const input = scheduler.getData();
-    const generation: types.Tschedules & gaTypes.TOrganisms<types.Tlesson> = [];
-    for (let i = 1; i < input.settings.populationSize; i++)
-        generation.push(scheduler.getRandomScheduleWithScore(input));
-    generation.sort((a,b) => b.score - a.score);
-    showSchedule(generation[0], input);
-
-    const settings = geneticAlgorithm.getSettings<types.Tlesson>(
+    const settings = geneticAlgorithm.getSettings<types.Tlessons>(
         scheduler.getScoreScheduleFunction(input),
-        scheduler.getCrossoverScheduleFunction(input),
+        scheduler.crossoverSchedules,
         scheduler.getMutateScheduleFunction(input),
         scheduler.getDiversityScheduleFunction(input),
     );
+    const generation: types.Tschedules = [];
+    for (let i = 1; i < settings.populationSize; i++)
+        generation.push(scheduler.getRandomScheduleWithScore(input));
+    generation.sort((a,b) => b.score - a.score);
+    showSchedule(generation[0], input);
     globalThis.setTimeout(() => geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings), 10);
 });
 

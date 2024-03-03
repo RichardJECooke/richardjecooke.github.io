@@ -3,7 +3,7 @@ import * as gaTypes from './geneticAlgorithmTypes';
 const _crossoverRate: number = 0.7;
 const _mutationRate: number = 0.01;
 
-export function getSettings<T>(
+export function getSettings<T>( // T is a population
     fitnessFunction: gaTypes.TFitnessFunction<T>,
     crossoverFunction: gaTypes.TCrossoverFunction<T>,
     mutateFunction: gaTypes.TMutateFunction<T>,
@@ -29,7 +29,8 @@ export function getSettings<T>(
     };
 }
 
-export function getNextGenerationAndAdjustSettings<T>(population: gaTypes.TOrganisms<T>, settings: gaTypes.TSettings<T>): gaTypes.TOrganisms<T> {
+export function getNextGenerationAndAdjustSettings<T>(  // T is a population
+    population: gaTypes.TOrganisms<T>, settings: gaTypes.TSettings<T>): gaTypes.TOrganisms<T> {
     let nextGen: gaTypes.TOrganisms<T> = [];
 
     // adjust settings if population diversity is too low
