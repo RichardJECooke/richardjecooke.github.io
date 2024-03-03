@@ -1,6 +1,6 @@
-import * as types from './types';
-import * as scheduler from './scheduler';
-import * as geneticAlgorithm from './geneticAlgorithm';
+import * as types from './types.js';
+import * as scheduler from './scheduler.js';
+import * as geneticAlgorithm from './geneticAlgorithm.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const input = scheduler.getData();

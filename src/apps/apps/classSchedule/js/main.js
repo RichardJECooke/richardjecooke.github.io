@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
     showSchedule(generation[0], input);
     Array.from({ length: 500 }, () => {
         generation = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
-        console.log(generation[0]);
         showSchedule(generation[0], input);
     });
 });
