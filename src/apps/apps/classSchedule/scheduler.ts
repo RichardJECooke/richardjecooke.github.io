@@ -1,23 +1,29 @@
 import * as types from './types';
 import * as geneticAlgorithmTypes from './geneticAlgorithmTypes';
 
-export function  getRandomScheduleWithScore(input: types.Tinput): types.Tschedule {
+export function getRandomScheduleWithScore(input: types.Tinput): types.Tschedule {
     const schedule = getRandomSchedule(input);
     schedule.score = scoreSchedule(schedule, input);
     return schedule;
 }
 
 export function getCodesAtTime(schedule: types.Tschedule, day: number, period: number): string {
-    const result = schedule.lessons
+    const result = schedule.data
         .filter(c => c.day == day && c.period == period)
         .map(c => c.code)
         .join(' ');
     return (!result) ? '_' : result;
 }
 
+export function getScoreScheduleFunction(input: types.Tinput): (schedule: types.Tschedule) => number {
+    return function(schedule: types.Tschedule): number {
+        return scoreSchedule(schedule, input);
+    };
+}
+
 function scoreSchedule(schedule: types.Tschedule, input: types.Tinput): number {
-    const score = schedule.lessons
-        .map(l => schedule.lessons.filter(l2 =>
+    const score = schedule.data
+        .map(l => schedule.data.filter(l2 =>
             l2.id !== l.id &&
             l2.period === l.period &&
             l2.day === l.day &&
@@ -26,11 +32,28 @@ function scoreSchedule(schedule: types.Tschedule, input: types.Tinput): number {
     return score * -1000;
 }
 
+export function getCrossoverScheduleFunction(input: types.Tinput): (scheduleA: types.Tschedule, scheduleB: types.Tschedule) => types.Tschedule {
+    return function(scheduleA: types.Tschedule, scheduleB: types.Tschedule): types.Tschedule {
+        return crossoverSchedules(scheduleA, scheduleB, input);
+    };
+}
+
+function crossoverSchedules(scheduleA: types.Tschedule, scheduleB: types.Tschedule, input: types.Tinput): types.Tschedule {
+    const newSchedule: types.Tschedule = {score: -1, data: []}
+    for (let idCounter = 0; idCounter < scheduleA.data.length; idCounter++) {
+        if (Math.random() < 0.5)
+            newSchedule.data.push(scheduleA.data.find((lesson) => lesson.id == idCounter) as types.Tlesson)
+        else
+            newSchedule.data.push(scheduleB.data.find((lesson) => lesson.id == idCounter) as types.Tlesson)
+    }
+    return newSchedule;
+}
+
 function getRandomSchedule(input: types.Tinput): types.Tschedule {
     const lessonList = getListOfWeeklyLessons(input.courses);
-    const schedule: types.Tschedule = {lessons: [], score: 0};
+    const schedule: types.Tschedule = {data: [], score: 0};
     for (const [index, lesson] of lessonList.entries()) {
-        schedule.lessons.push({
+        schedule.data.push({
             id: index,
             code: lesson.code,
             day: getRandomDay(input),
@@ -149,9 +172,6 @@ export function getData(): types.Tinput {
             maxDay: 5,
             minPeriod: 1,
             maxPeriod: 8,
-            populationSize: 100,
-            numberOfChildrenPerBreeder: 0.02,
-            numberRandomsInNewGeneration: 0.2
         },
         rules: [
             {description: "Room clash", rule: "schedule.lessons.", score: -1000}

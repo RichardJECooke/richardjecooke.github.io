@@ -6,10 +6,10 @@ export type TSettings<T> = {
     diversityRateThreshold: number,
     numberCpuCores: number,
 
-    fitnessFunction: gaTypes.TFitnessFunction<T>,
-    crossoverFunction: gaTypes.TCrossoverFunction<T>,
-    mutateFunction: gaTypes.TMutateFunction<T>,
-    populationDiversityFunction: gaTypes.TPopulationDiversityFunction<T>
+    fitnessFunction: TFitnessFunction<T>,
+    crossoverFunction: TCrossoverFunction<T>,
+    mutateFunction: TMutateFunction<T>,
+    populationDiversityFunction: TPopulationDiversityFunction<T>
 }
 export type TOrganism<T> = {
     data: T,

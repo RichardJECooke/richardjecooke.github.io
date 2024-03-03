@@ -1,5 +1,8 @@
 import * as gaTypes from './geneticAlgorithmTypes';
 
+const _crossoverRate: number = 0.7;
+const _mutationRate: number = 0.01;
+
 export function getSettings<T>(
     fitnessFunction: gaTypes.TFitnessFunction<T>,
     crossoverFunction: gaTypes.TCrossoverFunction<T>,
@@ -7,10 +10,10 @@ export function getSettings<T>(
     populationDiversityFunction: gaTypes.TPopulationDiversityFunction<T>,
     populationSize: number = 100,
     elitismCount: number = 2,
-    crossoverRate: number = 0.7,
-    mutationRate: number = 0.01,
+    crossoverRate: number = _crossoverRate,
+    mutationRate: number = _mutationRate,
     diversityRateThreshold: number = 0.1,
-    numberCpuCores: 1,
+    numberCpuCores: number = 1,
 ): gaTypes.TSettings<T> {
     return {
         populationSize,
@@ -35,14 +38,20 @@ export function getNextGenerationAndAdjustSettings<T>(population: gaTypes.TOrgan
         settings.crossoverRate *= 1.1;
         settings.mutationRate *= 1.1;
     }
+    else {
+        settings.crossoverRate = _crossoverRate;
+        settings.mutationRate = _mutationRate;
+    }
 
     // get pairs of breeders
     let breeders: gaTypes.TOrganisms<T>[] = [];
     Array.from({ length: settings.populationSize/2 }, () => {
         let competitors: gaTypes.TOrganisms<T> = [];
-        while (competitors.length < 3){ // todo handle endless loop possibility
+        let escapeCounter = 0;
+        while (competitors.length < 3) {
+            escapeCounter++;
             const competitor = getRandomItemFromList(population);
-            if (!competitors.includes(competitor))
+            if (!competitors.includes(competitor) || escapeCounter > 30)
                 competitors.push(competitor);
         }
         competitors.sort((a, b) => b.score - a.score);
