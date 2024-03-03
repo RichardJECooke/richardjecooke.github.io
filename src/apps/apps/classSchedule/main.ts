@@ -10,14 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
         scheduler.getMutateScheduleFunction(input),
         scheduler.getScheduleDifference,
     );
-    const generation: types.Tschedules = [];
+    let generation: types.Tschedules = [];
     for (let i = 1; i < settings.populationSize; i++)
         generation.push(scheduler.getRandomScheduleWithScore(input));
     generation.sort((a,b) => b.score - a.score);
     showSchedule(generation[0], input);
     Array.from({ length: 500 }, () => {
-        const nextGen = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
-        showSchedule(nextGen[0], input);
+        generation = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
+        showSchedule(generation[0], input);
     });
 });
 
