@@ -60,6 +60,8 @@ export function getNextGenerationAndAdjustSettings<T>(  // T is a population
         if (diversityRate > settings.maximumDiversityRateBeforeResetMutation)
             settings.percentOrganismToMutate = _percentOrganismToMutate;
     }
+    if (settings.percentOrganismToMutate > _maxMutationRate)
+        settings.percentOrganismToMutate = _maxMutationRate;
     helper.stopTimer("getDiversity");
 
     // get pairs of breeders
@@ -113,11 +115,14 @@ export function getNextGenerationAndAdjustSettings<T>(  // T is a population
     for (const elite of lastGen.slice(0, settings.elitismCount)) {
         if (nextGen.includes(elite))
             continue;
-        if (nextGen.slice(0, settings.elitismCount).some(organism => organism.score < elite.score))
-            nextGen.push(elite);
+        const worseOrganism = nextGen.slice(0, settings.elitismCount).find(organism => organism.score < elite.score);
+        if (!worseOrganism)
+            continue;
+        worseOrganism.data = elite.data;
+        worseOrganism.score = elite.score
     }
     nextGen.sort((a, b) => b.score - a.score);
-    nextGen.splice(settings.populationSize);
+    // nextGen.splice(settings.populationSize);
     helper.stopTimer("carryElites");
     console.log(`Score: ${nextGen[0].score}`);
     return nextGen;

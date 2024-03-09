@@ -24,11 +24,11 @@ export function getPercentOrganismToMutate() {
     return _percentOrganismToMutate;
 }
 export function getNextGenerationAndAdjustSettings(// T is a population
-population, settings) {
+lastGen, settings) {
     let nextGen = [];
     // adjust settings if population diversity is too low
     helper.startTimer();
-    const diversityRate = settings.populationDiversityFunction(population);
+    const diversityRate = settings.populationDiversityFunction(lastGen);
     console.log(`Diversity: ${diversityRate}`);
     console.log(`Percent population to mutate: ${settings.percentPopulationToMutate}`);
     console.log(`Percent organism to mutate: ${settings.percentOrganismToMutate}`);
@@ -51,7 +51,7 @@ population, settings) {
         let escapeCounter = 0;
         while (competitors.length < 3) {
             escapeCounter++;
-            const competitor = getRandomItemFromList(population);
+            const competitor = getRandomItemFromList(lastGen);
             if (!competitors.includes(competitor) || escapeCounter > 30)
                 competitors.push(competitor);
         }
@@ -86,14 +86,17 @@ population, settings) {
     //carry over elites unchanged
     helper.startTimer();
     nextGen.sort((a, b) => b.score - a.score);
-    for (const elite of population.slice(0, settings.elitismCount)) {
+    for (const elite of lastGen.slice(0, settings.elitismCount)) {
         if (nextGen.includes(elite))
             continue;
-        if (nextGen.slice(0, settings.elitismCount).some(organism => organism.score < elite.score))
-            nextGen.push(elite);
+        const worseOrganism = nextGen.slice(0, settings.elitismCount).find(organism => organism.score < elite.score);
+        if (!worseOrganism)
+            continue;
+        worseOrganism.data = elite.data;
+        worseOrganism.score = elite.score;
     }
     nextGen.sort((a, b) => b.score - a.score);
-    nextGen.splice(settings.populationSize);
+    // nextGen.splice(settings.populationSize);
     helper.stopTimer("carryElites");
     console.log(`Score: ${nextGen[0].score}`);
     return nextGen;
