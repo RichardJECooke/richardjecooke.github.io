@@ -69,7 +69,7 @@ population, settings) {
             nextGen.push(elite);
     }
     nextGen.sort((a, b) => b.score - a.score);
-    nextGen.splice(nextGen.length - settings.populationSize);
+    nextGen.splice(settings.populationSize);
     return nextGen;
 }
 function getRandomItemFromList(list) {

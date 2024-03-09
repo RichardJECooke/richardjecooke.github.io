@@ -1,25 +1,37 @@
 import * as types from './types.js';
 import * as scheduler from './scheduler.js';
 import * as geneticAlgorithm from './geneticAlgorithm.js';
+import { TSettings } from 'geneticAlgorithmTypes.js';
+
+let _evolutionFlag = false;
 
 document.addEventListener('DOMContentLoaded', function() {
+    main();
+});
+
+async function main() {
     const input = scheduler.getData();
     const settings = geneticAlgorithm.getSettings<types.Tlessons>(
         scheduler.getScoreScheduleFunction(input),
         scheduler.crossoverSchedules,
         scheduler.getMutateScheduleFunction(input),
-        scheduler.getScheduleDifference,
+        scheduler.getSchedulesDiversity,
     );
     let generation: types.Tschedules = [];
     for (let i = 1; i < settings.populationSize; i++)
         generation.push(scheduler.getRandomScheduleWithScore(input));
     generation.sort((a,b) => b.score - a.score);
     showSchedule(generation[0], input);
-    Array.from({ length: 500 }, () => {
+    for (let generationCounter = 1; generationCounter < 200; generationCounter++) {
         generation = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
         showSchedule(generation[0], input);
-    });
-});
+        await sleep(10);
+    };
+}
+
+async function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function showSchedule(schedule: types.Tschedule, input: types.Tinput) {
     if (document.querySelector('#score') != null)

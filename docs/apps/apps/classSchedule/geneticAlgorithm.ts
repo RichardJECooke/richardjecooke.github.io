@@ -90,7 +90,7 @@ export function getNextGenerationAndAdjustSettings<T>(  // T is a population
             nextGen.push(elite);
     }
     nextGen.sort((a, b) => b.score - a.score);
-    nextGen.splice(nextGen.length - settings.populationSize);
+    nextGen.splice(settings.populationSize);
     return nextGen;
 }
 
