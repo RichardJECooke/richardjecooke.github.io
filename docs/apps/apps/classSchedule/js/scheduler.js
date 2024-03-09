@@ -35,8 +35,8 @@ export function crossoverSchedules(scheduleA, scheduleB) {
     return newSchedule;
 }
 export function getSchedulesDiversity(schedules) {
-    // x * (x-1) * 0.5 combinations of pairs from x elements
-    const maximum = 3 * schedules[0].data.length * (schedules.length * (schedules.length - 1) * 0.5); // day, period, room different for every lesson for every schedule
+    // x * (x-1) permutations of pairs from x elements
+    const maximum = 3 * schedules[0].data.length * schedules.length * (schedules.length - 1); // day, period, room different for every lesson for every schedule
     let difference = 0;
     for (let scheduleA of schedules) {
         for (let scheduleB of schedules) {

@@ -25,6 +25,7 @@ async function main() {
     for (let generationCounter = 1; generationCounter < 200; generationCounter++) {
         generation = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
         showSchedule(generation[0], input);
+        console.log(generationCounter);
         await sleep(10);
     };
 }

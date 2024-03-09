@@ -1,7 +1,7 @@
 import * as gaTypes from './geneticAlgorithmTypes';
 
 const _crossoverRate: number = 0.7;
-const _mutationRate: number = 0.01;
+const _mutationRate: number = 0.02;
 
 export function getSettings<T>( // T is a population
     fitnessFunction: gaTypes.TFitnessFunction<T>,
@@ -36,11 +36,11 @@ export function getNextGenerationAndAdjustSettings<T>(  // T is a population
     // adjust settings if population diversity is too low
     const diversityRate = settings.populationDiversityFunction(population);
     if (diversityRate < settings.diversityRateThreshold) {
-        settings.crossoverRate *= 1.1;
-        settings.mutationRate *= 1.1;
+        // settings.crossoverRate *= 1.1; crossover is high enough. no point in changing it
+        settings.mutationRate *= 1.5;
     }
     else {
-        settings.crossoverRate = _crossoverRate;
+        // settings.crossoverRate = _crossoverRate;
         settings.mutationRate = _mutationRate;
     }
 
