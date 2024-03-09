@@ -12,7 +12,7 @@ async function main() {
         scheduler.getScoreScheduleFunction(input),
         scheduler.crossoverSchedules,
         scheduler.getMutateScheduleFunction(input, geneticAlgorithm.getPercentOrganismToMutate),
-        scheduler.getSchedulesDiversity,
+        scheduler.getSchedulesDiversity
     );
     let generation: types.Tschedules = [];
     for (let i = 1; i < settings.populationSize; i++)

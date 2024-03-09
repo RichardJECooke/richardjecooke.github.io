@@ -6,6 +6,8 @@ const _maxPercentOrganismToMutate = 0.1;
 const _maxPercentPopulationToMutate = 0.8;
 export function getSettings(// T is a population
 fitnessFunction, crossoverFunction, mutateFunction, populationDiversityFunction, populationSize = 100, elitismCount = 2, crossoverRate = _crossoverRate, percentPopulationToMutate = _percentPopulationToMutate, percentOrganismToMutate = _percentOrganismToMutate, minimumDiversityRateBeforeIncreasedMutation = 0.1, maximumDiversityRateBeforeResetMutation = 0.6, numberCpuCores = 1) {
+    if (populationSize < 15)
+        throw new Error(`Population size must be at least 15`);
     return {
         populationSize,
         elitismCount,

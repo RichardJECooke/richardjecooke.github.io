@@ -43,11 +43,15 @@ export function crossoverSchedules(scheduleA: types.Tschedule, scheduleB: types.
 }
 
 export function getSchedulesDiversity(schedules: types.Tschedules): number {
+    const sample = [...schedules.slice(0, 5),
+                    ...schedules.slice(Math.floor(schedules.length / 2) - 2, Math.ceil(schedules.length / 2) + 3),
+                    ...schedules.slice(-5)];
+    const popSize = sample.length; // 15
     // x * (x-1) permutations of pairs from x elements
-    const maximum = 3 * schedules[0].data.length * schedules.length * (schedules.length-1); // day, period, room different for every lesson for every schedule
+    const maximum = 3 * schedules[0].data.length * popSize * (popSize-1); // day, period, room different for every lesson for every schedule
     let difference = 0;
-    for (let scheduleA of schedules) {
-        for (let scheduleB of schedules) {
+    for (let scheduleA of sample) {
+        for (let scheduleB of sample) {
             if (scheduleA == scheduleB)
                 continue;
             for (let lessonA of scheduleA.data) {

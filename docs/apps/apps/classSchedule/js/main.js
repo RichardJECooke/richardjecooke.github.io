@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 async function main() {
     const input = scheduler.getData();
-    const settings = geneticAlgorithm.getSettings(scheduler.getScoreScheduleFunction(input), scheduler.crossoverSchedules, scheduler.getMutateScheduleFunction(input, geneticAlgorithm.getPercentOrganismToMutate), scheduler.getSchedulesDiversity);
+    const settings = geneticAlgorithm.getSettings(scheduler.getScoreScheduleFunction(input), scheduler.crossoverSchedules, scheduler.getMutateScheduleFunction(input, geneticAlgorithm.getPercentOrganismToMutate), scheduler.getSchedulesDiversity, 500);
     let generation = [];
     for (let i = 1; i < settings.populationSize; i++)
         generation.push(scheduler.getRandomScheduleWithScore(input));

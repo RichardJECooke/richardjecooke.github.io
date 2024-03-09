@@ -12,7 +12,7 @@ export function getSettings<T>( // T is a population
     crossoverFunction: gaTypes.TCrossoverFunction<T>,
     mutateFunction: gaTypes.TMutateFunction<T>,
     populationDiversityFunction: gaTypes.TPopulationDiversityFunction<T>,
-    populationSize: number = 100,
+    populationSize: number = 500,
     elitismCount: number = 2,
     crossoverRate: number = _crossoverRate,
     percentPopulationToMutate: number = _percentPopulationToMutate,
@@ -21,6 +21,8 @@ export function getSettings<T>( // T is a population
     maximumDiversityRateBeforeResetMutation: number = 0.6,
     numberCpuCores: number = 1,
 ): gaTypes.TSettings<T> {
+    if (populationSize < 15)
+        throw new Error(`Population size must be at least 15`);
     return {
         populationSize,
         elitismCount,
