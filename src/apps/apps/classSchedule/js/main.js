@@ -1,18 +1,17 @@
 import * as scheduler from './scheduler.js';
 import * as geneticAlgorithm from './geneticAlgorithm.js';
-let _evolutionFlag = false;
 document.addEventListener('DOMContentLoaded', function () {
     main();
 });
 async function main() {
     const input = scheduler.getData();
-    const settings = geneticAlgorithm.getSettings(scheduler.getScoreScheduleFunction(input), scheduler.crossoverSchedules, scheduler.getMutateScheduleFunction(input), scheduler.getSchedulesDiversity);
+    const settings = geneticAlgorithm.getSettings(scheduler.getScoreScheduleFunction(input), scheduler.crossoverSchedules, scheduler.getMutateScheduleFunction(input, geneticAlgorithm.getPercentOrganismToMutate), scheduler.getSchedulesDiversity);
     let generation = [];
     for (let i = 1; i < settings.populationSize; i++)
         generation.push(scheduler.getRandomScheduleWithScore(input));
     generation.sort((a, b) => b.score - a.score);
     showSchedule(generation[0], input);
-    for (let generationCounter = 1; generationCounter < 200; generationCounter++) {
+    for (let generationCounter = 1; generationCounter < 20000; generationCounter++) {
         generation = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
         showSchedule(generation[0], input);
         console.log(generationCounter);

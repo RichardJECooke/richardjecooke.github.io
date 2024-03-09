@@ -2,8 +2,10 @@ export type TSettings<T> = {
     populationSize: number,
     elitismCount: number,
     crossoverRate: number,
-    mutationRate: number,
-    diversityRateThreshold: number,
+    percentPopulationToMutate: number,
+    percentOrganismToMutate: number,
+    minimumDiversityRateBeforeIncreasedMutation: number,
+    maximumDiversityRateBeforeResetMutation: number,
     numberCpuCores: number,
 
     fitnessFunction: TFitnessFunction<T>,

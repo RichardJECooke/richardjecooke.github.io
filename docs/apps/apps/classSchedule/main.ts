@@ -1,9 +1,6 @@
 import * as types from './types.js';
 import * as scheduler from './scheduler.js';
 import * as geneticAlgorithm from './geneticAlgorithm.js';
-import { TSettings } from 'geneticAlgorithmTypes.js';
-
-let _evolutionFlag = false;
 
 document.addEventListener('DOMContentLoaded', function() {
     main();
@@ -14,7 +11,7 @@ async function main() {
     const settings = geneticAlgorithm.getSettings<types.Tlessons>(
         scheduler.getScoreScheduleFunction(input),
         scheduler.crossoverSchedules,
-        scheduler.getMutateScheduleFunction(input),
+        scheduler.getMutateScheduleFunction(input, geneticAlgorithm.getPercentOrganismToMutate),
         scheduler.getSchedulesDiversity,
     );
     let generation: types.Tschedules = [];
@@ -22,7 +19,7 @@ async function main() {
         generation.push(scheduler.getRandomScheduleWithScore(input));
     generation.sort((a,b) => b.score - a.score);
     showSchedule(generation[0], input);
-    for (let generationCounter = 1; generationCounter < 200; generationCounter++) {
+    for (let generationCounter = 1; generationCounter < 20000; generationCounter++) {
         generation = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
         showSchedule(generation[0], input);
         console.log(generationCounter);

@@ -1,5 +1,4 @@
 import * as types from './types';
-import * as geneticAlgorithmTypes from './geneticAlgorithmTypes';
 
 export function getRandomScheduleWithScore(input: types.Tinput): types.Tschedule {
     const schedule = getRandomSchedule(input);
@@ -63,41 +62,47 @@ export function getSchedulesDiversity(schedules: types.Tschedules): number {
     return difference / maximum;
 }
 
-export function getMutateScheduleFunction(input: types.Tinput): (schedule: types.Tschedule) => types.Tschedule {
+export function getMutateScheduleFunction(input: types.Tinput, getPercentOrganismToMutate: () => number): (schedule: types.Tschedule) => types.Tschedule {
     return function(schedule: types.Tschedule): types.Tschedule {
-        return mutateSchedule(schedule, input);
+        return mutateSchedule(schedule, input, getPercentOrganismToMutate);
     };
 }
 
-function mutateSchedule(schedule: types.Tschedule, input: types.Tinput): types.Tschedule {
+function mutateSchedule(schedule: types.Tschedule, input: types.Tinput, getPercentOrganismToMutate: () => number): types.Tschedule {
     const newSchedule: types.Tschedule = {score: -1, data: []}
-    const mutatedLesson = {...getRandomItemFromList<types.Tlesson>(schedule.data)};
-    const whatToChange = Math.random();
-    if (whatToChange < 0.143)
-        mutatedLesson.day = getRandomDay(input);
-    else if (whatToChange < 0.286)
-        mutatedLesson.period = getRandomPeriod(input);
-    else if (whatToChange < 0.429)
-        mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
-    else if (whatToChange < 0.571) {
-        mutatedLesson.day = getRandomDay(input);
-        mutatedLesson.period = getRandomPeriod(input);
-    }
-    else if (whatToChange < 0.714) {
-        mutatedLesson.day = getRandomDay(input);
-        mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
-    }
-    else if (whatToChange < 0.857) {
-        mutatedLesson.period = getRandomPeriod(input);
-        mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
-    }
-    else {
-        mutatedLesson.day = getRandomDay(input);
-        mutatedLesson.period = getRandomPeriod(input);
-        mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
+    const mutatedSchedule: types.Tschedule = {score: -1, data: [...schedule.data]}
+    const percentOrganismToMutate = getPercentOrganismToMutate();
+    while (mutatedSchedule.data.length / schedule.data.length > percentOrganismToMutate)
+        mutatedSchedule.data = mutatedSchedule.data.filter(lesson => lesson.id != getRandomItemFromList<types.Tlesson>(mutatedSchedule.data).id);
+    for (let mutatedLesson of newSchedule.data) {
+        const whatToChange = Math.random();
+        if (whatToChange < 0.143)
+            mutatedLesson.day = getRandomDay(input);
+        else if (whatToChange < 0.286)
+            mutatedLesson.period = getRandomPeriod(input);
+        else if (whatToChange < 0.429)
+            mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
+        else if (whatToChange < 0.571) {
+            mutatedLesson.day = getRandomDay(input);
+            mutatedLesson.period = getRandomPeriod(input);
+        }
+        else if (whatToChange < 0.714) {
+            mutatedLesson.day = getRandomDay(input);
+            mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
+        }
+        else if (whatToChange < 0.857) {
+            mutatedLesson.period = getRandomPeriod(input);
+            mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
+        }
+        else {
+            mutatedLesson.day = getRandomDay(input);
+            mutatedLesson.period = getRandomPeriod(input);
+            mutatedLesson.room = getRandomRoomThatIsBigEnough(mutatedLesson.course, input.rooms).name;
+        }
     }
     schedule.data.map(lesson => {
-        if (lesson.id == mutatedLesson.id)
+        const mutatedLesson = mutatedSchedule.data.find(l => l.id == lesson.id);
+        if (mutatedLesson)
             newSchedule.data.push(mutatedLesson)
         else
             newSchedule.data.push(lesson);
