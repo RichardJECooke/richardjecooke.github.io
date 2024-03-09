@@ -2,7 +2,8 @@ import * as helper from './helper.js';
 const _crossoverRate = 0.7;
 const _percentPopulationToMutate = 0.3;
 const _percentOrganismToMutate = 0.01;
-const _maxMutationRate = 0.5;
+const _maxPercentOrganismToMutate = 0.1;
+const _maxPercentPopulationToMutate = 0.8;
 export function getSettings(// T is a population
 fitnessFunction, crossoverFunction, mutateFunction, populationDiversityFunction, populationSize = 100, elitismCount = 2, crossoverRate = _crossoverRate, percentPopulationToMutate = _percentPopulationToMutate, percentOrganismToMutate = _percentOrganismToMutate, minimumDiversityRateBeforeIncreasedMutation = 0.1, maximumDiversityRateBeforeResetMutation = 0.6, numberCpuCores = 1) {
     return {
@@ -34,14 +35,22 @@ lastGen, settings) {
     console.log(`Percent organism to mutate: ${settings.percentOrganismToMutate}`);
     if (diversityRate < settings.minimumDiversityRateBeforeIncreasedMutation) {
         // settings.crossoverRate *= 1.1; crossover is high enough. no point in changing it
-        if (settings.percentOrganismToMutate < _maxMutationRate)
+        if (settings.percentOrganismToMutate < _maxPercentOrganismToMutate)
             settings.percentOrganismToMutate *= 1.1;
+        if (settings.percentPopulationToMutate < _maxPercentPopulationToMutate)
+            settings.percentPopulationToMutate *= 1.1;
     }
     else {
         // settings.crossoverRate = _crossoverRate;
-        if (diversityRate > settings.maximumDiversityRateBeforeResetMutation)
+        if (diversityRate > settings.maximumDiversityRateBeforeResetMutation) {
             settings.percentOrganismToMutate = _percentOrganismToMutate;
+            settings.percentPopulationToMutate = _percentPopulationToMutate;
+        }
     }
+    if (settings.percentOrganismToMutate > _maxPercentOrganismToMutate)
+        settings.percentOrganismToMutate = _maxPercentOrganismToMutate;
+    if (settings.percentPopulationToMutate > _maxPercentPopulationToMutate)
+        settings.percentPopulationToMutate = _maxPercentPopulationToMutate;
     helper.stopTimer("getDiversity");
     // get pairs of breeders
     helper.startTimer();
@@ -83,7 +92,7 @@ lastGen, settings) {
     helper.startTimer();
     nextGen.map(organism => { organism.score = settings.fitnessFunction(organism); });
     helper.stopTimer("getFitness");
-    //carry over elites unchanged
+    // carry over elites unchanged
     helper.startTimer();
     nextGen.sort((a, b) => b.score - a.score);
     for (const elite of lastGen.slice(0, settings.elitismCount)) {
@@ -96,9 +105,10 @@ lastGen, settings) {
         worseOrganism.score = elite.score;
     }
     nextGen.sort((a, b) => b.score - a.score);
-    // nextGen.splice(settings.populationSize);
     helper.stopTimer("carryElites");
+    const meanScore = nextGen.reduce((acc, current) => acc + current.score, 0) / nextGen.length;
     console.log(`Score: ${nextGen[0].score}`);
+    console.log(`Mean score: ${meanScore}`);
     return nextGen;
 }
 function getRandomItemFromList(list) {

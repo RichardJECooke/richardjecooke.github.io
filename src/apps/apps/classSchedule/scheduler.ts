@@ -69,12 +69,16 @@ export function getMutateScheduleFunction(input: types.Tinput, getPercentOrganis
 }
 
 function mutateSchedule(schedule: types.Tschedule, input: types.Tinput, getPercentOrganismToMutate: () => number): types.Tschedule {
-    const newSchedule: types.Tschedule = {score: -1, data: []}
-    const mutatedSchedule: types.Tschedule = {score: -1, data: [...schedule.data]}
     const percentOrganismToMutate = getPercentOrganismToMutate();
-    while (mutatedSchedule.data.length / schedule.data.length > percentOrganismToMutate)
-        mutatedSchedule.data = mutatedSchedule.data.filter(lesson => lesson.id != getRandomItemFromList<types.Tlesson>(mutatedSchedule.data).id);
-    for (let mutatedLesson of newSchedule.data) {
+    const newSchedule: types.Tschedule = {score: -1, data: []};
+    const mutatedSchedule: types.Tschedule = {score: -1, data: []};
+    while (mutatedSchedule.data.length / schedule.data.length < percentOrganismToMutate) {
+        const lessonToMutate = getRandomItemFromList<types.Tlesson>(schedule.data);
+        if (mutatedSchedule.data.find(l => lessonToMutate.id == l.id))
+            continue;
+        mutatedSchedule.data.push({...lessonToMutate});
+    }
+    for (let mutatedLesson of mutatedSchedule.data) {
         const whatToChange = Math.random();
         if (whatToChange < 0.143)
             mutatedLesson.day = getRandomDay(input);
