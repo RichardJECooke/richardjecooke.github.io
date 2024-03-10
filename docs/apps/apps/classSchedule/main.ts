@@ -1,6 +1,7 @@
 import * as types from './types.js';
 import * as scheduler from './scheduler.js';
 import * as geneticAlgorithm from './geneticAlgorithm.js';
+import * as helper from './helper.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     main();
@@ -23,12 +24,8 @@ async function main() {
         generation = geneticAlgorithm.getNextGenerationAndAdjustSettings(generation, settings);
         showSchedule(generation[0], input);
         console.log(generationCounter);
-        await sleep(10);
+        await helper.sleep(10);
     };
-}
-
-async function sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function showSchedule(schedule: types.Tschedule, input: types.Tinput) {
