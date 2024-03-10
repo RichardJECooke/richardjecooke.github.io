@@ -24,64 +24,27 @@ flowchart TD
     3 --> 6
 ```
 
-## Algorithms from ChatGPT
+## Notes from Sheila
 
-    // 1. Initialize population with N=100 individuals{
-    // 2. Evaluate fitness of each individual
-
-// 3. While termination condition not met (e.g., 100 generations):
-//     a. Selection:
-//         - Use tournament selection with a tournament size of 3 to select 50 pairs of parents
-//     b. Crossover:
-//         - Perform uniform crossover on selected pairs with a crossover rate of 0.7
-//         - Generate 100 offspring
-//     c. Mutation:
-//         - Apply mutation with a rate of 0.01 to each offspring
-//     d. Evaluate fitness of offspringer
-//     e. Selection for next generation:
-//         - Combine current population and offspring
-//         - Use rank-based selection to select the top N=100 individuals for the next generation
-
-// 4. Return the individual with the highest fitness from the final generation
-
-// ---
-
-// 1. Initialize population with N=100 individuals
-// 2. Evaluate fitness of each individual
-
-// 3. Initialize parameters:
-//     - ElitismCount = 2 (start with preserving 2 elite individuals)
-//     - CrossoverRate = 0.7
-//     - MutationRate = 0.01
-//     - DiversityThreshold = some predefined value to maintain diversity
-
-// 4. While termination condition not met (e.g., 100 generations):
-//     a. Selection:
-//         - Use tournament selection to select parents for breeding
-
-//     b. Crossover:
-//         - Perform uniform crossover on selected parents based on CrossoverRate
-
-//     c. Mutation:
-//         - Apply mutation to offspring based on MutationRate
-
-//     d. Evaluate fitness of offspring
-
-//     e. Adaptation step:
-//         - If diversity < DiversityThreshold, adjust CrossoverRate and MutationRate to increase diversity
-//             - E.g., decrease CrossoverRate, increase MutationRate
-//         - If improvement in best fitness stagnates, adjust parameters to explore more:
-//             - E.g., slightly increase MutationRate or change ElitismCount
-
-//     f. Selection for next generation:
-//         - Include ElitismCount best individuals from the current generation unchanged
-//         - Fill the rest of the next generation with the best offspring
-
-//     g. Calculate diversity of the population (optional step for adaptive strategy)
-
-// 5. Return the individual with the highest fitness from the final generation
-
-// Note: The adaptation step (e) requires methods to measure diversity and to detect stagnation in
-// fitness improvement. Diversity can be measured in various ways, such as the spread of fitness values,
-// genetic variance, or using a specific diversity index. The adjustment of parameters should be done
-// carefully to maintain a balance between exploration and exploitation.
+- We have lectures in the mornings wherever possible but certainly for all 1st and second year classes, practicals (opera training, orchestra, big band etc) in the afternoons. Afternoon schedule for all the major practical classes do not change so you cannot play around with those days, times and venues.
+- I try not to start before 09h00 to accommodate students who have to travel.
+- Number of lectures per subject varies; Aural 1 and 2, for example, have one lecture per week, Aural intro has 2 per week for Aural intro A, 2 for Aural intro B plus 2 combined aural intro A and B classes. Most others are 2 per week, except semester courses (end in F or S) which have 4 per week.
+- You will need to use the handbook to see what cannot be put at the same time; obviously all first year classes for example cannot be at the same time, but you also need to consider the fact that some subjects will have multiple years for students e.g.
+  - Aural intro is taken by ALL students (jazz, classical, opera and African music) so you cannot put any first year subjects at the same time as aural intro.
+  - Aural I and MTA 1 may have first years, second years and maybe even 3rd year repeaters.
+  - History 1 may have 1st years and 2nd years.
+  - MTA 4 may have students doing history 3 and vice versa so you can’t do those at the same time.
+- You cannot use 9 am Monday to Thursday for any of the foundation courses as that is the time they have upper campus language and under no circumstances can that be changed
+- African music 1(first semester) and 2 (second semester) days and times cannot be changed; these are done with dance students and under no circumstances can be moved around.
+- For opera practicals (lyric diction, movement etc), you need to consider degree and diploma theory subjects e.g. cannot be at the same time as Music Theory 1 OR MTA 1
+- The following courses are likely to be taught by the same person, so you cannot put them at the same time:
+  - Aural intro, Foundation theory and Music theory 1
+  - Music theory 2, MTA 1 and MTA 2, composition 1, orchestration 1
+  - MTA 3 and 4, composition 2, orchestration 2
+  - History 1, 2, 3, 4
+  - Aural 1 and 2, music education 1 and 2
+- Electives are offered to classical and jazz students, so should not clash with any of those core subjects.
+- The blank exam sheet and the class numbers I sent you with the exam schedule are relevant for lectures as well i.e. class numbers per venue and a rough idea of class size (may vary slightly, but numbers are generally fairly consistent).
+- C7 is the largest venue so we use that for the big classes; wherever possible we use C6 for opera only – when there are rehearsals going on, the venue is unavailable for non-opera subjects so it would mean having to find new temporary venues…impossible!
+- No lectures may be scheduled on Wednesday or Thursday at 13h00.
+- Lunchtime concerts on Wednesday and Thursday may be in Baxter Concert Hall or in C7; we need at least one hour beforehand to set up, jazz and African music takes 2 hours set up so the venue needs to be available ideally for 3 hours both days but at the very least for 2 hours (12-14h00)

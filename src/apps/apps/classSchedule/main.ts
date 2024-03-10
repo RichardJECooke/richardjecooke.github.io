@@ -11,7 +11,7 @@ async function main() {
     const settings = geneticAlgorithm.getSettings<types.Tlessons>(
         scheduler.getScoreScheduleFunction(input),
         scheduler.crossoverSchedules,
-        scheduler.getMutateScheduleFunction(input, geneticAlgorithm.getPercentOrganismToMutate),
+        scheduler.getMutateScheduleFunction(input),
         scheduler.getSchedulesDiversity
     );
     let generation: types.Tschedules = [];

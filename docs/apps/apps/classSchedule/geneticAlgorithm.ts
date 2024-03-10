@@ -108,7 +108,7 @@ export function getNextGenerationAndAdjustSettings<T>(  // T is a population
         if (Math.random() > settings.percentPopulationToMutate)
             mutatedNextGen.push(organism);
         else
-            mutatedNextGen.push(settings.mutateFunction(organism));
+            mutatedNextGen.push(settings.mutateFunction(organism, _percentOrganismToMutate));
     }
     nextGen = mutatedNextGen;
     helper.stopTimer("mutate");

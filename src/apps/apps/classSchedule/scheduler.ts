@@ -66,14 +66,13 @@ export function getSchedulesDiversity(schedules: types.Tschedules): number {
     return difference / maximum;
 }
 
-export function getMutateScheduleFunction(input: types.Tinput, getPercentOrganismToMutate: () => number): (schedule: types.Tschedule) => types.Tschedule {
-    return function(schedule: types.Tschedule): types.Tschedule {
-        return mutateSchedule(schedule, input, getPercentOrganismToMutate);
+export function getMutateScheduleFunction(input: types.Tinput): (schedule: types.Tschedule, percentOrganismToMutate: number) => types.Tschedule {
+    return function(schedule: types.Tschedule, percentOrganismToMutate: number): types.Tschedule {
+        return mutateSchedule(schedule, input, percentOrganismToMutate);
     };
 }
 
-function mutateSchedule(schedule: types.Tschedule, input: types.Tinput, getPercentOrganismToMutate: () => number): types.Tschedule {
-    const percentOrganismToMutate = getPercentOrganismToMutate();
+function mutateSchedule(schedule: types.Tschedule, input: types.Tinput, percentOrganismToMutate: number): types.Tschedule {
     const newSchedule: types.Tschedule = {score: -1, data: []};
     const mutatedSchedule: types.Tschedule = {score: -1, data: []};
     while (mutatedSchedule.data.length / schedule.data.length < percentOrganismToMutate) {

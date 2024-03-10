@@ -20,5 +20,5 @@ export type TOrganism<T> = {
 export type TOrganisms<T> = TOrganism<T>[];
 export type TFitnessFunction<T> = (organism: TOrganism<T>) => number;
 export type TCrossoverFunction<T> = (organism1: TOrganism<T>, organism2: TOrganism<T>) => TOrganism<T>;
-export type TMutateFunction<T> = (organism: TOrganism<T>) => TOrganism<T>;
+export type TMutateFunction<T> = (organism: TOrganism<T>, percentOrganismToMutate: number) => TOrganism<T>;
 export type TPopulationDiversityFunction<T> = (population: TOrganisms<T>) => number;
