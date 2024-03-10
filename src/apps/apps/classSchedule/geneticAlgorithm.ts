@@ -1,11 +1,11 @@
 import * as gaTypes from './geneticAlgorithmTypes';
 import * as helper from './helper.js';
 
-const _crossoverRate: number = 0.7;
-const _percentPopulationToMutate: number = 0.3;
-const _percentOrganismToMutate = 0.01;
-const _maxPercentOrganismToMutate: number = 0.1;
-const _maxPercentPopulationToMutate: number = 0.8;
+const _crossoverFraction: number = 0.7;
+const _fractionPopulationToMutate: number = 0.3;
+const _fractionOrganismToMutate = 0.01;
+const _maxFractionOrganismToMutate: number = 0.1;
+const _maxFractionPopulationToMutate: number = 0.8;
 
 export function getSettings<T>( // T is a population
     fitnessFunction: gaTypes.TFitnessFunction<T>,
@@ -14,11 +14,11 @@ export function getSettings<T>( // T is a population
     populationDiversityFunction: gaTypes.TPopulationDiversityFunction<T>,
     populationSize: number = 500,
     elitismCount: number = 2,
-    crossoverRate: number = _crossoverRate,
-    percentPopulationToMutate: number = _percentPopulationToMutate,
-    percentOrganismToMutate: number = _percentOrganismToMutate,
-    minimumDiversityRateBeforeIncreasedMutation: number = 0.1,
-    maximumDiversityRateBeforeResetMutation: number = 0.6,
+    crossoverRate: number = _crossoverFraction,
+    fractionPopulationToMutate: number = _fractionPopulationToMutate,
+    fractionOrganismToMutate: number = _fractionOrganismToMutate,
+    minimumDiversityFractionBeforeIncreasedMutation: number = 0.1,
+    maximumDiversityFractionBeforeResetMutation: number = 0.6,
     numberCpuCores: number = 1,
 ): gaTypes.TSettings<T> {
     if (populationSize < 15)
@@ -27,20 +27,16 @@ export function getSettings<T>( // T is a population
         populationSize,
         elitismCount,
         crossoverRate,
-        'percentPopulationToMutate': percentPopulationToMutate,
-        'percentOrganismToMutate': percentOrganismToMutate,
-        'minimumDiversityRateBeforeIncreasedMutation': minimumDiversityRateBeforeIncreasedMutation,
-        'maximumDiversityRateBeforeResetMutation': maximumDiversityRateBeforeResetMutation,
+        'fractionPopulationToMutate': fractionPopulationToMutate,
+        'fractionOrganismToMutate': fractionOrganismToMutate,
+        'minimumDiversityFractionBeforeIncreasedMutation': minimumDiversityFractionBeforeIncreasedMutation,
+        'maximumDiversityFractionBeforeResetMutation': maximumDiversityFractionBeforeResetMutation,
         numberCpuCores,
         fitnessFunction,
         crossoverFunction,
         mutateFunction,
         populationDiversityFunction
     };
-}
-
-export function getPercentOrganismToMutate() {
-    return _percentOrganismToMutate;
 }
 
 export function getNextGenerationAndAdjustSettings<T>(  // T is a population
@@ -51,26 +47,26 @@ export function getNextGenerationAndAdjustSettings<T>(  // T is a population
     helper.startTimer();
     const diversityRate = settings.populationDiversityFunction(lastGen);
     console.log(`Diversity: ${diversityRate}`);
-    console.log(`Percent population to mutate: ${settings.percentPopulationToMutate}`);
-    console.log(`Percent organism to mutate: ${settings.percentOrganismToMutate}`);
-    if (diversityRate < settings.minimumDiversityRateBeforeIncreasedMutation) {
+    console.log(`Fraction population to mutate: ${settings.fractionPopulationToMutate}`);
+    console.log(`Fraction organism to mutate: ${settings.fractionOrganismToMutate}`);
+    if (diversityRate < settings.minimumDiversityFractionBeforeIncreasedMutation) {
         // settings.crossoverRate *= 1.1; crossover is high enough. no point in changing it
-        if (settings.percentOrganismToMutate < _maxPercentOrganismToMutate)
-            settings.percentOrganismToMutate *= 1.1;
-        if (settings.percentPopulationToMutate < _maxPercentPopulationToMutate)
-            settings.percentPopulationToMutate *= 1.1;
+        if (settings.fractionOrganismToMutate < _maxFractionOrganismToMutate)
+            settings.fractionOrganismToMutate *= 1.1;
+        if (settings.fractionPopulationToMutate < _maxFractionPopulationToMutate)
+            settings.fractionPopulationToMutate *= 1.1;
     }
     else {
         // settings.crossoverRate = _crossoverRate;
-        if (diversityRate > settings.maximumDiversityRateBeforeResetMutation) {
-            settings.percentOrganismToMutate = _percentOrganismToMutate;
-            settings.percentPopulationToMutate = _percentPopulationToMutate;
+        if (diversityRate > settings.maximumDiversityFractionBeforeResetMutation) {
+            settings.fractionOrganismToMutate = _fractionOrganismToMutate;
+            settings.fractionPopulationToMutate = _fractionPopulationToMutate;
         }
     }
-    if (settings.percentOrganismToMutate > _maxPercentOrganismToMutate)
-        settings.percentOrganismToMutate = _maxPercentOrganismToMutate;
-    if (settings.percentPopulationToMutate > _maxPercentPopulationToMutate)
-        settings.percentPopulationToMutate = _maxPercentPopulationToMutate;
+    if (settings.fractionOrganismToMutate > _maxFractionOrganismToMutate)
+        settings.fractionOrganismToMutate = _maxFractionOrganismToMutate;
+    if (settings.fractionPopulationToMutate > _maxFractionPopulationToMutate)
+        settings.fractionPopulationToMutate = _maxFractionPopulationToMutate;
     helper.stopTimer("getDiversity");
 
     // get pairs of breeders
@@ -105,10 +101,10 @@ export function getNextGenerationAndAdjustSettings<T>(  // T is a population
     helper.startTimer();
     const mutatedNextGen: gaTypes.TOrganisms<T> = []
     for (const organism of nextGen) {
-        if (Math.random() > settings.percentPopulationToMutate)
+        if (Math.random() > settings.fractionPopulationToMutate)
             mutatedNextGen.push(organism);
         else
-            mutatedNextGen.push(settings.mutateFunction(organism, _percentOrganismToMutate));
+            mutatedNextGen.push(settings.mutateFunction(organism, _fractionOrganismToMutate));
     }
     nextGen = mutatedNextGen;
     helper.stopTimer("mutate");

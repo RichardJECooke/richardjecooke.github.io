@@ -66,16 +66,16 @@ export function getSchedulesDiversity(schedules: types.Tschedules): number {
     return difference / maximum;
 }
 
-export function getMutateScheduleFunction(input: types.Tinput): (schedule: types.Tschedule, percentOrganismToMutate: number) => types.Tschedule {
-    return function(schedule: types.Tschedule, percentOrganismToMutate: number): types.Tschedule {
-        return mutateSchedule(schedule, input, percentOrganismToMutate);
+export function getMutateScheduleFunction(input: types.Tinput): (schedule: types.Tschedule, fractionOrganismToMutate: number) => types.Tschedule {
+    return function(schedule: types.Tschedule, fractionOrganismToMutate: number): types.Tschedule {
+        return mutateSchedule(schedule, input, fractionOrganismToMutate);
     };
 }
 
-function mutateSchedule(schedule: types.Tschedule, input: types.Tinput, percentOrganismToMutate: number): types.Tschedule {
+function mutateSchedule(schedule: types.Tschedule, input: types.Tinput, fractionOrganismToMutate: number): types.Tschedule {
     const newSchedule: types.Tschedule = {score: -1, data: []};
     const mutatedSchedule: types.Tschedule = {score: -1, data: []};
-    while (mutatedSchedule.data.length / schedule.data.length < percentOrganismToMutate) {
+    while (mutatedSchedule.data.length / schedule.data.length < fractionOrganismToMutate) {
         const lessonToMutate = getRandomItemFromList<types.Tlesson>(schedule.data);
         if (mutatedSchedule.data.find(l => lessonToMutate.id == l.id))
             continue;
